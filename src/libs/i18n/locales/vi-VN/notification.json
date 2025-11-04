@@ -1,0 +1,63 @@
+{
+  "noNotifications": "Không có thông báo nào",
+  "seeMore": "Xem thêm",
+  "content": {
+    "bookingCreated": {
+      "title": "",
+      "message": "",
+      "detail": {
+        "hi": "Xin chào",
+        "content_1": "Bạn đã đặt bàn thành công tại nhà hàng",
+        "content_2": "vào lúc",
+        "content_3": "cho",
+        "content_4": "người.",
+        "content_5": "Vui lòng chờ nhà hàng xác nhận. Bạn sẽ nhận được thông báo khi có phản hồi từ nhà hàng.",
+        "content_6": "Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi!"
+      }
+    },
+    "bookingConfirmed": {
+      "detail": {
+        "content_1": "Nhà hàng",
+        "content_2": "đã xác nhận đặt chỗ của bạn lúc",
+        "content_3": "Vui lòng đến đúng giờ và xuất trình mã xác nhận (nếu có) khi đến nhà hàng.",
+        "content_4": "Chúc bạn ngon miệng!"
+      }
+    },
+    "bookingCanceled": {
+      "detail": {
+        "content_1": "Xin lỗi, nhà hàng",
+        "content_2": "từ chối đặt bàn của bạn lúc",
+        "content_3": "Lý do có thể là nhà hàng đã kín chỗ hoặc không thể phục vụ vào thời điểm đó.",
+        "content_4": "Bạn có thể thử đặt lại với thời gian khác hoặc chọn nhà hàng khác.",
+        "content_5": "Chúng tôi xin lỗi vì sự bất tiện này."
+      }
+    },
+    "bookingReminder": {
+      "detail": {
+        "content_1": "Bạn có một lịch đặt bàn tại",
+        "content_2": "Vui lòng đến đúng giờ để được phục vụ tốt nhất. Nếu bạn không thể đến, hãy hủy đặt bàn sớm để tránh gây ảnh hưởng cho nhà hàng.",
+        "content_3": "Cảm ơn bạn đã tin tưởng sử dụng dịch vụ của chúng tôi!"
+      }
+    },
+    "bookingCompleted": {
+      "detail": {
+        "content_1": "Chúng tôi hy vọng bạn đã có một trải nghiệm ăn uống tuyệt vời tại",
+        "content_2": "Đặt chỗ của bạn trên",
+        "content_3": "đã được đánh dấu là hoàn thành.",
+        "content_4": "Cảm ơn bạn đã chọn chúng tôi! Nếu bạn thích bữa ăn của mình, chúng tôi rất muốn nghe phản hồi của bạn.",
+        "content_5": "Chúng tôi mong sớm được chào đón bạn trở lại.",
+        "content_6": "Để lại đánh giá",
+        "content_7": "người"
+      }
+    },
+    "bookingInProgress": {
+      "detail": {
+        "content_1": "Chúng tôi hy vọng bạn sẽ thích trải nghiệm ẩm thực của mình tại",
+        "content_2": "hiện đang trong quá trình tiến hành.",
+        "content_3": "Cảm ơn bạn đã chọn chúng tôi! Nếu bạn cần bất kỳ sự hỗ trợ nào, vui lòng đừng ngần ngại hỏi.",
+        "content_4": "Chúng tôi mong muốn được phục vụ và chào đón bạn sớm nhất."
+      }
+    }
+  },
+  "infoRestaurant": "Thông tin nhà hàng:"
+}

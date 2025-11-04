@@ -1,0 +1,39 @@
+{
+  "title": "Lịch Sử Đặt Bàn",
+  "noBooking": "Bạn chưa đặt bàn nhà hàng nào. :(",
+  "contentNoBooking": "để trải nghiệm ẩm thực hấp dẫn tại nhà hàng của chúng tôi!",
+  "modal": {
+    "delete": {
+      "button": "Hủy bỏ đặt bàn",
+      "title": "Hủy bỏ đặt bàn",
+      "content": "Bạn có chắc chắn muốn hủy đặt phòng của mình không?",
+      "labelButton": "Thoát"
+    }
+  },
+  "notification": {
+    "canceled": "Đặt chỗ của bạn đã được hủy thành công."
+  },
+  "status": {
+    "pending": "Chờ xác nhận",
+    "confirmed": "Đã xác nhận",
+    "cancelled": "Đã hủy",
+    "completed": "Hoàn tất",
+    "inProgress": "Đang tiến hành"
+  },
+  "note": "Yêu cầu đặc biệt:",
+  "thankYou": "Cảm ơn bạn đã ghé thăm tại Domique Fusion!",
+  "reservationCode": "Mã đặt bàn:",
+  "button": {
+    "bookingAgain": "Đặt bàn lại",
+    "goBack": "Trở về",
+    "contact": "Liên hệ nhà hàng",
+    "bookingNow": "[ Đặt bàn ngay ]"
+  },
+  "statusLabel": {
+    "pending": "Đặt bàn chờ xác nhận",
+    "confirmed": "Đặt bàn được xác nhận",
+    "cancelled": "Đặt bàn đã hủy",
+    "completed": "Bữa ăn đã hoàn thành",
+    "inProgress": "Bữa ăn đang diễn ra"
+  }
+}

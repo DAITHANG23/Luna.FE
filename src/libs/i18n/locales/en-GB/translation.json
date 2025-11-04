@@ -1,0 +1,143 @@
+{
+  "title": "Hi, Welcome Domique Fusion",
+  "content": "Here, we serve you the best food and quality service.",
+  "notFound": "Sorry, Page Not Found",
+  "authorize": "Sorry, You Need Login To Access",
+  "returnHome": "Return To Home",
+  "returnLogin": "Return To Login",
+  "login": {
+    "titleLogin": "Sign in to your account",
+    "dontHaveAccount": "Don’t have an account?",
+    "forgotPassword": "Forgot password?",
+    "continueWith": "or continue with",
+    "password": "Password",
+    "validate": {
+      "email": "Email is required!",
+      "invalidEmail": "Invalid email!",
+      "password": "Password is required!"
+    }
+  },
+  "register": {
+    "alreadyHaveAnAccount": "Already have an account?",
+    "titleRegister": "Get started absolutely free",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "dateOfBirth": "Date Of Birth",
+    "numberPhone": "Number Phone",
+    "address": "Address",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "createAccount": "Create account",
+    "validate": {
+      "email": "Email is required!",
+      "invalidEmail": "Invalid email!",
+      "password": "Password is required!",
+      "minPassword": "Password must be at least 8 characters!",
+      "maxPassword": "Password must be max 20 characters!",
+      "formatPassword": "Password must have at least 8 characters, one uppercase, one lowercase, one number, and one special character.",
+      "firstName": "First name is required!",
+      "minFirstName": "First name must be at least 3 characters",
+      "maxFirstName": "First name must max 50 characters",
+      "lastName": "Last name is required!",
+      "minLastName": "Last name must be at least 3 characters",
+      "maxLastName": "Last name must max 50 characters",
+      "dateOfBirth": "Date of birth is required!",
+      "numberPhone": "Number phone is required!",
+      "minNumberPhone": "Phone number must be at least 10 digits",
+      "maxNumberPhone": "Phone number must be max 50 digits",
+      "address": "Address is required!",
+      "minAddress": "Address must be at least 5 characters",
+      "maxAddress": "Address must not exceed 100 characters",
+      "confirmPassword": "Confirm password is required!",
+      "matchPassword": "Password must match",
+      "ageRequirement": "You must be at least 13 years old!"
+    }
+  },
+  "forgotPassword": {
+    "title": "Forgot your password?",
+    "content": "Please enter the email address associated with your account and we'll email you a link to reset your password.",
+    "button": "Send request",
+    "return": "Return to sign in"
+  },
+  "resetPassword": {
+    "title": "Request sent successfully",
+    "content": "We've sent a 6-digit confirmation email to your email. Please enter the code in below box to verify your email.",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "updatePassword": "Update password",
+    "dontHaveACode": "Don’t have a code?",
+    "return": "Return to sign in",
+    "verify": "Verify",
+    "validate": {
+      "password": "Password is required!",
+      "minPassword": "Password must be at least 8 characters!",
+      "maxPassword": "Password must be max 20 characters!",
+      "formatPassword": "Password must have at least 8 characters, one uppercase, one lowercase, one number, and one special character.",
+      "confirmPassword": "Confirm password is required!",
+      "matchPassword": "Password must match"
+    },
+    "resend": "Resend"
+  },
+  "button": {
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "detail": "Detail",
+    "verify": "Verify",
+    "getStarted": "Get started",
+    "confirm": "Confirm"
+  },
+  "navbar": {
+    "home": "Home",
+    "about": "About Domique Fusion",
+    "restaurantConcept": "Restaurant Concept",
+    "blog": "Blog",
+    "yourProfile": "Your Profile",
+    "reservationHistory": "Reservation History",
+    "favorites": "Favorites",
+    "settings": "Settings",
+    "signOut": "Sign Out",
+    "login": "Login"
+  },
+  "footer": {
+    "title": "Domique Fusion Corporation",
+    "address": "Address: Thong Nhat Street, Go Vap Distric, Ho Chi Minh City",
+    "responsible": "Responsible for content: Mr.Dom Nguyen",
+    "customerSupport": "Customer Support",
+    "termsOfUse": "Terms of Use",
+    "membershipPolicy": "Membership policy",
+    "privacyPolicy": "Privacy policy",
+    "copyright": "© {{currentYear}} Domique Fushion.,JSC. All rights reserved."
+  },
+  "settings": {
+    "title": "Settings",
+    "themeMode": "Theme Mode",
+    "light": "Light",
+    "dark": "Dark",
+    "english": "English",
+    "vietnamese": "Vietnamese"
+  },
+  "headTitle": {
+    "login": "Domique Fusion | Login",
+    "register": "Domique Fusion | Register",
+    "about": "Domique Fusion | About",
+    "home": "Domique Fusion | Home",
+    "resetPassword": "Domique Fusion | Reset Password",
+    "forgotPassword": "Domique Fusion | Forgot Password",
+    "verifyOtp": "Domique Fusion | Verify OTP",
+    "profile": "Domique Fusion | Profile",
+    "concepts": "Domique Fusion | Concepts",
+    "favoriteConcepts": "Domique Fusion | Favorite Concepts",
+    "favoriteRestaurants": "Domique Fusion | Favorite Restaurants",
+    "checkInRestaurants": "Domique Fusion | Check In Restaurants",
+    "menuRestaurant": "Domique Fusion | Menu",
+    "bookingRestaurant": "Domique Fusion | Booking",
+    "blog": "Domique Fusion | Blog",
+    "historyBooking": "Domique Fusion | History Booking",
+    "notifications": "Domique Fusion | Notifications",
+    "unauthorized": "Domique Fusion | Unauthorized"
+  }
+}

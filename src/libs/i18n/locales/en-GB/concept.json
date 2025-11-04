@@ -1,0 +1,35 @@
+{
+  "title": "My Favorite List",
+  "titleCheckIn": "My Check in List",
+  "titleRestaurantFavorite": "Restaurants I Love",
+  "emptyListTitle": "Your list is empty",
+  "emptyContent": "You have no favorites yet",
+  "checkinEmptyContent": "You have no visited restaurants yet",
+  "touchTheHeartIcon": "Touch the Heart icon on any",
+  "touchTheVisitIcon": "Touch the Visited icon on any",
+  "andItWill": "and it will save them here as a favorite.",
+  "andItWillVisited": "and it will save them here as a visited.",
+  "restaurant": "restaurant",
+  "visited": "Visited",
+  "allDone": "All done!",
+  "thankForSharing": "Thanks for sharing your feedback with us.",
+  "pleaseShare": "Please share your experience.",
+  "howWasTheRestaurant": "How was the restaurant&apos;s service & cooking?",
+  "terrible": "1 - Terrible",
+  "amazing": "5 - Amazing",
+  "pleaseShareAnyAdditional": "Please share any additional comments about this concept:",
+  "placehoderTextarea": "Write your thoughts here...",
+  "seeMenu": "See menu",
+  "validateReview": "Please enter least 5 characters !",
+  "notFound": "Oops! We couldn’t find any restaurants :(",
+  "navbar": {
+    "menu": "Menu",
+    "booking": "Booking"
+  },
+  "button": {
+    "back": "My lists",
+    "submit": "Submit",
+    "close": "Close",
+    "goBack": "Back"
+  }
+}

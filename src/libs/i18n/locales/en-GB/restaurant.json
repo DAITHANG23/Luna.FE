@@ -1,0 +1,39 @@
+{
+  "concepts": {
+    "label": {
+      "allConcepts": "All concepts",
+      "hotpot": "Hotpot",
+      "other": "Other",
+      "japanese": "Japanese",
+      "steakHouse": "Steak House",
+      "bbq": "BBQ"
+    },
+    "placeholder": {
+      "search": "Search",
+      "notes": "Notes..."
+    }
+  },
+  "label": {
+    "date": "Meal day",
+    "time": "Meal time",
+    "peopleQuantity": "Quantity of people",
+    "fullName": "Full name",
+    "numberPhone": "Number phone",
+    "notes": "Notes"
+  },
+  "bookingSuccessfully": "Booking completed successfully!",
+  "notFound": "Oops! We couldn’t find any restaurants :(",
+  "under": "Under",
+  "over": "Over",
+  "from": "From",
+  "to": "To",
+  "allPrices": "All prices",
+  "allStar": "All star",
+  "openClose": "Open - Close",
+  "validate": {
+    "fieldIsRequired": "This field is required!"
+  },
+  "button": {
+    "booking": "Booking"
+  }
+}

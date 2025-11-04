@@ -1,0 +1,64 @@
+{
+  "title": "Hồ sơ",
+  "photoUpdate": "Cập nhật Avatar",
+  "allowType": "Cho phép *.jpeg, *.jpg, *.png, *.gif",
+  "maxSize": "kích thước tối đa 3.1MB",
+  "tabProfile": "Hồ sơ",
+  "tabSecurity": "Bảo mật",
+  "modal": {
+    "delete": {
+      "button": "Xóa",
+      "title": "Xóa tài khoản",
+      "content": "Bạn có chắc chắn muốn xóa tài khoản của mình không? Tất cả dữ liệu của bạn sẽ bị xóa vĩnh viễn. Không thể hoàn tác hành động này.",
+      "labelButton": "Thoát"
+    },
+    "update": {
+      "title": "Cập nhật tài khoản",
+      "button": "Cập nhật",
+      "labelButton": "Thoát",
+      "content": "Bạn có chắc chắn đã cập nhật hồ sơ của mình không?"
+    }
+  },
+  "profile": {
+    "firstName": "Tên",
+    "lastName": "Họ",
+    "address": "Địa chỉ",
+    "gender": "Giới tính",
+    "numberPhone": "Số điện thoại",
+    "dateOfBirth": "Ngày sinh",
+    "button": "Cập nhật tài khoản",
+    "male": "Nam",
+    "female": "Nữ",
+    "validate": {
+      "firstName": "Vui lòng nhập tên!",
+      "minFirstName": "Tên phải tổi thiểu 3 kí tự!",
+      "maxFirstName": "Tên tối đa 50 kí tự!",
+      "lastName": "Vui lòng nhập họ!",
+      "minLastName": "Họ phải tổi thiểu 3 kí tự!",
+      "maxLastName": "Họ tối đa 50 kí tự!",
+      "numberPhone": "Vui lòng nhập số điện thoại!",
+      "minNumberPhone": "Số điện thoại tổi thiểu 10 chữ số",
+      "maxNumberPhone": "Số điện thoại tối đa 50 chữ số",
+      "address": "Vui lòng nhập địa chỉ!",
+      "minAddress": "Địa chỉ tối thiểu 5 kí tự",
+      "maxAddress": "Địa chỉ tối đa 100 kí tự",
+      "dateOfBirth": "Vui lòng nhập ngày sinh!",
+      "ageRequirement": "Phải ít nhất 13 tuổi trở lên!"
+    }
+  },
+  "security": {
+    "currentPassword": "Mật khẩu hiện tại",
+    "newPassword": "Mật khẩu mới",
+    "confirmPassword": "Mật khẩu xác nhận",
+    "save": "Lưu thay đổi",
+    "validate": {
+      "currentPassword": "Vui lòng nhập mật khẩu hiện tại!",
+      "minPassword": "Mật khẩu phải ít nhất 8 kí tự!",
+      "maxPassword": "Mật khẩu tối đa 20 kí tự!",
+      "formatPassword": "Mật khẩu phải có tổi thiểu 8 ký tự, một chữ hoa, một chữ thường, một số và một ký tự đặc biệt.",
+      "newPassword": "Vui lòng nhập mật khẩu mới!",
+      "confirmPassword": "Vui lòng nhập mật khẩu xác nhận!",
+      "matchPassword": "Mật khẩu xác nhận phải trùng khớp"
+    }
+  }
+}

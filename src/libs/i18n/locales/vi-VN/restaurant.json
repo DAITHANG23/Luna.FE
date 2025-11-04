@@ -1,0 +1,39 @@
+{
+  "concepts": {
+    "label": {
+      "allConcepts": "All concepts",
+      "hotpot": "Hotpot",
+      "other": "Other",
+      "japanese": "Japanese",
+      "steakHouse": "Steak House",
+      "bbq": "BBQ"
+    },
+    "placeholder": {
+      "search": "Tìm kiếm",
+      "notes": "Ghi chú..."
+    }
+  },
+  "under": "Dưới",
+  "over": "Trên",
+  "from": "Từ",
+  "to": "đến",
+  "allPrices": "All prices",
+  "allStar": "All star",
+  "openClose": "Giờ mở - đóng",
+  "bookingSuccessfully": "Đặt bàn thành công!",
+  "notFound": "Rất tiếc, chúng tôi không tìm thấy nhà hàng nào :(",
+  "label": {
+    "date": "Ngày dùng bữa",
+    "time": "Thời gian dùng bữa",
+    "peopleQuantity": "Số lượng người",
+    "fullName": "Họ tên",
+    "numberPhone": "Số điện thoại",
+    "notes": "Ghi chú"
+  },
+  "validate": {
+    "fieldIsRequired": "Vui lòng nhập thông tin này!"
+  },
+  "button": {
+    "booking": "Đặt bàn"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "title": "Danh sách yêu thích của tôi",
+  "titleRestaurantFavorite": "Nhà hàng tôi yêu thích",
+  "titleCheckIn": "Danh sách nhà hàng tôi đã đến",
+  "emptyListTitle": "Danh sách của bạn trống",
+  "emptyContent": "Bạn chưa có nhà hàng nào yêu thích",
+  "checkinEmptyContent": "Bạn chưa có ghé thăm nhà hàng nào",
+  "touchTheHeartIcon": "Chạm vào biểu tượng trái tim",
+  "touchTheVisitIcon": "Chạm vào biểu tượng đã ghé thăm",
+  "andItWill": "nào và nó sẽ lưu chúng ở đây như một mục yêu thích.",
+  "andItWillVisited": "nào và nó sẽ lưu chúng ở đây như một mục đã ghé thăm.",
+  "restaurant": "bất kì nhà hàng",
+  "visited": "Đã ghé thăm",
+  "allDone": "Hoàn tất!",
+  "thankForSharing": "Cảm ơn bạn đã chia sẻ phản hồi với chúng tôi.",
+  "pleaseShare": "Hãy chia sẻ kinh nghiệm của bạn.",
+  "howWasTheRestaurant": "Dịch vụ và món ăn của nhà hàng thế nào?",
+  "terrible": "1 - Tệ",
+  "amazing": "5 - Tuyệt vời",
+  "pleaseShareAnyAdditional": "Vui lòng chia sẻ bất kỳ bình luận bổ sung nào về thương hiệu nhà hàng này:",
+  "placehoderTextarea": "Viết suy nghĩ của bạn ở đây...",
+  "seeMenu": "Xem thực đơn",
+  "validateReview": "Vui lòng nhập ít nhất 5 kí tự !",
+  "notFound": "Rất tiếc, chúng tôi không tìm thấy nhà hàng nào :(",
+  "navbar": {
+    "menu": "Thực đơn",
+    "booking": "Đặt bàn"
+  },
+  "button": {
+    "back": "Danh sách của tôi",
+    "submit": "Submit",
+    "close": "Đóng",
+    "goBack": "Trở về"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "title": "Profile",
+  "photoUpdate": "Photo Update",
+  "allowType": "Allow *.jpeg, *.jpg, *.png, *.gif",
+  "maxSize": " max size of 3.1MB",
+  "tabProfile": "Profile",
+  "tabSecurity": "Security",
+  "modal": {
+    "delete": {
+      "button": "Delete",
+      "title": "Delete Account",
+      "content": "Are you sure you want to delete your account? All of your data will be permanently removed. This action cannot be undone.",
+      "labelButton": "Cancel"
+    },
+    "update": {
+      "title": "Update Account",
+      "button": "Update",
+      "labelButton": "Cancel",
+      "content": "Are you sure update your profile?"
+    }
+  },
+  "profile": {
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "address": "Address",
+    "gender": "Gender",
+    "numberPhone": "Number Phone",
+    "dateOfBirth": "Date Of Birth",
+    "button": "Update Account",
+    "male": "Male",
+    "female": "Female",
+    "validate": {
+      "firstName": "Please enter your first name!",
+      "minFirstName": "First name must be at least 3 characters",
+      "maxFirstName": "First name must not exceed 50 characters",
+      "lastName": "Please enter your last name!",
+      "minLastName": "Last name must be at least 3 characters",
+      "maxLastName": "Last name must not exceed 50 characters",
+      "numberPhone": "Number Phone is required!",
+      "minNumberPhone": "Phone number must be at least 10 digits",
+      "maxNumberPhone": "Phone number must not exceed 15 digits",
+      "address": "Address is required!",
+      "minAddress": "Address must be at least 5 characters",
+      "maxAddress": "Address must not exceed 100 characters",
+      "dateOfBirth": "Date of birth is required!",
+      "ageRequirement": "You must be at least 13 years old!"
+    }
+  },
+  "security": {
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password",
+    "save": "Save changes",
+    "validate": {
+      "currentPassword": "Password is required!",
+      "minPassword": "Password must be at least 8 characters!",
+      "maxPassword": "Password must be max 20 characters!",
+      "formatPassword": "Password must have at least 8 characters, one uppercase, one lowercase, one number, and one special character.",
+      "newPassword": "New password is required!",
+      "confirmPassword": "Confirm password is required!",
+      "matchPassword": "Password must match"
+    }
+  }
+}
