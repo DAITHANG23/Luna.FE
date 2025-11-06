@@ -120,7 +120,7 @@ const BookingForm = ({
                 {restaurant?.name}
               </h1>
               <div className="flex gap-2 pb-2 items-start justify-start">
-                <MapPin className="text-primary flex-shrink-0 w-5 h-5" />
+                <MapPin className="text-primary shrink-0 w-5 h-5" />
                 <p className="text-primary-text">{restaurant?.address}</p>
               </div>
               <div className="flex gap-2">
@@ -156,7 +156,7 @@ const BookingForm = ({
                 title={tRestaurant("button.booking")}
                 isLoading={false}
                 sizeButton="small"
-                className="!text-base text-white text-center hover:scale-105 transition duration-200 !sm:w-[100px] ml-3"
+                className="text-base! text-white text-center hover:scale-105 transition duration-200 !sm:w-[100px] ml-3"
               />
             </div>
           </Form>

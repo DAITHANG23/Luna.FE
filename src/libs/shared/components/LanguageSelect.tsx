@@ -44,7 +44,7 @@ export const LanguageSelect = () => {
       <div>
         <MenuButton
           disabled={isPending}
-          className="relative flex !rounded-md hover:ring-offset-primary/80 dark:bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:outline-hidden"
+          className="relative cursor-pointer flex rounded-md! hover:ring-offset-primary/80 dark:bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:outline-hidden"
         >
           <span className="absolute -inset-1.5" />
           <span className="sr-only">Open user menu</span>
@@ -54,13 +54,13 @@ export const LanguageSelect = () => {
             width={30}
             height={24}
             layout="fixed"
-            className="!rounded-[5px]"
+            className="rounded-[5px]!"
           />
         </MenuButton>
       </div>
       <MenuItems
         transition
-        className="absolute right-0 z-10 mt-4 w-48 origin-top-right rounded-md bg-white py-1 ring-1 shadow-lg ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in "
+        className="absolute right-0 z-10 mt-4 w-48 origin-top-right rounded-md bg-white py-1 ring-1 shadow-lg ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in cursor-pointer"
       >
         {languageList.map((l) => {
           return (
@@ -76,7 +76,7 @@ export const LanguageSelect = () => {
                     width={30}
                     height={24}
                     layout="fixed"
-                    className="!rounded-[5px]"
+                    className="rounded-[5px]!"
                   />
                   <span className="text-base">
                     {t("settings.language", { lng: l.name })}

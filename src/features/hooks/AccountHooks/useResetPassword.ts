@@ -10,8 +10,7 @@ import {
 import { ROUTES } from "@/constants";
 import { AxiosError } from "axios";
 import { CREATE_NEW_PASSWORD_QUERY_KEY } from "@/app/constants/queryKeys";
-import { redirect } from "@/libs/i18n/navigation";
-import { useLocale } from "next-intl";
+import { useParams, useRouter } from "next/navigation";
 
 const createNewPassword = (
   formData: ForgotPasswordType
@@ -21,7 +20,9 @@ const createNewPassword = (
 
 const useResetPassword = () => {
   const { showSuccess, showError } = useNotification();
-  const locale = useLocale();
+
+  const params = useParams();
+  const router = useRouter();
   return useMutation<
     LoginResponse,
     AxiosError<ErrorResponse>,
@@ -34,7 +35,7 @@ const useResetPassword = () => {
         "Change password successful! Please login your account again!"
       );
       localStorage.removeItem("emailResetPassword");
-      redirect({ href: ROUTES.LOGIN.INDEX, locale: locale });
+      router.push(`/${params.locale}${ROUTES.LOGIN.INDEX}`);
     },
     onError: (err: AxiosError<ErrorResponse>) => {
       showError(err.message);

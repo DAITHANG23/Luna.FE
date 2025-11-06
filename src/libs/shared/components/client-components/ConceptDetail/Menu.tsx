@@ -5,12 +5,12 @@ import { ChevronRight, ChevronDown } from "lucide-react";
 import _ from "lodash";
 import { cn } from "@/utils";
 import Image from "next/image";
-import { ArrowLeftIcon } from "@/libs/assets";
 import "react-image-lightbox/style.css";
 import Lightbox from "react-image-lightbox";
 import { Slider } from "@/libs/shared/components";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
+import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 
 interface MenuProps {
   dishes: Array<Dish>;
@@ -115,16 +115,16 @@ const Menu = ({ dishes, conceptName }: MenuProps) => {
         <div className="mt-4">
           <button
             onClick={() => router.push(`/${locale}/${conceptName}`)}
-            className="flex gap-2 font-normal items-center border border-solid dark:border-white rounded-lg border-black px-3 hover:bg-gray-200 mb-4"
+            className="flex gap-2 font-normal items-center border border-solid dark:border-white rounded-lg border-black px-3 hover:bg-gray-200 mb-4 !dark:hover:text-black"
           >
-            <ArrowLeftIcon />
-            <span className="font-normal text-base text-primary-text dark:hover:text-black">
+            <ArrowLeftIcon className="text-primary-text w-5 h-5" />
+            <span className="font-normal text-base text-primary-text">
               {t("button.goBack")}
             </span>
           </button>
         </div>
 
-        <div className="lg:flex pr-2 pb-[3.125rem] w-full pt-4">
+        <div className="lg:flex pr-2 pb-12.5 w-full pt-4">
           <div className="fixed lg:hidden bottom-0 left-0 w-full mx-auto h-[50px] bg-white shadow-md z-50 overflow-x-auto">
             <div className="flex gap-4 px-4 h-full items-center w-max">
               {itemNavbarList.map((item) => (
@@ -165,7 +165,7 @@ const Menu = ({ dishes, conceptName }: MenuProps) => {
                     <div
                       className={`overflow-hidden transition-all duration-300 ease-in-out ${
                         openSideBar === index
-                          ? "opacity-100 !h-auto p-4"
+                          ? "opacity-100 h-auto! p-4"
                           : "opacity-0 max-h-0 p-0"
                       }`}
                     >
@@ -206,7 +206,7 @@ const Menu = ({ dishes, conceptName }: MenuProps) => {
                     return (
                       <div
                         key={i}
-                        className="mb-4 w-[13rem] h-[11.25rem] relative cursor-pointer"
+                        className="mb-4 w-52 h-45 relative cursor-pointer"
                       >
                         <Image
                           src={i}
@@ -265,7 +265,7 @@ const Menu = ({ dishes, conceptName }: MenuProps) => {
                       banners={(dishesList as Dish)?.images}
                     />
                   ) : (
-                    <div className="w-full h-[18.75rem] relative cursor-pointer">
+                    <div className="w-full h-75 relative cursor-pointer">
                       <Image
                         src={(dishesList as Dish)?.image || "/favicon.ico"}
                         alt={"img"}

@@ -29,16 +29,16 @@ const SocialLogin = () => {
       style={{ animationDelay: "0.1s" }}
     >
       <div className="relative flex items-center py-2 ">
-        <div className="flex-grow border-t border-border dark:border-primary-text"></div>
-        <span className="flex-shrink mx-4 text-muted-foreground dark:text-primary-text text-sm">
+        <div className="grow border-t border-border border-primary-text"></div>
+        <span className="shrink mx-4 text-muted-foreground text-primary-text text-sm">
           {t("login.continueWith")}
         </span>
-        <div className="flex-grow border-t border-border dark:border-primary-text"></div>
+        <div className="grow border-t border-border border-primary-text"></div>
       </div>
 
       <button
         type="button"
-        className="inline-flex dark:text-primary-text items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-input bg-background hover:bg-accent hover:text-accent-foreground dark:hover:text-accent-foreground px-4 py-2 w-full h-11 font-medium border shadow-button hover:shadow-button-hover transition-all duration-300 [&>svg]:pointer-events-none [&>svg]:size-4 [&>svg]:shrink-0"
+        className="inline-flex text-primary-text items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-input bg-background hover:bg-accent hover:text-accent-foreground dark:hover:text-accent-foreground px-4 py-2 w-full h-11 font-medium border shadow-button hover:shadow-button-hover transition-all duration-300 [&>svg]:pointer-events-none [&>svg]:size-4 [&>svg]:shrink-0"
         onClick={handleGoogleLogin}
       >
         <GoogleIcon />

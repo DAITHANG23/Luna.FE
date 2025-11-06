@@ -95,12 +95,12 @@ export const NotificationMain = ({ children, id }: NotificationMainProps) => {
                   handleDeleteNotification={handleDeleteNotification}
                   isSelected={selectedId === item._id}
                 />
-                <hr className="text-gray-500 !my-1" />
+                <hr className="text-gray-500 my-1!" />
               </div>
             );
           })
         ) : (
-          <div className="flex flex-col items-center justify-center text-center py-10 text-gray-500 text-sm h-[30rem]">
+          <div className="flex flex-col items-center justify-center text-center py-10 text-gray-500 text-sm h-120">
             <BellIcon className="w-8 h-8 mb-2" />
             <p>{t("noNotifications")}</p>
           </div>
@@ -116,14 +116,14 @@ export const NotificationMain = ({ children, id }: NotificationMainProps) => {
   ]);
 
   return (
-    <div className="mt-[5rem] sm:mt-[7.5rem] w-[90%] 2xl:w-[70%] h-auto lg:h-[40rem] mx-auto bg-white dark:bg-gray-900 rounded-lg my-4 shadow-lg p-4 lg:py-4 lg:pr-4">
+    <div className="mt-20 sm:mt-30 w-[90%] 2xl:w-[70%] h-auto lg:h-160 mx-auto bg-white dark:bg-gray-900 rounded-lg my-4 shadow-lg p-4 lg:py-4 lg:pr-4">
       <div className="flex lg:flex-row flex-col gap-4 h-full">
         <div className="w-full lg:w-[30%] h-full overflow-auto hidden lg:block">
           {notificationsNavbar}
         </div>
         <div className="block lg:hidden">
           <WrapperFilter
-            classNameMenu={"!h-[38rem] overflow-auto scrollbar-hide"}
+            classNameMenu={"h-152! overflow-auto scrollbar-hide"}
             isHandleCloseMenu
           >
             {notificationsNavbar}

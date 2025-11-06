@@ -17,5 +17,5 @@ export async function generateMetadata(
 }
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return <div className="mt-[4rem] sm:mt-[6rem]">{children}</div>;
+  return <div className="mt-16 sm:mt-24">{children}</div>;
 }

@@ -9,7 +9,7 @@ export const InformationRestaurants = () => {
   return (
     <div className="relative w-full h-auto sm:h-[552px] bg-primary dark:bg-[#1C252E]">
       <div className="w-[80%] m-auto flex sm:flex-row flex-col justify-center gap-10">
-        <div className="relative w-[100%] sm:w-[40%] h-[552px] px-[16px]">
+        <div className="relative w-full sm:w-[40%] h-[552px] px-[16px]">
           <Image
             src={"/assets/images/img-map-vn.png"}
             alt="map-vn"
