@@ -212,7 +212,7 @@ export const ProfileDetail = ({ userData, isLoading }: ProfileDetailProps) => {
                 icon={
                   <ArrowPathIcon
                     aria-hidden="true"
-                    className="w-8 h-8 text-green-500 animate-spin-slow"
+                    className="w-8 h-8 text-green-500 animate-[spin_3s_linear_infinite]"
                     type="update"
                   />
                 }
@@ -236,7 +236,7 @@ export const ProfileDetail = ({ userData, isLoading }: ProfileDetailProps) => {
               className="flex flex-col items-start justify-start gap-6 lg:flex-row"
               style={{ fontFamily: "Inter" }}
             >
-              <div className="w-[100%] lg:w-[30%] h-[462px] dark:bg-[#1C252E] shadow-[rgba(145,158,171,0.16)_0px_4px_8px_0px] rounded-2xl overflow-hidden bg-white text-primary-text flex flex-col items-center justify-center ">
+              <div className="w-full lg:w-[30%] h-[462px] dark:bg-[#1C252E] shadow-[rgba(145,158,171,0.16)_0px_4px_8px_0px] rounded-2xl overflow-hidden bg-white text-primary-text flex flex-col items-center justify-center ">
                 <div className="text-center w-[144px] h-[144px] cursor-pointer overflow-hidden p-[8px] border border-dashed border-[rgba(145,158,171,0.2)] rounded-full relative">
                   <label className="cursor-pointer block">
                     <input
@@ -281,7 +281,7 @@ export const ProfileDetail = ({ userData, isLoading }: ProfileDetailProps) => {
                 </button>
               </div>
               <div
-                className="w-[100%] lg:w-[70%] dark:bg-[#1C252E] flex flex-col h-auto p-4 shadow-[rgba(145,158,171,0.16)_0px_4px_8px_0px] rounded-2xl overflow-hidden bg-white text-primary-text font-inter"
+                className="w-full lg:w-[70%] dark:bg-[#1C252E] flex flex-col h-auto p-4 shadow-[rgba(145,158,171,0.16)_0px_4px_8px_0px] rounded-2xl overflow-hidden bg-white text-primary-text font-inter"
                 style={{ fontFamily: "Inter" }}
               >
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -340,7 +340,7 @@ export const ProfileDetail = ({ userData, isLoading }: ProfileDetailProps) => {
                       }
                     }}
                   >
-                    <p className={"!my-2 !mx-2 text-sm  opacity-100"}>
+                    <p className={"my-2! mx-2! text-sm  opacity-100"}>
                       {t("profile.button")}
                     </p>
                   </button>

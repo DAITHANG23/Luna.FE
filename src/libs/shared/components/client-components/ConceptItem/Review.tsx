@@ -57,8 +57,8 @@ export const Review = ({
   return (
     <div
       className={cn(
-        isDoneReview ? "h-[18.75rem] sm:h-[15rem]" : "h-auto sm:h-[31.25rem]",
-        "w-full sm:w-[42.5rem] mt-10 mx-auto"
+        isDoneReview ? "h-75 sm:h-60" : "h-auto sm:h-125",
+        "w-full sm:w-170 mt-10 mx-auto"
       )}
     >
       {isDoneReview ? (
@@ -98,7 +98,7 @@ export const Review = ({
                 );
               })}
             </div>
-            <div className="flex justify-around mt-2 max-w-full sm:max-w-[25rem] mx-auto text-gray-500">
+            <div className="flex justify-around mt-2 max-w-full sm:max-w-100 mx-auto text-gray-500">
               <p> {t("terrible")}</p> <p> {t("amazing")}</p>
             </div>
           </div>

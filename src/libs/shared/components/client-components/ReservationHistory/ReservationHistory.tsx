@@ -15,14 +15,14 @@ export const OrderHistory = () => {
 
   if (isLoading)
     return (
-      <div className="mt-[8.5rem]">
+      <div className="mt-34">
         <Spinner />
       </div>
     );
 
   return (
-    <div className="mt-[8.5rem]">
-      <div className="mt-[5rem] sm:mt-[7.5rem] w-[90%] xl:w-[60%] mx-auto p-4 ">
+    <div className="mt-34">
+      <div className="mt-20 sm:mt-30 w-[90%] xl:w-[60%] mx-auto p-4 ">
         <h3 className="flex text-center justify-start items-center gap-2 text-primary">
           <CalendarIcon /> {t("title")}
         </h3>

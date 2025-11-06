@@ -9,7 +9,7 @@ export const Blog = () => {
   const router = useRouter();
 
   return (
-    <div className="mt-[8.5rem] flex flex-col justify-center items-center gap-10">
+    <div className="mt-34 flex flex-col justify-center items-center gap-10">
       <Updating />
       <button
         className="text-white bg-gray-800 hover:bg-gray-600 rounded-lg shadow-lg px-4 py-[6px]"

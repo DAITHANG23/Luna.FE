@@ -68,7 +68,7 @@ export const FieldInput = ({
               ? "border border-red-500 dark:border-red-500"
               : "border border-gray-300 dark:border-gray-500",
             classNameInput,
-            "focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-black/25 dark:data-[focus]:outline-white/25"
+            "focus:outline-none data-focus:outline-2 data-focus:-outline-offset-2 data-focus:outline-black/25 dark:data-focus:outline-white/25"
           )}
           type={
             !isPasswordFied
@@ -86,7 +86,7 @@ export const FieldInput = ({
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute min-w-0 right-3 top-[15px] cursor-pointer w-6 h-6"
+            className="absolute min-w-0 right-3 top-[15px] cursor-pointer w-6 h-6 text-secondary-text hover:text-primary"
           >
             {showPassword ? <EyeSlashIcon /> : <EyeIcon />}
           </button>

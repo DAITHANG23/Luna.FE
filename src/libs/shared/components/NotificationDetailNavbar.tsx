@@ -44,23 +44,23 @@ const NotificationDetailNavbar = ({
   const NotificationIcon = useMemo(() => {
     switch (item?.type) {
       case "bookingReminder":
-        return <BellDotIcon className="text-[#CA8A04] w-6 h-6 flex-shrink-0" />;
+        return <BellDotIcon className="text-[#CA8A04] w-6 h-6 shrink-0" />;
       case "bookingConfirmed":
         return (
-          <CheckBadgeIcon className="text-[#16a34a] w-6 h-6 flex-shrink-0" />
+          <CheckBadgeIcon className="text-[#16a34a] w-6 h-6 shrink-0" />
         );
       case "bookingCanceled":
         return (
-          <TriangleAlertIcon className="text-primary w-6 h-6 flex-shrink-0" />
+          <TriangleAlertIcon className="text-primary w-6 h-6 shrink-0" />
         );
       case "bookingCompleted":
-        return <StarIcon className="text-purple-800 w-6 h-6 flex-shrink-0" />;
+        return <StarIcon className="text-purple-800 w-6 h-6 shrink-0" />;
       case "bookingInProgress":
         return (
-          <CircleDashedIcon className="text-[#2563EB] w-6 h-6 flex-shrink-0" />
+          <CircleDashedIcon className="text-[#2563EB] w-6 h-6 shrink-0" />
         );
       default:
-        return <InfoIcon className="text-[#2563EB] w-6 h-6 flex-shrink-0" />;
+        return <InfoIcon className="text-[#2563EB] w-6 h-6 shrink-0" />;
     }
   }, [item]);
 
@@ -72,7 +72,7 @@ const NotificationDetailNavbar = ({
           ? "bg-white dark:bg-gray-900"
           : getStatusClass(item.type),
         isSelected &&
-          " mr-4 border border-primary before:content-[''] before:absolute before:left-0 before:top-2 before:bottom-2 before:w-[6px] before:rounded-tr-lg before:rounded-br-lg before:bg-primary after:content-[''] after:absolute after:right-[-8px] after:bottom-[calc(50%-8px)] after:border-t-[8px] after:border-b-[8px] after:border-l-[8px] after:border-transparent after:border-l-red-500"
+          " mr-4 border border-primary before:content-[''] before:absolute before:left-0 before:top-2 before:bottom-2 before:w-[6px] before:rounded-tr-lg before:rounded-br-lg before:bg-primary after:content-[''] after:absolute after:right-[-8px] after:bottom-[calc(50%-8px)] after:border-t-8 after:border-b-8 after:border-l-8 after:border-transparent after:border-l-red-500"
       )}
     >
       {NotificationIcon}
@@ -102,7 +102,7 @@ const NotificationDetailNavbar = ({
             }}
             className="p-1 hover:bg-[#BBF7D0]/90 rounded-full"
           >
-            <CheckCheckIcon className="text-[#16a34a] w-4 h-4 flex-shrink-0" />
+            <CheckCheckIcon className="text-[#16a34a] w-4 h-4 shrink-0" />
           </button>
         </div>
       ) : (

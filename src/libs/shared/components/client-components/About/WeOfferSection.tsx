@@ -51,14 +51,14 @@ export const WeOfferSection = () => {
       animate={visible ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6 }}
     >
-      <h2 className="text-3xl font-semibold !mb-6 text-center text-primary">
-        We Offer
+      <h2 className="text-3xl font-semibold mb-6! text-center text-primary">
+        {t("about.weOffer")}
       </h2>
       <div className="grid md:grid-cols-3 gap-8">
         {WE_OFFER_LIST.map((item) => (
           <div
             key={item.title}
-            className="bg-gradient-to-br rounded-lg from-card bg-card to-secondary/30 border border-primary/20 hover:shadow-lg transition-shadow duration-300 hover:-translate-y-1 shadow-sm duration-300 transition-shadow"
+            className="bg-linear-to-br rounded-lg from-card bg-card to-secondary/30 border border-primary/20 hover:shadow-lg transition-shadow duration-300 hover:-translate-y-1 shadow-sm duration-300 transition-shadow"
           >
             <div className="flex items-center gap-2 p-6">
               {item.icon}

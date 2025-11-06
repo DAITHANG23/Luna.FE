@@ -1,4 +1,3 @@
-"use client";
 import { Slider } from "@/libs/shared/components";
 import {
   BusinessHighlights,

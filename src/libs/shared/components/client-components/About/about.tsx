@@ -38,19 +38,19 @@ export const About = () => {
 
   return (
     <div>
-      <div className="max-w-full pt-0 p-4 sm:p-0 sm:max-w-[70%] mx-auto mt-[8.5rem]">
-        <div className="mb-10 text-center bg-gradient-to-r from-primary/10 via-secondary/20 to-primary/10 py-8 rounded-xl">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center bg-gradient-to-r from-primary via-primary/80 to-primary bg-clip-text text-transparent">
+      <div className="max-w-full pt-0 p-4 sm:p-0 sm:max-w-[70%] mx-auto mt-34">
+        <div className="mb-10 text-center bg-linear-to-r from-primary/10 via-secondary/20 to-primary/10 py-8 rounded-xl">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center bg-linear-to-r from-primary via-primary/80 to-primary bg-clip-text text-transparent">
             {t("about.title")}
           </h1>
-          <p className="text-primary-text text-base sm:text-xl text-center text-muted-foreground max-w-full sm:max-w-[65%] !mx-auto px-4">
+          <p className="text-primary-text text-base sm:text-xl text-center text-muted-foreground max-w-full sm:max-w-[65%] mx-auto! px-4">
             {t("about.content")}
           </p>
         </div>
         <Slider isSmallSize coverImages={ABOUT_IMAGES} />
 
-        <LayoutMotion className="mb-12 bg-gradient-to-r from-secondary/40 via-transparent to-secondary/40 p-8 rounded-xl shadow-md">
-          <h2 className="text-3xl font-semibold !mb-8 text-center text-primary">
+        <LayoutMotion className="mb-12 bg-linear-to-r from-secondary/40 via-transparent to-secondary/40 p-8 rounded-xl shadow-md">
+          <h2 className="text-3xl font-semibold mb-8! text-center text-primary">
             {t("about.ourStory")}
           </h2>
           <div className="text-primary-text space-y-6 text-lg leading-relaxed">
@@ -62,11 +62,11 @@ export const About = () => {
         <div className="my-12">
           <WeOfferSection />
         </div>
-        <div className="my-12 bg-primary/30 shrink-0 h-[1px]"></div>
+        <div className="my-12 bg-primary/30 shrink-0 h-px"></div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12 items-start">
           <LayoutMotion>
-            <div className="bg-gradient-to-br from-card rounded-lg to-primary/5 border-2 border-primary/10 hover:border-primary/30 transition-colors shadow-md">
+            <div className="bg-linear-to-br from-card rounded-lg to-primary/5 border-2 border-primary/10 hover:border-primary/30 transition-colors shadow-md">
               <div className="bg-primary/5 rounded-t-lg p-6">
                 <h3 className="text-primary flex items-center gap-2">
                   <Utensils className="h-5 w-5 text-primary" />
@@ -74,7 +74,7 @@ export const About = () => {
                 </h3>
               </div>
 
-              <p className="text-primary-text pt-0 !px-6 pb-2">
+              <p className="text-primary-text pt-0 px-6! pb-2">
                 {t("about.contentOurCuisine")}
               </p>
               <ul className="text-primary-text mt-4 space-y-2 px-6 list-disc list-inside">
@@ -86,7 +86,7 @@ export const About = () => {
           </LayoutMotion>
 
           <LayoutMotion>
-            <div className="bg-gradient-to-br from-card rounded-lg to-primary/5 border-2 border-primary/10 hover:border-primary/30 transition-colors shadow-md">
+            <div className="bg-linear-to-br from-card rounded-lg to-primary/5 border-2 border-primary/10 hover:border-primary/30 transition-colors shadow-md">
               <div className="bg-primary/5 rounded-t-lg p-6">
                 <h3 className="text-primary flex items-center gap-2">
                   <Clock className="h-5 w-5 text-primary" />{" "}
@@ -111,7 +111,7 @@ export const About = () => {
             </div>
           </LayoutMotion>
 
-          <LayoutMotion className="bg-gradient-to-br from-card rounded-lg to-primary/5 border-2 border-primary/10 hover:border-primary/30 transition-colors shadow-md">
+          <LayoutMotion className="bg-linear-to-br from-card rounded-lg to-primary/5 border-2 border-primary/10 hover:border-primary/30 transition-colors shadow-md">
             <div className="bg-primary/5 rounded-t-lg p-6">
               <h3 className="text-primary flex items-center gap-2">
                 <MapPin className="h-5 w-5 text-primary" />
@@ -120,13 +120,13 @@ export const About = () => {
             </div>
             <div className="p-6 flex flex-col gap-4">
               <Map
-                className="!h-[25rem]"
+                className="h-100!"
                 locationsList={locationsRestaurantsList}
               />
             </div>
           </LayoutMotion>
 
-          <LayoutMotion className="bg-gradient-to-br from-card rounded-lg to-primary/5 border-2 border-primary/10 hover:border-primary/30 transition-colors shadow-md">
+          <LayoutMotion className="bg-linear-to-br from-card rounded-lg to-primary/5 border-2 border-primary/10 hover:border-primary/30 transition-colors shadow-md">
             <div className="bg-primary/5 rounded-t-lg p-6">
               <h3 className="text-primary flex items-center gap-2">
                 <Phone className="h-5 w-5 text-primary" /> {t("about.contact")}
@@ -152,7 +152,7 @@ export const About = () => {
           </LayoutMotion>
         </div>
 
-        <div className="my-12 text-center bg-gradient-to-r from-primary/20 via-primary/30 to-primary/20 p-8 rounded-xl shadow-lg">
+        <div className="my-12 text-center bg-linear-to-r from-primary/20 via-primary/30 to-primary/20 p-8 rounded-xl shadow-lg">
           <h2 className="text-primary text-2xl font-semibold mb-4">
             {t("about.visitUs")}
           </h2>

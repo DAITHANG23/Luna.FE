@@ -37,12 +37,12 @@ export const FavoriteRestaurants = () => {
 
   if (isLoadingFavoriteConceptsData)
     return (
-      <div className="mt-[8.5rem]">
+      <div className="mt-34">
         <Spinner />
       </div>
     );
   return (
-    <div className="my-20 sm:my-[6.5rem] p-8">
+    <div className="my-20 sm:my-26 p-8">
       <div className="w-full lg:w-[80%] mx-auto mb-10">
         <button
           onClick={() => router.push(`${ROUTES.FAVORITE_CONCEPTS.INDEX}`)}
@@ -75,7 +75,7 @@ export const FavoriteRestaurants = () => {
               {tConcept("emptyContent")}
               <br /> {`:(`}
             </h1>
-            <div className="w-full h-[8.75rem] relative rounded-xl">
+            <div className="w-full h-35 relative rounded-xl">
               <Image
                 src={"/assets/images/favoriteRestaurant.gif"}
                 alt="favorite-restaurant"
@@ -86,10 +86,7 @@ export const FavoriteRestaurants = () => {
             </div>
             <div className="dark:text-white">
               {tConcept("touchTheHeartIcon")}
-              <Link
-                href={ROUTES.CONCEPTS.INDEX}
-                className="px-1 dark:text-primary"
-              >
+              <Link href={ROUTES.CONCEPTS.INDEX} className="px-1 text-primary">
                 {tConcept("restaurant")}
               </Link>
               <br />

@@ -18,7 +18,7 @@ export const SearchField = ({
   const t = useTranslations("Restaurant");
 
   return (
-    <div className={cn(classNameContainer, "relative w-full lg:w-[15.75rem]")}>
+    <div className={cn(classNameContainer, "relative w-full lg:w-63")}>
       <input
         type="text"
         id="default-search"

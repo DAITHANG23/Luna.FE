@@ -1,48 +1,136 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-background: rgb(var(--background));
+  --color-primary: rgb(var(--primary));
+  --color-secondary: rgb(var(--secondary));
+  --color-border: rgb(var(--border));
+  --color-card: rgb(var(--card));
+  --color-primary-text: rgb(var(--primary-text));
+  --color-secondary-text: rgb(var(--secondary-text));
+  --color-cta: rgb(var(--cta));
+  --color-cta-active: rgb(var(--cta-active));
+  --color-cta-text: rgb(var(--cta-text));
+  --color-success: rgb(var(--success));
+  --color-error: rgb(var(--error));
+  --color-warning: rgb(var(--warning));
+  --color-success-bg: rgb(var(--success-bg));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-success-bg: rgb(var(--success-bg));
+  --color-gray-800: oklch(27.8% 0.033 256.848);
+}
+
+@layer base {
+  button {
+    cursor: pointer;
+  }
+
+  h1 {
+    @apply font-bold;
+    font-size: 40px;
+    line-height: 74px;
+    letter-spacing: -0.01em;
+  }
+
+  h2 {
+    @apply font-bold;
+    font-size: 28px;
+    line-height: 42px;
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    @apply font-bold;
+    font-size: 22px;
+    line-height: 32px;
+    letter-spacing: -0.02em;
+  }
+
+  h4 {
+    @apply font-bold;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: -0.01em;
+  }
+
+  h5 {
+    @apply font-bold;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.01em;
+  }
+
+  .caption {
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: -0.01em;
+  }
+
+  .button {
+    @apply font-bold;
+    font-size: 16px;
+    line-height: 34px;
+    letter-spacing: -0.01em;
+    min-width: 176px;
+  }
+}
+/* Light mode */
 .light {
-  --background: 248, 250, 252, 1;
-  --primary: 239, 71, 111;
+  --background: 248 250 252;
+  --primary: 239 71 111;
   --secondary: 210 40% 96.1%;
-  --border: 212, 212, 212;
-  --card: 255, 255, 255;
-  --primary-text: 22, 23, 28;
-  --secondary-text: 136, 139, 148;
-  --copy-primary: 23, 23, 23;
-  --copy-secondary: 115, 115, 115;
-  --cta: 139, 92, 246;
-  --cta-active: 124, 58, 237;
-  --cta-text: 255, 255, 255;
-  --success: 16, 255, 203;
-  --error: 183, 29, 24;
-  --warning: 255, 214, 0;
-  --succes-bg: 91, 228, 155;
+  --border: 212 212 212;
+  --card: 255 255 255;
+  --primary-text: 22 23 28;
+  --secondary-text: 136 139 148;
+  --cta: 139 92 246;
+  --cta-active: 124 58 237;
+  --cta-text: 255 255 255;
+  --success: 16 255 203;
+  --error: 183 29 24;
+  --warning: 255 214 0;
+  --success-bg: 91 228 155;
   --accent: 221 83% 95%;
   --accent-foreground: 221 83% 53%;
   background: rgba(var(--background));
 }
 
+/* Dark mode */
 .dark {
-  --background: 33, 39, 55, 1;
-  --primary: 239, 71, 111;
+  --background: 33 39 55;
+  --primary: 239 71 111;
   --secondary: 210 40% 96.1%;
-  --border: 38, 38, 38;
-  --card: 220, 10%, 20%;
-  --primary-text: 255, 255, 255;
-  --secondary-text: 136, 139, 148;
-  --copy-primary: 250, 250, 250;
-  --copy-secondary: 115, 115, 115;
-  --cta: 99, 102, 241;
-  --cta-active: 79, 70, 229;
-  --cta-text: 255, 255, 255;
-  --success: 16, 255, 203;
-  --error: 183, 29, 24;
-  --warning: 255, 214, 0;
-  --success-bg: 91, 228, 155;
+  --border: 38 38 38;
+  --card: 220 10% 20%;
+  --primary-text: 255 255 255;
+  --secondary-text: 136 139 148;
+  --cta: 99 102 241;
+  --cta-active: 79 70 229;
+  --cta-text: 255 255 255;
+  --success: 16 255 203;
+  --error: 183 29 24;
+  --warning: 255 214 0;
+  --success-bg: 91 228 155;
   --accent: 221 83% 95%;
   --accent-foreground: 221 83% 53%;
-
   background: rgba(var(--background));
+}
+
+@utility text-primary {
+  color: rgb(var(--color-primary));
+}
+
+@utility text-primary-text {
+  color: rgb(var(--color-primary-text));
 }
 
 .red {
@@ -65,28 +153,26 @@
   --grape: 114, 35, 204;
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
+@utility container {
+  min-height: 100vh !important;
+  display: flex;
+  flex-direction: column;
+}
 
-body {
-  padding: 0;
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+@layer base {
+  html {
+    @apply p-0 m-0 min-h-screen flex flex-col;
+  }
+
+  body {
+    @apply p-0 m-auto min-h-screen flex flex-col w-full;
+  }
+
+  main {
+    @apply flex-grow;
+  }
 }
-.container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-main {
-  flex-grow: 1;
-}
+
 h1,
 h5 {
   font-family: var(--font-red-hat-display) !important;
@@ -97,6 +183,23 @@ h2,
 h3,
 h4 {
   font-family: var(--font-inter) !important;
+}
+
+/* Notistack custom styles */
+.notistack-MuiContent {
+  border-radius: 8px !important;
+}
+
+.notistack-MuiContent-success {
+  background-color: rgb(var(--success-bg)) !important;
+}
+
+.notistack-MuiContent-error {
+  background-color: rgba(var(--error)) !important;
+}
+
+.notistack-MuiContent-warning {
+  background-color: rgba(var(--warning)) !important;
 }
 
 .overflow-x-scroll {
@@ -175,17 +278,21 @@ h4 {
 }
 
 /* Custom scrollbar */
-html::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
 }
-html::-webkit-scrollbar-thumb {
-  background: rgba(151, 151, 151);
+::-webkit-scrollbar-thumb {
+  background: rgb(151, 151, 151);
   border-radius: 20px;
 }
-html::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.04);
   border-radius: 20px;
+}
+
+::-webkit-scrollbar-button {
+  display: none !important;
 }
 
 .prose :where(button):not(:where([class~="not-prose"] *)) {
@@ -223,22 +330,6 @@ html::-webkit-scrollbar-track {
 .prose :where(h2):not(:where([class~="not-prose"] *)) {
   margin-top: 0;
   margin-bottom: 0;
-}
-
-.notistack-MuiContent {
-  border-radius: 8px !important;
-}
-
-.notistack-MuiContent-success {
-  background-color: rgb(var(--succes-bg)) !important;
-}
-
-.notistack-MuiContent-error {
-  background-color: rgba(var(--error)) !important;
-}
-
-.notistack-MuiContent-warning {
-  background-color: rgba(var(--warning)) !important;
 }
 
 .slider-container {

@@ -44,7 +44,7 @@ export const FormLayout = ({ children }: FormLayoutProps) => {
                     ? `${ROUTES.REGISTER.INDEX}`
                     : `${ROUTES.LOGIN.INDEX}`
                 }
-                className="no-underline text-success hover:underline"
+                className="no-underline text-success [&:hover]:!underline hover:underline-offset-2"
               >
                 {t("button.getStarted")}
               </Link>

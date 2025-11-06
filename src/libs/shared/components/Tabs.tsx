@@ -28,7 +28,7 @@ export const Tabs = ({ tabList, setActiveTab, activeTab }: TablistProps) => {
                   "text-base inline-flex items-center justify-center pb-2 border-b-2 border-transparent rounded-t-lg hover:text-primary hover:border-primary group cursor-pointer",
                   "transition-all duration-300 ease-in-out",
                   activeTab === tab.name
-                    ? "text-primary border-primary dark:text-primary dark:border-primary"
+                    ? "text-primary border-primary text-primary border-primary"
                     : ""
                 )}
               >

@@ -53,9 +53,10 @@ import {
   GET_BOOKING_KEY,
   GET_DATA_USER_QUERY_KEY,
 } from "@/app/constants/queryKeys";
-import { useLocale, useTranslations } from "next-intl";
-import { usePathname, useRouter } from "@/libs/i18n/navigation";
+import { Locale, useTranslations } from "next-intl";
+import { useRouter } from "@/libs/i18n/navigation";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const events = [
   "bookingCreated",
@@ -67,8 +68,12 @@ const events = [
 ];
 
 const Navbars = () => {
-  const pathname = usePathname();
   const router = useRouter();
+  const pathname = usePathname();
+
+  const locale = pathname.split("/")[1] as Locale;
+  const hrefPath = `/${pathname.split("/")[2]}`;
+
   const queryClient = useQueryClient();
   const dispatch = useAppDispatch();
   const accountInfo = useAppSelector((state) => state.auth.accountInfo);
@@ -84,18 +89,17 @@ const Navbars = () => {
   const [open, setOpen] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
   const { isMobileSize } = useBreakPoints();
-  const locale = useLocale();
 
   useEffect(() => {
     setHasMounted(true);
   }, []);
 
   const t = useTranslations("Translation");
-  const [itemNavbar, setItemNavbar] = useState(pathname);
+  const [itemNavbar, setItemNavbar] = useState(hrefPath);
 
   useEffect(() => {
-    setItemNavbar(pathname);
-  }, [pathname]);
+    setItemNavbar(hrefPath);
+  }, [hrefPath]);
 
   useEffect(() => {
     const handleBookingEvent = (data: NotificationModel) => {
@@ -137,7 +141,7 @@ const Navbars = () => {
     <Disclosure
       as="nav"
       className={clsx(
-        "fixed top-0 left-0 p-0 sm:p-4 lg:p-5 w-full bg-white dark:bg-gray-800 shadow-glass"
+        "fixed top-0 left-0 p-0 sm:p-4 lg:p-5 w-full bg-white dark:bg-gray-800 shadow-glass z-10"
       )}
     >
       <div className="sm:w-[90%] mx-auto max-w-7xl lg:px-8 content-center text-center">
@@ -190,10 +194,10 @@ const Navbars = () => {
                 {navigation.map((item) => (
                   <Link
                     key={item.name}
-                    href={`${locale}/${item.href}`}
-                    locale={locale}
+                    href={`/${locale}/${item.href}`}
+                    // locale={locale}
                     className={clsx(
-                      itemNavbar === item.href
+                      itemNavbar === item.href || itemNavbar === item.hrefVnLang
                         ? "bg-primary dark:bg-gray-900 text-white"
                         : "text-primary-text dark:text-gray-300 hover:bg-primary dark:hover:bg-gray-700 hover:text-white",
                       "rounded-md px-3 py-2 text-sm font-medium flex items-center justify-center"
@@ -219,7 +223,7 @@ const Navbars = () => {
               className="cursor-pointer hover:bg-gray-200 rounded-full p-2"
               onClick={() => setIsOpenDialog((prev) => !prev)}
             >
-              <Cog6ToothIcon className="w-7 h-7 animate-[spin_8s_linear_infinite] dark:text-primary" />
+              <Cog6ToothIcon className="w-7 h-7 animate-[spin_8s_linear_infinite] text-primary" />
             </button>
 
             <LanguageSelect />
@@ -258,7 +262,7 @@ const Navbars = () => {
                         >
                           {item.name !== "Settings" ? (
                             <Link
-                              href={`${locale}/${item.name}`}
+                              href={`/${locale}/${item.href}`}
                               className="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-gray-700 transition hover:bg-gray-200 focus:bg-gray-300"
                             >
                               {item.name === "yourProfile" ? (
@@ -298,7 +302,7 @@ const Navbars = () => {
             ) : (
               <button
                 onClick={() => router.replace(`${ROUTES.LOGIN.INDEX}`)}
-                className="ml-2 border-none px-4 py-1 bg-primary rounded-lg text-white font-bold transition duration-300 ease-in-out hover:scale-105"
+                className="ml-2 border-none px-4 py-1 bg-primary rounded-lg text-white font-bold transition duration-300 ease-in-out hover:scale-105 cursor-pointer"
               >
                 {t(`navbar.login`)}
               </button>
@@ -324,14 +328,14 @@ const Navbars = () => {
             <DisclosureButton
               key={item.name}
               className={clsx(
-                itemNavbar === item.href
+                itemNavbar === item.href || itemNavbar === item.hrefVnLang
                   ? "bg-primary dark:bg-gray-900 text-white"
                   : "text-primary-text dark:text-gray-300 hover:bg-primary dark:hover:bg-gray-700 hover:text-white",
                 "block rounded-md px-3 py-2 text-base font-medium "
               )}
             >
               <Link
-                href={`${locale}/${item.name}`}
+                href={`/${locale}/${item.name}`}
                 onClick={() => {
                   setItemNavbar(item.href as typeof pathname);
                 }}

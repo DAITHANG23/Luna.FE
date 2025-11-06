@@ -19,8 +19,8 @@ export const routing = defineRouting({
       vi: "/thuong-hieu-nha-hang",
     },
     "/blog": "/blog",
-    "/your-profile": {
-      en: "/your-profile",
+    "/profile": {
+      en: "/profile",
       vi: "/thong-tin-ca-nhan",
     },
     "/reservation-history": {
@@ -39,8 +39,8 @@ export const routing = defineRouting({
       en: "/favorites/favorite-restaurants",
       vi: "/yeu-thich/nha-hang-yeu-thich",
     },
-    "/favorites/checkin-restaurants": {
-      en: "/favorites/checkin-restaurants",
+    "/favorites/visited-restaurants": {
+      en: "/favorites/visited-restaurants",
       vi: "/favorites/nha-hang-tung-ghe",
     },
     "/register": {

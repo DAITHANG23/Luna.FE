@@ -22,12 +22,12 @@ export const Favorites = () => {
 
   if (isLoadingGetCheckInConcepts || isLoadingGetFavoriteConcepts)
     return (
-      <div className="mt-[8.5rem]">
+      <div className="mt-34">
         <Spinner />
       </div>
     );
   return (
-    <div className="flex flex-col gap-4 mt-20 sm:mt-[10.5rem] mb-10 px-4 w-full lg:h-[100vh] sm:w-[60%] text-center mx-auto">
+    <div className="flex flex-col gap-4 mt-20 sm:mt-42 mb-10 px-4 w-full lg:h-screen sm:w-[60%] text-center mx-auto">
       <hr className="w-full bg-gray-300 h-[2px]" />
       <div className="flex flex-col lg:flex-row w-full gap-8 mx-auto lg:mx-0">
         <div

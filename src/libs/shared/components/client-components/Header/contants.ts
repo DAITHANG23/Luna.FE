@@ -8,18 +8,27 @@ interface DropdownListType {
 interface NavigationType {
   name: string;
   href: "/" | "/about" | "/concepts" | "/blog";
+  hrefVnLang: "/" | "/gioi-thieu" | "/thuong-hieu-nha-hang" | "/blog";
 }
 
 export const navigation = [
-  { name: "home", href: `${ROUTES.HOME.INDEX}` as const },
-  { name: "about", href: `${ROUTES.ABOUT.INDEX}` as const },
-  { name: "concepts", href: `${ROUTES.CONCEPTS.INDEX}` as const },
-  { name: "blog", href: `${ROUTES.BLOG.INDEX}` as const },
+  { name: "home", href: `${ROUTES.HOME.INDEX}` as const, hrefVnLang: "/" },
+  {
+    name: "about",
+    href: `${ROUTES.ABOUT.INDEX}` as const,
+    hrefVnLang: "/gioi-thieu",
+  },
+  {
+    name: "concepts",
+    href: `${ROUTES.CONCEPTS.INDEX}` as const,
+    hrefVnLang: "/thuong-hieu-nha-hang",
+  },
+  { name: "blog", href: `${ROUTES.BLOG.INDEX}` as const, hrefVnLang: "/blog" },
 ] as Array<NavigationType>;
 
 export const conceptNavigation = [
-  { name: "menu", href: "menu" },
-  { name: "booking", href: "booking" },
+  { name: "menu", href: "/menu" },
+  { name: "booking", href: "/booking" },
 ] as Array<{ name: "menu" | "booking"; href: string }>;
 
 export const dropdownList: Array<DropdownListType> = [
