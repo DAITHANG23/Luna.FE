@@ -95,13 +95,13 @@ export const ReservationItem = ({ id }: ReservationItemProps) => {
 
   if (isLoading)
     return (
-      <div className="mt-[8.5rem]">
+      <div className="mt-34">
         <Spinner />
       </div>
     );
 
   return (
-    <div className="mt-[7.25rem] w-[90%] xl:w-[70%] mx-auto bg-white dark:bg-gray-900 rounded-lg p-4 my-4 shadow-lg">
+    <div className="mt-29 w-[90%] xl:w-[70%] mx-auto bg-white dark:bg-gray-900 rounded-lg p-4 my-4 shadow-lg">
       <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-4 gap-6">
         <button
           onClick={() => router.push(`/reservation-history`)}
@@ -111,7 +111,7 @@ export const ReservationItem = ({ id }: ReservationItemProps) => {
           {t("button.goBack")}
         </button>
         <div className="flex">
-          <p className="pr-2 border-r border-black text-center">
+          <p className="pr-2 border-r border-primary-text text-center text-primary-text">
             {t("reservationCode")} 2412077RFADBD9
           </p>
           <p className="pl-2 text-primary text-center">
@@ -119,7 +119,7 @@ export const ReservationItem = ({ id }: ReservationItemProps) => {
           </p>
         </div>
       </div>
-      <hr className="!mb-14" />
+      <hr className="mb-14! text-primary-text" />
       <Stepper
         allSteps={
           isCancelledStatusByAdmin
@@ -131,12 +131,12 @@ export const ReservationItem = ({ id }: ReservationItemProps) => {
         statusHistory={statusHistory || []}
         labelMap={statusLabels}
       />
-      <hr className="!mt-14" />
+      <hr className="mt-14! text-primary-text" />
 
       <div className="bg-primary/20 w-full h-auto flex lg:flex-row flex-col gap-4 items-center justify-end p-4">
         {status === "COMPLETED" && (
           <div className="w-full h-auto flex lg:flex-row flex-col gap-4 lg:items-start lg:justify-between justify-center items-center">
-            <p className="text-xs">{t("thankYou")}</p>
+            <p className="text-xs text-primary-text">{t("thankYou")}</p>
             <div className="flex flex-col gap-8">
               <button
                 onClick={() =>
@@ -193,26 +193,26 @@ export const ReservationItem = ({ id }: ReservationItemProps) => {
           <div className="flex flex-col lg:flex-row gap-4 lg:gap-20">
             <div>
               <div className="flex items-center gap-2 justify-start">
-                <MailIcon className="w-4 h-4 text-primary flex-shrink-0" />
-                <span className="whitespace-normal break-words min-w-[150px]">
+                <MailIcon className="w-4 h-4 text-primary shrink-0" />
+                <span className="whitespace-normal wrap-break-word min-w-[150px] text-primary-text">
                   {email}
                 </span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 text-primary-text">
                 <PhoneIcon className="w-4 h-4 text-primary" />
                 {numberPhone}
               </div>
             </div>
 
             <div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 text-primary-text">
                 <CalendarIcon className="w-4 h-4 text-primary" /> {formatted}
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 text-primary-text">
                 <ClockIcon className="w-4 h-4 text-primary" />
                 {timeSlot}
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 text-primary-text">
                 <UsersIcon className="w-4 h-4 text-primary" />
                 {peopleQuantity}
               </div>
@@ -220,9 +220,9 @@ export const ReservationItem = ({ id }: ReservationItemProps) => {
           </div>
 
           {notes && (
-            <div className="text-start text-black ">
-              <p className="text-sm font-bold">{t("note")}</p>
-              <p className="text-sm">{notes}</p>
+            <div className="text-start text-black">
+              <p className="text-sm font-bold text-primary">{t("note")}</p>
+              <p className="text-sm text-primary-text">{notes}</p>
             </div>
           )}
         </div>

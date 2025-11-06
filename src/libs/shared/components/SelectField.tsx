@@ -42,7 +42,7 @@ export const SelectField = ({
   }, [value, options]);
 
   return (
-    <div className={cn(classNameContainer, "relative w-full lg:w-[15.75rem]")}>
+    <div className={cn(classNameContainer, "relative w-full lg:w-63")}>
       <Listbox value={value} onChange={onChange}>
         {label && (
           <Label className="block text-sm/6 font-medium text-gray-900 dark:text-white">
@@ -64,7 +64,7 @@ export const SelectField = ({
           )}
           <span
             className={cn(
-              startIcon && "pl-[2rem]",
+              startIcon && "pl-8",
               "col-start-1 row-start-1 flex items-center gap-3 pr-6 h-[20px]"
             )}
           >

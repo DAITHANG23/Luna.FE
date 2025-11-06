@@ -68,7 +68,7 @@ export const FormDetail = ({
           required
           type="date"
           isBookingDate
-          classNameInput="w-full !px-3 !py-[6px]"
+          classNameInput="w-full px-3! py-[6px]!"
         />
 
         <SelectField
@@ -76,9 +76,9 @@ export const FormDetail = ({
           value={chooseTimeSlot}
           options={timeSlotOptions}
           onChange={handleTimeSlotChange}
-          classNameContainer="!w-full"
+          classNameContainer="w-full!"
           label={t("label.time")}
-          classNameButton="w-full !px-3 !py-[6px]"
+          classNameButton="w-full px-3! py-[6px]!"
           required
           startIcon={<Clock className="text-primary-text w-4 h-4" />}
         />
@@ -89,9 +89,9 @@ export const FormDetail = ({
           options={peopleQuantityOptions}
           onChange={handlePeopleQuantityChange}
           label={t("label.peopleQuantity")}
-          classNameContainer="!w-full"
+          classNameContainer="w-full!"
           required
-          classNameButton="w-full !px-3 !py-[6px]"
+          classNameButton="w-full px-3! py-[6px]!"
           startIcon={<Users className="text-primary-text w-4 h-4" />}
         />
 
@@ -100,7 +100,7 @@ export const FormDetail = ({
           name="fullName"
           required
           type="text"
-          classNameInput="w-full !px-3 !py-[6px]"
+          classNameInput="w-full px-3! py-[6px]!"
         />
 
         <FieldInput
@@ -108,7 +108,7 @@ export const FormDetail = ({
           name="numberPhone"
           required
           type="text"
-          classNameInput="w-full !px-3 !py-[6px]"
+          classNameInput="w-full px-3! py-[6px]!"
         />
 
         <FieldInput
@@ -116,7 +116,7 @@ export const FormDetail = ({
           name="email"
           required
           type="text"
-          classNameInput="w-full !px-3 !py-[6px]"
+          classNameInput="w-full px-3! py-[6px]!"
         />
       </div>
 
@@ -143,7 +143,7 @@ export const FormDetail = ({
               onClick={() => onClickNotes(item.value)}
               className={cn(
                 chooseNotes.includes(item.value) &&
-                  "!border-none !bg-primary !text-white",
+                  "border-none! !bg-primary text-white!",
                 "border border-gray-500 rounded-full px-4 py-1 bg-gray-200 text-sm hover:scale-105"
               )}
             >

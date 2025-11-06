@@ -71,7 +71,7 @@ export const Concepts = () => {
   );
 
   return (
-    <div className="flex flex-col p-4 sm:p-8 mt-[5rem] sm:mt-[7.5rem]">
+    <div className="flex flex-col p-4 sm:p-8 mt-20 sm:mt-30">
       <Toolbar onFilterChange={handleFilterChange} filter={filter} />
 
       <h3 className="text-primary-text">{`Domique Fusion: ${conceptsData?.results || 0} concepts`}</h3>

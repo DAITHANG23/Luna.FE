@@ -38,12 +38,12 @@ export const VisitedRestaurants = () => {
 
   if (isLoadingCheckInConceptsData)
     return (
-      <div className="mt-[8.5rem]">
+      <div className="mt-34">
         <Spinner />
       </div>
     );
   return (
-    <div className="my-20 sm:my-[6.5rem] p-8">
+    <div className="my-20 sm:my-26 p-8">
       <div className="w-full lg:w-[80%] mx-auto mb-10">
         <button
           onClick={() => router.push(ROUTES.FAVORITE_CONCEPTS.INDEX)}
@@ -77,15 +77,12 @@ export const VisitedRestaurants = () => {
               {t("checkinEmptyContent")}
               <br /> {`:(`}
             </h1>
-            <div className="h-[8.75rem] w-full flex items-center justify-center rounded-xl">
+            <div className="h-35 w-full flex items-center justify-center rounded-xl">
               <CheckCircleIcon className="text-gray-400 w-20 h-20" />
             </div>
             <div className="text-primary-text">
               {t("touchTheVisitIcon")}
-              <Link
-                href={ROUTES.CONCEPTS.INDEX}
-                className="px-1 dark:text-primary"
-              >
+              <Link href={ROUTES.CONCEPTS.INDEX} className="px-1 text-primary">
                 {t("restaurant")}
               </Link>
               <br />

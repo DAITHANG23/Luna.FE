@@ -56,7 +56,7 @@ export const Stepper = ({
           >
             {index > 0 && (
               <div
-                className={cn("absolute -left-1/2 top-5 h-1 w-full -z-1", {
+                className={cn("absolute -left-1/2 top-5 h-1 w-full", {
                   "bg-green-500": index <= currentIndex,
                   "bg-gray-300": index > currentIndex,
                 })}
@@ -65,7 +65,7 @@ export const Stepper = ({
 
             <div
               className={cn(
-                "w-[2.75rem] h-[2.75rem] lg:w-[2.75rem] lg:h-[2.75rem] rounded-full flex items-center justify-center border-2 mb-2 z-10",
+                "w-11 h-11 lg:w-11 lg:h-11 rounded-full flex items-center justify-center border-2 mb-2 z-5",
                 {
                   "bg-green-500 text-white border-green-500":
                     step === "COMPLETED" || (isDone && !isCurrent),
@@ -79,7 +79,7 @@ export const Stepper = ({
               {StepperIcon(step)}
             </div>
 
-            <div className="text-center text-sm font-medium">
+            <div className="text-center text-sm font-medium text-primary-text">
               {labelMap[step]}
             </div>
             {history && (

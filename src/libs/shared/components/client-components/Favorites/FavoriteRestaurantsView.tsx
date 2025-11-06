@@ -20,7 +20,7 @@ export const FavoriteConceptsView = ({
 
   const t = useTranslations("Concept");
   return (
-    <div className="flex flex-col w-full sm:w-[21.75rem] !h-[19.7rem] shadow-glass border-none rounded-xl cursor-pointer transition duration-300 ease-in-out hover:scale-105">
+    <div className="flex flex-col w-full sm:w-87 h-[19.7rem]! shadow-glass border-none rounded-xl cursor-pointer transition duration-300 ease-in-out hover:scale-105">
       <div className="flex text-center  w-full h-[3.3rem] p-4 gap-4 bg-white rounded-tl-xl rounded-tr-xl">
         <p>
           {isVisitedConcept ? (
@@ -33,7 +33,7 @@ export const FavoriteConceptsView = ({
           {isVisitedConcept ? t("visited") : t("titleRestaurantFavorite")}
         </p>
       </div>
-      <div className="w-full h-[17rem] relative rounded-xl">
+      <div className="w-full h-68 relative rounded-xl">
         {favoriteImages && favoriteImages.length >= 3 ? (
           <div className="w-full h-full flex">
             <div className="w-[70%] h-full relative">

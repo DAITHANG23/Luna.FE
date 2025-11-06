@@ -6,21 +6,22 @@ import { RESTAURANTS_CONCEPT } from "@/constants";
 import { cn } from "@/utils";
 import { MailIcon, PhoneIcon } from "@/libs/assets";
 import { Contact } from "@/libs/shared/components";
-import { useLocale } from "next-intl";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 
 interface ConceptsListProps {
   isBannerWidth?: boolean;
 }
 
 export const ConceptsList = ({ isBannerWidth }: ConceptsListProps) => {
-  const locale = useLocale();
+  const params = useParams();
+
   return (
     <div className="flex flex-col md:flex-row">
       <div
         className={cn(
           isBannerWidth &&
-            "xl:!w-[70%] border-b-4 sm:border-b-0 sm:border-r-4 !mx-0",
+            "xl:w-[70%]! border-b-4 border-b-gray-300 sm:border-b-0 sm:border-r-4 dark:border-r-gray-300 mx-0!",
           "not-prose w-full p-4 xl:w-[60%] pt-[50px] lg:pt-[100px] pb-[50px] mx-auto"
         )}
         style={{ fontFamily: "Inter" }}
@@ -47,7 +48,7 @@ export const ConceptsList = ({ isBannerWidth }: ConceptsListProps) => {
                 {i.items.map((restaurant) => {
                   return (
                     <li key={restaurant.name} className="relative">
-                      <Link href={`${locale}/${restaurant.url}`}>
+                      <Link href={`/${params.locale}/${restaurant.url}`}>
                         <Image
                           src={restaurant.img1}
                           alt={restaurant.name}
@@ -76,11 +77,7 @@ export const ConceptsList = ({ isBannerWidth }: ConceptsListProps) => {
       {isBannerWidth && (
         <div className="p-4">
           <h4 className="pb-[20px] text-primary-text">Contact us</h4>
-          <div className="text-center flex justify-center">
-            <Contact />
-          </div>
-
-          <div className="flex flex-col gap-4 pt-[50px]">
+          <div className="flex flex-col gap-4 pt-[30px]">
             <div className="flex gap-2">
               <MailIcon />
               <p className="text-primary-text">
@@ -91,6 +88,9 @@ export const ConceptsList = ({ isBannerWidth }: ConceptsListProps) => {
               <PhoneIcon />
               <p className="text-primary-text">+(84) 0772757220</p>
             </div>
+          </div>
+          <div className="text-center flex justify-center pt-[30px]">
+            <Contact />
           </div>
         </div>
       )}

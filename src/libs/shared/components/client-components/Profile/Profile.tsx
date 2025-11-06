@@ -42,7 +42,7 @@ export const Profile = () => {
   }, [isAuth, router, userData]);
 
   return (
-    <div className="xl:w-[70%] w-[85%] flex flex-col justify-start mx-auto mb-[5rem] mt-[5rem] sm:mt-[7.5rem]">
+    <div className="xl:w-[70%] w-[85%] flex flex-col justify-start mx-auto mb-20 mt-20 sm:mt-30">
       <h1 className="text-primary-text">{t("title")}</h1>
       <Tabs
         tabList={updateTablist}

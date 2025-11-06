@@ -17,6 +17,7 @@ export const Concept = () => {
   const locale = useLocale();
 
   const params = useParams();
+
   const t = useTranslations("Concept");
 
   useEffect(() => {
@@ -46,8 +47,8 @@ export const Concept = () => {
   const concept = allConcepts?.find((item) => item.name === route?.name);
 
   return (
-    <div className="mt-[4.25rem] sm:mt-[7.25rem] px-4 w-full xl:w-[80%] 2xl:w-[70%] mx-auto">
-      <NavbarConcept pathname={`/${params.concept}`} />
+    <div className="mt-17 sm:mt-29 px-4 w-full xl:w-[80%] 2xl:w-[70%] mx-auto">
+      <NavbarConcept params={params} />
       <Slider banners={concept?.banners || []} />
       <div className="lg:pt-10 lg:pt-[100px] lg:pb-8 w-full grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="flex flex-col gap-10 justify-start items-start">
@@ -77,7 +78,7 @@ export const Concept = () => {
         </div>
       </div>
 
-      <div className="pt-4 lg:pt-10 pb-20">
+      <div className="pt-4 lg:pt-10 pb-5">
         <ConceptsList isBannerWidth />
       </div>
     </div>

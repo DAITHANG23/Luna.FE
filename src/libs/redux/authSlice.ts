@@ -6,7 +6,6 @@ import { ROUTES } from "@/constants";
 import { clearJWTCookies } from "@/utils/cookies";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
-import { redirect } from "@/libs/i18n/navigation";
 import { Locale } from "next-intl";
 
 interface AuthState {
@@ -35,7 +34,7 @@ export const logout = createAsyncThunk(
       localStorage.removeItem("refreshToken");
       clearJWTCookies("jwt");
       delete axios.defaults.headers.common.Authorization;
-      redirect({ href: ROUTES.LOGIN.INDEX, locale });
+      window.location.href = `/${locale}${ROUTES.LOGIN.INDEX}`;
     }
   }
 );

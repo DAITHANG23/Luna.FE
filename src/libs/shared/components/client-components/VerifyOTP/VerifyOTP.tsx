@@ -89,7 +89,7 @@ export const VerifyOTP = () => {
                   title={t("resetPassword.verify")}
                   isLoading={isLoadingVerifyOtp}
                   sizeButton="large"
-                  className="!w-full !ml-0 !font-bold !text-base text-white text-center py-1 px-4 mt-4"
+                  className="w-full! ml-0! font-bold! text-base! text-white text-center py-1 px-4 mt-4"
                 />
               </div>
             </Form>

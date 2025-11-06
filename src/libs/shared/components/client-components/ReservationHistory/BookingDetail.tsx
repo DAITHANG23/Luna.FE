@@ -147,8 +147,8 @@ export const BookingDetail = ({ item }: BookingDetailProps) => {
           <div className="flex flex-col lg:flex-row gap-4 lg:gap-20">
             <div>
               <div className="flex items-center gap-2">
-                <MailIcon className="w-4 h-4 text-primary flex-shrink-0" />
-                <span className="whitespace-normal break-words min-w-[150px] text-start">
+                <MailIcon className="w-4 h-4 text-primary shrink-0" />
+                <span className="whitespace-normal wrap-break-word min-w-[150px] text-start">
                   {item?.email}
                 </span>
               </div>

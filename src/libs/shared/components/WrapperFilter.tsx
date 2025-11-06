@@ -48,9 +48,9 @@ export const WrapperFilter = ({
       <div
         className={cn(
           classNameMenu,
-          "absolute bg-white flex !flex-col justify-between flex-nowrap top-[150%] left-0 py-4 px-2 shadow-custom-blue rounded-lg block w-full translate-y-[-2em] transition-all duration-300 opacity-0",
+          "absolute bg-white flex flex-col! justify-between flex-nowrap top-[150%] left-0 py-4 px-2 shadow-custom-blue rounded-lg block w-full translate-y-[-2em] transition-all duration-300 opacity-0",
           open
-            ? "visible opacity-100 translate-y-[0%] z-10 top-[100%] h-auto"
+            ? "visible opacity-100 translate-y-[0%] z-10 top-full h-auto"
             : "z-[-5]"
         )}
         onClick={() => {

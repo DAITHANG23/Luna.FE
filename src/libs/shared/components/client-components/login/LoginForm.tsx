@@ -53,7 +53,7 @@ const LoginForm = () => {
                 <h5 className="text-right mt-5">
                   <Link
                     href={`${ROUTES.RESET_PASSWORD.INDEX}`}
-                    className="no-underline hover:underline text-primary-text"
+                    className="no-underline [&:hover]:!underline hover:underline-offset-2 text-primary-text"
                   >
                     {t(`login.forgotPassword`)}
                   </Link>
@@ -71,7 +71,7 @@ const LoginForm = () => {
                   title={t("button.signIn")}
                   isLoading={isLoadingLogin}
                   sizeButton="large"
-                  className="!w-full !ml-0 !font-bold !text-base text-white text-center py-1 px-4"
+                  className="w-full! ml-0! font-bold! text-base! text-white text-center py-1 px-4"
                 />
               </Form>
               <SocialLogin />

@@ -65,7 +65,7 @@ export const Booking = ({ conceptDataId }: BookingProps) => {
       <Modal
         open={isOpenModalBooking}
         setOpen={setIsOpenModalBooking}
-        classNameContainer="!max-w-[31.1125rem]"
+        classNameContainer="max-w-[31.1125rem]!"
       >
         <BookingForm
           chooseRestaurant={chooseRestaurant}
@@ -76,7 +76,7 @@ export const Booking = ({ conceptDataId }: BookingProps) => {
       <div className="flex lg:flex-row flex-col gap-4">
         <div className="w-full lg:w-[30%]">
           <SearchField
-            classNameContainer="!w-full"
+            classNameContainer="w-full!"
             placeholder="Tìm kiếm nhà hàng"
             onChange={handleTextChange}
           />
@@ -122,7 +122,7 @@ export const Booking = ({ conceptDataId }: BookingProps) => {
           <Map
             key={`${locationsRestaurantsList?.[0]?.lat}`}
             locationsList={locationsRestaurantsList}
-            className="!h-[400px] lg:!h-[37.5rem]"
+            className="h-[400px]! lg:h-150!"
             lat={locationsRestaurantsList?.[0]?.lat}
             lng={locationsRestaurantsList?.[0]?.lng}
           />

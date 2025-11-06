@@ -34,7 +34,7 @@ export const Slider = ({
       <SliderComponent
         {...settings}
         className={cn(
-          isSmallSize ? "w-[90%] xl:!w-[80%] " : "w-full",
+          isSmallSize ? "w-[90%] xl:w-[80%]! " : "w-full",
           " text-center items-center m-auto"
         )}
       >
@@ -69,7 +69,7 @@ export const Slider = ({
                 key={index}
                 className={cn(
                   isDishesCarousel
-                    ? "!w-full !h-[500px]"
+                    ? "w-full! h-[500px]!"
                     : "w-full h-[200px] sm:h-[300px] lg:h-[550px]",
                   "flex items-center justify-center overflow-hidden relative border-2 border-primary/20 shadow-lg hover:shadow-xl transition-all duration-300 rounded-md mb-10"
                 )}
