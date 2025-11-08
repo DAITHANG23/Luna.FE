@@ -28,7 +28,7 @@ export const routing = defineRouting({
       vi: "/lich-su-dat-ban",
     },
     "/reservation-history/[id]": {
-      en: "/booking/[id]",
+      en: "/reservation-history/[id]",
       vi: "/lich-su-dat-ban/[id]",
     },
     "/favorites": {

@@ -35,7 +35,7 @@ export const Slider = ({
         {...settings}
         className={cn(
           isSmallSize ? "w-[90%] xl:w-[80%]! " : "w-full",
-          " text-center items-center m-auto"
+          "text-center items-center m-auto"
         )}
       >
         {coverImages &&

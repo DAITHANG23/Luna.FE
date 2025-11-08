@@ -22,7 +22,7 @@ export const ConceptsList = ({ isBannerWidth }: ConceptsListProps) => {
         className={cn(
           isBannerWidth &&
             "xl:w-[70%]! border-b-4 border-b-gray-300 sm:border-b-0 sm:border-r-4 dark:border-r-gray-300 mx-0!",
-          "not-prose w-full p-4 xl:w-[60%] pt-[50px] lg:pt-[100px] pb-[50px] mx-auto"
+          "not-prose w-full p-6 xl:w-[60%] mt-[50px] lg:mt-[100px] mb-[50px] mx-auto dark:bg-gray-700 rounded-lg"
         )}
         style={{ fontFamily: "Inter" }}
       >

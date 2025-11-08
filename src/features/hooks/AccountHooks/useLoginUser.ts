@@ -11,7 +11,7 @@ import useNotification from "@/features/hooks/useNotification";
 import { AxiosError } from "axios";
 import { getAllNotifications } from "@/libs/redux/masterDataSlice";
 import { useAppDispatch } from "@/libs/redux/hooks";
-import { useRouter } from "@/libs/i18n/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const loginAccount = async (formData: UserLogin): Promise<LoginResponse> => {
   return await apiService.account.login({ formData });
@@ -22,6 +22,9 @@ const useLogin = () => {
   const { showSuccess, showError } = useNotification();
   const dispatch = useAppDispatch();
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const from = decodeURIComponent(searchParams.get("from") || "/");
+
   return useMutation<LoginResponse, AxiosError<ErrorResponse>, UserLogin>({
     mutationFn: loginAccount,
     mutationKey: [ACCOUNT_LOGIN_QUERY_KEY],
@@ -40,7 +43,7 @@ const useLogin = () => {
       dispatch(getAllNotifications());
       dispatch(authentication({ isAuthenticated: true }));
       queryClient.invalidateQueries({ queryKey: [GET_DATA_USER_QUERY_KEY] });
-      router.push("/");
+      router.replace(from || "/");
     },
     onError: (err: AxiosError<ErrorResponse>) => {
       showError(err.message);
