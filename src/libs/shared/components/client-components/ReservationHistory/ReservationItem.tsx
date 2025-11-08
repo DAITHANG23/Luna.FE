@@ -13,7 +13,7 @@ import { CONCEPTS_ROUTES } from "@/constants";
 import Image from "next/image";
 import dayjs from "dayjs";
 import { Spinner, Stepper } from "@/libs/shared/components";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 
 const statusLabels: Record<string, string> = {
@@ -43,7 +43,6 @@ interface ReservationItemProps {
 export const ReservationItem = ({ id }: ReservationItemProps) => {
   const t = useTranslations("Booking");
   const router = useRouter();
-  const locale = useLocale();
 
   const { bookingData, isLoading } = useGetBooking(id as string);
   const dataBooking = bookingData?.data.data;
@@ -104,7 +103,7 @@ export const ReservationItem = ({ id }: ReservationItemProps) => {
     <div className="mt-29 w-[90%] xl:w-[70%] mx-auto bg-white dark:bg-gray-900 rounded-lg p-4 my-4 shadow-lg">
       <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-4 gap-6">
         <button
-          onClick={() => router.push(`/reservation-history`)}
+          onClick={() => router.back()}
           className=" flex items-center gap-2 text-primary-text hover:text-primary transition-colors w-64"
         >
           <ChevronLeftIcon />
@@ -140,7 +139,7 @@ export const ReservationItem = ({ id }: ReservationItemProps) => {
             <div className="flex flex-col gap-8">
               <button
                 onClick={() =>
-                  router.push(`${locale}/${matchedConcept?.route}/booking`)
+                  router.replace(`/${matchedConcept?.route}/booking`)
                 }
                 className="px-5 py-3 bg-primary text-white hover:bg-primary/80 transition-colors text-sm text-center"
               >
@@ -148,7 +147,7 @@ export const ReservationItem = ({ id }: ReservationItemProps) => {
               </button>
               <button
                 onClick={() =>
-                  router.push(`${locale}/${matchedConcept?.route}/booking`)
+                  router.replace(`/${matchedConcept?.route}/booking`)
                 }
                 className="px-5 py-3 bg-primary text-white hover:bg-primary/80 transition-colors text-sm text-center"
               >
@@ -160,7 +159,7 @@ export const ReservationItem = ({ id }: ReservationItemProps) => {
         {status !== "COMPLETED" && (
           <div className="flex justify-end items-end">
             <button
-              onClick={() => router.push(`${locale}/${matchedConcept?.route}`)}
+              onClick={() => router.replace(`/${matchedConcept?.route}`)}
               className="px-5 py-3 bg-primary text-white hover:bg-primary/80 transition-colors text-sm text-center"
             >
               {t("button.contact")}
@@ -175,7 +174,7 @@ export const ReservationItem = ({ id }: ReservationItemProps) => {
             <div
               className="cursor-pointer"
               onClick={() => {
-                router.push(`${locale}/${matchedConcept?.route}`);
+                router.push(`/${matchedConcept?.route}`);
               }}
             >
               <Image

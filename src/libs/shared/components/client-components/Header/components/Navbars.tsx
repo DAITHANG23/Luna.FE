@@ -72,7 +72,8 @@ const Navbars = () => {
   const pathname = usePathname();
 
   const locale = pathname.split("/")[1] as Locale;
-  const hrefPath = `/${pathname.split("/")[2]}`;
+  const hrefPath =
+    pathname.split("/").length > 2 ? `/${pathname.split("/")[2]}` : "/";
 
   const queryClient = useQueryClient();
   const dispatch = useAppDispatch();
@@ -95,7 +96,7 @@ const Navbars = () => {
   }, []);
 
   const t = useTranslations("Translation");
-  const [itemNavbar, setItemNavbar] = useState(hrefPath);
+  const [itemNavbar, setItemNavbar] = useState("");
 
   useEffect(() => {
     setItemNavbar(hrefPath);
@@ -195,7 +196,6 @@ const Navbars = () => {
                   <Link
                     key={item.name}
                     href={`/${locale}/${item.href}`}
-                    // locale={locale}
                     className={clsx(
                       itemNavbar === item.href || itemNavbar === item.hrefVnLang
                         ? "bg-primary dark:bg-gray-900 text-white"

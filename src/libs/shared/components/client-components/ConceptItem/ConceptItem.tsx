@@ -124,7 +124,7 @@ const ConceptItem = ({
   );
 
   return (
-    <div className="relative h-104 sm:h-88 2xl:h-112.5 flex flex-col border-2 border-gray-300 rounded-lg shadow-md cursor-pointer hover:shadow-xl duration-300 transition-all ease-in-out dark:shadow-md dark:hover:shadow-[0_8px_20px_rgba(255,255,255,0.15)] dark:transition-shadow dark:duration-300">
+    <div className="relative h-104 sm:h-88 2xl:h-112.5 flex flex-col border-2 border-gray-300 rounded-lg shadow-md cursor-pointer hover:shadow-xl duration-300 transition-all ease-in-out dark:bg-gray-700 dark:shadow-md dark:hover:shadow-[0_8px_20px_rgba(255,255,255,0.15)] dark:transition-shadow dark:duration-300">
       <ModalCarousel
         setOpen={setIsOpenModalImageList}
         open={isOpenModalImageList}
@@ -137,7 +137,7 @@ const ConceptItem = ({
           isOpenModal={isOpenModal}
         />
       </Modal>
-      <div className="w-full h-[250px] sm:h-[200px] 2xl:h-[300px] relative ">
+      <div className="w-full h-[250px] sm:h-[200px] 2xl:h-[300px] relative">
         <Image
           src={concept?.imageCover}
           alt={concept?.name}

@@ -1,17 +1,25 @@
-"use client";
+import NotFoundPage from "@/libs/shared/components/client-components/NotFound/NotFound";
+import { Locale } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-import Error from "next/error";
-
-// This page renders when a route like `/unknown.txt` is requested.
-// In this case, the layout at `app/[locale]/layout.tsx` receives
-// an invalid value as the `[locale]` param and calls `notFound()`.
-
-export default function GlobalNotFound() {
+export async function generateMetadata(
+  props: Omit<LayoutProps<"/[locale]">, "children">
+) {
+  const { locale } = await props.params;
+  const t = await getTranslations({
+    locale: locale as Locale,
+    namespace: "Translation",
+  });
+  return {
+    title: t("headTitle.notFound"),
+    description: "'The page you are looking for does not exist.'",
+  };
+}
+export default async function NotFound() {
+  const t = await getTranslations("Translation");
   return (
-    <html lang="en">
-      <body>
-        <Error statusCode={404} />;
-      </body>
-    </html>
+    <div>
+      <NotFoundPage title={t("notFound")} buttonText={t("returnHome")} />
+    </div>
   );
 }

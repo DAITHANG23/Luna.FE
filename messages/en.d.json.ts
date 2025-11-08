@@ -147,6 +147,7 @@ declare const messages: {
       historyBooking: "Domique Fusion | History Booking";
       notifications: "Domique Fusion | Notifications";
       unauthorized: "Domique Fusion | Unauthorized";
+      notFound: "Domique Fusion | Not Found";
     };
   };
   Home: {

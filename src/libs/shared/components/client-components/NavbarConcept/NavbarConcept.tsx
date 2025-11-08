@@ -29,7 +29,7 @@ const NavbarConcept = ({ params }: NavbarConceptProps) => {
   }, [mainPathname]);
 
   return (
-    <div className="flex text-center gap-[10px] sm:gap-33 p-2 dark:bg-gray-500 rounded-md mb-2">
+    <div className="flex text-center gap-[10px] sm:gap-33 px-6 py-2 dark:bg-gray-500 rounded-md mb-2">
       <Link href={`/${pathnameLocale}/${mainPathname}`}>
         <Image
           src={route?.logo || "/favico.ico"}

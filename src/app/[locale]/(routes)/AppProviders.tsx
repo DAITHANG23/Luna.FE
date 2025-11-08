@@ -35,6 +35,7 @@ export default function AppProviders({
 
     if (process.env.NODE_ENV === "development") {
       const refreshTokenCookie = cookie.getRefreshToken();
+      console.log("refreshTokenCookie:", refreshTokenCookie);
       if (typeof window !== "undefined") {
         localStorage.setItem("refreshToken", refreshTokenCookie);
       }
