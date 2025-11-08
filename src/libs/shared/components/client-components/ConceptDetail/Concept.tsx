@@ -8,8 +8,7 @@ import { Slider } from "@/libs/shared/components";
 import { ConceptsList } from "@/libs/shared/components/client-components/Home";
 import NavbarConcept from "@/libs/shared/components/client-components/NavbarConcept/NavbarConcept";
 import { useLocale, useTranslations } from "next-intl";
-import { useRouter } from "@/libs/i18n/navigation";
-import { useParams } from "next/navigation";
+import { notFound, useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 
 export const Concept = () => {
@@ -37,9 +36,9 @@ export const Concept = () => {
     );
 
     if (!routeItem) {
-      router.push(`/not-found`);
+      notFound();
     }
-  }, [router, route]);
+  }, [router, route, params]);
 
   const allConcepts = useAppSelector((state) => state.masterData.allConcepts)
     ?.data.data;

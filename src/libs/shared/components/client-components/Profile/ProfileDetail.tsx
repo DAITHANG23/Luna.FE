@@ -291,6 +291,7 @@ export const ProfileDetail = ({ userData, isLoading }: ProfileDetailProps) => {
                     required
                     type="text"
                     isReadOnly
+                    classNameInput="dark:text-black"
                   />
                   <FieldInput
                     title={t("profile.firstName")}

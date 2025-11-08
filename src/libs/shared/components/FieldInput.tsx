@@ -60,7 +60,7 @@ export const FieldInput = ({
         <input
           id={name}
           className={clsx(
-            "block w-full rounded-md py-[16.5px] px-[14px] text-sm dark:bg-[#1C252E] dark:border text-primary-text",
+            "block w-full rounded-md py-[16.5px] px-[14px] bg-white text-sm dark:bg-[#1C252E] dark:border text-primary-text",
             isReadOnly
               ? "border-transparent dark:border-gray-500 p-2 rounded-md bg-gray-100 text-gray-500 read-only:bg-gray-200 read-only:cursor-not-allowed"
               : "border border-gray-300 dark:border-gray-300",

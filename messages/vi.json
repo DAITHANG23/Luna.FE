@@ -20,7 +20,7 @@
     },
     "register": {
       "alreadyHaveAnAccount": "Đã có tài khoản?",
-      "titleRegister": "Bắt đầu hoàn toàn miễn phí",
+      "titleRegister": "Đăng ký hoàn toàn miễn phí",
       "firstName": "Tên",
       "lastName": "Họ",
       "dateOfBirth": "Ngày sinh",
@@ -88,7 +88,7 @@
       "cancel": "Hủy bỏ",
       "detail": "Chi tiết",
       "verify": "Xác nhận",
-      "getStarted": "Bắt đầu",
+      "getStarted": "Bắt đầu ngay",
       "confirm": "Xác nhận"
     },
     "navbar": {
@@ -143,7 +143,8 @@
       "blog": "Domique Fusion | Blog",
       "historyBooking": "Domique Fusion | Lịch sử đặt hàng",
       "notifications": "Domique Fusion | Thông báo",
-      "unauthorized": "Domique Fusion | Lỗi không xác thực"
+      "unauthorized": "Domique Fusion | Lỗi không xác thực",
+      "notFound": "Domique Fusion | 404 - Không tìm thấy trang"
     }
   },
   "Home": {
