@@ -11,8 +11,8 @@ const getDataUser = async (): Promise<UserResponse> => {
 };
 
 const useGetDataUser = () => {
-  const accessTokenState = useAppSelector(
-    (state: RootState) => state.auth.accessToken
+  const sessionIdState = useAppSelector(
+    (state: RootState) => state.auth.sessionId
   );
 
   const {
@@ -24,7 +24,7 @@ const useGetDataUser = () => {
     queryKey: [GET_DATA_USER_QUERY_KEY],
     staleTime: 0,
     refetchOnWindowFocus: true,
-    enabled: !!accessTokenState,
+    enabled: !!sessionIdState,
   });
 
   return { userData, isLoading, refetch };
