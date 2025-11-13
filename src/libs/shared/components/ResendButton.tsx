@@ -42,7 +42,9 @@ export const ResendButton = () => {
 
   return (
     <div>
-      <span className="mr-2">{t("resetPassword.dontHaveACode")}</span>
+      <span className="mr-2 text-secondary-text">
+        {t("resetPassword.dontHaveACode")}
+      </span>
       <button
         onClick={timeLeft === 0 ? handleResend : undefined}
         disabled={timeLeft !== 0}
