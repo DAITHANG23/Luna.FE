@@ -22,8 +22,7 @@ export type Gender = "male" | "female";
 export interface UserLogin extends Partial<UserModel> {}
 
 export interface LoginResponse {
-  accessToken: string;
-  refreshToken?: string;
+  sessionId?: string;
   data: {
     user: UserLogin;
   };
@@ -49,9 +48,9 @@ export interface ErrorResponse {
   message: string;
 }
 
-export interface RefreshTokenResponse {
-  accessToken: string;
-}
+// export interface RefreshTokenResponse {
+//   accessToken: string;
+// }
 
 export interface UpdatePasswordType {
   passwordConfirm: string;

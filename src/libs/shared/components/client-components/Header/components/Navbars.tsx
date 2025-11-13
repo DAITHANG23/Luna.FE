@@ -30,7 +30,7 @@ import { useEffect, useState } from "react";
 import { useAppContext } from "@/contexts/AppContext";
 import { RootState } from "@/libs/redux/store";
 import {
-  accessToken,
+  sessionId,
   authentication,
   logout,
   userInfo,
@@ -84,8 +84,8 @@ const Navbars = () => {
   );
 
   const { setIsOpenDialog } = useAppContext();
-  const accessTokenState = useAppSelector(
-    (state: RootState) => state.auth.accessToken
+  const sessionIdState = useAppSelector(
+    (state: RootState) => state.auth.sessionId
   );
   const [open, setOpen] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
@@ -127,12 +127,13 @@ const Navbars = () => {
   }, [dispatch, unReadNotificationsQuantities, queryClient]);
 
   const handleSignOut = async () => {
-    dispatch(accessToken({ accessToken: "" }));
+    dispatch(sessionId({ sessionId: "" }));
     dispatch(userInfo({ accountInfo: null }));
     dispatch(unReadNotifications({ unReadNotificationsQuantity: 0 }));
     dispatch(resetNotifications());
     dispatch(logout(locale));
     dispatch(authentication({ isAuthenticated: false }));
+    localStorage.removeItem("isLoggedInGoogle");
     queryClient.removeQueries({ queryKey: [GET_DATA_USER_QUERY_KEY] });
   };
 
@@ -229,7 +230,7 @@ const Navbars = () => {
             <LanguageSelect />
 
             {/* Profile dropdown */}
-            {accessTokenState ? (
+            {sessionIdState ? (
               <Menu as="div" className="relative ml-3 ">
                 <div>
                   <MenuButton className="relative flex rounded-full hover:ring-offset-primary/80 dark:bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:outline-hidden">

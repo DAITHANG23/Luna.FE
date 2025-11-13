@@ -17,7 +17,7 @@ import { Link } from "@/libs/i18n/navigation";
 const LoginForm = () => {
   const initialValues = {
     email: "test236@gmail.com",
-    password: "Daithang@230697",
+    password: "Daithang@2306",
   };
 
   const t = useTranslations("Translation");

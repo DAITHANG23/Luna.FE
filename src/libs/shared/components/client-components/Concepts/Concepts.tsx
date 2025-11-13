@@ -81,7 +81,7 @@ export const Concepts = () => {
       ) : (
         <>
           {conceptsDataSort && conceptsDataSort.length > 0 ? (
-            <div className="py-8 grid grid xl:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-6 flex-wrap text-center justify-between items-center ">
+            <div className="py-8 grid grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6 flex-wrap text-center justify-between items-center ">
               {conceptsDataSort?.map((concept: ConceptModel, index) => {
                 return (
                   <div key={concept._id}>

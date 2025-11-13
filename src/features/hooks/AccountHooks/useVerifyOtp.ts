@@ -27,9 +27,9 @@ const useVerifyOtp = () => {
     onSuccess: (res) => {
       showSuccess("Verify successful, your account is actived!");
       localStorage.removeItem("resendOtp");
-      const accessToken = res?.accessToken;
-      if (accessToken) {
-        localStorage.setItem("accessToken", accessToken);
+      const sessionId = res?.sessionId;
+      if (sessionId) {
+        localStorage.setItem("sessionId", sessionId);
       }
       queryClient.invalidateQueries({ queryKey: [ACCOUNT_REGISTER_QUERY_KEY] });
       router.push(ROUTES.LOGIN.INDEX);

@@ -2,8 +2,9 @@
 
 import { ROUTES } from "@/constants";
 import { usePathname } from "@/libs/i18n/navigation";
-import { accessToken, getAccountInfo, logout } from "@/libs/redux/authSlice";
+import { getAccountInfo, sessionId, userInfo } from "@/libs/redux/authSlice";
 import { useAppDispatch, useAppSelector } from "@/libs/redux/hooks";
+import { getAllNotifications } from "@/libs/redux/masterDataSlice";
 import AuthInitializer from "@/libs/shared/components/client-components/AuthInitializer/AuthInitializer";
 import Footer from "@/libs/shared/components/client-components/Footer/Footer";
 import DialogSetting from "@/libs/shared/components/client-components/Header/components/DialogSetting";
@@ -24,44 +25,36 @@ export default function AppProviders({
 
   const pathname = usePathname();
   const dispatch = useAppDispatch();
-  const accessTokenState = useAppSelector((state) => state.auth.accessToken);
+  const sessionIdState = useAppSelector((state) => state.auth.sessionId);
   const accountInfo = useAppSelector((state) => state.auth.accountInfo);
 
   useEffect(() => {
     // Guard against server-side execution
     if (typeof window === "undefined") return;
 
-    const accessTokenCookie = cookie.getAccessToken();
+    const sessionIdCookie = cookie.getSessionId();
 
-    if (process.env.NODE_ENV === "development") {
-      const refreshTokenCookie = cookie.getRefreshToken();
-      console.log("refreshTokenCookie:", refreshTokenCookie);
-      if (typeof window !== "undefined") {
-        localStorage.setItem("refreshToken", refreshTokenCookie);
-      }
+    localStorage.setItem("sessionId", sessionIdCookie);
+    dispatch(sessionId({ sessionId: sessionIdCookie as string }));
+    dispatch(getAllNotifications());
+
+    if (!sessionIdCookie) {
+      dispatch(sessionId({ sessionId: null }));
+      dispatch(userInfo({ accountInfo: null }));
+      localStorage.removeItem("isLoggedInGoogle");
+      localStorage.removeItem("sessionId");
     }
-
-    // if (!accessTokenCookie) {
-    //   dispatch(logout());
-    // }
-
-    if (typeof window !== "undefined") {
-      localStorage.setItem("accessToken", accessTokenCookie);
-    }
-
-    dispatch(accessToken({ accessToken: accessTokenCookie as string }));
-    // dispatch(getAllNotifications());
-  }, [dispatch]);
+  }, [dispatch, sessionIdState]);
 
   const isLoginPage =
     pathname === `${ROUTES.LOGIN.INDEX}` ||
     pathname === `${ROUTES.REGISTER.INDEX}`;
 
   useEffect(() => {
-    if (accessTokenState && isEmpty(accountInfo)) {
+    if (sessionIdState && isEmpty(accountInfo)) {
       dispatch(getAccountInfo());
     }
-  }, [dispatch, accessTokenState, accountInfo]);
+  }, [dispatch, sessionIdState, accountInfo]);
 
   return (
     <QueryClientProvider client={queryClient}>
