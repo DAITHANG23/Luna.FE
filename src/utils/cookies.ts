@@ -1,6 +1,8 @@
 export const getJWTCookies = (name: string): string | null => {
   const cname = `${name}=`;
+
   const decodedCookie = decodeURIComponent(document.cookie);
+
   const ca = decodedCookie.split(";");
   for (let i = 0; i < ca.length; i++) {
     let c = ca[i];
@@ -29,11 +31,8 @@ export const getRefreshToken = () => {
 };
 
 const cookie = {
-  getRefreshToken: () => {
-    return getJWTCookies(`refreshToken`) as string;
-  },
-  getAccessToken: () => {
-    return getJWTCookies(`accessToken`) as string;
+  getSessionId: () => {
+    return getJWTCookies(`sessionId`) as string;
   },
 };
 

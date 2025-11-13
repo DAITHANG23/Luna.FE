@@ -12,24 +12,30 @@ const protectedRoutes = [
 ];
 const intlMiddleware = createMiddleware(routing);
 
-export function proxy(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const response = intlMiddleware(request);
   const { pathname } = request.nextUrl;
-  // const accessToken = request.cookies.get("accessToken")?.value;
-  const refreshToken = request.cookies.get("refreshToken")?.value;
+
+  const sessionId = request.cookies.get("sessionId")?.value;
+  const requestHeaders = new Headers(request.headers);
 
   const isProtected = protectedRoutes.some((route) =>
     pathname.startsWith(route)
   );
 
-  if (!refreshToken && isProtected) {
+  if (!sessionId && isProtected) {
     const loginUrl = new URL("/login", request.url);
     loginUrl.searchParams.set("from", pathname);
     return NextResponse.redirect(loginUrl);
   }
-  if (refreshToken && pathname === "/login") {
-    return NextResponse.redirect(new URL("/", request.url));
+
+  if (sessionId) {
+    requestHeaders.set("authorization", `Bearer ${sessionId}`);
   }
+  // if (refreshToken && pathname === "/login") {
+  //   return NextResponse.redirect(new URL("/", request.url));
+  // }
+
   return response;
 }
 export const config = {

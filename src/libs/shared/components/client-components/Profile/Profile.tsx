@@ -1,8 +1,6 @@
 "use client";
 import { SecurityIcon, GeneralProfile } from "@/libs/assets";
 import React, { JSX, useEffect, useMemo, useState } from "react";
-import { useAppSelector } from "@/libs/redux/hooks";
-import { RootState } from "@/libs/redux/store";
 import useGetDataUser from "@/features/hooks/AccountHooks/useGetDataUser";
 import { Tabs } from "@/libs/shared/components";
 import { ProfileDetail } from "./ProfileDetail";
@@ -17,9 +15,6 @@ const tabList: Array<{ name: TypeOfTabs; icon: JSX.Element }> = [
 
 export const Profile = () => {
   const router = useRouter();
-  const isAuth = useAppSelector(
-    (state: RootState) => state.auth.isAuthenticated
-  );
 
   const { userData, isLoading } = useGetDataUser();
   const [activeTab, setActiveTab] = useState<TypeOfTabs>(tabList[0].name);
@@ -34,12 +29,12 @@ export const Profile = () => {
 
   useEffect(() => {
     const token =
-      typeof window !== "undefined" && localStorage.getItem("accessToken");
+      typeof window !== "undefined" && localStorage.getItem("sessionId");
 
-    if (!token && !isAuth && !userData?.data.data.avatarUrl) {
+    if (!token && !userData?.data.data.avatarUrl) {
       router.push("/unauthorized");
     }
-  }, [isAuth, router, userData]);
+  }, [router, userData]);
 
   return (
     <div className="xl:w-[70%] w-[85%] flex flex-col justify-start mx-auto mb-20 mt-20 sm:mt-30">

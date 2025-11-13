@@ -23,7 +23,7 @@ axiosWrapper.interceptors.request.use(
   async (
     config: CustomAxiosRequestConfig
   ): Promise<CustomAxiosRequestConfig> => {
-    const token = localStorage.getItem("accessToken");
+    const token = localStorage.getItem("sessionId");
 
     config.headers.Authorization = token ? `Bearer ${token}` : "";
     return config;
@@ -48,27 +48,27 @@ axiosWrapper.interceptors.response.use(
         const locale = getLocale();
         window.location.href = `/${locale}${ROUTES.LOGIN.INDEX}`;
       }
-      if (
-        (status === 401 || status === 403 || status === 500) &&
-        (error.response?.data?.error?.name === "TokenExpiredError" ||
-          error.response.data.message ===
-            "Your token has expired! Please log in again") &&
-        !originalRequest._retry
-      ) {
-        originalRequest._retry = true;
+      // if (
+      //   (status === 401 || status === 403 || status === 500) &&
+      //   (error.response?.data?.error?.name === "TokenExpiredError" ||
+      //     error.response.data.message ===
+      //       "Your token has expired! Please log in again") &&
+      //   !originalRequest._retry
+      // ) {
+      //   originalRequest._retry = true;
 
-        try {
-          const data = await apiService.account.refreshToken();
-          localStorage.setItem("accessToken", data.accessToken);
-          originalRequest.headers.Authorization = `Bearer ${data.accessToken}`;
-          return axiosWrapper(originalRequest);
-        } catch (err) {
-          console.error("Refresh token expired. Logging out.", err);
-          localStorage.removeItem("accessToken");
-          localStorage.removeItem("refreshToken");
-          await apiService.account.logout();
-        }
-      } else if (status === 429) {
+      //   try {
+      //     const data = await apiService.account.refreshToken();
+      //     localStorage.setItem("accessToken", data.accessToken);
+      //     originalRequest.headers.Authorization = `Bearer ${data.accessToken}`;
+      //     return axiosWrapper(originalRequest);
+      //   } catch (err) {
+      //     console.error("Refresh token expired. Logging out.", err);
+      //     localStorage.removeItem("accessToken");
+      //     localStorage.removeItem("refreshToken");
+      //     await apiService.account.logout();
+      //   }
+      if (status === 429) {
         console.error("Too Many Requests - 429: Quá nhiều request");
         if (!originalRequest.retryCount) {
           originalRequest.retryCount = 0;

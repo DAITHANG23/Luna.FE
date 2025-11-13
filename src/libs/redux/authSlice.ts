@@ -10,7 +10,7 @@ import { Locale } from "next-intl";
 
 interface AuthState {
   user: UserLogin;
-  accessToken: string;
+  sessionId: string | null;
   isAuthenticated: boolean;
   accountInfo?: UserResponse | null;
   loading?: boolean;
@@ -21,18 +21,17 @@ export const logout = createAsyncThunk(
   "auth/logout",
   async (locale: Locale, { rejectWithValue }) => {
     try {
-      const refreshToken = localStorage.getItem("refreshToken");
+      const sessionId = localStorage.getItem("sessionId");
 
-      if (refreshToken) {
+      if (sessionId) {
         await apiService.account.logout();
       }
     } catch (error: any) {
       console.error("Error logout:", error);
       return rejectWithValue(error.message);
     } finally {
-      localStorage.removeItem("accessToken");
-      localStorage.removeItem("refreshToken");
-      clearJWTCookies("jwt");
+      localStorage.removeItem("sessionId");
+      clearJWTCookies("sessionId");
       delete axios.defaults.headers.common.Authorization;
       window.location.href = `/${locale}${ROUTES.LOGIN.INDEX}`;
     }
@@ -69,7 +68,7 @@ const initialState: AuthState = {
     avatarUrl: "",
   },
   isAuthenticated: false,
-  accessToken: "",
+  sessionId: "",
   accountInfo: null,
   loading: false,
   error: null,
@@ -79,8 +78,8 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    accessToken: (state, action: PayloadAction<{ accessToken: string }>) => {
-      state.accessToken = action.payload.accessToken;
+    sessionId: (state, action: PayloadAction<{ sessionId: string | null }>) => {
+      state.sessionId = action.payload.sessionId;
     },
     userInfo: (
       state,
@@ -112,10 +111,10 @@ const authSlice = createSlice({
       .addCase(logout.fulfilled, (state) => {
         state.accountInfo = null;
         state.isAuthenticated = false;
-        state.accessToken = "";
+        state.sessionId = "";
       });
   },
 });
 
-export const { accessToken, authentication, userInfo } = authSlice.actions;
+export const { sessionId, authentication, userInfo } = authSlice.actions;
 export default authSlice.reducer;

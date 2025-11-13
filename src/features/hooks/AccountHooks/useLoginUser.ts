@@ -6,7 +6,7 @@ import {
   ACCOUNT_LOGIN_QUERY_KEY,
   GET_DATA_USER_QUERY_KEY,
 } from "@app/constants/queryKeys";
-import { accessToken, authentication } from "@/libs/redux/authSlice";
+import { sessionId, authentication } from "@/libs/redux/authSlice";
 import useNotification from "@/features/hooks/useNotification";
 import { AxiosError } from "axios";
 import { getAllNotifications } from "@/libs/redux/masterDataSlice";
@@ -30,19 +30,20 @@ const useLogin = () => {
     mutationKey: [ACCOUNT_LOGIN_QUERY_KEY],
     onSuccess: async (res: LoginResponse) => {
       showSuccess("Login successful!");
-      const accessTokenCookie = res.accessToken;
+      const sessionIdResponse = res?.sessionId;
 
-      if (process.env.NODE_ENV === "development") {
-        const refreshTokenCookie = res.refreshToken;
-        localStorage.setItem("refreshToken", refreshTokenCookie as string);
+      const ttlSeconds = 60 * 60 * 24 * 7;
+      if (sessionIdResponse && process.env.NODE_ENV !== "production") {
+        document.cookie = `sessionId=${sessionIdResponse}; path=/; SameSite=Lax; Expires=${new Date(Date.now() + ttlSeconds * 1000)}`;
       }
 
-      localStorage.setItem("accessToken", accessTokenCookie as string);
-
-      dispatch(accessToken({ accessToken: accessTokenCookie as string }));
+      localStorage.setItem("sessionId", sessionIdResponse as string);
+      dispatch(sessionId({ sessionId: sessionIdResponse as string }));
       dispatch(getAllNotifications());
       dispatch(authentication({ isAuthenticated: true }));
-      queryClient.invalidateQueries({ queryKey: [GET_DATA_USER_QUERY_KEY] });
+      queryClient.invalidateQueries({
+        queryKey: [GET_DATA_USER_QUERY_KEY],
+      });
       router.replace(from || "/");
     },
     onError: (err: AxiosError<ErrorResponse>) => {
