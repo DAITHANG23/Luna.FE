@@ -91,6 +91,7 @@ export const CreateNewPassword = ({ id }: CreateNewPasswordProps) => {
                     required
                     type="text"
                     isReadOnly
+                    classNameInput="dark:text-black"
                   />
                 </div>
                 <OTPInput length={6} onComplete={handleOTPComplete} />
@@ -127,7 +128,7 @@ export const CreateNewPassword = ({ id }: CreateNewPasswordProps) => {
               <ResendButton />
               <button
                 type="button"
-                className="flex items-center gap-1 hover:underline mr-2"
+                className="flex items-center gap-1 hover:underline mr-2 text-primary-text"
                 onClick={() => router.push(`${ROUTES.LOGIN.INDEX}`)}
               >
                 <ChevronLeftIcon width={16} height={16} />
