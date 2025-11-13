@@ -76,6 +76,7 @@ export const VerifyOTP = () => {
                     required
                     type="text"
                     isReadOnly
+                    classNameInput="dark:text-black"
                   />
                 </div>
                 <OTPInput
@@ -98,7 +99,7 @@ export const VerifyOTP = () => {
 
               <button
                 type="button"
-                className="flex items-center gap-2 hover:underline"
+                className="flex items-center gap-2 hover:underline text-primary-text"
                 onClick={() => router.push(`${ROUTES.LOGIN.INDEX}`)}
               >
                 <ChevronLeftIcon width={16} height={16} />
