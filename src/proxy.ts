@@ -6,9 +6,17 @@ export default createMiddleware(routing);
 
 const protectedRoutes = [
   "/en/profile",
-  "/reservation-history",
-  "/favorites-concepts",
-  "/notifications",
+  "/vi/thong-tin-ca-nhan",
+  "/en/reservation-history",
+  "/vi/lich-su-dat-ban",
+  "/en/favorites",
+  "/vi/yeu-thich",
+  "/en/notifications",
+  "/vi/thong-bao",
+  "/en/reservation-history/[id]",
+  "/vi/lich-su-dat-ban/[id]",
+  "/en/notifications/[id]",
+  "/vi/thong-bao/[id]",
 ];
 const intlMiddleware = createMiddleware(routing);
 

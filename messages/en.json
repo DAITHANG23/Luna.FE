@@ -6,6 +6,7 @@
     "authorize": "Sorry, You Need Login To Access",
     "returnHome": "Return To Home",
     "returnLogin": "Return To Login",
+    "bookingWarning": "Please enter your personal information<br/>completely to proceed with the reservation!",
     "login": {
       "titleLogin": "Sign in to your account",
       "dontHaveAccount": "Don’t have an account?",
@@ -226,6 +227,7 @@
     "allPrices": "All prices",
     "allStar": "All star",
     "openClose": "Open - Close",
+    "warningBooking": "You need login to booking!",
     "validate": {
       "fieldIsRequired": "This field is required!"
     },

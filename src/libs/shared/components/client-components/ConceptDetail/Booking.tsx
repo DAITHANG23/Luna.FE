@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ChangeEvent, useMemo, useState } from "react";
+import React, { ChangeEvent, useEffect, useMemo, useState } from "react";
 import { Phone } from "lucide-react";
 import useGetRestaurantsOfConcept from "@/features/hooks/RestaurantsHooks/useGetRestaurantsOfConcept";
 import { useDebouncedCallback } from "@/features/hooks/useDebouncedCallback";
@@ -10,6 +10,10 @@ import { RestaurantModel } from "@/@types/models";
 import dynamic from "next/dynamic";
 import { useMounted } from "@/features/hooks/useMounted";
 import { useTranslations } from "next-intl";
+import { useAppSelector } from "@/libs/redux/hooks";
+import { usePathname, useRouter } from "next/navigation";
+import useNotification from "@/features/hooks/useNotification";
+import { useSnackbar } from "notistack";
 interface BookingProps {
   conceptDataId: string;
 }
@@ -25,12 +29,68 @@ const Map = dynamic(
 );
 
 export const Booking = ({ conceptDataId }: BookingProps) => {
-  const t = useTranslations("Restaurant");
+  const tRestaurant = useTranslations("Restaurant");
+  const tTranslation = useTranslations("Translation");
   const mounted = useMounted();
+  const router = useRouter();
+  const pathname = usePathname();
+  const { showWarning } = useNotification();
+  const { closeSnackbar, enqueueSnackbar } = useSnackbar();
 
+  const isAuth = useAppSelector((state) => state.auth.isAuthenticated);
+  const accountInfo = useAppSelector((state) => state.auth.accountInfo);
   const [chooseRestaurant, setChooseRestaurant] = useState<string | null>(null);
   const [isOpenModalBooking, setIsOpenModalBooking] = useState(false);
   const [searchText, setSearchText] = useState("");
+
+  useEffect(() => {
+    if (!accountInfo?.data.data.numberPhone) {
+      const notifId = enqueueSnackbar(
+        <div
+          onClick={() => {
+            closeSnackbar(notifId);
+            router.push(`/profile?from=${pathname}`);
+          }}
+          role="button"
+          tabIndex={0}
+          className="cursor-pointer"
+        >
+          <div>
+            <p
+              className="text-sm pb-2"
+              dangerouslySetInnerHTML={{
+                __html: tTranslation("bookingWarning"),
+              }}
+            />
+            👉
+            <span className="underline! underline-offset-2 font-bold pl-2">
+              {tTranslation("navbar.yourProfile")}
+            </span>
+          </div>
+        </div>,
+        {
+          variant: "info",
+          anchorOrigin: { vertical: "top", horizontal: "right" },
+          autoHideDuration: 120000,
+        }
+      );
+    }
+  }, [
+    accountInfo?.data.data.numberPhone,
+    pathname,
+    tTranslation,
+    enqueueSnackbar,
+    closeSnackbar,
+    router,
+  ]);
+
+  useEffect(() => {
+    if (!isAuth && isOpenModalBooking) {
+      showWarning(tRestaurant("warningBooking"));
+      router.push(`/login?from=${pathname}`);
+    }
+  }, [isAuth, isOpenModalBooking, router, pathname, showWarning, tRestaurant]);
+
   const params = useMemo(() => {
     return { searchText };
   }, [searchText]);
@@ -87,7 +147,7 @@ export const Booking = ({ conceptDataId }: BookingProps) => {
                 <div className="text-primary-text">
                   <p>{item.address}</p>
                   <p>
-                    {t("openClose")}:
+                    {tRestaurant("openClose")}:
                     {`${item.timeSlot[0].startTime} - ${item.timeSlot[0].endTime}`}
                   </p>
                 </div>
@@ -103,7 +163,7 @@ export const Booking = ({ conceptDataId }: BookingProps) => {
                     }}
                     className="bg-primary rounded-[4px] text-center text-white text-sm px-3 py-2 hover:scale-105"
                   >
-                    {t("button.booking")}
+                    {tRestaurant("button.booking")}
                   </button>
                 </div>
                 <hr />
@@ -113,7 +173,7 @@ export const Booking = ({ conceptDataId }: BookingProps) => {
               locationsRestaurantsList &&
               locationsRestaurantsList?.length <= 0 && (
                 <div className="text-primary-text text-center">
-                  {t("notFound")}
+                  {tRestaurant("notFound")}
                 </div>
               )}
           </div>
@@ -122,7 +182,7 @@ export const Booking = ({ conceptDataId }: BookingProps) => {
           <Map
             key={`${locationsRestaurantsList?.[0]?.lat}`}
             locationsList={locationsRestaurantsList}
-            className="h-[400px]! lg:h-150!"
+            className="h-[400px]! lg:h-350!"
             lat={locationsRestaurantsList?.[0]?.lat}
             lng={locationsRestaurantsList?.[0]?.lng}
           />

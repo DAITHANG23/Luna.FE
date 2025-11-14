@@ -2,7 +2,12 @@
 
 import { ROUTES } from "@/constants";
 import { usePathname } from "@/libs/i18n/navigation";
-import { getAccountInfo, sessionId, userInfo } from "@/libs/redux/authSlice";
+import {
+  authentication,
+  getAccountInfo,
+  sessionId,
+  userInfo,
+} from "@/libs/redux/authSlice";
 import { useAppDispatch, useAppSelector } from "@/libs/redux/hooks";
 import { getAllNotifications } from "@/libs/redux/masterDataSlice";
 import AuthInitializer from "@/libs/shared/components/client-components/AuthInitializer/AuthInitializer";
@@ -22,7 +27,6 @@ export default function AppProviders({
   children: React.ReactNode;
 }) {
   const queryClient = new QueryClient();
-
   const pathname = usePathname();
   const dispatch = useAppDispatch();
   const sessionIdState = useAppSelector((state) => state.auth.sessionId);
@@ -33,18 +37,18 @@ export default function AppProviders({
     if (typeof window === "undefined") return;
 
     const sessionIdCookie = cookie.getSessionId();
-
-    localStorage.setItem("sessionId", sessionIdCookie);
-    dispatch(sessionId({ sessionId: sessionIdCookie as string }));
-    dispatch(getAllNotifications());
-
-    if (!sessionIdCookie) {
+    if (sessionIdCookie) {
+      localStorage.setItem("sessionId", sessionIdCookie);
+      dispatch(authentication({ isAuthenticated: true }));
+      dispatch(sessionId({ sessionId: sessionIdCookie as string }));
+      dispatch(getAllNotifications());
+    } else {
       dispatch(sessionId({ sessionId: null }));
       dispatch(userInfo({ accountInfo: null }));
       localStorage.removeItem("isLoggedInGoogle");
       localStorage.removeItem("sessionId");
     }
-  }, [dispatch, sessionIdState]);
+  }, [dispatch]);
 
   const isLoginPage =
     pathname === `${ROUTES.LOGIN.INDEX}` ||

@@ -128,7 +128,7 @@ const BookingForm = ({
                 <p className="text-primary-text">{restaurant?.numberPhone}</p>
               </div>
             </div>
-            <hr className="my-4" />
+            <hr className="my-4 text-primary-text" />
 
             <FormDetail
               onClickNotes={onClickNotes}
@@ -144,7 +144,7 @@ const BookingForm = ({
             <div className="w-full flex mt-6 justify-end">
               <button
                 type="button"
-                className="flex items-center gap-2 text-primary-text rounded-lg bg-gray-300 px-4 py-[8px] hover:scale-105 transition duration-200"
+                className="flex items-center gap-2 text-black rounded-lg bg-gray-300 px-4 py-[8px] hover:scale-105 transition duration-200"
                 onClick={() => {
                   setIsOpenModalBooking(false);
                 }}

@@ -41,7 +41,7 @@ export const routing = defineRouting({
     },
     "/favorites/visited-restaurants": {
       en: "/favorites/visited-restaurants",
-      vi: "/favorites/nha-hang-tung-ghe",
+      vi: "/yeu-thich/nha-hang-tung-ghe",
     },
     "/register": {
       en: "/register",
