@@ -9,6 +9,7 @@ declare const messages: {
     authorize: "Sorry, You Need Login To Access";
     returnHome: "Return To Home";
     returnLogin: "Return To Login";
+    bookingWarning: "Please enter your personal information<br/>completely to proceed with the reservation!";
     login: {
       titleLogin: "Sign in to your account";
       dontHaveAccount: "Don’t have an account?";
@@ -222,6 +223,7 @@ declare const messages: {
     };
     bookingSuccessfully: "Booking completed successfully!";
     notFound: "Oops! We couldn’t find any restaurants :(";
+    warningBooking: "You need login to booking!";
     under: "Under";
     over: "Over";
     from: "From";
