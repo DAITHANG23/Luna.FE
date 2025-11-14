@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
+import useBreakPoints from "@/features/hooks/useBreakPoints";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 
 interface MapComponentProps {
@@ -19,12 +20,15 @@ export const Map = ({
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
   });
-
+  const { isDesktopSize } = useBreakPoints();
   if (!isLoaded) return <div>Loading...</div>;
   if (loadError) return <div>Error loading maps</div>;
   return (
     <GoogleMap
-      mapContainerStyle={{ width: "100%", height: "300px" }}
+      mapContainerStyle={{
+        width: "100%",
+        height: isDesktopSize ? "400px" : "300px",
+      }}
       center={{ lat, lng }}
       zoom={13}
     >

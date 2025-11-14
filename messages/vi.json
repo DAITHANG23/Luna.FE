@@ -6,6 +6,7 @@
     "authorize": "Xin lỗi, bạn cần đăng nhập để truy cập",
     "returnHome": "Trở về trang chủ",
     "returnLogin": "Trở lại trang đăng nhập",
+    "bookingWarning": "Vui lòng nhập thông tin cá nhân<br/> đầy đủ để đặt bàn!",
     "login": {
       "titleLogin": "Đăng nhập tài khoản bạn",
       "dontHaveAccount": "Không có tài khoản?",
@@ -218,6 +219,7 @@
     "openClose": "Giờ mở - đóng",
     "bookingSuccessfully": "Đặt bàn thành công!",
     "notFound": "Rất tiếc, chúng tôi không tìm thấy nhà hàng nào :(",
+    "warningBooking": "Bạn cần đăng nhập để đặt bàn!",
     "label": {
       "date": "Ngày dùng bữa",
       "time": "Thời gian dùng bữa",
