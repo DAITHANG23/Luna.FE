@@ -14,6 +14,7 @@ import {
   StarIcon,
   CircleDashedIcon,
 } from "lucide-react";
+import { useParams } from "next/navigation";
 import React, { useCallback, useMemo } from "react";
 
 interface NotificationDetailNavbarProps {
@@ -30,6 +31,7 @@ const NotificationDetailNavbar = ({
 }: NotificationDetailNavbarProps) => {
   const router = useRouter();
   const date = new Date(item.createdAt);
+  const params = useParams();
 
   const formatted = format(date, "dd/MM/yyyy HH:mm");
   const { mutate: checkReadNotification } = useCheckReadNotification();
@@ -46,19 +48,13 @@ const NotificationDetailNavbar = ({
       case "bookingReminder":
         return <BellDotIcon className="text-[#CA8A04] w-6 h-6 shrink-0" />;
       case "bookingConfirmed":
-        return (
-          <CheckBadgeIcon className="text-[#16a34a] w-6 h-6 shrink-0" />
-        );
+        return <CheckBadgeIcon className="text-[#16a34a] w-6 h-6 shrink-0" />;
       case "bookingCanceled":
-        return (
-          <TriangleAlertIcon className="text-primary w-6 h-6 shrink-0" />
-        );
+        return <TriangleAlertIcon className="text-primary w-6 h-6 shrink-0" />;
       case "bookingCompleted":
         return <StarIcon className="text-purple-800 w-6 h-6 shrink-0" />;
       case "bookingInProgress":
-        return (
-          <CircleDashedIcon className="text-[#2563EB] w-6 h-6 shrink-0" />
-        );
+        return <CircleDashedIcon className="text-[#2563EB] w-6 h-6 shrink-0" />;
       default:
         return <InfoIcon className="text-[#2563EB] w-6 h-6 shrink-0" />;
     }
@@ -79,11 +75,13 @@ const NotificationDetailNavbar = ({
       <div
         className="flex flex-col gap-4 text-start"
         onClick={() => {
-          router.push({
-            pathname: "/notifications/[id]",
-            params: { id: item._id },
-          });
-          handleCheckReadNotification(item._id);
+          if (item._id !== params.id) {
+            router.push({
+              pathname: "/notifications/[id]",
+              params: { id: item._id },
+            });
+            handleCheckReadNotification(item._id);
+          }
         }}
       >
         <h2 className="text-base font-bold text-primary-text">{item.title}</h2>

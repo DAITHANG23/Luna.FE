@@ -4,7 +4,7 @@ import apiRequest from "@/features/hooks/useApiRequest";
 import { buildQueryString } from "@/utils";
 export type GetNotificationsParams = {
   limit?: number;
-  offset?: number;
+  cursor?: string;
 };
 
 const baseURL = `${API_VERSION_V1}/notifications`;

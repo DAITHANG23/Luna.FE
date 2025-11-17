@@ -18,6 +18,8 @@ export interface AllNotificationResponse {
   status: string;
   results: number;
   data: { data: Array<NotificationModel> };
+  nextCursor?: string;
+  hasMore?: boolean;
 }
 
 export interface CheckNotification {
