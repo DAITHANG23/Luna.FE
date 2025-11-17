@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/static-components */
+/* eslint-disable react/display-name */
 "use client";
 import { NotificationModel } from "@/@types/models";
 import apiService from "@/api/endpoints/index";
@@ -7,10 +9,10 @@ import { useRouter } from "@/libs/i18n/navigation";
 import { useAppDispatch, useAppSelector } from "@/libs/redux/hooks";
 import { getAllNotifications } from "@/libs/redux/masterDataSlice";
 import { WrapperFilter } from "@/libs/shared/components";
-import NotificationDetailNavbar from "@/libs/shared/components/NotificationDetailNavbar";
 import { BellIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useState } from "react";
+import NotificationItem from "./NotificationItem";
 
 interface NotificationMainProps {
   children: React.ReactNode;
@@ -35,9 +37,16 @@ export const NotificationMain = ({ children, id }: NotificationMainProps) => {
     if (id) setSelectedId(id as string);
   }, [id]);
 
-  const handleClick = (id: string) => {
-    setSelectedId(id);
-  };
+  const handleClick = useCallback(
+    (id: string) => {
+      setSelectedId(id);
+      router.push({
+        pathname: `${ROUTES.NOTIFICATIONS.INDEX}`,
+        query: { noti_selected: id },
+      });
+    },
+    [router]
+  );
 
   const dispatch = useAppDispatch();
 
@@ -57,8 +66,8 @@ export const NotificationMain = ({ children, id }: NotificationMainProps) => {
         router.push(
           nextIdNotifcation
             ? {
-                pathname: `${ROUTES.NOTIFICATIONS.INDEX}/[nextIdNotifcation]`,
-                params: { nextIdNotifcation },
+                pathname: `${ROUTES.NOTIFICATIONS.INDEX}`,
+                query: { noti_selected: id },
               }
             : ROUTES.NOTIFICATIONS.INDEX
         );
@@ -82,55 +91,58 @@ export const NotificationMain = ({ children, id }: NotificationMainProps) => {
     [dispatch, handleAfterDeleteNotification]
   );
 
-  const notificationsNavbar = useMemo(() => {
-    return (
-      <div>
-        {allNotifications && allNotifications?.length > 0 ? (
-          allNotifications?.map((item: NotificationModel) => {
-            return (
-              <div key={item._id} onClick={() => handleClick(item._id)}>
-                <NotificationDetailNavbar
+  const NotificationsNavbar = useMemo(
+    () =>
+      memo(() => (
+        <div>
+          {allNotifications && allNotifications?.length > 0 ? (
+            allNotifications?.map((item: NotificationModel) => {
+              return (
+                <NotificationItem
+                  key={item._id}
                   item={item}
+                  isSelected={selectedId === item._id}
                   unReadNotificationsQuantities={unReadNotificationsQuantities}
                   handleDeleteNotification={handleDeleteNotification}
-                  isSelected={selectedId === item._id}
+                  onItemClick={() => handleClick(item._id)}
                 />
-                <hr className="text-gray-500 my-1!" />
-              </div>
-            );
-          })
-        ) : (
-          <div className="flex flex-col items-center justify-center text-center py-10 text-gray-500 text-sm h-120">
-            <BellIcon className="w-8 h-8 mb-2" />
-            <p>{t("noNotifications")}</p>
-          </div>
-        )}
-      </div>
-    );
-  }, [
-    allNotifications,
-    unReadNotificationsQuantities,
-    handleDeleteNotification,
-    selectedId,
-    t,
-  ]);
+              );
+            })
+          ) : (
+            <div className="flex flex-col items-center justify-center text-center py-10 text-gray-500 text-sm h-120">
+              <BellIcon className="w-8 h-8 mb-2" />
+              <p>{t("noNotifications")}</p>
+            </div>
+          )}
+        </div>
+      )),
+    [
+      allNotifications,
+      unReadNotificationsQuantities,
+      handleDeleteNotification,
+      selectedId,
+      t,
+      handleClick,
+    ]
+  );
+  const memoizedChildren = useMemo(() => children, [children]);
 
   return (
     <div className="mt-20 sm:mt-30 w-[90%] 2xl:w-[70%] h-auto lg:h-160 mx-auto bg-white dark:bg-gray-900 rounded-lg my-4 shadow-lg p-4 lg:py-4 lg:pr-4">
       <div className="flex lg:flex-row flex-col gap-4 h-full">
         <div className="w-full lg:w-[30%] h-full overflow-auto hidden lg:block">
-          {notificationsNavbar}
+          <NotificationsNavbar />
         </div>
         <div className="block lg:hidden">
           <WrapperFilter
             classNameMenu={"h-152! overflow-auto scrollbar-hide"}
             isHandleCloseMenu
           >
-            {notificationsNavbar}
+            <NotificationsNavbar />
           </WrapperFilter>
         </div>
 
-        <div className="w-full lg:w-[70%]">{children}</div>
+        <div className="w-full lg:w-[70%]">{memoizedChildren}</div>
       </div>
     </div>
   );

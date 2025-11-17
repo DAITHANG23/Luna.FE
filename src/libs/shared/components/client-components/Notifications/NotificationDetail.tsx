@@ -220,10 +220,13 @@ export const NotificationDetail = ({ id }: NotificationDetailProps) => {
           </p>
           <p>{t("content.bookingCompleted.detail.content_4")}</p>
           <p
-            className="text-primary hover:underline cursor-pointer"
+            className="text-primary cursor-pointer"
             onClick={() => setIsOpenModal(true)}
           >
-            👉 {t("content.bookingCompleted.detail.content_6")}
+            👉
+            <span className="hover:underline pl-2 underline-offset-4">
+              {t("content.bookingCompleted.detail.content_6")}
+            </span>
           </p>
           <p>{t("content.bookingCompleted.detail.content_5")}</p>
         </div>

@@ -1,5 +1,6 @@
 "use client";
 import { NotificationModel } from "@/@types/models";
+import { ROUTES } from "@/constants";
 import useCheckReadNotification from "@/features/hooks/NotificationBooking/useCheckReadNotification";
 import { useRouter } from "@/libs/i18n/navigation";
 import { cn, getStatusClass } from "@/utils";
@@ -46,19 +47,13 @@ const NotificationDetailNavbar = ({
       case "bookingReminder":
         return <BellDotIcon className="text-[#CA8A04] w-6 h-6 shrink-0" />;
       case "bookingConfirmed":
-        return (
-          <CheckBadgeIcon className="text-[#16a34a] w-6 h-6 shrink-0" />
-        );
+        return <CheckBadgeIcon className="text-[#16a34a] w-6 h-6 shrink-0" />;
       case "bookingCanceled":
-        return (
-          <TriangleAlertIcon className="text-primary w-6 h-6 shrink-0" />
-        );
+        return <TriangleAlertIcon className="text-primary w-6 h-6 shrink-0" />;
       case "bookingCompleted":
         return <StarIcon className="text-purple-800 w-6 h-6 shrink-0" />;
       case "bookingInProgress":
-        return (
-          <CircleDashedIcon className="text-[#2563EB] w-6 h-6 shrink-0" />
-        );
+        return <CircleDashedIcon className="text-[#2563EB] w-6 h-6 shrink-0" />;
       default:
         return <InfoIcon className="text-[#2563EB] w-6 h-6 shrink-0" />;
     }
@@ -80,8 +75,8 @@ const NotificationDetailNavbar = ({
         className="flex flex-col gap-4 text-start"
         onClick={() => {
           router.push({
-            pathname: "/notifications/[id]",
-            params: { id: item._id },
+            pathname: `${ROUTES.NOTIFICATIONS.INDEX}`,
+            query: { noti_selected: item._id },
           });
           handleCheckReadNotification(item._id);
         }}
