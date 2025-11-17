@@ -25,10 +25,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
-      - run: npm ci
-      - run: npm run build --if-present
-      - run: npm test
+          cache: "yarn"
+      - name: Install
+        run: yarn install --frozen-lockfile
+      - name: Build
+        run: yarn build
+      - name: Test
+        run: yarn test
 
   deploy:
     needs: building
@@ -36,9 +39,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install Vercel CLI
-        run: npm install --global vercel
+        run: yarn global add vercel
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
+        run: yarn install --frozen-lockfile
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
       - name: Build Project Artifacts
