@@ -37,17 +37,16 @@ export const NotificationMain = ({ children, id }: NotificationMainProps) => {
     if (id) setSelectedId(id as string);
   }, [id]);
 
-  // eslint-disable-next-line react-hooks/preserve-manual-memoization
-  const handleClick = useCallback((id: string) => {
-    setSelectedId(id);
-    router.push(
-      {
-        pathname: "/notifications/[id]",
-        params: { id },
-      },
-      { scroll: false }
-    );
-  }, []);
+  const handleClick = useCallback(
+    (id: string) => {
+      setSelectedId(id);
+      router.push({
+        pathname: `${ROUTES.NOTIFICATIONS.INDEX}`,
+        query: { noti_selected: id },
+      });
+    },
+    [router]
+  );
 
   const dispatch = useAppDispatch();
 
@@ -67,8 +66,8 @@ export const NotificationMain = ({ children, id }: NotificationMainProps) => {
         router.push(
           nextIdNotifcation
             ? {
-                pathname: `${ROUTES.NOTIFICATIONS.INDEX}/[nextIdNotifcation]`,
-                params: { nextIdNotifcation },
+                pathname: `${ROUTES.NOTIFICATIONS.INDEX}`,
+                query: { noti_selected: id },
               }
             : ROUTES.NOTIFICATIONS.INDEX
         );
