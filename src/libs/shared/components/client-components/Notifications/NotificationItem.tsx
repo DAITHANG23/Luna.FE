@@ -9,10 +9,10 @@ const NotificationItem = ({
   onItemClick,
 }: {
   item: NotificationModel;
-  isSelected: boolean;
+  isSelected?: boolean;
   unReadNotificationsQuantities: number;
   handleDeleteNotification: (id: string) => void;
-  onItemClick: () => void;
+  onItemClick?: () => void;
 }) => {
   return (
     <div key={item._id} onClick={onItemClick}>

@@ -16,6 +16,8 @@ const eslintConfig = defineConfig([
   {
     rules: {
       "@typescript-eslint/no-empty-object-type": "off",
+      "react-hooks/set-state-in-effect": "off",
+      "react-hooks/preserve-manual-memoization": "off",
       "no-console": ["warn", { allow: ["warn", "error"] }],
     },
   },

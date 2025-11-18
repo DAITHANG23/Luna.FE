@@ -33,7 +33,6 @@ export const NotificationMain = ({ children, id }: NotificationMainProps) => {
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (id) setSelectedId(id as string);
   }, [id]);
 
