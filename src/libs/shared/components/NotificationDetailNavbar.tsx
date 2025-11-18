@@ -15,7 +15,6 @@ import {
   StarIcon,
   CircleDashedIcon,
 } from "lucide-react";
-import { useParams } from "next/navigation";
 import React, { useCallback, useMemo } from "react";
 
 interface NotificationDetailNavbarProps {
@@ -32,7 +31,6 @@ const NotificationDetailNavbar = ({
 }: NotificationDetailNavbarProps) => {
   const router = useRouter();
   const date = new Date(item.createdAt);
-  const params = useParams();
 
   const formatted = format(date, "dd/MM/yyyy HH:mm");
   const { mutate: checkReadNotification } = useCheckReadNotification();
