@@ -1,5 +1,6 @@
 "use client";
 import { NotificationModel } from "@/@types/models";
+import { ROUTES } from "@/constants";
 import useCheckReadNotification from "@/features/hooks/NotificationBooking/useCheckReadNotification";
 import { useRouter } from "@/libs/i18n/navigation";
 import { cn, getStatusClass } from "@/utils";
@@ -75,13 +76,11 @@ const NotificationDetailNavbar = ({
       <div
         className="flex flex-col gap-4 text-start"
         onClick={() => {
-          if (item._id !== params.id) {
-            router.push({
-              pathname: "/notifications/[id]",
-              params: { id: item._id },
-            });
-            handleCheckReadNotification(item._id);
-          }
+          router.push({
+            pathname: `${ROUTES.NOTIFICATIONS.INDEX}`,
+            query: { noti_selected: item._id },
+          });
+          handleCheckReadNotification(item._id);
         }}
       >
         <h2 className="text-base font-bold text-primary-text">{item.title}</h2>

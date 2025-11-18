@@ -59,13 +59,13 @@ export const routing = defineRouting({
       en: "/notifications",
       vi: "/thong-bao",
     },
-    "/notifications/[id]": {
-      en: "/notifications/[id]",
-      vi: "/thong-bao/[id]",
+    "/notifications?noti_selected=[id]": {
+      en: "/notifications?noti_selected=[id]",
+      vi: "/thong-bao?tin-nhan-duoc-chon=[id]",
     },
-    "/notifications/[nextIdNotifcation]": {
-      en: "/notifications/[nextIdNotifcation]",
-      vi: "/thong-bao/[nextIdNotifcation]",
+    "/notifications?noti_selected=[nextIdNotifcation]": {
+      en: "/notifications?noti_selected=[nextIdNotifcation]",
+      vi: "/thong-bao?tin-nhan-duoc-chon=[nextIdNotifcation]",
     },
 
     "/not-found": "/not-found",

@@ -3,12 +3,24 @@
 import React from "react";
 import { ABOUT_IMAGES } from "@/constants";
 import { Slider } from "@shared/components/index";
-import { NotificationMain } from "@shared/components/client-components/Notifications";
+import {
+  NotificationDetail,
+  NotificationMain,
+} from "@shared/components/client-components/Notifications";
+import { useSearchParams } from "next/navigation";
 
 export const Notification = () => {
+  const searchParams = useSearchParams();
+  const notiSelected = searchParams.get("noti_selected");
   return (
-    <NotificationMain>
-      <Slider isSmallSize coverImages={ABOUT_IMAGES} />
-    </NotificationMain>
+    <>
+      {!notiSelected ? (
+        <NotificationMain>
+          <Slider isSmallSize coverImages={ABOUT_IMAGES} />
+        </NotificationMain>
+      ) : (
+        <NotificationDetail id={notiSelected || ""} />
+      )}
+    </>
   );
 };
