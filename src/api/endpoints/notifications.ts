@@ -10,7 +10,7 @@ export type GetNotificationsParams = {
 const baseURL = `${API_VERSION_V1}/notifications`;
 const bookings = {
   getAllNotifications: async (
-    params?: GetNotificationsParams
+    params?: GetNotificationsParams,
   ): Promise<AllNotificationResponse> => {
     const query = buildQueryString(params);
     return await apiRequest(`${baseURL}${query}`, "GET");

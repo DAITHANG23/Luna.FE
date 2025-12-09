@@ -13,7 +13,7 @@ import { ROUTES } from "@/constants";
 import { useTranslations } from "next-intl";
 
 const bookingRestaurant = async (
-  formData: RestaurantBooking
+  formData: RestaurantBooking,
 ): Promise<RestaurantBookingResponse> => {
   return await apiService.bookings.bookingRestaurant({ formData });
 };

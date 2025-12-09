@@ -35,7 +35,7 @@ export const logout = createAsyncThunk(
       delete axios.defaults.headers.common.Authorization;
       window.location.href = `/${locale}${ROUTES.LOGIN.INDEX}`;
     }
-  }
+  },
 );
 
 export const getAccountInfo = createAsyncThunk<
@@ -83,13 +83,13 @@ const authSlice = createSlice({
     },
     userInfo: (
       state,
-      action: PayloadAction<{ accountInfo: UserResponse | null }>
+      action: PayloadAction<{ accountInfo: UserResponse | null }>,
     ) => {
       state.accountInfo = action.payload.accountInfo;
     },
     authentication: (
       state,
-      action: PayloadAction<{ isAuthenticated: boolean }>
+      action: PayloadAction<{ isAuthenticated: boolean }>,
     ) => {
       state.isAuthenticated = action.payload.isAuthenticated;
     },

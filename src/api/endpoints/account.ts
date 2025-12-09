@@ -70,7 +70,7 @@ const account = {
     return await apiRequest(
       `${baseURL}/resetPassword/${token}`,
       "PATCH",
-      formData
+      formData,
     );
   },
 

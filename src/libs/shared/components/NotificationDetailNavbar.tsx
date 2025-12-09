@@ -39,7 +39,7 @@ const NotificationDetailNavbar = ({
     (id: string) => {
       if (unReadNotificationsQuantities > 0) checkReadNotification(id);
     },
-    [checkReadNotification, unReadNotificationsQuantities]
+    [checkReadNotification, unReadNotificationsQuantities],
   );
 
   const NotificationIcon = useMemo(() => {
@@ -67,7 +67,7 @@ const NotificationDetailNavbar = ({
           ? "bg-white dark:bg-gray-900"
           : getStatusClass(item.type),
         isSelected &&
-          " mr-4 border border-primary before:content-[''] before:absolute before:left-0 before:top-2 before:bottom-2 before:w-[6px] before:rounded-tr-lg before:rounded-br-lg before:bg-primary after:content-[''] after:absolute after:right-[-8px] after:bottom-[calc(50%-8px)] after:border-t-8 after:border-b-8 after:border-l-8 after:border-transparent after:border-l-red-500"
+          " mr-4 border border-primary before:content-[''] before:absolute before:left-0 before:top-2 before:bottom-2 before:w-[6px] before:rounded-tr-lg before:rounded-br-lg before:bg-primary after:content-[''] after:absolute after:right-[-8px] after:bottom-[calc(50%-8px)] after:border-t-8 after:border-b-8 after:border-l-8 after:border-transparent after:border-l-red-500",
       )}
     >
       {NotificationIcon}

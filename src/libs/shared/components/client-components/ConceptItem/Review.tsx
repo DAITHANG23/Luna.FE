@@ -58,7 +58,7 @@ export const Review = ({
     <div
       className={cn(
         isDoneReview ? "h-75 sm:h-60" : "h-auto sm:h-125",
-        "w-full sm:w-170 mt-10 mx-auto"
+        "w-full sm:w-170 mt-10 mx-auto",
       )}
     >
       {isDoneReview ? (
@@ -88,7 +88,7 @@ export const Review = ({
                     <button
                       className={cn(
                         scoreReviewConcept - 1 === i && "bg-gray-300",
-                        "border rounded-md w-8 h-8 pt-1 text-center hover:bg-gray-300"
+                        "border rounded-md w-8 h-8 pt-1 text-center hover:bg-gray-300",
                       )}
                       onClick={() => setScoreReviewConcept(i + 1)}
                     >
@@ -122,7 +122,7 @@ export const Review = ({
                 isInvalid
                   ? "bg-gray-400/50 hover:scale-1010"
                   : "bg-black hover:scale-105",
-                "text-white rounded-lg text-sm py-[10px] px-[13px]  transition duration-200"
+                "text-white rounded-lg text-sm py-[10px] px-[13px]  transition duration-200",
               )}
               onClick={handleSubmitReviewConcept}
               disabled={isInvalid}

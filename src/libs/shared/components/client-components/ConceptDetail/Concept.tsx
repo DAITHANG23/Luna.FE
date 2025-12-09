@@ -32,7 +32,7 @@ export const Concept = () => {
     const routeConcept = localStorage.getItem("routeConcept")?.trim() || "";
 
     const routeItem = CONCEPTS_ROUTES.some(
-      (c) => `/${c.route}` === `/${routeConcept}`
+      (c) => `/${c.route}` === `/${routeConcept}`,
     );
 
     if (!routeItem) {

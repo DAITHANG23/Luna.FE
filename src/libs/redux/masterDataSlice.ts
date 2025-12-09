@@ -96,7 +96,7 @@ const masterDatasSlice = createSlice({
   reducers: {
     unReadNotifications: (
       state,
-      action: PayloadAction<{ unReadNotificationsQuantity: number }>
+      action: PayloadAction<{ unReadNotificationsQuantity: number }>,
     ) => {
       state.unReadNotificationsQuantity =
         action.payload.unReadNotificationsQuantity;

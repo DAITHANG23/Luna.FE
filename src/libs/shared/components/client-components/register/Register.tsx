@@ -34,7 +34,7 @@ const Register = () => {
         .max(20, t("register.validate.maxPassword"))
         .matches(
           REGEX_VALIDTATE_PASSWORD,
-          t("register.validate.formatPassword")
+          t("register.validate.formatPassword"),
         ),
       firstName: Yup.string()
         .trim()
@@ -71,7 +71,7 @@ const Register = () => {
             const birthDate = parseISO(value);
             const today = new Date();
             return differenceInYears(today, birthDate) >= 13;
-          }
+          },
         ),
     });
   }, [t]);

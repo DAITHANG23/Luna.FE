@@ -21,7 +21,7 @@ const user = {
     return await apiRequest(
       `${baseURL}/deleteFavoriteConcept`,
       "DELETE",
-      formData
+      formData,
     );
   },
 
@@ -37,7 +37,7 @@ const user = {
     return await apiRequest(
       `${baseURL}/deleteCheckInConcept`,
       "DELETE",
-      formData
+      formData,
     );
   },
 };

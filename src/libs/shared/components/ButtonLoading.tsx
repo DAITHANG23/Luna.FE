@@ -37,14 +37,14 @@ export const ButtonLoading = ({
       className={clsx(
         sizeButton === "large" ? "w-full sm:w-auto sm:ml-3" : "sm:w-auto",
         className,
-        "relative inline-flex justify-center rounded-md bg-primary/80 px-2 py-2 text-sm font-semibold text-white shadow-xs hover:bg-primary/90"
+        "relative inline-flex justify-center rounded-md bg-primary/80 px-2 py-2 text-sm font-semibold text-white shadow-xs hover:bg-primary/90",
       )}
     >
       <p
         className={clsx(
           className,
           isLoading ? "opacity-20 " : "opacity-100",
-          " mx-2! text-sm"
+          " mx-2! text-sm",
         )}
       >
         {title}

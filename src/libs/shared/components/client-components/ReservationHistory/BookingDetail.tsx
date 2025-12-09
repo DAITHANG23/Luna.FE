@@ -48,7 +48,7 @@ export const BookingDetail = ({ item }: BookingDetailProps) => {
   const { mutateAsync: updateReservation } = useUpdateReservation();
   const concept = useMemo(() => {
     return CONCEPTS_ROUTES.find(
-      (c) => c.name === item?.restaurant?.concept?.name
+      (c) => c.name === item?.restaurant?.concept?.name,
     );
   }, [item]);
   const queryClient = useQueryClient();
@@ -132,7 +132,7 @@ export const BookingDetail = ({ item }: BookingDetailProps) => {
           <p
             className={cn(
               getStatusClass(item?.status || ""),
-              "text-xs font-semibold py-1 px-2.5 text-center h-6 rounded-lg max-w-28 xl:max-w-30"
+              "text-xs font-semibold py-1 px-2.5 text-center h-6 rounded-lg max-w-28 xl:max-w-30",
             )}
           >
             {t("status", { status: status?.label as StatusLabel })}

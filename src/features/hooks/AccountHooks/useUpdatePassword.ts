@@ -13,7 +13,7 @@ import { AxiosError } from "axios";
 import { useLocale } from "next-intl";
 
 const updatePasswordAccount = async (
-  formData: UpdatePasswordType
+  formData: UpdatePasswordType,
 ): Promise<LoginResponse> => {
   return await apiService.account.updatePassword({ formData });
 };

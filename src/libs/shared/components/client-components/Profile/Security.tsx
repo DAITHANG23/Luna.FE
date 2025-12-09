@@ -28,7 +28,7 @@ export const Security = () => {
         .max(20, t("security.validate.maxPassword"))
         .matches(
           REGEX_VALIDTATE_PASSWORD,
-          t("security.validate.formatPassword")
+          t("security.validate.formatPassword"),
         ),
       passwordCurrent: Yup.string()
         .trim()
@@ -37,7 +37,7 @@ export const Security = () => {
         .max(20, "Password must be max 20 characters!")
         .matches(
           REGEX_VALIDTATE_PASSWORD,
-          t("security.validate.formatPassword")
+          t("security.validate.formatPassword"),
         ),
       passwordConfirm: Yup.string()
         .trim()

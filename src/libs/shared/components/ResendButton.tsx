@@ -52,7 +52,7 @@ export const ResendButton = () => {
           timeLeft === 0
             ? "cursor-pointer opacity-100 hover:underline"
             : "cursor-not-allowed opacity-600",
-          "text-primary text-base"
+          "text-primary text-base",
         )}
       >
         {timeLeft === 0
