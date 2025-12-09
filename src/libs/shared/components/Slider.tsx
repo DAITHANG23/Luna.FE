@@ -35,7 +35,7 @@ export const Slider = ({
         {...settings}
         className={cn(
           isSmallSize ? "w-[90%] xl:w-[80%]! " : "w-full",
-          "text-center items-center m-auto"
+          "text-center items-center m-auto",
         )}
       >
         {coverImages &&
@@ -48,7 +48,7 @@ export const Slider = ({
                     ? "h-[300px] sm:h-[300px] lg:h-[550px] border-2 border-primary/20 shadow-lg hover:shadow-xl transition-all duration-300 rounded-md mb-10"
                     : "h-[219px] sm:h-[300px] lg:h-screen",
 
-                  "w-full flex items-center justify-center overflow-hidden relative"
+                  "w-full flex items-center justify-center overflow-hidden relative",
                 )}
               >
                 <Image
@@ -71,7 +71,7 @@ export const Slider = ({
                   isDishesCarousel
                     ? "w-full! h-[500px]!"
                     : "w-full h-[200px] sm:h-[300px] lg:h-[550px]",
-                  "flex items-center justify-center overflow-hidden relative border-2 border-primary/20 shadow-lg hover:shadow-xl transition-all duration-300 rounded-md mb-10"
+                  "flex items-center justify-center overflow-hidden relative border-2 border-primary/20 shadow-lg hover:shadow-xl transition-all duration-300 rounded-md mb-10",
                 )}
               >
                 <Image

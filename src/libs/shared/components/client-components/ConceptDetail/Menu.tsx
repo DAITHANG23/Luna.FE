@@ -45,7 +45,7 @@ const Menu = ({ dishes, conceptName }: MenuProps) => {
       alacarteDishes[0]?.category ||
         buffetDishes[0]?.name ||
         comboDishes[0]?.name ||
-        ""
+        "",
     );
   }, [alacarteDishes, buffetDishes, comboDishes]);
 
@@ -53,7 +53,7 @@ const Menu = ({ dishes, conceptName }: MenuProps) => {
     const selectedDish =
       dishes &&
       dishes.find(
-        (d) => d.category === chooseItemDishes || d.name === chooseItemDishes
+        (d) => d.category === chooseItemDishes || d.name === chooseItemDishes,
       );
 
     return selectedDish?.items && selectedDish?.items?.length > 0
@@ -149,7 +149,7 @@ const Menu = ({ dishes, conceptName }: MenuProps) => {
                         openSideBar === index
                           ? "border-primary text-primary"
                           : " text-primary-text",
-                        "border-b-2 flex justify-between  cursor-pointer py-3 items-center text-lg font-bold"
+                        "border-b-2 flex justify-between  cursor-pointer py-3 items-center text-lg font-bold",
                       )}
                       onClick={() => onToggleSidebar(index, dishes)}
                     >
@@ -181,7 +181,7 @@ const Menu = ({ dishes, conceptName }: MenuProps) => {
                               chooseItemDishes === itemDishes
                                 ? "text-primary"
                                 : "text-primary-text",
-                              "p-2 cursor-pointer font-bold hover:text-primary text-base"
+                              "p-2 cursor-pointer font-bold hover:text-primary text-base",
                             )}
                             onClick={() => onChooseItem(itemDishes)}
                           >
@@ -276,7 +276,7 @@ const Menu = ({ dishes, conceptName }: MenuProps) => {
                         onClick={() => {
                           setIsOpenImage(true);
                           setImageSrc(
-                            (dishesList as Dish)?.image || "/favicon.ico"
+                            (dishesList as Dish)?.image || "/favicon.ico",
                           );
                         }}
                       />

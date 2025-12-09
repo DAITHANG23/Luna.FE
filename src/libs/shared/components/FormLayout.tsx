@@ -54,7 +54,7 @@ export const FormLayout = ({ children }: FormLayoutProps) => {
         <div
           className={clsx(
             isResetPasswordPage ? "mt-[120px]" : "mt-2",
-            "w-full max-w-md"
+            "w-full max-w-md",
           )}
         >
           {children}

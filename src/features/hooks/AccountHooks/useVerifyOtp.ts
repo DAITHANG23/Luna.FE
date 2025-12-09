@@ -13,7 +13,7 @@ import { ACCOUNT_REGISTER_QUERY_KEY } from "@/app/constants/queryKeys";
 import { useRouter } from "@/libs/i18n/navigation";
 
 const verifyOtpRegister = async (
-  formData: UserLogin
+  formData: UserLogin,
 ): Promise<LoginResponse> => {
   return await apiService.account.verifyOtp({ formData });
 };

@@ -11,7 +11,7 @@ import { useEffect, useMemo } from "react";
 const AuthInitializer = () => {
   const dispatch = useAppDispatch();
   const allNotifications = useAppSelector(
-    (state) => state.masterData.allNotifications
+    (state) => state.masterData.allNotifications,
   );
 
   const allNotificationsUnRead = useMemo(() => {
@@ -45,7 +45,7 @@ const AuthInitializer = () => {
     dispatch(
       unReadNotifications({
         unReadNotificationsQuantity: allNotificationsUnRead.length,
-      })
+      }),
     );
   }, [dispatch, allNotificationsUnRead]);
 

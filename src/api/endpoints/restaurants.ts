@@ -10,12 +10,12 @@ const baseURL = `${API_VERSION_V1}/restaurants`;
 const restaurants = {
   getRestaurantsOfConcept: async (
     conceptId: string,
-    params?: RestaurantSearchParams
+    params?: RestaurantSearchParams,
   ): Promise<AllRestaurantResponseOfConcept> => {
     const query = buildQueryString(params);
     return await apiRequest(
       `${baseURL}/restaurantsOfConcept/${conceptId}${query}`,
-      "GET"
+      "GET",
     );
   },
 };

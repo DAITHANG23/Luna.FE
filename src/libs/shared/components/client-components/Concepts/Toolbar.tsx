@@ -90,7 +90,7 @@ export const Toolbar = ({ onFilterChange, filter }: ToolbarProps) => {
     (event: ChangeEvent<HTMLInputElement>) => {
       onFilterChange({ ...filter, searchText: event.target.value });
     },
-    1000
+    1000,
   );
 
   const handleStarChange = (value: string) => {

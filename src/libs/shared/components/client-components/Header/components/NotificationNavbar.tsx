@@ -20,7 +20,7 @@ const NotificationNavbar = ({
   const router = useRouter();
   const t = useTranslations("Notification");
   const allNotifications = useAppSelector(
-    (state) => state.masterData.allNotifications
+    (state) => state.masterData.allNotifications,
   )?.data.data;
   const [hasMounted, setHasMounted] = useState(false);
 
@@ -37,7 +37,7 @@ const NotificationNavbar = ({
 
       dispatch(getAllNotifications());
     },
-    [dispatch]
+    [dispatch],
   );
 
   if (!hasMounted) return null;

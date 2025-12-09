@@ -21,11 +21,11 @@ interface BookingProps {
 const Map = dynamic(
   () =>
     import("@/libs/shared/components/client-components/Map/Map").then(
-      (mod) => mod.Map
+      (mod) => mod.Map,
     ),
   {
     ssr: false,
-  }
+  },
 );
 
 export const Booking = ({ conceptDataId }: BookingProps) => {
@@ -72,7 +72,7 @@ export const Booking = ({ conceptDataId }: BookingProps) => {
           variant: "info",
           anchorOrigin: { vertical: "top", horizontal: "right" },
           autoHideDuration: 120000,
-        }
+        },
       );
     }
   }, [
@@ -116,7 +116,7 @@ export const Booking = ({ conceptDataId }: BookingProps) => {
     (event: ChangeEvent<HTMLInputElement>) => {
       setSearchText(event.target.value);
     },
-    1000
+    1000,
   );
   if (!mounted) return null;
 

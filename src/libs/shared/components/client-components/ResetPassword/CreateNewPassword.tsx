@@ -46,7 +46,7 @@ export const CreateNewPassword = ({ id }: CreateNewPasswordProps) => {
         .max(20, t("resetPassword.validate.maxPassword"))
         .matches(
           REGEX_VALIDTATE_PASSWORD,
-          t("resetPassword.validate.formatPassword")
+          t("resetPassword.validate.formatPassword"),
         ),
       passwordConfirm: Yup.string()
         .trim()
@@ -59,7 +59,7 @@ export const CreateNewPassword = ({ id }: CreateNewPasswordProps) => {
     (otp: string) => {
       setUserOtp(otp);
     },
-    [setUserOtp]
+    [setUserOtp],
   );
 
   const handleSubmit = (formData: ForgotPasswordType) => {

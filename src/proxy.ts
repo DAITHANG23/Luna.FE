@@ -28,7 +28,7 @@ export async function proxy(request: NextRequest) {
   const requestHeaders = new Headers(request.headers);
 
   const isProtected = protectedRoutes.some((route) =>
-    pathname.startsWith(route)
+    pathname.startsWith(route),
   );
 
   if (!sessionId && isProtected) {

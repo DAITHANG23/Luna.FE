@@ -50,7 +50,7 @@ const NavbarConcept = ({ params }: NavbarConceptProps) => {
                 itemNavbar === item.href
                   ? "text-primary underline!"
                   : "text-primary-text dark:text-gray-300 hover:bg-primary dark:hover:bg-gray-700 hover:text-white",
-                "rounded-md px-3 py-2 text-sm font-medium flex items-center justify-center"
+                "rounded-md px-3 py-2 text-sm font-medium flex items-center justify-center",
               )}
               onClick={() => setItemNavbar(item.href)}
             >

@@ -50,7 +50,7 @@ export const VerifyOTP = () => {
     (otp: string) => {
       setUserOtp(otp);
     },
-    [setUserOtp]
+    [setUserOtp],
   );
 
   const handleSubmit = (formData: ForgotPasswordType) => {

@@ -32,7 +32,7 @@ export const FavoriteRestaurants = () => {
 
       router.push(`/${locale}/${route.route}`);
     },
-    [router, locale]
+    [router, locale],
   );
 
   if (isLoadingFavoriteConceptsData)

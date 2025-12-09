@@ -67,7 +67,7 @@ export const Concepts = () => {
 
       router.push(`/${locale}/${route.route}`);
     },
-    [router, locale]
+    [router, locale],
   );
 
   return (

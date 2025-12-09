@@ -54,7 +54,7 @@ export const SelectField = ({
         <ListboxButton
           className={cn(
             classNameButton,
-            "relative flex items-center border border-gray-300 rounded-md bg-gray-50 cursor-pointer dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white grid w-full cursor-default grid-cols-1 rounded-md bg-white p-2 text-left text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+            "relative flex items-center border border-gray-300 rounded-md bg-gray-50 cursor-pointer dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white grid w-full cursor-default grid-cols-1 rounded-md bg-white p-2 text-left text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6",
           )}
         >
           {startIcon && (
@@ -65,7 +65,7 @@ export const SelectField = ({
           <span
             className={cn(
               startIcon && "pl-8",
-              "col-start-1 row-start-1 flex items-center gap-3 pr-6 h-[20px]"
+              "col-start-1 row-start-1 flex items-center gap-3 pr-6 h-[20px]",
             )}
           >
             <span className="block text-primary-text font-normal text-base">

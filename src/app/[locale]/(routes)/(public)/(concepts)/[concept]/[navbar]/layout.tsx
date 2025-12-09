@@ -2,7 +2,7 @@ import { Locale } from "next-intl";
 import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata(
-  props: Omit<LayoutProps<"/[locale]/[concept]/[navbar]">, "children">
+  props: Omit<LayoutProps<"/[locale]/[concept]/[navbar]">, "children">,
 ) {
   const { locale, concept, navbar } = await props.params;
   const t = await getTranslations({

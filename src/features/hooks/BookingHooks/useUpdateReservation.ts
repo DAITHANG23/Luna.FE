@@ -11,7 +11,7 @@ import {
 } from "@/app/constants/queryKeys";
 
 const updateReservation = async (
-  formData: BookingModel
+  formData: BookingModel,
 ): Promise<BookingResponse> => {
   return await apiService.bookings.updateReservation({ formData });
 };

@@ -29,7 +29,7 @@ export const Modal = ({
             transition
             className={cn(
               classNameContainer,
-              "relative transform overflow-hidden rounded-lg p-4 bg-white dark:bg-background text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 w-[90%] lg:max-w-3xl data-closed:sm:translate-y-0 data-closed:sm:scale-95"
+              "relative transform overflow-hidden rounded-lg p-4 bg-white dark:bg-background text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 w-[90%] lg:max-w-3xl data-closed:sm:translate-y-0 data-closed:sm:scale-95",
             )}
           >
             {children}

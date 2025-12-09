@@ -43,7 +43,7 @@ export const FieldInput = ({
       <label
         className={clsx(
           isError ? "text-error" : "text-primary-text",
-          "text-sm font-medium"
+          "text-sm font-medium",
         )}
         htmlFor={name}
       >
@@ -68,7 +68,7 @@ export const FieldInput = ({
               ? "border border-red-500 dark:border-red-500"
               : "border border-gray-300 dark:border-gray-500",
             classNameInput,
-            "focus:outline-none data-focus:outline-2 data-focus:-outline-offset-2 data-focus:outline-black/25 dark:data-focus:outline-white/25"
+            "focus:outline-none data-focus:outline-2 data-focus:-outline-offset-2 data-focus:outline-black/25 dark:data-focus:outline-white/25",
           )}
           type={
             !isPasswordFied

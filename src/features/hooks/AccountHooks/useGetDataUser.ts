@@ -12,7 +12,7 @@ const getDataUser = async (): Promise<UserResponse> => {
 
 const useGetDataUser = () => {
   const sessionIdState = useAppSelector(
-    (state: RootState) => state.auth.sessionId
+    (state: RootState) => state.auth.sessionId,
   );
 
   const {

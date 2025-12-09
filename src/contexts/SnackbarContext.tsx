@@ -8,7 +8,7 @@ const TransSnackbarProvider = ({ children }: PropsWithChildren<unknown>) => {
     (key: SnackbarKey) => () => {
       notistackRef.current?.closeSnackbar(key);
     },
-    []
+    [],
   );
   return (
     <SnackbarProvider

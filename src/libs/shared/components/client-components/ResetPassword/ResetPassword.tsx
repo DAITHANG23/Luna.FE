@@ -15,7 +15,7 @@ import { useRouter } from "@/libs/i18n/navigation";
 const FieldInput = dynamic(
   () =>
     import("@/libs/shared/components/FieldInput").then((mod) => mod.FieldInput),
-  { ssr: false }
+  { ssr: false },
 );
 export const ResetPassword = () => {
   const router = useRouter();

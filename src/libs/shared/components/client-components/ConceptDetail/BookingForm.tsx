@@ -51,7 +51,7 @@ const BookingForm = ({
   const restaurant = useMemo(() => {
     if (chooseRestaurant)
       return restaurantsData?.data.restaurants.find(
-        (item) => item.name === chooseRestaurant
+        (item) => item.name === chooseRestaurant,
       );
   }, [chooseRestaurant, restaurantsData]);
 
@@ -85,7 +85,7 @@ const BookingForm = ({
         .required(tTranslation(`login.validate.email`))
         .matches(
           REGEX_VALIDATE_EMAIL,
-          tTranslation(`login.validate.invalidEmail`)
+          tTranslation(`login.validate.invalidEmail`),
         ),
       fullName: Yup.string()
         .trim()

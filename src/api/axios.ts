@@ -21,13 +21,13 @@ const MAX_RETRIES = 3;
 
 axiosWrapper.interceptors.request.use(
   async (
-    config: CustomAxiosRequestConfig
+    config: CustomAxiosRequestConfig,
   ): Promise<CustomAxiosRequestConfig> => {
     const token = localStorage.getItem("sessionId");
 
     config.headers.Authorization = token ? `Bearer ${token}` : "";
     return config;
-  }
+  },
 );
 
 axiosWrapper.interceptors.response.use(
@@ -90,5 +90,5 @@ axiosWrapper.interceptors.response.use(
     }
 
     return Promise.reject(error);
-  }
+  },
 );

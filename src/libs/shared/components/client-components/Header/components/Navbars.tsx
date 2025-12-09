@@ -80,12 +80,12 @@ const Navbars = () => {
   const accountInfo = useAppSelector((state) => state.auth.accountInfo);
 
   const unReadNotificationsQuantities = useAppSelector(
-    (state) => state.masterData.unReadNotificationsQuantity
+    (state) => state.masterData.unReadNotificationsQuantity,
   );
 
   const { setIsOpenDialog } = useAppContext();
   const sessionIdState = useAppSelector(
-    (state: RootState) => state.auth.sessionId
+    (state: RootState) => state.auth.sessionId,
   );
   const [open, setOpen] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
@@ -108,7 +108,7 @@ const Navbars = () => {
         dispatch(
           unReadNotifications({
             unReadNotificationsQuantity: unReadNotificationsQuantities + 1,
-          })
+          }),
         );
         dispatch(getAllNotifications());
         queryClient.invalidateQueries({ queryKey: [GET_BOOKING_KEY] });
@@ -143,7 +143,7 @@ const Navbars = () => {
     <Disclosure
       as="nav"
       className={clsx(
-        "fixed top-0 left-0 p-0 sm:p-4 lg:p-5 w-full bg-white dark:bg-gray-800 shadow-glass z-10"
+        "fixed top-0 left-0 p-0 sm:p-4 lg:p-5 w-full bg-white dark:bg-gray-800 shadow-glass z-10",
       )}
     >
       <div className="sm:w-[90%] mx-auto max-w-7xl lg:px-8 content-center text-center">
@@ -201,7 +201,7 @@ const Navbars = () => {
                       itemNavbar === item.href || itemNavbar === item.hrefVnLang
                         ? "bg-primary dark:bg-gray-900 text-white"
                         : "text-primary-text dark:text-gray-300 hover:bg-primary dark:hover:bg-gray-700 hover:text-white",
-                      "rounded-md px-3 py-2 text-sm font-medium flex items-center justify-center"
+                      "rounded-md px-3 py-2 text-sm font-medium flex items-center justify-center",
                     )}
                     onClick={() => setItemNavbar(item.href as typeof pathname)}
                   >
@@ -332,7 +332,7 @@ const Navbars = () => {
                 itemNavbar === item.href || itemNavbar === item.hrefVnLang
                   ? "bg-primary dark:bg-gray-900 text-white"
                   : "text-primary-text dark:text-gray-300 hover:bg-primary dark:hover:bg-gray-700 hover:text-white",
-                "block rounded-md px-3 py-2 text-base font-medium "
+                "block rounded-md px-3 py-2 text-base font-medium ",
               )}
             >
               <Link

@@ -13,7 +13,7 @@ import { CREATE_NEW_PASSWORD_QUERY_KEY } from "@/app/constants/queryKeys";
 import { useParams, useRouter } from "next/navigation";
 
 const createNewPassword = (
-  formData: ForgotPasswordType
+  formData: ForgotPasswordType,
 ): Promise<LoginResponse> => {
   return apiService.account.createNewPassword({ formData });
 };
@@ -32,7 +32,7 @@ const useResetPassword = () => {
     mutationKey: [CREATE_NEW_PASSWORD_QUERY_KEY],
     onSuccess: async () => {
       showSuccess(
-        "Change password successful! Please login your account again!"
+        "Change password successful! Please login your account again!",
       );
       localStorage.removeItem("emailResetPassword");
       router.push(`/${params.locale}${ROUTES.LOGIN.INDEX}`);

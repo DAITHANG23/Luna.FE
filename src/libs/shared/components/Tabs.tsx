@@ -29,7 +29,7 @@ export const Tabs = ({ tabList, setActiveTab, activeTab }: TablistProps) => {
                   "transition-all duration-300 ease-in-out",
                   activeTab === tab.name
                     ? "text-primary border-primary text-primary border-primary"
-                    : ""
+                    : "",
                 )}
               >
                 {tab.icon}{" "}

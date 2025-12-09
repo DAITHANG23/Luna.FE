@@ -22,7 +22,7 @@ export const Stepper = ({
   labelMap,
 }: StepperProps) => {
   const historyMap = Object.fromEntries(
-    statusHistory.map((s) => [s.status, s])
+    statusHistory.map((s) => [s.status, s]),
   );
   const currentIndex = statusHistory.length - 1;
 
@@ -73,7 +73,7 @@ export const Stepper = ({
                     isCurrent && step !== "COMPLETED" && !isCancelled,
                   "bg-gray-200 text-gray-500 border-gray-300": !isDone,
                   "bg-red-500 text-white boder-red-500": isCancelled,
-                }
+                },
               )}
             >
               {StepperIcon(step)}

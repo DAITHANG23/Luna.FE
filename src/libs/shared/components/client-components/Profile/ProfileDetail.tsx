@@ -61,7 +61,7 @@ export const ProfileDetail = ({ userData, isLoading }: ProfileDetailProps) => {
   const [isOpenModalUpdate, setIsOpenModalUpdate] = useState(false);
   const [isOpenModalDelete, setIsOpenModalDelete] = useState(false);
   const [previewImage, setPreviewImage] = useState<string>(
-    userData?.data.data.avatarUrl || DEFAULT_AVATAR
+    userData?.data.data.avatarUrl || DEFAULT_AVATAR,
   );
 
   useEffect(() => {
@@ -124,7 +124,7 @@ export const ProfileDetail = ({ userData, isLoading }: ProfileDetailProps) => {
             const birthDate = parseISO(value);
             const today = new Date();
             return differenceInYears(today, birthDate) >= 13;
-          }
+          },
         ),
     });
   }, [t]);

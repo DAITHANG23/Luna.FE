@@ -24,11 +24,11 @@ export const NotificationMain = ({ children, id }: NotificationMainProps) => {
 
   const t = useTranslations("Notification");
   const allNotifications = useAppSelector(
-    (state) => state.masterData.allNotifications
+    (state) => state.masterData.allNotifications,
   )?.data.data;
 
   const unReadNotificationsQuantities = useAppSelector(
-    (state) => state.masterData.unReadNotificationsQuantity
+    (state) => state.masterData.unReadNotificationsQuantity,
   );
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
@@ -45,7 +45,7 @@ export const NotificationMain = ({ children, id }: NotificationMainProps) => {
         query: { noti_selected: id },
       });
     },
-    [router]
+    [router],
   );
 
   const dispatch = useAppDispatch();
@@ -55,7 +55,7 @@ export const NotificationMain = ({ children, id }: NotificationMainProps) => {
   const handleAfterDeleteNotification = useCallback(
     (id: string) => {
       const index = allNotifications?.findIndex(
-        (notification: NotificationModel) => notification._id === id
+        (notification: NotificationModel) => notification._id === id,
       );
       const newList = allNotifications?.filter((n) => n._id !== id);
 
@@ -69,12 +69,12 @@ export const NotificationMain = ({ children, id }: NotificationMainProps) => {
                 pathname: `${ROUTES.NOTIFICATIONS.INDEX}`,
                 query: { noti_selected: id },
               }
-            : ROUTES.NOTIFICATIONS.INDEX
+            : ROUTES.NOTIFICATIONS.INDEX,
         );
         checkReadNotification(nextIdNotifcation || "");
       }
     },
-    [allNotifications, selectedId, router, checkReadNotification]
+    [allNotifications, selectedId, router, checkReadNotification],
   );
 
   const handleDeleteNotification = useCallback(
@@ -88,7 +88,7 @@ export const NotificationMain = ({ children, id }: NotificationMainProps) => {
         console.error("Failed to delete notification:", error);
       }
     },
-    [dispatch, handleAfterDeleteNotification]
+    [dispatch, handleAfterDeleteNotification],
   );
 
   const NotificationsNavbar = useMemo(
@@ -123,7 +123,7 @@ export const NotificationMain = ({ children, id }: NotificationMainProps) => {
       selectedId,
       t,
       handleClick,
-    ]
+    ],
   );
   const memoizedChildren = useMemo(() => children, [children]);
 
