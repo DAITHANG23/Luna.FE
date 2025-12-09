@@ -10,18 +10,18 @@ import { useQuery } from "@tanstack/react-query";
 
 const getRestaurantsOfConcept = async (
   conceptId: string,
-  params: RestaurantSearchParams
+  params: RestaurantSearchParams,
 ): Promise<AllRestaurantResponseOfConcept> => {
   const paramsConfig = cleanEmptyFields(params) as RestaurantSearchParams;
   return await apiService.restaurants.getRestaurantsOfConcept(
     conceptId,
-    paramsConfig
+    paramsConfig,
   );
 };
 
 const useGetRestaurantsOfConcept = (
   conceptId: string,
-  params: RestaurantSearchParams
+  params: RestaurantSearchParams,
 ) => {
   const {
     data: restaurantsData,

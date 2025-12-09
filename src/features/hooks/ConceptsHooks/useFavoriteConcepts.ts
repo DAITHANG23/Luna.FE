@@ -10,7 +10,7 @@ import {
 } from "@/app/constants/queryKeys";
 
 const conceptsFavorite = (
-  formData: FavoriteConcepts
+  formData: FavoriteConcepts,
 ): Promise<UserResponse> => {
   return apiService.user.favoriteConcepts({ formData });
 };
@@ -27,7 +27,7 @@ const useFavoriteConcepts = () => {
       onError: (err: AxiosError<ErrorResponse>) => {
         showError(err.message);
       },
-    }
+    },
   );
 };
 

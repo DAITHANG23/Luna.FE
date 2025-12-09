@@ -5,7 +5,7 @@ type CallbackFunction<T extends unknown[]> = (...args: T) => void;
 
 export function useDebouncedCallback<T extends unknown[]>(
   callbackFunc: CallbackFunction<T>,
-  wait: number
+  wait: number,
 ) {
   // track args & timeout handle between calls
   const argsRef = useRef<T | null>(null);

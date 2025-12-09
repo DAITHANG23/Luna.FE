@@ -6,7 +6,7 @@ const apiRequest = async <T>(
   url: string,
   method: "GET" | "POST" | "PUT" | "PATCH" | "DELETE",
   data?: unknown,
-  config?: AxiosRequestConfig
+  config?: AxiosRequestConfig,
 ): Promise<T> => {
   try {
     const response = await axiosWrapper({

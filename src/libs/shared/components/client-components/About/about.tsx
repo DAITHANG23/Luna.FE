@@ -12,18 +12,18 @@ import { useTranslations } from "next-intl";
 const Map = dynamic(
   () =>
     import("@/libs/shared/components/client-components/Map/Map").then(
-      (mod) => mod.Map
+      (mod) => mod.Map,
     ),
   {
     ssr: false,
-  }
+  },
 );
 export const About = () => {
   const t = useTranslations("Home");
 
   // const mounted = useMounted();
   const restaurantsData = useAppSelector(
-    (state) => state.masterData?.allRestaurants
+    (state) => state.masterData?.allRestaurants,
   );
 
   const locationsRestaurantsList = useMemo(() => {

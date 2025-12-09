@@ -6,7 +6,7 @@ export const numberWithCommas = (
   number = "",
   digits = 2,
   showZeroDecimal = false,
-  showFullDigit = false
+  showFullDigit = false,
 ) => {
   if (!number) return showZeroDecimal ? parseFloat("0").toFixed(digits) : "0";
   const textNumber = showFullDigit
@@ -29,7 +29,7 @@ export const formatCurrency = (
   currency = "",
   digits = 2,
   isRound = false,
-  showZeroDecimal = false
+  showZeroDecimal = false,
 ) => {
   const finalValue = isRound ? roundAmount(value) : value;
   return ` ${numberWithCommas(String(finalValue), digits, showZeroDecimal)} ${

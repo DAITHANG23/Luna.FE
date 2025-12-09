@@ -144,7 +144,7 @@ export const FormDetail = ({
               className={cn(
                 chooseNotes.includes(item.value) &&
                   "border-none! !bg-primary text-white!",
-                "border border-gray-500 rounded-full px-4 py-1 bg-gray-200 text-sm hover:scale-105"
+                "border border-gray-500 rounded-full px-4 py-1 bg-gray-200 text-sm hover:scale-105",
               )}
             >
               {item.label}

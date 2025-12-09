@@ -11,6 +11,6 @@ export const renderWithProviders = (ui: React.ReactElement) => {
   return render(
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>{ui}</QueryClientProvider>
-    </Provider>
+    </Provider>,
   );
 };

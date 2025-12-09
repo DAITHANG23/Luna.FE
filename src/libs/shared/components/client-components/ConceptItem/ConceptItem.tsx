@@ -35,18 +35,18 @@ const ConceptItem = ({
 
   const queryClient = useQueryClient();
   const isFavoriteConceptSelected = userData?.data.data.favorites?.includes(
-    concept._id
+    concept._id,
   );
 
   const isCheckInConceptSelected =
     userData?.data.data.checkInConcepts?.includes(concept._id);
 
   const [isFavoriteConcept, setIsFavoriteConcept] = useState(
-    isFavoriteConceptSelected
+    isFavoriteConceptSelected,
   );
 
   const [isCheckedInConcept, setIsCheckedInConcept] = useState(
-    isCheckInConceptSelected
+    isCheckInConceptSelected,
   );
 
   useEffect(() => {
@@ -99,7 +99,7 @@ const ConceptItem = ({
       refetch,
       favoriteConcepts,
       queryClient,
-    ]
+    ],
   );
 
   const handleClickCheckIn = useCallback(
@@ -120,7 +120,7 @@ const ConceptItem = ({
 
       setIsCheckedInConcept((prev) => !prev);
     },
-    [isCheckedInConcept, userData, refetch, checkInConcept, queryClient]
+    [isCheckedInConcept, userData, refetch, checkInConcept, queryClient],
   );
 
   return (

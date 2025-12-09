@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start -p 5000",
     "lint": "next lint",
-    "format": "prettier --write ./components/**/*.{ts,tsx} ./pages/**/*.{ts,tsx}",
+    "format": "prettier --write ./src/**/*.{ts,tsx}",
     "test": "echo \"⚠️ Test is disabled\" && exit 0",
     "test:watch": "jest --watch"
   },

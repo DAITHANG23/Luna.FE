@@ -33,7 +33,7 @@ export const VisitedRestaurants = () => {
 
       router.push(`/${locale}/${route.route}`);
     },
-    [router, locale]
+    [router, locale],
   );
 
   if (isLoadingCheckInConceptsData)

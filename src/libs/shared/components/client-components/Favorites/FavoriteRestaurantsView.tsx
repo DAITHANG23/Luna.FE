@@ -15,7 +15,7 @@ export const FavoriteConceptsView = ({
 }: FavoriteConceptsViewProps) => {
   const favoriteImages = useMemo(
     () => data?.map((i) => i.imageCover) ?? [],
-    [data]
+    [data],
   );
 
   const t = useTranslations("Concept");

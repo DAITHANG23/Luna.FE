@@ -22,7 +22,7 @@ export const ConceptsList = ({ isBannerWidth }: ConceptsListProps) => {
         className={cn(
           isBannerWidth &&
             "xl:w-[70%]! border-b-4 border-b-gray-300 sm:border-b-0 sm:border-r-4 dark:border-r-gray-300 mx-0!",
-          "not-prose w-full p-6 xl:w-[60%] mt-[50px] lg:mt-[100px] mb-[50px] mx-auto dark:bg-gray-700 rounded-lg"
+          "not-prose w-full p-6 xl:w-[60%] mt-[50px] lg:mt-[100px] mb-[50px] mx-auto dark:bg-gray-700 rounded-lg",
         )}
         style={{ fontFamily: "Inter" }}
       >
@@ -42,7 +42,7 @@ export const ConceptsList = ({ isBannerWidth }: ConceptsListProps) => {
                   i.type === "OTHER"
                     ? "xl:grid-cols-4 2xl:w-[70%] sm:w-[80%]"
                     : "xl:grid-cols-3 2xl:w-[60%] sm:w-[90%]",
-                  "grid grid-cols-2 gap-4 w-full xl:h-auto h-[150px] p-1 px-4 sm:border-b sm:border-dashed sm:border-gray-300"
+                  "grid grid-cols-2 gap-4 w-full xl:h-auto h-[150px] p-1 px-4 sm:border-b sm:border-dashed sm:border-gray-300",
                 )}
               >
                 {i.items.map((restaurant) => {

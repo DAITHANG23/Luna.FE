@@ -7,7 +7,7 @@ import { cleanEmptyFields } from "@/utils";
 import { useQuery } from "@tanstack/react-query";
 
 const getAllnotifications = async (
-  params: GetNotificationsParams
+  params: GetNotificationsParams,
 ): Promise<AllNotificationResponse> => {
   const paramsConfig = cleanEmptyFields(params);
 

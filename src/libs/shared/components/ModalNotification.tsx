@@ -49,7 +49,7 @@ export const ModalNotification = ({
                       : type === "delete"
                         ? "bg-red-100"
                         : "bg-yellow-100",
-                    "mx-auto flex size-12 shrink-0 items-center justify-center rounded-full  sm:mx-0 sm:size-10"
+                    "mx-auto flex size-12 shrink-0 items-center justify-center rounded-full  sm:mx-0 sm:size-10",
                   )}
                 >
                   {icon}

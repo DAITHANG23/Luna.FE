@@ -36,7 +36,7 @@ export const LanguageSelect = () => {
         router.replace({ pathname, params }, { locale: nextLocale });
       });
     },
-    [router, pathname, params]
+    [router, pathname, params],
   );
 
   return (
