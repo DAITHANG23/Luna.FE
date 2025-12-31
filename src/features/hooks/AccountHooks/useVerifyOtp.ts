@@ -1,8 +1,8 @@
 "use client";
 import {
   ErrorResponse,
-  LoginResponse,
   UserLogin,
+  VerifyOtpCreateAccountResponse,
 } from "@/@types/models/account";
 import apiService from "@/api/endpoints/index";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -14,7 +14,7 @@ import { useRouter } from "@/libs/i18n/navigation";
 
 const verifyOtpRegister = async (
   formData: UserLogin,
-): Promise<LoginResponse> => {
+): Promise<VerifyOtpCreateAccountResponse> => {
   return await apiService.account.verifyOtp({ formData });
 };
 const useVerifyOtp = () => {
@@ -22,15 +22,12 @@ const useVerifyOtp = () => {
   const { showError, showSuccess } = useNotification();
 
   const router = useRouter();
-  return useMutation<LoginResponse, AxiosError<ErrorResponse>, UserLogin>({
+  return useMutation<VerifyOtpCreateAccountResponse, AxiosError<ErrorResponse>, UserLogin>({
     mutationFn: verifyOtpRegister,
-    onSuccess: (res) => {
+    onSuccess: () => {
       showSuccess("Verify successful, your account is actived!");
       localStorage.removeItem("resendOtp");
-      const sessionId = res?.sessionId;
-      if (sessionId) {
-        localStorage.setItem("sessionId", sessionId);
-      }
+      
       queryClient.invalidateQueries({ queryKey: [ACCOUNT_REGISTER_QUERY_KEY] });
       router.push(ROUTES.LOGIN.INDEX);
     },

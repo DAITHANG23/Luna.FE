@@ -29,6 +29,10 @@ export interface LoginResponse {
   status: string;
 }
 
+export interface VerifyOtpCreateAccountResponse {
+  status: string;
+}
+
 export interface UserResponse {
   data: { data: UserModel };
   status: string;
