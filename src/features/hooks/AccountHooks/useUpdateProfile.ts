@@ -19,7 +19,7 @@ const useUpdateProfile = () => {
   const { showError, showSuccess } = useNotification();
   const router = useRouter();
   const searchParams = useSearchParams();
-  const from = decodeURIComponent(searchParams.get("from") || "/");
+  const from = decodeURIComponent(searchParams.get("from") || "");
   return useMutation<UserResponse, AxiosError<ErrorResponse>, UserLogin>({
     mutationFn: updateAccount,
     onSuccess: () => {
