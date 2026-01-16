@@ -10,7 +10,7 @@ import { ROUTES } from "@/constants";
 import useNotification from "@/features/hooks/useNotification";
 import { AxiosError } from "axios";
 import { ACCOUNT_REGISTER_QUERY_KEY } from "@/app/constants/queryKeys";
-import { useRouter } from "@/libs/i18n/navigation";
+import { useRouter } from "@/libs/next-intl/navigation";
 
 const verifyOtpRegister = async (
   formData: UserLogin,

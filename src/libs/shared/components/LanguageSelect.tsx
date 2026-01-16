@@ -1,7 +1,7 @@
 "use client";
 import { languageList } from "@/constants";
 import { UK_FLAG, VN_FLAG } from "@/constants";
-import { usePathname, useRouter } from "@/libs/i18n/navigation";
+import { usePathname, useRouter } from "@/libs/next-intl/navigation";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { Locale, useTranslations } from "next-intl";
 import Image from "next/image";

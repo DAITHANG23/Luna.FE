@@ -25,32 +25,6 @@ if (typeof window !== "undefined" && !window.matchMedia) {
   });
 }
 
-jest.mock("i18next", () => ({
-  __esModule: true,
-  default: {
-    use: () => ({
-      use: () => ({
-        use: () => ({
-          init: jest.fn(),
-        }),
-      }),
-    }),
-  },
-}));
-
-jest.mock("react-i18next", () => ({
-  useTranslation: () => ({
-    t: (key: string) => key,
-    ready: true,
-    i18n: {
-      changeLanguage: () => new Promise(() => {}),
-      language: "en",
-      supportedLngs: ["en", "vn"],
-    },
-  }),
-  I18nextProvider: ({ children }: { children: React.ReactNode }) => children,
-}));
-
 jest.mock("next/navigation", () => ({
   __esModule: true,
   useRouter: jest.fn(() => ({

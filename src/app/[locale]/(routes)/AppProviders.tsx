@@ -1,7 +1,7 @@
 "use client";
 
 import { ROUTES } from "@/constants";
-import { usePathname } from "@/libs/i18n/navigation";
+import { usePathname } from "@/libs/next-intl/navigation";
 import {
   authentication,
   getAccountInfo,

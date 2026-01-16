@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React from "react";
 import { ROUTES } from "@/constants";
-import { useRouter } from "@/libs/i18n/navigation";
+import { useRouter } from "@/libs/next-intl/navigation";
 
 export const InformationRestaurants = () => {
   const router = useRouter();

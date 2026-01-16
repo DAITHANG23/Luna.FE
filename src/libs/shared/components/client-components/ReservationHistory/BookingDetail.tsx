@@ -141,7 +141,7 @@ export const BookingDetail = ({ item }: BookingDetailProps) => {
         <div
           className="flex gap-4 text-black flex-col bg-gray-200 dark:bg-gray-400 p-4 rounded cursor-pointer"
           onClick={() => {
-            router.push(`/${locale}/${ROUTES.BOOKING.INDEX}/${item._id}`);
+            router.push(`/${locale}${ROUTES.BOOKING.INDEX}/${item._id}`);
           }}
         >
           <div className="flex flex-col lg:flex-row gap-4 lg:gap-20">
@@ -176,7 +176,7 @@ export const BookingDetail = ({ item }: BookingDetailProps) => {
             <div
               className="text-start bg-gray-200 dark:bg-gray-400 text-black "
               onClick={() => {
-                router.push(`/${locale}/${ROUTES.BOOKING.INDEX}/${item._id}`);
+                router.push(`/${locale}${ROUTES.BOOKING.INDEX}/${item._id}`);
               }}
             >
               <p className="text-sm font-bold">{t("note")}</p>

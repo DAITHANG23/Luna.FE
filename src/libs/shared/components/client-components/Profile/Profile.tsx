@@ -5,7 +5,7 @@ import useGetDataUser from "@/features/hooks/AccountHooks/useGetDataUser";
 import { Tabs } from "@/libs/shared/components";
 import { ProfileDetail } from "./ProfileDetail";
 import { Security } from "./Security";
-import { useRouter } from "@/libs/i18n/navigation";
+import { useRouter } from "@/libs/next-intl/navigation";
 import { useTranslations } from "next-intl";
 export type TypeOfTabs = "tabProfile" | "tabSecurity";
 const tabList: Array<{ name: TypeOfTabs; icon: JSX.Element }> = [

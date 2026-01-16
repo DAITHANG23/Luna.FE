@@ -3,7 +3,7 @@ import React from "react";
 import Navbars from "./components/Navbars";
 import NavbarsLogin from "./components/NavbarsLogin";
 import { ROUTES } from "@/constants";
-import { usePathname } from "@/libs/i18n/navigation";
+import { usePathname } from "@/libs/next-intl/navigation";
 
 const Header = () => {
   const pathname = usePathname();

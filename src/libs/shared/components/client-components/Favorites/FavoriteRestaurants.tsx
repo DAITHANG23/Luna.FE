@@ -7,7 +7,7 @@ import { CONCEPTS_ROUTES, ROUTES } from "@/constants";
 import { Spinner } from "@/libs/shared/components";
 import ConceptItem from "../ConceptItem/ConceptItem";
 import { useTranslations } from "next-intl";
-import { Link } from "@/libs/i18n/navigation";
+import { Link } from "@/libs/next-intl/navigation";
 import { useCallback } from "react";
 import { useLocale } from "next-intl";
 import { useRouter } from "next/navigation";

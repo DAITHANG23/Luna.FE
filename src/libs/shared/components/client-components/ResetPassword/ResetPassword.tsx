@@ -10,7 +10,7 @@ import { IllustrationDashboardImage } from "@/libs/assets";
 import { ButtonLoading, FormLayout } from "@/libs/shared/components";
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
-import { useRouter } from "@/libs/i18n/navigation";
+import { useRouter } from "@/libs/next-intl/navigation";
 
 const FieldInput = dynamic(
   () =>

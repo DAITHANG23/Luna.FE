@@ -11,12 +11,14 @@ import {
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { useAppContext } from "@/contexts/AppContext";
 import TogglesDarkMode from "../TogglesDarkMode";
-import { t } from "i18next";
+import { useTranslations } from "next-intl";
 
 const DialogSetting = () => {
   const { isOpenDialog, setIsOpenDialog } = useAppContext();
 
   const [open, setOpen] = useState(false);
+
+    const t = useTranslations("Translation");
 
   useEffect(() => {
     setOpen(isOpenDialog);

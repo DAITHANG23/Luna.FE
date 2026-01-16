@@ -1,7 +1,7 @@
 "use client";
 import { ROUTES } from "@/constants";
 import { AuthorizationImage } from "@/libs/assets";
-import { useRouter } from "@/libs/i18n/navigation";
+import { useRouter } from "@/libs/next-intl/navigation";
 import { useTranslations } from "next-intl";
 
 const AuthorizePage = () => {
