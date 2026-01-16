@@ -1,4 +1,4 @@
-import { routing } from "@/libs/i18n/routing";
+import { routing } from "@/libs/next-intl/routing";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { hasLocale, Locale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";

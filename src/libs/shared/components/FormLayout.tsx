@@ -1,7 +1,7 @@
 "use client";
 import { ROUTES } from "@/constants";
 import { RestaurantLogin } from "@/libs/assets";
-import { Link, usePathname } from "@/libs/i18n/navigation";
+import { Link, usePathname } from "@/libs/next-intl/navigation";
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
 import React from "react";

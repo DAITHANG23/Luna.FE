@@ -5,7 +5,7 @@ import { ROUTES } from "@/constants";
 import { Spinner } from "@/libs/shared/components";
 import { FavoriteConceptsView } from "./FavoriteRestaurantsView";
 import { EmptyFavoriteRestaurant } from "./EmptyFavoriteRestaurant";
-import { useRouter } from "@/libs/i18n/navigation";
+import { useRouter } from "@/libs/next-intl/navigation";
 
 export const Favorites = () => {
   const { conceptsData, isLoading: isLoadingGetFavoriteConcepts } =

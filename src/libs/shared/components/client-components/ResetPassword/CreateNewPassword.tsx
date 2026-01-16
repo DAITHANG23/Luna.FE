@@ -15,7 +15,7 @@ import {
   ResendButton,
 } from "@/libs/shared/components";
 import { useTranslations } from "next-intl";
-import { useRouter } from "@/libs/i18n/navigation";
+import { useRouter } from "@/libs/next-intl/navigation";
 interface CreateNewPasswordProps {
   id: string;
 }
