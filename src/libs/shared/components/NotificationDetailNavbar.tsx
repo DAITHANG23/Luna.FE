@@ -2,7 +2,7 @@
 import { NotificationModel } from "@/@types/models";
 import { ROUTES } from "@/constants";
 import useCheckReadNotification from "@/features/hooks/NotificationBooking/useCheckReadNotification";
-import { useRouter } from "@/libs/i18n/navigation";
+import { useRouter } from "@/libs/next-intl/navigation";
 import { cn, getStatusClass } from "@/utils";
 import { CheckBadgeIcon } from "@heroicons/react/24/outline";
 import { format } from "date-fns";

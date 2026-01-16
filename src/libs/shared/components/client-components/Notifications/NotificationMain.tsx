@@ -5,7 +5,7 @@ import { NotificationModel } from "@/@types/models";
 import apiService from "@/api/endpoints/index";
 import { ROUTES } from "@/constants";
 import useCheckReadNotification from "@/features/hooks/NotificationBooking/useCheckReadNotification";
-import { useRouter } from "@/libs/i18n/navigation";
+import { useRouter } from "@/libs/next-intl/navigation";
 import { useAppDispatch, useAppSelector } from "@/libs/redux/hooks";
 import { getAllNotifications } from "@/libs/redux/masterDataSlice";
 import { WrapperFilter } from "@/libs/shared/components";

@@ -54,7 +54,7 @@ import {
   GET_DATA_USER_QUERY_KEY,
 } from "@/app/constants/queryKeys";
 import { Locale, useTranslations } from "next-intl";
-import { useRouter } from "@/libs/i18n/navigation";
+import { useRouter } from "@/libs/next-intl/navigation";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 

@@ -9,7 +9,7 @@ import { Spinner } from "@/libs/shared/components";
 import { useCallback, useMemo } from "react";
 import ConceptItem from "../ConceptItem/ConceptItem";
 import { useLocale, useTranslations } from "next-intl";
-import { Link } from "@/libs/i18n/navigation";
+import { Link } from "@/libs/next-intl/navigation";
 import { useRouter } from "next/navigation";
 
 export const VisitedRestaurants = () => {

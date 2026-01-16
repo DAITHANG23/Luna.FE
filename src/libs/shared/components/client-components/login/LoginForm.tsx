@@ -12,7 +12,7 @@ import {
 import SocialLogin from "./SocialLogin";
 import { REGEX_VALIDATE_EMAIL, ROUTES } from "@/constants";
 import { useTranslations } from "next-intl";
-import { Link } from "@/libs/i18n/navigation";
+import { Link } from "@/libs/next-intl/navigation";
 
 const LoginForm = () => {
   const initialValues = {

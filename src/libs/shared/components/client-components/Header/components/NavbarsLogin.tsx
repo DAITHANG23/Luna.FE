@@ -1,6 +1,6 @@
 "use client";
 import { useAppContext } from "@/contexts/AppContext";
-import { Link } from "@/libs/i18n/navigation";
+import { Link } from "@/libs/next-intl/navigation";
 import { LanguageSelect } from "@/libs/shared/components";
 import { Cog6ToothIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";

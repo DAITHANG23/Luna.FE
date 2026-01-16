@@ -4,7 +4,7 @@ import apiService from "@/api/endpoints/index";
 import { useMutation } from "@tanstack/react-query";
 import useNotification from "@/features/hooks/useNotification";
 import { AxiosError } from "axios";
-import { useRouter } from "@/libs/i18n/navigation";
+import { useRouter } from "@/libs/next-intl/navigation";
 
 const registerAccount = async (formData: UserLogin) => {
   return await apiService.account.register({ formData });

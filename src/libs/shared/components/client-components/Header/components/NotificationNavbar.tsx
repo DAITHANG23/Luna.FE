@@ -8,7 +8,7 @@ import apiService from "@/api/endpoints/index";
 import { getAllNotifications } from "@/libs/redux/masterDataSlice";
 import NotificationDetailNavbar from "@/libs/shared/components/NotificationDetailNavbar";
 import { useTranslations } from "next-intl";
-import { useRouter } from "@/libs/i18n/navigation";
+import { useRouter } from "@/libs/next-intl/navigation";
 import { ROUTES } from "@/constants";
 
 interface NotificationNavbarProps {

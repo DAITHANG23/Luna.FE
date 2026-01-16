@@ -4,7 +4,7 @@ import { CalendarIcon } from "lucide-react";
 import { Spinner } from "@/libs/shared/components";
 import { LazyBookingDetail } from "./LazyBookingDetail";
 import { useTranslations } from "next-intl";
-import { useRouter } from "@/libs/i18n/navigation";
+import { useRouter } from "@/libs/next-intl/navigation";
 
 export const OrderHistory = () => {
   const t = useTranslations("Booking");

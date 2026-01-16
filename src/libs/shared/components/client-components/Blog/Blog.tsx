@@ -1,6 +1,6 @@
 "use client";
 import { Updating } from "@/libs/assets";
-import { useRouter } from "@/libs/i18n/navigation";
+import { useRouter } from "@/libs/next-intl/navigation";
 import { useTranslations } from "next-intl";
 import React from "react";
 

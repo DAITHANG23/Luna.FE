@@ -5,7 +5,7 @@ import {
   LanguageListType,
   RestaurantsConceptType,
 } from "@/@types/models";
-import { routing } from "./libs/i18n/routing";
+import { routing } from "./libs/next-intl/routing";
 export const REGEX_VALIDATE_EMAIL =
   /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -404,6 +404,7 @@ export type StatusLabel =
   | "completed"
   | "cancelled"
   | "cancelled";
+  
 export const STATUS_BOOKING: Array<{ status: Status; label: StatusLabel }> = [
   { status: "PENDING", label: "pending" },
   { status: "CONFIRMED", label: "confirmed" },
