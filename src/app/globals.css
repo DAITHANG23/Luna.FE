@@ -23,6 +23,11 @@
   --color-gray-800: oklch(27.8% 0.033 256.848);
 }
 
+@theme {
+  --font-inter: 'Inter', 'sans-serif';
+  --font-red-hat-display: "Red Hat Display", 'sans-serif';
+}
+
 @layer base {
   button {
     cursor: pointer;
@@ -153,11 +158,6 @@
   --grape: 114, 35, 204;
 }
 
-@utility container {
-  min-height: 100vh !important;
-  display: flex;
-  flex-direction: column;
-}
 
 @layer base {
   html {
@@ -175,14 +175,14 @@
 
 h1,
 h5 {
-  font-family: var(--font-red-hat-display) !important;
+ @apply font-red-hat-display;
 }
 
 p,
 h2,
 h3,
 h4 {
-  font-family: var(--font-inter) !important;
+  @apply font-inter;
 }
 
 /* Notistack custom styles */
@@ -200,61 +200,6 @@ h4 {
 
 .notistack-MuiContent-warning {
   background-color: rgba(var(--warning)) !important;
-}
-
-.overflow-x-scroll {
-  overflow-x: scroll;
-}
-
-.overflow-y-scroll {
-  overflow-y: scroll;
-}
-
-.scrolling-touch {
-  -webkit-overflow-scrolling: touch;
-}
-
-.scrolling-auto {
-  -webkit-overflow-scrolling: auto;
-}
-
-.overscroll-auto {
-  -ms-scroll-chaining: chained;
-  overscroll-behavior: auto;
-}
-
-.overscroll-contain {
-  -ms-scroll-chaining: none;
-  overscroll-behavior: contain;
-}
-
-.overscroll-none {
-  -ms-scroll-chaining: none;
-  overscroll-behavior: none;
-}
-
-.overscroll-y-auto {
-  overscroll-behavior-y: auto;
-}
-
-.overscroll-y-contain {
-  overscroll-behavior-y: contain;
-}
-
-.overscroll-y-none {
-  overscroll-behavior-y: none;
-}
-
-.overscroll-x-auto {
-  overscroll-behavior-x: auto;
-}
-
-.overscroll-x-contain {
-  overscroll-behavior-x: contain;
-}
-
-.overscroll-x-none {
-  overscroll-behavior-x: none;
 }
 
 .ril-outer {
@@ -277,7 +222,6 @@ h4 {
   margin: auto !important;
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px !important;
   height: 8px !important;

@@ -21,7 +21,6 @@ const Map = dynamic(
 export const About = () => {
   const t = useTranslations("Home");
 
-  // const mounted = useMounted();
   const restaurantsData = useAppSelector(
     (state) => state.masterData?.allRestaurants,
   );
@@ -34,7 +33,6 @@ export const About = () => {
       name: item?.name,
     }));
   }, [restaurantsData]);
-  // if (!mounted) return null;
 
   return (
     <div>
