@@ -6,7 +6,7 @@ export const numberWithCommas = (
   number = "",
   digits = 2,
   showZeroDecimal = false,
-  showFullDigit = false,
+  showFullDigit = false
 ) => {
   if (!number) return showZeroDecimal ? parseFloat("0").toFixed(digits) : "0";
   const textNumber = showFullDigit
@@ -16,8 +16,7 @@ export const numberWithCommas = (
   const parts = textNumber.split(".");
   if (!parts.length) return "0";
   if (parts.length === 2) {
-    const decimal =
-      parseInt(parts[1]) === 0 && !showZeroDecimal ? "" : `.${parts[1]}`;
+    const decimal = parseInt(parts[1]) === 0 && !showZeroDecimal ? "" : `.${parts[1]}`;
     return parts[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + decimal;
   }
 
@@ -29,12 +28,10 @@ export const formatCurrency = (
   currency = "",
   digits = 2,
   isRound = false,
-  showZeroDecimal = false,
+  showZeroDecimal = false
 ) => {
   const finalValue = isRound ? roundAmount(value) : value;
-  return ` ${numberWithCommas(String(finalValue), digits, showZeroDecimal)} ${
-    currency || ""
-  }`;
+  return ` ${numberWithCommas(String(finalValue), digits, showZeroDecimal)} ${currency || ""}`;
 };
 
 export const roundAmount = (amount: number, step = 0.5) => {
@@ -57,9 +54,7 @@ export function cleanEmptyFields(obj: Record<string, any>) {
     const value = obj[key];
 
     const isEmptyObject =
-      typeof value === "object" &&
-      !Array.isArray(value) &&
-      Object.keys(value).length === 0;
+      typeof value === "object" && !Array.isArray(value) && Object.keys(value).length === 0;
     const isEmptyArray = Array.isArray(value) && value.length === 0;
     const isEmptyString = typeof value === "string" && value.trim() === "";
 
@@ -86,7 +81,7 @@ export const getStatusClass = (status: string) => {
     case "bookingInProgress":
     case "bookingCreated":
     case "IN_PROGRESS":
-      return "bg-[#BFDBFE]/30 hover:bg-[#BFDBFE]/50 text-[#2563EB]";
+      return "bg-[#BFDBFE]/30 hover:bg-[#BFDBFE]/50 text-[#84a4eb]";
     case "CONFIRMED":
     case "bookingConfirmed":
       return "bg-[#BBF7D0]/30 hover:bg-[#BBF7D0]/50 text-[#16a34a]";

@@ -14,14 +14,10 @@ import { ROUTES } from "@/constants";
 interface NotificationNavbarProps {
   unReadNotificationsQuantities: number;
 }
-const NotificationNavbar = ({
-  unReadNotificationsQuantities,
-}: NotificationNavbarProps) => {
+const NotificationNavbar = ({ unReadNotificationsQuantities }: NotificationNavbarProps) => {
   const router = useRouter();
   const t = useTranslations("Notification");
-  const allNotifications = useAppSelector(
-    (state) => state.masterData.allNotifications,
-  )?.data.data;
+  const allNotifications = useAppSelector(state => state.masterData.allNotifications)?.data.data;
   const [hasMounted, setHasMounted] = useState(false);
 
   const { isMobileSize } = useBreakPoints();
@@ -37,19 +33,19 @@ const NotificationNavbar = ({
 
       dispatch(getAllNotifications());
     },
-    [dispatch],
+    [dispatch]
   );
 
   if (!hasMounted) return null;
 
   return (
-    <Menu as="div" className="relative mx-3 max-w-2xl! z-1000">
+    <Menu as="div" className="relative z-1000 mx-3 max-w-2xl!">
       <div>
         <MenuButton
           type="button"
-          className="relative rounded-full hover:bg-primary hover:text-white dark:bg-gray-800 p-1 text-primary-text dark:text-gray-400 dark:hover:text-primary-text focus:ring-2 focus:ring-white focus:ring-offset-2 focus:outline-hidden cursor-pointer"
+          className="hover:bg-primary text-primary-text dark:hover:text-primary-text relative cursor-pointer rounded-full p-1 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:outline-hidden dark:bg-gray-800 dark:text-gray-400"
         >
-          <span className="absolute w-4 h-4.5 text-xs -top-1 left-[16px] rounded-full bg-primary text-white">
+          <span className="bg-primary absolute -top-1 left-[16px] h-4.5 w-4 rounded-full text-xs text-white">
             {unReadNotificationsQuantities || 0}
           </span>
           <span className="sr-only">View notifications</span>
@@ -59,35 +55,33 @@ const NotificationNavbar = ({
       <MenuItems
         anchor={isMobileSize ? "bottom" : undefined}
         transition
-        className="absolute right-0 z-10 mt-2 w-auto min-w-[300px] max-w-sm h-125 overflow-auto origin-top-right rounded-md bg-white dark:bg-gray-800 py-1 ring-1 shadow-lg ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
+        className="absolute right-0 z-10 mt-2 h-125 w-auto max-w-sm min-w-[300px] origin-top-right overflow-auto rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in dark:bg-gray-800"
       >
         {allNotifications && allNotifications?.length > 0 ? (
-          allNotifications.slice(0, 5).map((item) => {
+          allNotifications.slice(0, 5).map(item => {
             return (
               <MenuItem key={item._id}>
                 <div key={item._id}>
                   <NotificationDetailNavbar
                     item={item}
-                    unReadNotificationsQuantities={
-                      unReadNotificationsQuantities
-                    }
+                    unReadNotificationsQuantities={unReadNotificationsQuantities}
                     handleDeleteNotification={handleDeleteNotification}
                   />
-                  <hr className="text-gray-500 my-1" />
+                  <hr className="my-1 text-gray-500" />
                 </div>
               </MenuItem>
             );
           })
         ) : (
-          <div className="flex flex-col items-center justify-center text-center py-10 text-gray-500 text-sm h-120">
-            <BellIcon className="w-8 h-8 mb-2" />
+          <div className="flex h-120 flex-col items-center justify-center py-10 text-center text-sm text-gray-500">
+            <BellIcon className="mb-2 h-8 w-8" />
             <p>{t("noNotifications")}</p>
           </div>
         )}
         {allNotifications && allNotifications?.length > 5 && (
           <MenuItem>
             <button
-              className="w-full hover:underline text-primary font-bold text-sm"
+              className="text-primary w-full text-sm font-bold hover:underline"
               onClick={() => {
                 router.push(ROUTES.NOTIFICATIONS.INDEX);
               }}

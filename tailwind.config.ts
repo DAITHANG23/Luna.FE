@@ -35,7 +35,7 @@ export default {
     "text-[#16a34a]",
     "bg-[#BFDBFE]/30",
     "hover:bg-[#BFDBFE]/50",
-    "text-[#2563EB]",
+    "text-[#84a4eb]",
     "bg-purple-300",
     "hover:bg-purple-400",
     "text-purple-800",

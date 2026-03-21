@@ -22,3 +22,4 @@ export * from "./WrapperFilter";
 export * from "./SkeletonOfRestaurant";
 export * from "./client-components/ConceptItem/index";
 export * from "./Popover";
+export * from "./LoadingIndicator";
