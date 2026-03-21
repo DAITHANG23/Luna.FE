@@ -1,6 +1,5 @@
 "use client";
 import React, { useMemo } from "react";
-import { useAppSelector } from "@/libs/redux/hooks";
 import _ from "lodash";
 import useGetConceptItem from "@/features/hooks/ConceptsHooks/useGetConceptItem";
 import Menu from "./Menu";
@@ -8,11 +7,13 @@ import NavbarConcept from "@/libs/shared/components/client-components/NavbarConc
 import { Booking } from "./Booking";
 import { Skeleton } from "@shared/components/index";
 import { useParams, usePathname } from "next/navigation";
+import useMasterData from "@/features/hooks/useMasterData";
 
 export const Navbar = () => {
   const pathname = usePathname();
   const params = useParams();
   const pathnameMain = pathname?.split("/")[2];
+  const { allConcepts } = useMasterData();
 
   const nameConcept = useMemo(() => {
     let pathname = "";
@@ -32,10 +33,9 @@ export const Navbar = () => {
   }, [pathnameMain]);
 
   const subPathname = pathname?.split("/")[3];
-  const allConcepts = useAppSelector((state) => state.masterData.allConcepts)
-    ?.data.data;
+
   const idConcept = useMemo(() => {
-    return allConcepts?.find((c) => c.name === nameConcept)?._id || "";
+    return allConcepts?.find(c => c.name === nameConcept)?._id || "";
   }, [allConcepts, nameConcept]);
 
   const { conceptData, isLoading } = useGetConceptItem(idConcept);
@@ -47,14 +47,11 @@ export const Navbar = () => {
       </div>
     );
   return (
-    <div className="mt-17 sm:mt-29 w-[90%] 2xl:w-[70%] mx-auto bg-white dark:bg-gray-900 rounded-lg p-4 my-4 shadow-lg">
+    <div className="mx-auto my-4 mt-17 w-[90%] rounded-lg bg-white p-4 shadow-lg sm:mt-29 2xl:w-[70%] dark:bg-gray-900">
       <NavbarConcept params={params} />
 
       {subPathname === "menu" ? (
-        <Menu
-          dishes={conceptData?.data.data?.dishes || []}
-          conceptName={pathnameMain}
-        />
+        <Menu dishes={conceptData?.data.data?.dishes || []} conceptName={pathnameMain} />
       ) : (
         <Booking conceptDataId={conceptData?.data.data._id || ""} />
       )}

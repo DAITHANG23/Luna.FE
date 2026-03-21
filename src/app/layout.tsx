@@ -11,7 +11,7 @@ export default function RootLayout({
 }) {
   return (
     <html
-      className={`${inter.variable} ${red_hat_display.variable} container prose max-w-none w-full`}
+      className={`${inter.variable} ${red_hat_display.variable} prose max-w-none w-full`}
     >
       <body>
         <ReduxProvider>

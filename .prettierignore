@@ -1,0 +1,13 @@
+# all files
+/*
+
+# except .prettierrc and .prettierignore
+!/src
+!/public
+!/.github
+!tsconfig.json
+!astro.config.ts
+!package.json
+!.prettierrc
+!eslint.config.mjs
+!README.md
