@@ -1,5 +1,5 @@
 "use client";
-import { useAppSelector } from "@/libs/redux/hooks";
+
 import React, { useEffect, useMemo } from "react";
 import { CONCEPTS_ROUTES } from "@/constants";
 import Image from "next/image";
@@ -10,6 +10,7 @@ import NavbarConcept from "@/libs/shared/components/client-components/NavbarConc
 import { useLocale, useTranslations } from "next-intl";
 import { notFound, useParams, useRouter } from "next/navigation";
 import Link from "next/link";
+import useMasterData from "@/features/hooks/useMasterData";
 
 export const Concept = () => {
   const router = useRouter();
@@ -19,45 +20,42 @@ export const Concept = () => {
 
   const t = useTranslations("Concept");
 
+  const { allConcepts } = useMasterData();
+
   useEffect(() => {
     if (!params.concept) return;
     localStorage.setItem("routeConcept", params.concept as string);
   }, [params.concept]);
 
   const route = useMemo(() => {
-    return CONCEPTS_ROUTES.find((c) => `/${c.route}` === `/${params.concept}`);
+    return CONCEPTS_ROUTES.find(c => `/${c.route}` === `/${params.concept}`);
   }, [params]);
 
   useEffect(() => {
     const routeConcept = localStorage.getItem("routeConcept")?.trim() || "";
 
-    const routeItem = CONCEPTS_ROUTES.some(
-      (c) => `/${c.route}` === `/${routeConcept}`,
-    );
+    const routeItem = CONCEPTS_ROUTES.some(c => `/${c.route}` === `/${routeConcept}`);
 
     if (!routeItem) {
       notFound();
     }
   }, [router, route, params]);
 
-  const allConcepts = useAppSelector((state) => state.masterData.allConcepts)
-    ?.data.data;
-
-  const concept = allConcepts?.find((item) => item.name === route?.name);
+  const concept = allConcepts?.find(item => item.name === route?.name);
 
   return (
-    <div className="mt-17 sm:mt-29 px-4 w-full xl:w-[80%] 2xl:w-[70%] mx-auto">
+    <div className="mx-auto mt-17 w-full px-4 sm:mt-29 xl:w-[80%] 2xl:w-[70%]">
       <NavbarConcept params={params} />
       <Slider banners={concept?.banners || []} />
-      <div className="lg:pt-10 lg:pt-[100px] lg:pb-8 w-full grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div className="flex flex-col gap-10 justify-start items-start">
+      <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:pt-10 lg:pt-[100px] lg:pb-8">
+        <div className="flex flex-col items-start justify-start gap-10">
           <h3 className="text-primary-text">{concept?.title}</h3>
           <div className="text-primary-text">
             {concept?.description}
             <div className="pt-4">
               <Link
                 href={`/${locale}/${route?.route}/menu`}
-                className="flex gap-4 items-center hover:underline font-normal text-primary"
+                className="text-primary flex items-center gap-4 font-normal hover:underline"
               >
                 {t("seeMenu")}
                 <div>
@@ -67,7 +65,7 @@ export const Concept = () => {
             </div>
           </div>
         </div>
-        <div className="w-full h-[300px] relative">
+        <div className="relative h-[300px] w-full">
           <Image
             src={concept?.imageCover || "/assets/images/not-found.png"}
             alt="img-cover"
@@ -77,7 +75,7 @@ export const Concept = () => {
         </div>
       </div>
 
-      <div className="pt-4 lg:pt-10 pb-5">
+      <div className="pt-4 pb-5 lg:pt-10">
         <ConceptsList isBannerWidth />
       </div>
     </div>

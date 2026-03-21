@@ -1,23 +1,15 @@
 "use client";
 import socket from "@/features/notification/socket";
 import { useAppDispatch, useAppSelector } from "@/libs/redux/hooks";
-import {
-  getAllConcepts,
-  getAllRestaurants,
-  unReadNotifications,
-} from "@/libs/redux/masterDataSlice";
+import { unReadNotifications } from "@/libs/redux/masterDataSlice";
 import { useEffect, useMemo } from "react";
 
 const AuthInitializer = () => {
   const dispatch = useAppDispatch();
-  const allNotifications = useAppSelector(
-    (state) => state.masterData.allNotifications,
-  );
 
+  const allNotifications = useAppSelector(state => state.masterData.allNotifications)?.data.data;
   const allNotificationsUnRead = useMemo(() => {
-    return (
-      allNotifications?.data.data.filter((item) => item.read === false) || []
-    );
+    return allNotifications?.filter(item => item.read === false) || [];
   }, [allNotifications]);
 
   useEffect(() => {
@@ -45,14 +37,9 @@ const AuthInitializer = () => {
     dispatch(
       unReadNotifications({
         unReadNotificationsQuantity: allNotificationsUnRead.length,
-      }),
+      })
     );
   }, [dispatch, allNotificationsUnRead]);
-
-  useEffect(() => {
-    dispatch(getAllConcepts());
-    dispatch(getAllRestaurants());
-  }, [dispatch]);
 
   return null;
 };

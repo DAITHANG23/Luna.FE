@@ -39,35 +39,33 @@ const NotificationDetailNavbar = ({
     (id: string) => {
       if (unReadNotificationsQuantities > 0) checkReadNotification(id);
     },
-    [checkReadNotification, unReadNotificationsQuantities],
+    [checkReadNotification, unReadNotificationsQuantities]
   );
 
   const NotificationIcon = useMemo(() => {
     switch (item?.type) {
       case "bookingReminder":
-        return <BellDotIcon className="text-[#CA8A04] w-6 h-6 shrink-0" />;
+        return <BellDotIcon className="h-6 w-6 shrink-0 text-[#CA8A04]" />;
       case "bookingConfirmed":
-        return <CheckBadgeIcon className="text-[#16a34a] w-6 h-6 shrink-0" />;
+        return <CheckBadgeIcon className="h-6 w-6 shrink-0 text-[#16a34a]" />;
       case "bookingCanceled":
-        return <TriangleAlertIcon className="text-primary w-6 h-6 shrink-0" />;
+        return <TriangleAlertIcon className="text-primary h-6 w-6 shrink-0" />;
       case "bookingCompleted":
-        return <StarIcon className="text-purple-800 w-6 h-6 shrink-0" />;
+        return <StarIcon className="h-6 w-6 shrink-0 text-purple-800" />;
       case "bookingInProgress":
-        return <CircleDashedIcon className="text-[#2563EB] w-6 h-6 shrink-0" />;
+        return <CircleDashedIcon className="h-6 w-6 shrink-0 text-[#84a4eb]" />;
       default:
-        return <InfoIcon className="text-[#2563EB] w-6 h-6 shrink-0" />;
+        return <InfoIcon className="h-6 w-6 shrink-0 text-[#84a4eb]" />;
     }
   }, [item]);
 
   return (
     <div
       className={cn(
-        "relative flex gap-2 items-start p-2 cursor-pointer rounded-lg",
-        isSelected || item.read
-          ? "bg-white dark:bg-gray-900"
-          : getStatusClass(item.type),
+        "relative flex cursor-pointer items-start gap-2 rounded-lg p-2",
+        isSelected || item.read ? "bg-white dark:bg-gray-900" : getStatusClass(item.type),
         isSelected &&
-          " mr-4 border border-primary before:content-[''] before:absolute before:left-0 before:top-2 before:bottom-2 before:w-[6px] before:rounded-tr-lg before:rounded-br-lg before:bg-primary after:content-[''] after:absolute after:right-[-8px] after:bottom-[calc(50%-8px)] after:border-t-8 after:border-b-8 after:border-l-8 after:border-transparent after:border-l-red-500",
+          "border-primary before:bg-primary mr-4 border before:absolute before:top-2 before:bottom-2 before:left-0 before:w-[6px] before:rounded-tr-lg before:rounded-br-lg before:content-[''] after:absolute after:right-[-8px] after:bottom-[calc(50%-8px)] after:border-t-8 after:border-b-8 after:border-l-8 after:border-transparent after:border-l-red-500 after:content-['']"
       )}
     >
       {NotificationIcon}
@@ -81,35 +79,33 @@ const NotificationDetailNavbar = ({
           handleCheckReadNotification(item._id);
         }}
       >
-        <h2 className="text-base font-bold text-primary-text">{item.title}</h2>
-        <p className="text-gray-800 text-sm text-primary-text">
-          {item.message}
-        </p>
-        <p className="text-xs text-primary-text">{formatted}</p>
+        <h2 className="text-primary-text text-base font-bold">{item.title}</h2>
+        <p className="text-primary-text text-sm text-gray-800">{item.message}</p>
+        <p className="text-primary-text text-xs">{formatted}</p>
       </div>
       {!item.read ? (
-        <div className="flex justify-end items-end text-end">
+        <div className="flex items-end justify-end text-end">
           <button
             type="button"
-            onClick={(e) => {
+            onClick={e => {
               e.stopPropagation();
               handleCheckReadNotification(item._id);
             }}
-            className="p-1 hover:bg-[#BBF7D0]/90 rounded-full"
+            className="rounded-full p-1 hover:bg-[#BBF7D0]/90"
           >
-            <CheckCheckIcon className="text-[#16a34a] w-4 h-4 shrink-0" />
+            <CheckCheckIcon className="h-4 w-4 shrink-0 text-[#16a34a]" />
           </button>
         </div>
       ) : (
-        <div className="flex justify-end items-end text-end">
+        <div className="flex items-end justify-end text-end">
           <button
-            className="p-1 hover:bg-error/20 hover:rounded-[4px] hover:scale-105 transition duration-200"
-            onClick={(e) => {
+            className="hover:bg-error/20 p-1 transition duration-200 hover:scale-105 hover:rounded-[4px]"
+            onClick={e => {
               e.stopPropagation();
               handleDeleteNotification(item._id);
             }}
           >
-            <Trash2Icon className="text-error w-5 h-5" />
+            <Trash2Icon className="text-error h-5 w-5" />
           </button>
         </div>
       )}
