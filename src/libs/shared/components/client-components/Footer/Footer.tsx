@@ -15,12 +15,12 @@ const Footer = () => {
   }, []);
   if (!hasMounted) return null;
   return (
-    <div className="text-white grid grid-cols-1 text-center sm:grid-cols-3 w-full p-[50px] gap-[20px] lg:gap-[50px] bg-[#1C252E]">
+    <div className="grid w-full grid-cols-1 gap-[20px] bg-[#1C252E] p-[50px] text-center text-white sm:grid-cols-3 lg:gap-[50px]">
       <div className="w-full sm:w-[200px] lg:w-[350px]">
         <h4 className="text-white">{t(`footer.title`)}</h4>
         <p className="text-gray-400">{t(`footer.address`)}</p>
         <p className="text-gray-400">{t(`footer.responsible`)}</p>
-        <div className="pt-4 flex justify-center">
+        <div className="flex justify-center pt-4">
           <Contact />
         </div>
       </div>

@@ -13,7 +13,7 @@ import { ACCOUNT_REGISTER_QUERY_KEY } from "@/app/constants/queryKeys";
 import { useRouter } from "@/libs/next-intl/navigation";
 
 const verifyOtpRegister = async (
-  formData: UserLogin,
+  formData: UserLogin
 ): Promise<VerifyOtpCreateAccountResponse> => {
   return await apiService.account.verifyOtp({ formData });
 };
@@ -22,12 +22,16 @@ const useVerifyOtp = () => {
   const { showError, showSuccess } = useNotification();
 
   const router = useRouter();
-  return useMutation<VerifyOtpCreateAccountResponse, AxiosError<ErrorResponse>, UserLogin>({
+  return useMutation<
+    VerifyOtpCreateAccountResponse,
+    AxiosError<ErrorResponse>,
+    UserLogin
+  >({
     mutationFn: verifyOtpRegister,
     onSuccess: () => {
       showSuccess("Verify successful, your account is actived!");
       localStorage.removeItem("resendOtp");
-      
+
       queryClient.invalidateQueries({ queryKey: [ACCOUNT_REGISTER_QUERY_KEY] });
       router.push(ROUTES.LOGIN.INDEX);
     },

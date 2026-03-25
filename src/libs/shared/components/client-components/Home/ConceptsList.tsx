@@ -21,31 +21,31 @@ export const ConceptsList = ({ isBannerWidth }: ConceptsListProps) => {
       <div
         className={cn(
           isBannerWidth &&
-            "xl:w-[70%]! border-b-4 border-b-gray-300 sm:border-b-0 sm:border-r-4 dark:border-r-gray-300 mx-0!",
-          "not-prose w-full p-6 xl:w-[60%] mt-[50px] lg:mt-[100px] mb-[50px] mx-auto dark:bg-gray-700 rounded-lg",
+            "mx-0! border-b-4 border-b-gray-300 sm:border-r-4 sm:border-b-0 xl:w-[70%]! dark:border-r-gray-300",
+          "not-prose mx-auto mt-[50px] mb-[50px] w-full rounded-lg p-6 lg:mt-[100px] xl:w-[60%] dark:bg-gray-700"
         )}
         style={{ fontFamily: "Inter" }}
       >
-        {RESTAURANTS_CONCEPT.map((i) => {
+        {RESTAURANTS_CONCEPT.map(i => {
           return (
-            <div key={i.type} className="flex sm:flex-row flex-col pt-[20px]">
-              <div className="sm:border-r border-b sm:border-b-0 border-dashed border-gray-300 sm:min-w-[150px] sm:h-[60px] flex flex-row items-center gap-2 sm:flex-col sm:items-start sm:gap-0">
-                <h3 className="text-[18px] font-bold dark:text-secondary-text">
+            <div key={i.type} className="flex flex-col pt-[20px] sm:flex-row">
+              <div className="flex flex-row items-center gap-2 border-b border-dashed border-gray-300 sm:h-[60px] sm:min-w-[150px] sm:flex-col sm:items-start sm:gap-0 sm:border-r sm:border-b-0">
+                <h3 className="dark:text-secondary-text text-[18px] font-bold">
                   {i.type}
                 </h3>
-                <p className="sm:text-xs text-[18px] font-bold sm:font-normal dark:text-secondary-text">
+                <p className="dark:text-secondary-text text-[18px] font-bold sm:text-xs sm:font-normal">
                   CONCEPT
                 </p>
               </div>
               <ul
                 className={clsx(
                   i.type === "OTHER"
-                    ? "xl:grid-cols-4 2xl:w-[70%] sm:w-[80%]"
-                    : "xl:grid-cols-3 2xl:w-[60%] sm:w-[90%]",
-                  "grid grid-cols-2 gap-4 w-full xl:h-auto h-[150px] p-1 px-4 sm:border-b sm:border-dashed sm:border-gray-300",
+                    ? "sm:w-[80%] xl:grid-cols-4 2xl:w-[70%]"
+                    : "sm:w-[90%] xl:grid-cols-3 2xl:w-[60%]",
+                  "grid h-[150px] w-full grid-cols-2 gap-4 p-1 px-4 sm:border-b sm:border-dashed sm:border-gray-300 xl:h-auto"
                 )}
               >
-                {i.items.map((restaurant) => {
+                {i.items.map(restaurant => {
                   return (
                     <li key={restaurant.name} className="relative">
                       <Link href={`/${params.locale}/${restaurant.url}`}>
@@ -55,7 +55,7 @@ export const ConceptsList = ({ isBannerWidth }: ConceptsListProps) => {
                           width={restaurant.width}
                           height={restaurant.height}
                           loading="lazy"
-                          className="absolute h-[55px] inset-0 transition-opacity duration-300 hover:opacity-0"
+                          className="absolute inset-0 h-[55px] transition-opacity duration-300 hover:opacity-0"
                         />
                         <Image
                           src={restaurant.img2}
@@ -63,7 +63,7 @@ export const ConceptsList = ({ isBannerWidth }: ConceptsListProps) => {
                           width={restaurant.width}
                           height={restaurant.height}
                           loading="lazy"
-                          className="absolute h-[55px] inset-0 opacity-0 transition-opacity duration-300 hover:opacity-100"
+                          className="absolute inset-0 h-[55px] opacity-0 transition-opacity duration-300 hover:opacity-100"
                         />
                       </Link>
                     </li>
@@ -76,7 +76,7 @@ export const ConceptsList = ({ isBannerWidth }: ConceptsListProps) => {
       </div>
       {isBannerWidth && (
         <div className="p-4">
-          <h4 className="pb-[20px] text-primary-text">Contact us</h4>
+          <h4 className="text-primary-text pb-[20px]">Contact us</h4>
           <div className="flex flex-col gap-4 pt-[30px]">
             <div className="flex gap-2">
               <MailIcon />
@@ -89,7 +89,7 @@ export const ConceptsList = ({ isBannerWidth }: ConceptsListProps) => {
               <p className="text-primary-text">+(84) 0772757220</p>
             </div>
           </div>
-          <div className="text-center flex justify-center pt-[30px]">
+          <div className="flex justify-center pt-[30px] text-center">
             <Contact />
           </div>
         </div>

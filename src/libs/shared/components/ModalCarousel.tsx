@@ -19,7 +19,7 @@ export const ModalCarousel = ({
         className="fixed inset-0 bg-black/80 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"
       />
 
-      <div className="fixed inset-0 z-1000 overflow-y-auto w-full sm:w-[80%] lg:w-[60%] text-center mx-auto">
+      <div className="fixed inset-0 z-1000 mx-auto w-full overflow-y-auto text-center sm:w-[80%] lg:w-[60%]">
         <div className="flex min-h-full w-full items-center justify-center p-4 text-center sm:items-center sm:p-0">
           <DialogPanel
             transition
@@ -31,7 +31,7 @@ export const ModalCarousel = ({
                 className="text-3xl text-white transition duration-300 ease-in-out hover:scale-105"
                 onClick={() => setOpen(false)}
               >
-                <XCircleIcon className="text-white w-10 h-10" />
+                <XCircleIcon className="h-10 w-10 text-white" />
               </button>
             </div>
           </DialogPanel>

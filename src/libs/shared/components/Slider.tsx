@@ -34,21 +34,21 @@ export const Slider = ({
       <SliderComponent
         {...settings}
         className={cn(
-          isSmallSize ? "w-[90%] xl:w-[80%]! " : "w-full",
-          "text-center items-center m-auto",
+          isSmallSize ? "w-[90%] xl:w-[80%]!" : "w-full",
+          "m-auto items-center text-center"
         )}
       >
         {coverImages &&
-          coverImages.map((i) => {
+          coverImages.map(i => {
             return (
               <div
                 key={i.name}
                 className={cn(
                   isSmallSize
-                    ? "h-[300px] sm:h-[300px] lg:h-[550px] border-2 border-primary/20 shadow-lg hover:shadow-xl transition-all duration-300 rounded-md mb-10"
+                    ? "border-primary/20 mb-10 h-[300px] rounded-md border-2 shadow-lg transition-all duration-300 hover:shadow-xl sm:h-[300px] lg:h-[550px]"
                     : "h-[219px] sm:h-[300px] lg:h-screen",
 
-                  "w-full flex items-center justify-center overflow-hidden relative",
+                  "relative flex w-full items-center justify-center overflow-hidden"
                 )}
               >
                 <Image
@@ -57,7 +57,7 @@ export const Slider = ({
                   fill
                   sizes="100vw"
                   loading="lazy"
-                  className="object-cover sm:object-fill hover:scale-105 transition-transform duration-500"
+                  className="object-cover transition-transform duration-500 hover:scale-105 sm:object-fill"
                 />
               </div>
             );
@@ -69,9 +69,9 @@ export const Slider = ({
                 key={index}
                 className={cn(
                   isDishesCarousel
-                    ? "w-full! h-[500px]!"
-                    : "w-full h-[200px] sm:h-[300px] lg:h-[550px]",
-                  "flex items-center justify-center overflow-hidden relative border-2 border-primary/20 shadow-lg hover:shadow-xl transition-all duration-300 rounded-md mb-10",
+                    ? "h-[500px]! w-full!"
+                    : "h-[200px] w-full sm:h-[300px] lg:h-[550px]",
+                  "border-primary/20 relative mb-10 flex items-center justify-center overflow-hidden rounded-md border-2 shadow-lg transition-all duration-300 hover:shadow-xl"
                 )}
               >
                 <Image
@@ -80,7 +80,7 @@ export const Slider = ({
                   fill
                   loading="lazy"
                   sizes="100vw"
-                  className="object-cover sm:object-fill hover:scale-105 transition-transform duration-500"
+                  className="object-cover transition-transform duration-500 hover:scale-105 sm:object-fill"
                 />
               </div>
             );

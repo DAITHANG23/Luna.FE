@@ -21,11 +21,11 @@ interface BookingProps {
 const Map = dynamic(
   () =>
     import("@/libs/shared/components/client-components/Map/Map").then(
-      (mod) => mod.Map,
+      mod => mod.Map
     ),
   {
     ssr: false,
-  },
+  }
 );
 
 export const Booking = ({ conceptDataId }: BookingProps) => {
@@ -37,8 +37,8 @@ export const Booking = ({ conceptDataId }: BookingProps) => {
   const { showWarning } = useNotification();
   const { closeSnackbar, enqueueSnackbar } = useSnackbar();
 
-  const isAuth = useAppSelector((state) => state.auth.isAuthenticated);
-  const accountInfo = useAppSelector((state) => state.auth.accountInfo);
+  const isAuth = useAppSelector(state => state.auth.isAuthenticated);
+  const accountInfo = useAppSelector(state => state.auth.accountInfo);
   const [chooseRestaurant, setChooseRestaurant] = useState<string | null>(null);
   const [isOpenModalBooking, setIsOpenModalBooking] = useState(false);
   const [searchText, setSearchText] = useState("");
@@ -57,13 +57,13 @@ export const Booking = ({ conceptDataId }: BookingProps) => {
         >
           <div>
             <p
-              className="text-sm pb-2"
+              className="pb-2 text-sm"
               dangerouslySetInnerHTML={{
                 __html: tTranslation("bookingWarning"),
               }}
             />
             👉
-            <span className="underline! underline-offset-2 font-bold pl-2">
+            <span className="pl-2 font-bold underline! underline-offset-2">
               {tTranslation("navbar.yourProfile")}
             </span>
           </div>
@@ -72,7 +72,7 @@ export const Booking = ({ conceptDataId }: BookingProps) => {
           variant: "info",
           anchorOrigin: { vertical: "top", horizontal: "right" },
           autoHideDuration: 120000,
-        },
+        }
       );
     }
   }, [
@@ -102,7 +102,7 @@ export const Booking = ({ conceptDataId }: BookingProps) => {
   }, [restaurantsData]);
 
   const locationsRestaurantsList = useMemo(() => {
-    return restaurants.map((item) => ({
+    return restaurants.map(item => ({
       lat: item.location?.lat,
       lng: item.location?.lng,
       address: item.location?.address,
@@ -116,7 +116,7 @@ export const Booking = ({ conceptDataId }: BookingProps) => {
     (event: ChangeEvent<HTMLInputElement>) => {
       setSearchText(event.target.value);
     },
-    1000,
+    1000
   );
   if (!mounted) return null;
 
@@ -133,7 +133,7 @@ export const Booking = ({ conceptDataId }: BookingProps) => {
           setIsOpenModalBooking={setIsOpenModalBooking}
         />
       </Modal>
-      <div className="flex lg:flex-row flex-col gap-4">
+      <div className="flex flex-col gap-4 lg:flex-row">
         <div className="w-full lg:w-[30%]">
           <SearchField
             classNameContainer="w-full!"
@@ -141,9 +141,9 @@ export const Booking = ({ conceptDataId }: BookingProps) => {
             onChange={handleTextChange}
           />
           <div className="mt-10">
-            {locationsRestaurantsList?.map((item) => (
+            {locationsRestaurantsList?.map(item => (
               <div key={item.name}>
-                <h3 className="pb-5 text-primary-text">{item.name}</h3>
+                <h3 className="text-primary-text pb-5">{item.name}</h3>
                 <div className="text-primary-text">
                   <p>{item.address}</p>
                   <p>
@@ -152,8 +152,8 @@ export const Booking = ({ conceptDataId }: BookingProps) => {
                   </p>
                 </div>
                 <div className="flex gap-4 pt-5 pb-3">
-                  <button className="flex bg-primary/30 border border-primary rounded-[4px] text-center text-white text-sm px-3 py-2 gap-2 hover:scale-105">
-                    <Phone className="w-5 h-5 text-primary" />
+                  <button className="bg-primary/30 border-primary flex gap-2 rounded-[4px] border px-3 py-2 text-center text-sm text-white hover:scale-105">
+                    <Phone className="text-primary h-5 w-5" />
                     <span className="text-primary">{item.numberPhone}</span>
                   </button>
                   <button
@@ -161,7 +161,7 @@ export const Booking = ({ conceptDataId }: BookingProps) => {
                       setIsOpenModalBooking(true);
                       setChooseRestaurant(item.name);
                     }}
-                    className="bg-primary rounded-[4px] text-center text-white text-sm px-3 py-2 hover:scale-105"
+                    className="bg-primary rounded-[4px] px-3 py-2 text-center text-sm text-white hover:scale-105"
                   >
                     {tRestaurant("button.booking")}
                   </button>

@@ -4,7 +4,7 @@ import ArrowRightSvg from "../icons/arrow-right.svg";
 
 export const ArrowRightIcon = () => {
   return (
-    <div className="relative w-6 h-6">
+    <div className="relative h-6 w-6">
       <Image src={ArrowRightSvg} alt="ArrowRightIcon" fill />
     </div>
   );

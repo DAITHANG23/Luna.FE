@@ -14,29 +14,29 @@ export const FavoriteConceptsView = ({
   isVisitedConcept = false,
 }: FavoriteConceptsViewProps) => {
   const favoriteImages = useMemo(
-    () => data?.map((i) => i.imageCover) ?? [],
-    [data],
+    () => data?.map(i => i.imageCover) ?? [],
+    [data]
   );
 
   const t = useTranslations("Concept");
   return (
-    <div className="flex flex-col w-full sm:w-87 h-[19.7rem]! shadow-glass border-none rounded-xl cursor-pointer transition duration-300 ease-in-out hover:scale-105">
-      <div className="flex text-center  w-full h-[3.3rem] p-4 gap-4 bg-white rounded-tl-xl rounded-tr-xl">
+    <div className="shadow-glass flex h-[19.7rem]! w-full cursor-pointer flex-col rounded-xl border-none transition duration-300 ease-in-out hover:scale-105 sm:w-87">
+      <div className="flex h-[3.3rem] w-full gap-4 rounded-tl-xl rounded-tr-xl bg-white p-4 text-center">
         <p>
           {isVisitedConcept ? (
-            <CheckCircleIconSolid className="text-black w-7 h-7" />
+            <CheckCircleIconSolid className="h-7 w-7 text-black" />
           ) : (
-            <HeartIconSolid className="text-primary w-7 h-7" />
+            <HeartIconSolid className="text-primary h-7 w-7" />
           )}
         </p>
         <p className="font-base font-bold">
           {isVisitedConcept ? t("visited") : t("titleRestaurantFavorite")}
         </p>
       </div>
-      <div className="w-full h-68 relative rounded-xl">
+      <div className="relative h-68 w-full rounded-xl">
         {favoriteImages && favoriteImages.length >= 3 ? (
-          <div className="w-full h-full flex">
-            <div className="w-[70%] h-full relative">
+          <div className="flex h-full w-full">
+            <div className="relative h-full w-[70%]">
               <Image
                 src={`${favoriteImages[0]}`}
                 alt="favoriteDish"
@@ -46,8 +46,8 @@ export const FavoriteConceptsView = ({
                 loading="lazy"
               />
             </div>
-            <div className="w-[30%] h-full">
-              <div className="w-full h-[50%] relative">
+            <div className="h-full w-[30%]">
+              <div className="relative h-[50%] w-full">
                 <Image
                   src={`${favoriteImages[1]}`}
                   alt="favoriteDish"
@@ -56,7 +56,7 @@ export const FavoriteConceptsView = ({
                   loading="lazy"
                 />
               </div>
-              <div className="w-full h-[50%] relative">
+              <div className="relative h-[50%] w-full">
                 <Image
                   src={`${favoriteImages[2]}`}
                   alt="favoriteDish"

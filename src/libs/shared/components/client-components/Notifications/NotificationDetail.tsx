@@ -17,7 +17,7 @@ export const NotificationDetail = ({ id }: NotificationDetailProps) => {
 
   const [isOpenModal, setIsOpenModal] = useState(false);
 
-  const accountInfo = useAppSelector((state) => state.auth.accountInfo)?.data
+  const accountInfo = useAppSelector(state => state.auth.accountInfo)?.data
     .data;
 
   const { notificationData, isLoading } = useGetNotificationItem(id as string);
@@ -34,22 +34,22 @@ export const NotificationDetail = ({ id }: NotificationDetailProps) => {
         <div className="flex flex-col gap-6">
           <p>
             {t("content.bookingCreated.detail.hi")}
-            <span className="font-bold text-primary pl-1">
+            <span className="text-primary pl-1 font-bold">
               {accountInfo?.firstName}
             </span>
             ,
           </p>
           <p>
             {t("content.bookingCreated.detail.content_1")}
-            <span className="font-bold px-1 text-primary">
+            <span className="text-primary px-1 font-bold">
               {dataNotification?.restaurant.name}
             </span>
             {t("content.bookingCreated.detail.content_2")}
-            <span className="font-bold px-1 text-primary">
+            <span className="text-primary px-1 font-bold">
               {dataNotification?.bookingDate}
             </span>
             {t("content.bookingCreated.detail.content_3")}
-            <span className="font-bold px-1 text-primary">
+            <span className="text-primary px-1 font-bold">
               {dataNotification?.numberOfGuests}
             </span>
             {t("content.bookingCreated.detail.content_4")}
@@ -65,22 +65,22 @@ export const NotificationDetail = ({ id }: NotificationDetailProps) => {
         <div className="flex flex-col gap-6">
           <p>
             {t("content.bookingCreated.detail.hi")}
-            <span className="font-bold text-primary pl-1">
+            <span className="text-primary pl-1 font-bold">
               {accountInfo?.firstName}
             </span>
             ,
           </p>
           <p>
             {t("content.bookingConfirmed.detail.content_1")}
-            <span className="font-bold px-1 text-primary">
+            <span className="text-primary px-1 font-bold">
               {dataNotification?.restaurant.name}
             </span>
             {t("content.bookingConfirmed.detail.content_2")}
-            <span className="font-bold px-1 text-primary">
+            <span className="text-primary px-1 font-bold">
               {dataNotification?.bookingDate}
             </span>
             {t("content.bookingCreated.detail.content_3")}
-            <span className="font-bold px-1 text-primary">
+            <span className="text-primary px-1 font-bold">
               {dataNotification?.numberOfGuests}
             </span>
             {t("content.bookingCreated.detail.content_4")}
@@ -96,18 +96,18 @@ export const NotificationDetail = ({ id }: NotificationDetailProps) => {
         <div className="flex flex-col gap-6">
           <p>
             {t("content.bookingCreated.detail.hi")}
-            <span className="font-bold text-primary pl-1">
+            <span className="text-primary pl-1 font-bold">
               {accountInfo?.firstName}
             </span>
             ,
           </p>
           <p>
             {t("content.bookingCanceled.detail.content_1")}
-            <span className="font-bold px-1 text-primary">
+            <span className="text-primary px-1 font-bold">
               {dataNotification?.restaurant.name}
             </span>
             {t("content.bookingCanceled.detail.content_2")}
-            <span className="font-bold px-1 text-primary">
+            <span className="text-primary px-1 font-bold">
               {dataNotification?.bookingDate}
             </span>
           </p>
@@ -122,22 +122,22 @@ export const NotificationDetail = ({ id }: NotificationDetailProps) => {
         <div className="flex flex-col gap-6">
           <p>
             {t("content.bookingCreated.detail.hi")}
-            <span className="font-bold text-primary pl-1">
+            <span className="text-primary pl-1 font-bold">
               {accountInfo?.firstName}
             </span>
             ,
           </p>
           <p>
             {t("content.bookingReminder.detail.content_1")}
-            <span className="font-bold px-1 text-primary">
+            <span className="text-primary px-1 font-bold">
               {dataNotification?.restaurant.name}
             </span>
             {t("content.bookingCreated.detail.content_2")}
-            <span className="font-bold px-1 text-primary">
+            <span className="text-primary px-1 font-bold">
               {dataNotification?.bookingDate}
             </span>
             {t("content.bookingCreated.detail.content_3")}
-            <span className="font-bold px-1 text-primary">
+            <span className="text-primary px-1 font-bold">
               {dataNotification?.numberOfGuests}
             </span>
             {t("content.bookingCreated.detail.content_4")}
@@ -153,14 +153,14 @@ export const NotificationDetail = ({ id }: NotificationDetailProps) => {
         <div className="flex flex-col gap-6">
           <p>
             {t("content.bookingCreated.detail.hi")}
-            <span className="font-bold text-primary pl-1">
+            <span className="text-primary pl-1 font-bold">
               {accountInfo?.firstName}
             </span>
             ,
           </p>
           <p>
             {t("content.bookingInProgress.detail.content_1")}{" "}
-            <span className="font-bold px-1 text-primary">
+            <span className="text-primary px-1 font-bold">
               {dataNotification?.restaurant.name}.
             </span>
           </p>
@@ -168,11 +168,11 @@ export const NotificationDetail = ({ id }: NotificationDetailProps) => {
             <span className="pl-1">
               {t("content.bookingCompleted.detail.content_2")}
             </span>
-            <span className="font-bold px-1 text-primary">
+            <span className="text-primary px-1 font-bold">
               {dataNotification?.bookingDate}
             </span>
             {t("content.bookingCreated.detail.content_3")}
-            <span className="font-bold px-1 text-primary">
+            <span className="text-primary px-1 font-bold">
               {dataNotification?.numberOfGuests}
             </span>
             <span className="pr-1">
@@ -192,25 +192,25 @@ export const NotificationDetail = ({ id }: NotificationDetailProps) => {
         <div className="flex flex-col gap-6">
           <p>
             {t("content.bookingCreated.detail.hi")}
-            <span className="font-bold text-primary pl-1">
+            <span className="text-primary pl-1 font-bold">
               {accountInfo?.firstName}
             </span>
             ,
           </p>
           <p>
             {t("content.bookingCompleted.detail.content_1")}
-            <span className="font-bold px-1 text-primary">
+            <span className="text-primary px-1 font-bold">
               {dataNotification?.restaurant.name}
             </span>
             .
             <span className="pl-1">
               {t("content.bookingCompleted.detail.content_2")}
             </span>
-            <span className="font-bold px-1 text-primary">
+            <span className="text-primary px-1 font-bold">
               {dataNotification?.bookingDate}
             </span>
             {t("content.bookingCreated.detail.content_3")}
-            <span className="font-bold px-1 text-primary">
+            <span className="text-primary px-1 font-bold">
               {dataNotification?.numberOfGuests}
             </span>
             <span className="pr-1">
@@ -224,7 +224,7 @@ export const NotificationDetail = ({ id }: NotificationDetailProps) => {
             onClick={() => setIsOpenModal(true)}
           >
             👉
-            <span className="hover:underline pl-2 underline-offset-4">
+            <span className="pl-2 underline-offset-4 hover:underline">
               {t("content.bookingCompleted.detail.content_6")}
             </span>
           </p>
@@ -245,22 +245,22 @@ export const NotificationDetail = ({ id }: NotificationDetailProps) => {
       </Modal>
       <NotificationMain id={id}>
         {!isLoading ? (
-          <div className="lg:mt-[50px] p-4 flex flex-col gap-6 text-primary-text">
+          <div className="text-primary-text flex flex-col gap-6 p-4 lg:mt-[50px]">
             {contentNotificaiton}
 
             <hr className="text-gray-500" />
 
             <div>
               <p className="text-base font-bold">{t("infoRestaurant")}</p>
-              <p className="text-sm pt-3">
+              <p className="pt-3 text-sm">
                 {dataNotification?.restaurant.name}
               </p>
-              <p className="flex text-sm pt-3 gap-2 items-center">
-                <MapPinHouseIcon className="text-primary w-5 h-5 shrink-0" />
+              <p className="flex items-center gap-2 pt-3 text-sm">
+                <MapPinHouseIcon className="text-primary h-5 w-5 shrink-0" />
                 {dataNotification?.restaurant.address}
               </p>
-              <p className="flex text-sm pt-3 gap-2 items-center">
-                <PhoneIcon className="text-primary w-5 h-5 shrink-0" />
+              <p className="flex items-center gap-2 pt-3 text-sm">
+                <PhoneIcon className="text-primary h-5 w-5 shrink-0" />
                 {dataNotification?.restaurant.numberPhone}
               </p>
             </div>

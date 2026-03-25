@@ -10,7 +10,7 @@ export const Updating = () => {
         width={500}
         height={300}
         loading="lazy"
-        className="rounded-lg shadow-lg max-w-full h-auto"
+        className="h-auto max-w-full rounded-lg shadow-lg"
       />
     </div>
   );

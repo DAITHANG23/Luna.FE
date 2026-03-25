@@ -28,7 +28,7 @@ export const Security = () => {
         .max(20, t("security.validate.maxPassword"))
         .matches(
           REGEX_VALIDTATE_PASSWORD,
-          t("security.validate.formatPassword"),
+          t("security.validate.formatPassword")
         ),
       passwordCurrent: Yup.string()
         .trim()
@@ -37,7 +37,7 @@ export const Security = () => {
         .max(20, "Password must be max 20 characters!")
         .matches(
           REGEX_VALIDTATE_PASSWORD,
-          t("security.validate.formatPassword"),
+          t("security.validate.formatPassword")
         ),
       passwordConfirm: Yup.string()
         .trim()
@@ -57,9 +57,9 @@ export const Security = () => {
     >
       {() => {
         return (
-          <Form className="w-full lg:w-[70%] m-auto">
-            <div className="p-6 dark:bg-[#1C252E] shadow-[rgba(145,158,171,0.16)_0px_4px_8px_0px] rounded-2xl overflow-hidden bg-white text-primary-text flex flex-col">
-              <div className="grid grid-cols-1 gap-4 w-full">
+          <Form className="m-auto w-full lg:w-[70%]">
+            <div className="text-primary-text flex flex-col overflow-hidden rounded-2xl bg-white p-6 shadow-[rgba(145,158,171,0.16)_0px_4px_8px_0px] dark:bg-[#1C252E]">
+              <div className="grid w-full grid-cols-1 gap-4">
                 <FieldInput
                   title={t("security.currentPassword")}
                   name="passwordCurrent"
@@ -77,7 +77,7 @@ export const Security = () => {
                     <Popover
                       iconButton={
                         <InformationCircleIcon
-                          onMouseDown={(e) => e.preventDefault()}
+                          onMouseDown={e => e.preventDefault()}
                           width={20}
                           height={20}
                         />
@@ -94,7 +94,7 @@ export const Security = () => {
                   isPasswordFied
                 />
               </div>
-              <div className="justify-end text-end mt-4">
+              <div className="mt-4 justify-end text-end">
                 <ButtonLoading
                   isLoading={isLoadingUpdatePassword}
                   title={t("security.save")}

@@ -23,15 +23,15 @@ const Menu = ({ dishes, conceptName }: MenuProps) => {
   const router = useRouter();
 
   const alacarteDishes = useMemo(() => {
-    return dishes?.filter((d) => d.type === "alacarte");
+    return dishes?.filter(d => d.type === "alacarte");
   }, [dishes]);
 
   const buffetDishes = useMemo(() => {
-    return dishes?.filter((d) => d.type === "Buffet");
+    return dishes?.filter(d => d.type === "Buffet");
   }, [dishes]);
 
   const comboDishes = useMemo(() => {
-    return dishes?.filter((d) => d.type === "Combo");
+    return dishes?.filter(d => d.type === "Combo");
   }, [dishes]);
 
   const [openSideBar, setOpenSideBar] = useState<number | null>(0);
@@ -45,7 +45,7 @@ const Menu = ({ dishes, conceptName }: MenuProps) => {
       alacarteDishes[0]?.category ||
         buffetDishes[0]?.name ||
         comboDishes[0]?.name ||
-        "",
+        ""
     );
   }, [alacarteDishes, buffetDishes, comboDishes]);
 
@@ -53,7 +53,7 @@ const Menu = ({ dishes, conceptName }: MenuProps) => {
     const selectedDish =
       dishes &&
       dishes.find(
-        (d) => d.category === chooseItemDishes || d.name === chooseItemDishes,
+        d => d.category === chooseItemDishes || d.name === chooseItemDishes
       );
 
     return selectedDish?.items && selectedDish?.items?.length > 0
@@ -80,7 +80,7 @@ const Menu = ({ dishes, conceptName }: MenuProps) => {
 
     if (alacarteDishes) {
       const categoryList = alacarteDishes
-        .map((i) => i.category)
+        .map(i => i.category)
         .filter(Boolean) as string[];
 
       listItem.push(...categoryList);
@@ -88,14 +88,14 @@ const Menu = ({ dishes, conceptName }: MenuProps) => {
 
     if (buffetDishes) {
       const buffetList = buffetDishes
-        .map((i) => i.name)
+        .map(i => i.name)
         .filter(Boolean) as string[];
       listItem.push(...buffetList);
     }
 
     if (comboDishes) {
       const comboList = comboDishes
-        .map((i) => i.name)
+        .map(i => i.name)
         .filter(Boolean) as string[];
       listItem.push(...comboList);
     }
@@ -115,22 +115,22 @@ const Menu = ({ dishes, conceptName }: MenuProps) => {
         <div className="mt-4">
           <button
             onClick={() => router.push(`/${locale}/${conceptName}`)}
-            className="flex gap-2 font-normal items-center border border-solid dark:border-white rounded-lg border-black px-3 hover:bg-gray-200 mb-4 !dark:hover:text-black"
+            className="!dark:hover:text-black mb-4 flex items-center gap-2 rounded-lg border border-solid border-black px-3 font-normal hover:bg-gray-200 dark:border-white"
           >
-            <ArrowLeftIcon className="text-primary-text w-5 h-5" />
-            <span className="font-normal text-base text-primary-text">
+            <ArrowLeftIcon className="text-primary-text h-5 w-5" />
+            <span className="text-primary-text text-base font-normal">
               {t("button.goBack")}
             </span>
           </button>
         </div>
 
-        <div className="lg:flex pr-2 pb-12.5 w-full pt-4">
-          <div className="fixed lg:hidden bottom-0 left-0 w-full mx-auto h-[50px] bg-white shadow-md z-50 overflow-x-auto">
-            <div className="flex gap-4 px-4 h-full items-center w-max">
-              {itemNavbarList.map((item) => (
+        <div className="w-full pt-4 pr-2 pb-12.5 lg:flex">
+          <div className="fixed bottom-0 left-0 z-50 mx-auto h-[50px] w-full overflow-x-auto bg-white shadow-md lg:hidden">
+            <div className="flex h-full w-max items-center gap-4 px-4">
+              {itemNavbarList.map(item => (
                 <div
                   key={item}
-                  className="whitespace-nowrap px-3 py-1 rounded-full bg-primary text-white font-semibold cursor-pointer hover:bg-primary/80 transition-colors"
+                  className="bg-primary hover:bg-primary/80 cursor-pointer rounded-full px-3 py-1 font-semibold whitespace-nowrap text-white transition-colors"
                   onClick={() => onChooseItem(item)}
                 >
                   {item}
@@ -148,8 +148,8 @@ const Menu = ({ dishes, conceptName }: MenuProps) => {
                       className={cn(
                         openSideBar === index
                           ? "border-primary text-primary"
-                          : " text-primary-text",
-                        "border-b-2 flex justify-between  cursor-pointer py-3 items-center text-lg font-bold",
+                          : "text-primary-text",
+                        "flex cursor-pointer items-center justify-between border-b-2 py-3 text-lg font-bold"
                       )}
                       onClick={() => onToggleSidebar(index, dishes)}
                     >
@@ -165,11 +165,11 @@ const Menu = ({ dishes, conceptName }: MenuProps) => {
                     <div
                       className={`overflow-hidden transition-all duration-300 ease-in-out ${
                         openSideBar === index
-                          ? "opacity-100 h-auto! p-4"
-                          : "opacity-0 max-h-0 p-0"
+                          ? "h-auto! p-4 opacity-100"
+                          : "max-h-0 p-0 opacity-0"
                       }`}
                     >
-                      {dishes?.map((item) => {
+                      {dishes?.map(item => {
                         const itemDishes =
                           (item.type === "alacarte"
                             ? item.category
@@ -181,7 +181,7 @@ const Menu = ({ dishes, conceptName }: MenuProps) => {
                               chooseItemDishes === itemDishes
                                 ? "text-primary"
                                 : "text-primary-text",
-                              "p-2 cursor-pointer font-bold hover:text-primary text-base",
+                              "hover:text-primary cursor-pointer p-2 text-base font-bold"
                             )}
                             onClick={() => onChooseItem(itemDishes)}
                           >
@@ -200,18 +200,18 @@ const Menu = ({ dishes, conceptName }: MenuProps) => {
 
           <div className="lg:w-[80%]">
             {Array.isArray(dishesList) && dishesList?.length > 0 ? (
-              <div className="w-full lg:w-[80%] lg:w-4/5 lg:pl-8 gap-5 lg:gap-x-5 lg:gap-y-4 xl:pl-20 lg:mb-20 grid grid-cols-2 xl:grid-cols-3">
+              <div className="grid w-full grid-cols-2 gap-5 lg:mb-20 lg:w-4/5 lg:w-[80%] lg:gap-x-5 lg:gap-y-4 lg:pl-8 xl:grid-cols-3 xl:pl-20">
                 {dishesList?.map((i, idx) => {
                   if (typeof i === "string") {
                     return (
                       <div
                         key={i}
-                        className="mb-4 w-52 h-45 relative cursor-pointer"
+                        className="relative mb-4 h-45 w-52 cursor-pointer"
                       >
                         <Image
                           src={i}
                           alt="Dish Image"
-                          className="object-cover rounded"
+                          className="rounded object-cover"
                           fill
                           sizes="100px"
                           loading="lazy"
@@ -227,11 +227,11 @@ const Menu = ({ dishes, conceptName }: MenuProps) => {
                   return (
                     <div key={i._id ?? idx} className="mb-4 h-auto">
                       <div className="flex flex-col items-center">
-                        <div className="w-full h-40 2xl:h-50 relative cursor-pointer">
+                        <div className="relative h-40 w-full cursor-pointer 2xl:h-50">
                           <Image
                             src={i?.image || "/favicon.ico"}
                             alt={i.name}
-                            className="object-cover rounded"
+                            className="rounded object-cover"
                             fill
                             loading="lazy"
                             sizes="(max-width:640px) 50vw, 25vw"
@@ -243,7 +243,7 @@ const Menu = ({ dishes, conceptName }: MenuProps) => {
                         </div>
 
                         <div className="max-w-full pt-2 text-center">
-                          <p className="font-medium text-primary-text ">
+                          <p className="text-primary-text font-medium">
                             {i.name}
                           </p>
                           <p className="text-gray-500">
@@ -256,7 +256,7 @@ const Menu = ({ dishes, conceptName }: MenuProps) => {
                 })}
               </div>
             ) : (
-              <div className="w-full lg:pl-8 gap-2 lg:gap-x-5 lg:gap-y-4 xl:pl-20 lg:mb-20 flex lg:flex-row flex-col justify-center items-center gap-4">
+              <div className="flex w-full flex-col items-center justify-center gap-2 gap-4 lg:mb-20 lg:flex-row lg:gap-x-5 lg:gap-y-4 lg:pl-8 xl:pl-20">
                 <div className="w-full lg:w-[50%]">
                   {Array.isArray((dishesList as Dish)?.images) &&
                   ((dishesList as Dish).images?.length ?? 0) > 0 ? (
@@ -265,18 +265,18 @@ const Menu = ({ dishes, conceptName }: MenuProps) => {
                       banners={(dishesList as Dish)?.images}
                     />
                   ) : (
-                    <div className="w-full h-75 relative cursor-pointer">
+                    <div className="relative h-75 w-full cursor-pointer">
                       <Image
                         src={(dishesList as Dish)?.image || "/favicon.ico"}
                         alt={"img"}
-                        className="object-cover rounded"
+                        className="rounded object-cover"
                         fill
                         sizes="(max-width:640px) 100vw, 50vw"
                         loading="lazy"
                         onClick={() => {
                           setIsOpenImage(true);
                           setImageSrc(
-                            (dishesList as Dish)?.image || "/favicon.ico",
+                            (dishesList as Dish)?.image || "/favicon.ico"
                           );
                         }}
                       />
@@ -284,7 +284,7 @@ const Menu = ({ dishes, conceptName }: MenuProps) => {
                   )}
                 </div>
                 <div className="w-full lg:w-[40%]">
-                  <h3 className="font-medium text-primary-text ">
+                  <h3 className="text-primary-text font-medium">
                     {(dishesList as Dish)?.name}
                   </h3>
                   <p className="text-gray-500">

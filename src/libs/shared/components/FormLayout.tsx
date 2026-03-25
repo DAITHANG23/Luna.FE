@@ -19,16 +19,16 @@ export const FormLayout = ({ children }: FormLayoutProps) => {
     !(pathname === `${ROUTES.REGISTER.INDEX}`);
 
   return (
-    <div className="grid p-4 sm:px-10 sm:p-0 sm:grid-cols-2 lg:grid-cols-3 mb-12 sm:gap-4">
-      <div className="flex sm:col-span-1 lg:col-span-1 justify-center items-center text-center flex-col p-4 hidden sm:inline-flex">
+    <div className="mb-12 grid p-4 sm:grid-cols-2 sm:gap-4 sm:p-0 sm:px-10 lg:grid-cols-3">
+      <div className="flex hidden flex-col items-center justify-center p-4 text-center sm:col-span-1 sm:inline-flex lg:col-span-1">
         <h2 className="text-primary max-w-[450px]">{t("title")}</h2>
-        <p className="text-primary-text pb-6 max-w-[450px]">{t("content")}</p>
+        <p className="text-primary-text max-w-[450px] pb-6">{t("content")}</p>
         <RestaurantLogin />
       </div>
 
-      <div className="flex-1 sm:col-span-1 lg:col-span-2 flex flex-col justify-start items-center">
+      <div className="flex flex-1 flex-col items-center justify-start sm:col-span-1 lg:col-span-2">
         {!isResetPasswordPage && (
-          <h4 className="mt-20 text-primary-text">
+          <h4 className="text-primary-text mt-20">
             {isLoginPage ? t("login.titleLogin") : t("register.titleRegister")}
           </h4>
         )}
@@ -44,7 +44,7 @@ export const FormLayout = ({ children }: FormLayoutProps) => {
                     ? `${ROUTES.REGISTER.INDEX}`
                     : `${ROUTES.LOGIN.INDEX}`
                 }
-                className="no-underline text-success [&:hover]:!underline hover:underline-offset-2"
+                className="text-success no-underline hover:underline-offset-2 [&:hover]:!underline"
               >
                 {t("button.getStarted")}
               </Link>
@@ -54,7 +54,7 @@ export const FormLayout = ({ children }: FormLayoutProps) => {
         <div
           className={clsx(
             isResetPasswordPage ? "mt-[120px]" : "mt-2",
-            "w-full max-w-md",
+            "w-full max-w-md"
           )}
         >
           {children}

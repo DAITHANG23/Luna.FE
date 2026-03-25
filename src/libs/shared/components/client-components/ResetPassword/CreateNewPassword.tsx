@@ -46,7 +46,7 @@ export const CreateNewPassword = ({ id }: CreateNewPasswordProps) => {
         .max(20, t("resetPassword.validate.maxPassword"))
         .matches(
           REGEX_VALIDTATE_PASSWORD,
-          t("resetPassword.validate.formatPassword"),
+          t("resetPassword.validate.formatPassword")
         ),
       passwordConfirm: Yup.string()
         .trim()
@@ -59,7 +59,7 @@ export const CreateNewPassword = ({ id }: CreateNewPasswordProps) => {
     (otp: string) => {
       setUserOtp(otp);
     },
-    [setUserOtp],
+    [setUserOtp]
   );
 
   const handleSubmit = (formData: ForgotPasswordType) => {
@@ -76,12 +76,12 @@ export const CreateNewPassword = ({ id }: CreateNewPasswordProps) => {
         return (
           <FormLayout>
             <Form>
-              <div className="flex flex-col items-center gap-4 w-full">
+              <div className="flex w-full flex-col items-center gap-4">
                 <IllustrationDashboardImage />
                 <h3 className="text-primary-text">
                   {t("resetPassword.title")}
                 </h3>
-                <p className="text-center text-secondary-text">
+                <p className="text-secondary-text text-center">
                   {t("resetPassword.content")}
                 </p>
                 <div className="w-full">
@@ -120,15 +120,15 @@ export const CreateNewPassword = ({ id }: CreateNewPasswordProps) => {
                   title={t("resetPassword.updatePassword")}
                   isLoading={isLoadingCreateNewPassword}
                   sizeButton="large"
-                  className="w-full! ml-0! font-bold! text-base! text-white text-center py-1 px-4"
+                  className="ml-0! w-full! px-4 py-1 text-center text-base! font-bold! text-white"
                 />
               </div>
             </Form>
-            <div className="flex flex-col mt-6 text-center items-center gap-4">
+            <div className="mt-6 flex flex-col items-center gap-4 text-center">
               <ResendButton />
               <button
                 type="button"
-                className="flex items-center gap-1 hover:underline mr-2 text-primary-text"
+                className="text-primary-text mr-2 flex items-center gap-1 hover:underline"
                 onClick={() => router.push(`${ROUTES.LOGIN.INDEX}`)}
               >
                 <ChevronLeftIcon width={16} height={16} />

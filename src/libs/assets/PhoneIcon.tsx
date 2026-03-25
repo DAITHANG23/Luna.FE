@@ -4,7 +4,7 @@ import PhoneIconSvg from "../icons/phone-icon.svg";
 
 export const PhoneIcon = () => {
   return (
-    <div className="relative w-6 h-6">
+    <div className="relative h-6 w-6">
       <Image src={PhoneIconSvg} alt="PhoneIcon" fill />
     </div>
   );

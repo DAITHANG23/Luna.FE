@@ -39,36 +39,36 @@ export const FieldInput = ({
   const errorMessage = meta.error;
 
   return (
-    <div className={clsx("mb-4 relative", className)}>
+    <div className={clsx("relative mb-4", className)}>
       <label
         className={clsx(
           isError ? "text-error" : "text-primary-text",
-          "text-sm font-medium",
+          "text-sm font-medium"
         )}
         htmlFor={name}
       >
         {title}
-        {required && <span className="ml-1 text-error">*</span>}
+        {required && <span className="text-error ml-1">*</span>}
       </label>
 
       <div className="relative flex items-center">
         {startIcon && (
-          <div className="absolute left-3 text-gray-400 pointer-events-none">
+          <div className="pointer-events-none absolute left-3 text-gray-400">
             {startIcon}
           </div>
         )}
         <input
           id={name}
           className={clsx(
-            "block w-full rounded-md py-[16.5px] px-[14px] bg-white text-sm dark:bg-[#1C252E] dark:border text-primary-text",
+            "text-primary-text block w-full rounded-md bg-white px-[14px] py-[16.5px] text-sm dark:border dark:bg-[#1C252E]",
             isReadOnly
-              ? "border-transparent dark:border-gray-500 p-2 rounded-md bg-gray-100 text-gray-500 read-only:bg-gray-200 read-only:cursor-not-allowed"
+              ? "rounded-md border-transparent bg-gray-100 p-2 text-gray-500 read-only:cursor-not-allowed read-only:bg-gray-200 dark:border-gray-500"
               : "border border-gray-300 dark:border-gray-300",
             isError
               ? "border border-red-500 dark:border-red-500"
               : "border border-gray-300 dark:border-gray-500",
             classNameInput,
-            "focus:outline-none data-focus:outline-2 data-focus:-outline-offset-2 data-focus:outline-black/25 dark:data-focus:outline-white/25",
+            "focus:outline-none data-focus:outline-2 data-focus:-outline-offset-2 data-focus:outline-black/25 dark:data-focus:outline-white/25"
           )}
           type={
             !isPasswordFied
@@ -86,7 +86,7 @@ export const FieldInput = ({
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute min-w-0 right-3 top-[15px] cursor-pointer w-6 h-6 text-secondary-text hover:text-primary"
+            className="text-secondary-text hover:text-primary absolute top-[15px] right-3 h-6 w-6 min-w-0 cursor-pointer"
           >
             {showPassword ? <EyeSlashIcon /> : <EyeIcon />}
           </button>

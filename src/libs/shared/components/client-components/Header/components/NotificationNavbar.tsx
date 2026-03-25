@@ -5,19 +5,22 @@ import { BellIcon } from "lucide-react";
 import React, { useCallback, useEffect, useState } from "react";
 import useBreakPoints from "@/features/hooks/useBreakPoints";
 import apiService from "@/api/endpoints/index";
-import { getAllNotifications } from "@/libs/redux/masterDataSlice";
+import { getAllNotifications } from "@/libs/redux/masterData/masterDataSlice";
 import NotificationDetailNavbar from "@/libs/shared/components/NotificationDetailNavbar";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/libs/next-intl/navigation";
 import { ROUTES } from "@/constants";
+import { notificationList } from "@/libs/redux/masterData/selectors";
 
 interface NotificationNavbarProps {
   unReadNotificationsQuantities: number;
 }
-const NotificationNavbar = ({ unReadNotificationsQuantities }: NotificationNavbarProps) => {
+const NotificationNavbar = ({
+  unReadNotificationsQuantities,
+}: NotificationNavbarProps) => {
   const router = useRouter();
   const t = useTranslations("Notification");
-  const allNotifications = useAppSelector(state => state.masterData.allNotifications)?.data.data;
+  const allNotifications = useAppSelector(notificationList);
   const [hasMounted, setHasMounted] = useState(false);
 
   const { isMobileSize } = useBreakPoints();
@@ -64,7 +67,9 @@ const NotificationNavbar = ({ unReadNotificationsQuantities }: NotificationNavba
                 <div key={item._id}>
                   <NotificationDetailNavbar
                     item={item}
-                    unReadNotificationsQuantities={unReadNotificationsQuantities}
+                    unReadNotificationsQuantities={
+                      unReadNotificationsQuantities
+                    }
                     handleDeleteNotification={handleDeleteNotification}
                   />
                   <hr className="my-1 text-gray-500" />

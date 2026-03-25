@@ -21,17 +21,17 @@ const MAX_RETRIES = 3;
 
 axiosWrapper.interceptors.request.use(
   async (
-    config: CustomAxiosRequestConfig,
+    config: CustomAxiosRequestConfig
   ): Promise<CustomAxiosRequestConfig> => {
     const token = localStorage.getItem("sessionId");
 
     config.headers.Authorization = token ? `Bearer ${token}` : "";
     return config;
-  },
+  }
 );
 
 axiosWrapper.interceptors.response.use(
-  (response) => response,
+  response => response,
   async (error: AxiosError<ErrorResponse>) => {
     const originalRequest = error.config as InternalAxiosRequestConfig<any> & {
       _retry?: boolean;
@@ -81,7 +81,7 @@ axiosWrapper.interceptors.response.use(
             ? Number(retryAfter) * 1000
             : 2 ** originalRequest.retryCount * 2000;
 
-          await new Promise((resolve) => setTimeout(resolve, waitTime));
+          await new Promise(resolve => setTimeout(resolve, waitTime));
           return axiosWrapper(originalRequest);
         }
       }
@@ -90,5 +90,5 @@ axiosWrapper.interceptors.response.use(
     }
 
     return Promise.reject(error);
-  },
+  }
 );

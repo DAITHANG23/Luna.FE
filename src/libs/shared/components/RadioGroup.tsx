@@ -12,11 +12,11 @@ export const RadioGroup = ({ title, itemList }: RadioGroupProps) => {
 
   return (
     <div>
-      <label className="text-sm font-medium text-primary-text">
-        {title} <span className="ml-1 text-error">*</span>
+      <label className="text-primary-text text-sm font-medium">
+        {title} <span className="text-error ml-1">*</span>
       </label>
-      <div className="flex justify-center gap-4 sm:gap-10 mt-5">
-        {itemList.map((item) => {
+      <div className="mt-5 flex justify-center gap-4 sm:gap-10">
+        {itemList.map(item => {
           return (
             <div key={item.id} className="flex items-center">
               <Field
@@ -24,7 +24,7 @@ export const RadioGroup = ({ title, itemList }: RadioGroupProps) => {
                 type="radio"
                 name={item.name}
                 value={item.value}
-                className="w-4 h-4 !text-primary bg-gray-100 border-gray-300"
+                className="!text-primary h-4 w-4 border-gray-300 bg-gray-100"
               />
               <label
                 htmlFor={item.id}

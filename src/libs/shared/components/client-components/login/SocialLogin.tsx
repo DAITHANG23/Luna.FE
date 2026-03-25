@@ -25,20 +25,20 @@ const SocialLogin = () => {
 
   return (
     <div
-      className="space-y-4 w-full animate-fade-up"
+      className="animate-fade-up w-full space-y-4"
       style={{ animationDelay: "0.1s" }}
     >
-      <div className="relative flex items-center py-2 ">
-        <div className="grow border-t border-border border-primary-text"></div>
-        <span className="shrink mx-4 text-muted-foreground text-primary-text text-sm">
+      <div className="relative flex items-center py-2">
+        <div className="border-border border-primary-text grow border-t"></div>
+        <span className="text-muted-foreground text-primary-text mx-4 shrink text-sm">
           {t("login.continueWith")}
         </span>
-        <div className="grow border-t border-border border-primary-text"></div>
+        <div className="border-border border-primary-text grow border-t"></div>
       </div>
 
       <button
         type="button"
-        className="inline-flex text-primary-text items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-input bg-background hover:bg-accent hover:text-accent-foreground dark:hover:text-accent-foreground px-4 py-2 w-full h-11 font-medium border shadow-button hover:shadow-button-hover transition-all duration-300 [&>svg]:pointer-events-none [&>svg]:size-4 [&>svg]:shrink-0"
+        className="text-primary-text ring-offset-background focus-visible:ring-ring border-input bg-background hover:bg-accent hover:text-accent-foreground dark:hover:text-accent-foreground shadow-button hover:shadow-button-hover inline-flex h-11 w-full items-center justify-center gap-2 rounded-md border px-4 py-2 text-sm font-medium whitespace-nowrap transition-all duration-300 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 [&>svg]:pointer-events-none [&>svg]:size-4 [&>svg]:shrink-0"
         onClick={handleGoogleLogin}
       >
         <GoogleIcon />

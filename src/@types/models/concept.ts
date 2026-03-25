@@ -103,5 +103,4 @@ export interface GetFavoriteConcepts {
   userId: string;
 }
 
-export interface ConceptsFavoriteResponse
-  extends Partial<AllConceptsResponse> {}
+export interface ConceptsFavoriteResponse extends Partial<AllConceptsResponse> {}

@@ -14,8 +14,8 @@ import { useRouter } from "@/libs/next-intl/navigation";
 
 const FieldInput = dynamic(
   () =>
-    import("@/libs/shared/components/FieldInput").then((mod) => mod.FieldInput),
-  { ssr: false },
+    import("@/libs/shared/components/FieldInput").then(mod => mod.FieldInput),
+  { ssr: false }
 );
 export const ResetPassword = () => {
   const router = useRouter();
@@ -55,7 +55,7 @@ export const ResetPassword = () => {
                 <h3 className="text-primary-text">
                   {t("forgotPassword.title")}
                 </h3>
-                <p className="text-center text-secondary-text">
+                <p className="text-secondary-text text-center">
                   {t("forgotPassword.content")}
                 </p>
                 <div className="w-full">
@@ -68,13 +68,13 @@ export const ResetPassword = () => {
                     title={t("forgotPassword.button")}
                     isLoading={isLoadingSendEmail}
                     sizeButton="large"
-                    className="w-full! ml-0! font-bold! text-base! text-white text-center py-1 px-4"
+                    className="ml-0! w-full! px-4 py-1 text-center text-base! font-bold! text-white"
                   />
                 </div>
 
                 <button
                   type="button"
-                  className="flex items-center gap-2 hover:underline text-primary-text"
+                  className="text-primary-text flex items-center gap-2 hover:underline"
                   onClick={() => router.back()}
                 >
                   <ChevronLeftIcon width={16} height={16} />

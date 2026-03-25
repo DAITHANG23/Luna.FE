@@ -63,7 +63,9 @@ const NotificationDetailNavbar = ({
     <div
       className={cn(
         "relative flex cursor-pointer items-start gap-2 rounded-lg p-2",
-        isSelected || item.read ? "bg-white dark:bg-gray-900" : getStatusClass(item.type),
+        isSelected || item.read
+          ? "bg-white dark:bg-gray-900"
+          : getStatusClass(item.type),
         isSelected &&
           "border-primary before:bg-primary mr-4 border before:absolute before:top-2 before:bottom-2 before:left-0 before:w-[6px] before:rounded-tr-lg before:rounded-br-lg before:content-[''] after:absolute after:right-[-8px] after:bottom-[calc(50%-8px)] after:border-t-8 after:border-b-8 after:border-l-8 after:border-transparent after:border-l-red-500 after:content-['']"
       )}
@@ -80,7 +82,9 @@ const NotificationDetailNavbar = ({
         }}
       >
         <h2 className="text-primary-text text-base font-bold">{item.title}</h2>
-        <p className="text-primary-text text-sm text-gray-800">{item.message}</p>
+        <p className="text-primary-text text-sm text-gray-800">
+          {item.message}
+        </p>
         <p className="text-primary-text text-xs">{formatted}</p>
       </div>
       {!item.read ? (

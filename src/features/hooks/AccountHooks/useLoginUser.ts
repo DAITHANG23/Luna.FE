@@ -6,10 +6,10 @@ import {
   ACCOUNT_LOGIN_QUERY_KEY,
   GET_DATA_USER_QUERY_KEY,
 } from "@app/constants/queryKeys";
-import { sessionId, authentication } from "@/libs/redux/authSlice";
+import { sessionId, authentication } from "@/libs/redux/auth/authSlice";
 import useNotification from "@/features/hooks/useNotification";
 import { AxiosError } from "axios";
-import { getAllNotifications } from "@/libs/redux/masterDataSlice";
+import { getAllNotifications } from "@/libs/redux/masterData/masterDataSlice";
 import { useAppDispatch } from "@/libs/redux/hooks";
 import { useRouter, useSearchParams } from "next/navigation";
 

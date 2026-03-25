@@ -35,16 +35,16 @@ export const ButtonLoading = ({
       disabled={isLoading || disabled}
       onClick={handleClick}
       className={clsx(
-        sizeButton === "large" ? "w-full sm:w-auto sm:ml-3" : "sm:w-auto",
+        sizeButton === "large" ? "w-full sm:ml-3 sm:w-auto" : "sm:w-auto",
         className,
-        "relative inline-flex justify-center rounded-md bg-primary/80 px-2 py-2 text-sm font-semibold text-white shadow-xs hover:bg-primary/90",
+        "bg-primary/80 hover:bg-primary/90 relative inline-flex justify-center rounded-md px-2 py-2 text-sm font-semibold text-white shadow-xs"
       )}
     >
       <p
         className={clsx(
           className,
-          isLoading ? "opacity-20 " : "opacity-100",
-          " mx-2! text-sm",
+          isLoading ? "opacity-20" : "opacity-100",
+          "mx-2! text-sm"
         )}
       >
         {title}
@@ -52,11 +52,11 @@ export const ButtonLoading = ({
       {isLoading && (
         <div
           role="status"
-          className="absolute -translate-x-1/2 -translate-y-1/2 top-2/4 left-1/2"
+          className="absolute top-2/4 left-1/2 -translate-x-1/2 -translate-y-1/2"
         >
           <svg
             aria-hidden="true"
-            className="w-6 h-6 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+            className="h-6 w-6 animate-spin fill-blue-600 text-gray-200 dark:text-gray-600"
             viewBox="0 0 100 101"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"

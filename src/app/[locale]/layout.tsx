@@ -5,11 +5,11 @@ import { notFound } from "next/navigation";
 import AppProviders from "./(routes)/AppProviders";
 
 export async function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
+  return routing.locales.map(locale => ({ locale }));
 }
 
 export async function generateMetadata(
-  props: Omit<LayoutProps<"/[locale]">, "children">,
+  props: Omit<LayoutProps<"/[locale]">, "children">
 ) {
   const { locale } = await props.params;
 

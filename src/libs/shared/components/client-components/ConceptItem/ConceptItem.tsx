@@ -35,18 +35,18 @@ const ConceptItem = ({
 
   const queryClient = useQueryClient();
   const isFavoriteConceptSelected = userData?.data.data.favorites?.includes(
-    concept._id,
+    concept._id
   );
 
   const isCheckInConceptSelected =
     userData?.data.data.checkInConcepts?.includes(concept._id);
 
   const [isFavoriteConcept, setIsFavoriteConcept] = useState(
-    isFavoriteConceptSelected,
+    isFavoriteConceptSelected
   );
 
   const [isCheckedInConcept, setIsCheckedInConcept] = useState(
-    isCheckInConceptSelected,
+    isCheckInConceptSelected
   );
 
   useEffect(() => {
@@ -71,7 +71,7 @@ const ConceptItem = ({
   const typeConcept = useMemo(() => {
     if (!concept?.type) return "OTHER";
     return (
-      DEFAULT_CONCEPTS_LIST.find((i) => i.value === concept?.type)?.label || ""
+      DEFAULT_CONCEPTS_LIST.find(i => i.value === concept?.type)?.label || ""
     );
   }, [concept]);
 
@@ -91,7 +91,7 @@ const ConceptItem = ({
         favoriteConcepts(formData);
       }
 
-      setIsFavoriteConcept((prev) => !prev);
+      setIsFavoriteConcept(prev => !prev);
     },
     [
       isFavoriteConceptSelected,
@@ -99,7 +99,7 @@ const ConceptItem = ({
       refetch,
       favoriteConcepts,
       queryClient,
-    ],
+    ]
   );
 
   const handleClickCheckIn = useCallback(
@@ -118,13 +118,13 @@ const ConceptItem = ({
         checkInConcept(formData);
       }
 
-      setIsCheckedInConcept((prev) => !prev);
+      setIsCheckedInConcept(prev => !prev);
     },
-    [isCheckedInConcept, userData, refetch, checkInConcept, queryClient],
+    [isCheckedInConcept, userData, refetch, checkInConcept, queryClient]
   );
 
   return (
-    <div className="relative h-104 sm:h-88 2xl:h-112.5 flex flex-col border-2 border-gray-300 rounded-lg shadow-md cursor-pointer hover:shadow-xl duration-300 transition-all ease-in-out dark:bg-gray-700 dark:shadow-md dark:hover:shadow-[0_8px_20px_rgba(255,255,255,0.15)] dark:transition-shadow dark:duration-300">
+    <div className="relative flex h-104 cursor-pointer flex-col rounded-lg border-2 border-gray-300 shadow-md transition-all duration-300 ease-in-out hover:shadow-xl sm:h-88 2xl:h-112.5 dark:bg-gray-700 dark:shadow-md dark:transition-shadow dark:duration-300 dark:hover:shadow-[0_8px_20px_rgba(255,255,255,0.15)]">
       <ModalCarousel
         setOpen={setIsOpenModalImageList}
         open={isOpenModalImageList}
@@ -137,34 +137,34 @@ const ConceptItem = ({
           isOpenModal={isOpenModal}
         />
       </Modal>
-      <div className="w-full h-[250px] sm:h-[200px] 2xl:h-[300px] relative">
+      <div className="relative h-[250px] w-full sm:h-[200px] 2xl:h-[300px]">
         <Image
           src={concept?.imageCover}
           alt={concept?.name}
           fill
           sizes="(max-width: 2560px) 600px, (max-width: 1440px) 322px, (max-width: 1024px) 464px, (max-width: 768px) 336px, (max-width: 425px) 389px"
-          className="rounded-tl-lg rounded-tr-lg rounded-bl-none rounded-br-none"
+          className="rounded-tl-lg rounded-tr-lg rounded-br-none rounded-bl-none"
           loading="lazy"
           onClick={() => onClickConcept(concept.name)}
         />
         <button
-          className="absolute bottom-4 right-4 text-white w-6 h-6"
+          className="absolute right-4 bottom-4 h-6 w-6 text-white"
           onClick={() => setIsOpenModalImageList(true)}
         >
-          <Square2StackIcon className="text-white w-8 h-8" />
+          <Square2StackIcon className="h-8 w-8 text-white" />
         </button>
       </div>
       <div
-        className="p-4 flex flex-col justify-start items-start gap-2"
+        className="flex flex-col items-start justify-start gap-2 p-4"
         onClick={() => onClickConcept(concept.name)}
       >
         <h3 className="text-primary-text">{concept?.name || ""}</h3>
         <p className="text-primary-text text-sm">{typeConcept}</p>
         <p className="text-primary-text text-sm">{concept?.address || ""}</p>
-        <div className="text-primary text-sm flex gap-1 justify-center items-center font-bold">
+        <div className="text-primary flex items-center justify-center gap-1 text-sm font-bold">
           <StarIcon />
           {concept?.avgRatings || 0}
-          <span className="w-1 h-1 mx-1.5 bg-gray-500 rounded-full dark:bg-gray-400"></span>
+          <span className="mx-1.5 h-1 w-1 rounded-full bg-gray-500 dark:bg-gray-400"></span>
           <a
             href="#"
             className="text-sm font-medium text-gray-900 underline hover:no-underline dark:text-white"
@@ -175,10 +175,10 @@ const ConceptItem = ({
       </div>
       {isReviewBtn && (
         <div>
-          <hr className="w-full bg-gray-300 h-[2px] mt-0!" />
-          <div className="mb-4 flex mx-4">
+          <hr className="mt-0! h-[2px] w-full bg-gray-300" />
+          <div className="mx-4 mb-4 flex">
             <button
-              className="border border-black rounded-full py-[2px] px-3 text-xs font-normal hover:bg-gray-200 dark:border-white dark:text-white dark:hover:bg-black"
+              className="rounded-full border border-black px-3 py-[2px] text-xs font-normal hover:bg-gray-200 dark:border-white dark:text-white dark:hover:bg-black"
               onClick={() => {
                 setIsOpenModal(true);
               }}
@@ -191,26 +191,26 @@ const ConceptItem = ({
 
       <div className="absolute top-[10px] right-[10px] flex gap-3">
         <button
-          className="border-none bg-white rounded-full p-1 cursor-pointer"
+          className="cursor-pointer rounded-full border-none bg-white p-1"
           onClick={() => {
             handleClickCheckIn(concept?._id);
           }}
         >
           {isCheckedInConcept ? (
-            <CheckCircleIconSolid className="text-green-500 w-5 h-5" />
+            <CheckCircleIconSolid className="h-5 w-5 text-green-500" />
           ) : (
-            <CheckCircleIcon className="text-black w-5 h-5" />
+            <CheckCircleIcon className="h-5 w-5 text-black" />
           )}
         </button>
         <button
-          className="border-none bg-white rounded-full p-1 cursor-pointer"
+          className="cursor-pointer rounded-full border-none bg-white p-1"
           onClick={() => handleClickFavorite(concept?._id)}
         >
-          <div className="w-5 h-5">
+          <div className="h-5 w-5">
             {isFavoriteConcept ? (
-              <HeartIconSolid className="text-primary w-full h-full" />
+              <HeartIconSolid className="text-primary h-full w-full" />
             ) : (
-              <HeartIcon className="text-black w-full h-full" />
+              <HeartIcon className="h-full w-full text-black" />
             )}
           </div>
         </button>

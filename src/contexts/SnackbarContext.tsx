@@ -8,16 +8,16 @@ const TransSnackbarProvider = ({ children }: PropsWithChildren<unknown>) => {
     (key: SnackbarKey) => () => {
       notistackRef.current?.closeSnackbar(key);
     },
-    [],
+    []
   );
   return (
     <SnackbarProvider
       maxSnack={3}
       anchorOrigin={{ horizontal: "center", vertical: "top" }}
       ref={notistackRef}
-      action={(key) => (
+      action={key => (
         <button
-          className="min-w-0 leading-none pt-1 pb-[6px] w-[25px] text-center rounded-full bg-gray-200 hover:bg-gray-300 text-secondary-text hover:text-gray-900 transition duration-200"
+          className="text-secondary-text w-[25px] min-w-0 rounded-full bg-gray-200 pt-1 pb-[6px] text-center leading-none transition duration-200 hover:bg-gray-300 hover:text-gray-900"
           onClick={onClickDismiss(key)}
         >
           x

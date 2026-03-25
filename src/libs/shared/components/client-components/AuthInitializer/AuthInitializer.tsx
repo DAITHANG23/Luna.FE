@@ -1,16 +1,16 @@
 "use client";
 import socket from "@/features/notification/socket";
 import { useAppDispatch, useAppSelector } from "@/libs/redux/hooks";
-import { unReadNotifications } from "@/libs/redux/masterDataSlice";
-import { useEffect, useMemo } from "react";
+import { unReadNotifications } from "@/libs/redux/masterData/masterDataSlice";
+import { unReadNotificationsLength } from "@/libs/redux/masterData/selectors";
+import { useEffect } from "react";
 
 const AuthInitializer = () => {
   const dispatch = useAppDispatch();
 
-  const allNotifications = useAppSelector(state => state.masterData.allNotifications)?.data.data;
-  const allNotificationsUnRead = useMemo(() => {
-    return allNotifications?.filter(item => item.read === false) || [];
-  }, [allNotifications]);
+  const allNotificationsUnReadLength = useAppSelector(
+    unReadNotificationsLength
+  );
 
   useEffect(() => {
     const handleConnect = () => {
@@ -36,10 +36,10 @@ const AuthInitializer = () => {
   useEffect(() => {
     dispatch(
       unReadNotifications({
-        unReadNotificationsQuantity: allNotificationsUnRead.length,
+        unReadNotificationsQuantity: allNotificationsUnReadLength,
       })
     );
-  }, [dispatch, allNotificationsUnRead]);
+  }, [dispatch, allNotificationsUnReadLength]);
 
   return null;
 };

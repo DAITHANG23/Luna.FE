@@ -58,16 +58,16 @@ export const Review = ({
     <div
       className={cn(
         isDoneReview ? "h-75 sm:h-60" : "h-auto sm:h-125",
-        "w-full sm:w-170 mt-10 mx-auto",
+        "mx-auto mt-10 w-full sm:w-170"
       )}
     >
       {isDoneReview ? (
-        <div className="w-[80%] mx-auto">
-          <h1 className="text-3xl text-primary-text">{t("allDone")} 🎉</h1>
-          <p className="pt-10 text-primary-text">{t("thankForSharing")}</p>
-          <div className="flex justify-end mt-10">
+        <div className="mx-auto w-[80%]">
+          <h1 className="text-primary-text text-3xl">{t("allDone")} 🎉</h1>
+          <p className="text-primary-text pt-10">{t("thankForSharing")}</p>
+          <div className="mt-10 flex justify-end">
             <button
-              className="bg-black text-white rounded-lg text-sm py-[10px] px-[13px] hover:scale-105 transition duration-200"
+              className="rounded-lg bg-black px-[13px] py-[10px] text-sm text-white transition duration-200 hover:scale-105"
               onClick={() => {
                 setIsOpenModal(false);
               }}
@@ -78,17 +78,17 @@ export const Review = ({
         </div>
       ) : (
         <div className="text-primary-text">
-          <h1 className="text-3xl text-center">{t("pleaseShare")}</h1>
+          <h1 className="text-center text-3xl">{t("pleaseShare")}</h1>
           <div className="mt-11">
             <p>{t("howWasTheRestaurant")}</p>
-            <div className="flex gap-2 mt-4 justify-center items-center text-center">
+            <div className="mt-4 flex items-center justify-center gap-2 text-center">
               {Array.from({ length: 5 }, (_, i) => {
                 return (
                   <div key={i}>
                     <button
                       className={cn(
                         scoreReviewConcept - 1 === i && "bg-gray-300",
-                        "border rounded-md w-8 h-8 pt-1 text-center hover:bg-gray-300",
+                        "h-8 w-8 rounded-md border pt-1 text-center hover:bg-gray-300"
                       )}
                       onClick={() => setScoreReviewConcept(i + 1)}
                     >
@@ -98,7 +98,7 @@ export const Review = ({
                 );
               })}
             </div>
-            <div className="flex justify-around mt-2 max-w-full sm:max-w-100 mx-auto text-gray-500">
+            <div className="mx-auto mt-2 flex max-w-full justify-around text-gray-500 sm:max-w-100">
               <p> {t("terrible")}</p> <p> {t("amazing")}</p>
             </div>
           </div>
@@ -107,22 +107,22 @@ export const Review = ({
             <textarea
               id="message"
               rows={4}
-              className="block p-2.5 w-full mt-4 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="mt-4 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
               placeholder={t("placehoderTextarea")}
-              onChange={(e) => handleChangeText(e)}
+              onChange={e => handleChangeText(e)}
             />
             {valueContentReview.trim().length > 0 &&
               valueContentReview.trim().length < 5 && (
                 <p className="text-primary text-sm">{t("validateReview")}</p>
               )}
           </div>
-          <div className="flex justify-end mt-10">
+          <div className="mt-10 flex justify-end">
             <button
               className={cn(
                 isInvalid
                   ? "bg-gray-400/50 hover:scale-1010"
                   : "bg-black hover:scale-105",
-                "text-white rounded-lg text-sm py-[10px] px-[13px]  transition duration-200",
+                "rounded-lg px-[13px] py-[10px] text-sm text-white transition duration-200"
               )}
               onClick={handleSubmitReviewConcept}
               disabled={isInvalid}

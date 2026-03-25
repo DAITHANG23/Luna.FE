@@ -21,9 +21,7 @@ export const Stepper = ({
   allSteps,
   labelMap,
 }: StepperProps) => {
-  const historyMap = Object.fromEntries(
-    statusHistory.map((s) => [s.status, s]),
-  );
+  const historyMap = Object.fromEntries(statusHistory.map(s => [s.status, s]));
   const currentIndex = statusHistory.length - 1;
 
   const StepperIcon = (step: string) => {
@@ -42,7 +40,7 @@ export const Stepper = ({
     }
   };
   return (
-    <div className="flex items-start justify-between w-full max-w-4xl mx-auto mt-8 lg:px-4">
+    <div className="mx-auto mt-8 flex w-full max-w-4xl items-start justify-between lg:px-4">
       {allSteps.map((step, index) => {
         const isDone = index < statusHistory.length;
         const isCurrent = index === currentIndex;
@@ -52,11 +50,11 @@ export const Stepper = ({
         return (
           <div
             key={step}
-            className="flex-1 flex flex-col items-center relative"
+            className="relative flex flex-1 flex-col items-center"
           >
             {index > 0 && (
               <div
-                className={cn("absolute -left-1/2 top-5 h-1 w-full", {
+                className={cn("absolute top-5 -left-1/2 h-1 w-full", {
                   "bg-green-500": index <= currentIndex,
                   "bg-gray-300": index > currentIndex,
                 })}
@@ -65,25 +63,25 @@ export const Stepper = ({
 
             <div
               className={cn(
-                "w-11 h-11 lg:w-11 lg:h-11 rounded-full flex items-center justify-center border-2 mb-2 z-5",
+                "z-5 mb-2 flex h-11 w-11 items-center justify-center rounded-full border-2 lg:h-11 lg:w-11",
                 {
-                  "bg-green-500 text-white border-green-500":
+                  "border-green-500 bg-green-500 text-white":
                     step === "COMPLETED" || (isDone && !isCurrent),
-                  "bg-yellow-400 text-white border-yellow-400":
+                  "border-yellow-400 bg-yellow-400 text-white":
                     isCurrent && step !== "COMPLETED" && !isCancelled,
-                  "bg-gray-200 text-gray-500 border-gray-300": !isDone,
-                  "bg-red-500 text-white boder-red-500": isCancelled,
-                },
+                  "border-gray-300 bg-gray-200 text-gray-500": !isDone,
+                  "boder-red-500 bg-red-500 text-white": isCancelled,
+                }
               )}
             >
               {StepperIcon(step)}
             </div>
 
-            <div className="text-center text-sm font-medium text-primary-text">
+            <div className="text-primary-text text-center text-sm font-medium">
               {labelMap[step]}
             </div>
             {history && (
-              <div className="text-xs text-gray-500 mt-1 text-center">
+              <div className="mt-1 text-center text-xs text-gray-500">
                 {dayjs(history.updatedAt).format("DD/MM/YYYY HH:mm")}
               </div>
             )}

@@ -2,17 +2,17 @@ import React from "react";
 
 const Skeleton = () => {
   return (
-    <div role="status" className="animate-pulse flex gap-4 w-full mt-6">
+    <div role="status" className="mt-6 flex w-full animate-pulse gap-4">
       <div className="w-full">
-        <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 max-w-[640px] mb-2.5 mx-auto"></div>
-        <div className="h-2.5 mx-auto bg-gray-300 rounded-full dark:bg-gray-700 max-w-[540px]"></div>
+        <div className="mx-auto mb-2.5 h-2.5 max-w-[640px] rounded-full bg-gray-300 dark:bg-gray-700"></div>
+        <div className="mx-auto h-2.5 max-w-[540px] rounded-full bg-gray-300 dark:bg-gray-700"></div>
       </div>
 
-      <div className="flex items-center justify-center mt-4 w-full">
-        <div className="w-20 h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 me-3"></div>
-        <div className="w-24 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+      <div className="mt-4 flex w-full items-center justify-center">
+        <div className="me-3 h-2.5 w-20 rounded-full bg-gray-200 dark:bg-gray-700"></div>
+        <div className="h-2 w-24 rounded-full bg-gray-200 dark:bg-gray-700"></div>
         <svg
-          className="w-8 h-8 text-gray-200 dark:text-gray-700 me-4"
+          className="me-4 h-8 w-8 text-gray-200 dark:text-gray-700"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           fill="currentColor"

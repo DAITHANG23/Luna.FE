@@ -3,7 +3,7 @@ import FilterIconSvg from "../icons/filter.svg";
 import Image from "next/image";
 export const FilterIcon = () => {
   return (
-    <div className="w-6 h-6 relative">
+    <div className="relative h-6 w-6">
       <Image src={FilterIconSvg} alt="FilterIcon" fill />
     </div>
   );
