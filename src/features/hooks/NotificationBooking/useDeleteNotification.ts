@@ -8,7 +8,8 @@ const useDeleteNotification = () => {
   const { showError } = useNotification();
 
   return useMutation({
-    mutationFn: (id: string) => apiService.notifications.deleteNotification({ id }),
+    mutationFn: (id: string) =>
+      apiService.notifications.deleteNotification({ id }),
 
     onError: (err: AxiosError<ErrorResponse>) => {
       showError(err.message);

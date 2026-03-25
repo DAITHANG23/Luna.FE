@@ -14,9 +14,9 @@ export const Tabs = ({ tabList, setActiveTab, activeTab }: TablistProps) => {
   const t = useTranslations("Profile");
 
   return (
-    <div className="border-gray-200 dark:border-gray-700 not-prose">
-      <ul className="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400">
-        {tabList?.map((tab) => {
+    <div className="not-prose border-gray-200 dark:border-gray-700">
+      <ul className="-mb-px flex flex-wrap text-center text-sm font-medium text-gray-500 dark:text-gray-400">
+        {tabList?.map(tab => {
           return (
             <li
               key={tab.name}
@@ -25,11 +25,11 @@ export const Tabs = ({ tabList, setActiveTab, activeTab }: TablistProps) => {
             >
               <p
                 className={clsx(
-                  "text-base inline-flex items-center justify-center pb-2 border-b-2 border-transparent rounded-t-lg hover:text-primary hover:border-primary group cursor-pointer",
+                  "hover:text-primary hover:border-primary group inline-flex cursor-pointer items-center justify-center rounded-t-lg border-b-2 border-transparent pb-2 text-base",
                   "transition-all duration-300 ease-in-out",
                   activeTab === tab.name
                     ? "text-primary border-primary text-primary border-primary"
-                    : "",
+                    : ""
                 )}
               >
                 {tab.icon}{" "}

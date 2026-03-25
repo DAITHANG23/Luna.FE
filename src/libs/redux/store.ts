@@ -1,7 +1,7 @@
 "use client";
 import { configureStore } from "@reduxjs/toolkit";
-import authReducer from "./authSlice";
-import masterDataSlice from "./masterDataSlice";
+import authReducer from "./auth/authSlice";
+import masterDataSlice from "./masterData/masterDataSlice";
 
 export const store = configureStore({
   reducer: {

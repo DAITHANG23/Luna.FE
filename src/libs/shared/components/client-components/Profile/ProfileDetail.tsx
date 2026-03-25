@@ -61,7 +61,7 @@ export const ProfileDetail = ({ userData, isLoading }: ProfileDetailProps) => {
   const [isOpenModalUpdate, setIsOpenModalUpdate] = useState(false);
   const [isOpenModalDelete, setIsOpenModalDelete] = useState(false);
   const [previewImage, setPreviewImage] = useState<string>(
-    userData?.data.data.avatarUrl || DEFAULT_AVATAR,
+    userData?.data.data.avatarUrl || DEFAULT_AVATAR
   );
 
   useEffect(() => {
@@ -116,23 +116,19 @@ export const ProfileDetail = ({ userData, isLoading }: ProfileDetailProps) => {
       dateOfBirth: Yup.string()
         .trim()
         .required(t("profile.validate.dateOfBirth"))
-        .test(
-          "is-old-enough",
-          t("profile.validate.ageRequirement"),
-          (value) => {
-            if (!value) return false;
-            const birthDate = parseISO(value);
-            const today = new Date();
-            return differenceInYears(today, birthDate) >= 13;
-          },
-        ),
+        .test("is-old-enough", t("profile.validate.ageRequirement"), value => {
+          if (!value) return false;
+          const birthDate = parseISO(value);
+          const today = new Date();
+          return differenceInYears(today, birthDate) >= 13;
+        }),
     });
   }, [t]);
 
   const handleSubmit = useCallback((values: UserLogin) => {
     const data: Partial<UserModel> = {};
 
-    (Object.keys(values) as Array<keyof UserLogin>).forEach((key) => {
+    (Object.keys(values) as Array<keyof UserLogin>).forEach(key => {
       const value = values[key];
 
       if (typeof value === "string" || typeof value === "number") {
@@ -197,7 +193,7 @@ export const ProfileDetail = ({ userData, isLoading }: ProfileDetailProps) => {
                 action={
                   <button
                     type="button"
-                    className="inline-flex w-full justify-center rounded-md bg-primary/80 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-primary/90 sm:ml-3 sm:w-auto"
+                    className="bg-primary/80 hover:bg-primary/90 inline-flex w-full justify-center rounded-md px-3 py-2 text-sm font-semibold text-white shadow-xs sm:ml-3 sm:w-auto"
                     onClick={handleDeleteAccount}
                   >
                     {t("modal.delete.button")}
@@ -212,7 +208,7 @@ export const ProfileDetail = ({ userData, isLoading }: ProfileDetailProps) => {
                 icon={
                   <ArrowPathIcon
                     aria-hidden="true"
-                    className="w-8 h-8 text-green-500 animate-[spin_3s_linear_infinite]"
+                    className="h-8 w-8 animate-[spin_3s_linear_infinite] text-green-500"
                     type="update"
                   />
                 }
@@ -236,27 +232,27 @@ export const ProfileDetail = ({ userData, isLoading }: ProfileDetailProps) => {
               className="flex flex-col items-start justify-start gap-6 lg:flex-row"
               style={{ fontFamily: "Inter" }}
             >
-              <div className="w-full lg:w-[30%] h-[462px] dark:bg-[#1C252E] shadow-[rgba(145,158,171,0.16)_0px_4px_8px_0px] rounded-2xl overflow-hidden bg-white text-primary-text flex flex-col items-center justify-center ">
-                <div className="text-center w-[144px] h-[144px] cursor-pointer overflow-hidden p-[8px] border border-dashed border-[rgba(145,158,171,0.2)] rounded-full relative">
-                  <label className="cursor-pointer block">
+              <div className="text-primary-text flex h-[462px] w-full flex-col items-center justify-center overflow-hidden rounded-2xl bg-white shadow-[rgba(145,158,171,0.16)_0px_4px_8px_0px] lg:w-[30%] dark:bg-[#1C252E]">
+                <div className="relative h-[144px] w-[144px] cursor-pointer overflow-hidden rounded-full border border-dashed border-[rgba(145,158,171,0.2)] p-[8px] text-center">
+                  <label className="block cursor-pointer">
                     <input
                       name="avatar"
                       type="file"
                       className="hidden"
                       onChange={handleImageChange}
                     />
-                    <div className="w-full h-full overflow-hidden rounded-full relative">
-                      <div className="relative w-full h-full rounded-full cursor-pointer">
+                    <div className="relative h-full w-full overflow-hidden rounded-full">
+                      <div className="relative h-full w-full cursor-pointer rounded-full">
                         <Image
                           src={previewImage}
                           alt="Avatar"
                           width={100}
                           height={100}
-                          className="w-full h-full object-cover tex"
+                          className="tex h-full w-full object-cover"
                         />
 
-                        <div className="absolute inset-0 flex flex-col gap-2 items-center justify-center bg-[rgba(22,28,36,0.64)] text-white opacity-0 transition-opacity duration-300 ease-in-out hover:opacity-100">
-                          <CameraIcon className="w-8 h-8" />
+                        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-[rgba(22,28,36,0.64)] text-white opacity-0 transition-opacity duration-300 ease-in-out hover:opacity-100">
+                          <CameraIcon className="h-8 w-8" />
                           <span className="text-xs font-normal">
                             {t("photoUpdate")}
                           </span>
@@ -266,7 +262,7 @@ export const ProfileDetail = ({ userData, isLoading }: ProfileDetailProps) => {
                   </label>
                 </div>
 
-                <span className="mt-6 mx-auto text-xs font-nomal leading-6 text-primary-text block text-center">
+                <span className="font-nomal text-primary-text mx-auto mt-6 block text-center text-xs leading-6">
                   {t("allowType")}
                   <br />
                   {t("maxSize")}
@@ -275,16 +271,16 @@ export const ProfileDetail = ({ userData, isLoading }: ProfileDetailProps) => {
                 <button
                   type="button"
                   onClick={() => setIsOpenModalDelete(true)}
-                  className="p-2 border-none rounded-lg font-bold text-sm text-white bg-primary/70 hover:bg-primary mt-[50px]"
+                  className="bg-primary/70 hover:bg-primary mt-[50px] rounded-lg border-none p-2 text-sm font-bold text-white"
                 >
                   {t("modal.delete.title")}
                 </button>
               </div>
               <div
-                className="w-full lg:w-[70%] dark:bg-[#1C252E] flex flex-col h-auto p-4 shadow-[rgba(145,158,171,0.16)_0px_4px_8px_0px] rounded-2xl overflow-hidden bg-white text-primary-text font-inter"
+                className="text-primary-text font-inter flex h-auto w-full flex-col overflow-hidden rounded-2xl bg-white p-4 shadow-[rgba(145,158,171,0.16)_0px_4px_8px_0px] lg:w-[70%] dark:bg-[#1C252E]"
                 style={{ fontFamily: "Inter" }}
               >
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <FieldInput
                     title="Email"
                     name="email"
@@ -334,14 +330,14 @@ export const ProfileDetail = ({ userData, isLoading }: ProfileDetailProps) => {
                 <div className="justify-end text-end">
                   <button
                     type={isValid ? "button" : "submit"}
-                    className="cursor-pointer text-white bg-primary/70 hover:bg-primary/80 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm text-center me-2 dark:focus:ring-primary inline-flex items-center"
+                    className="bg-primary/70 hover:bg-primary/80 dark:focus:ring-primary me-2 inline-flex cursor-pointer items-center rounded-lg text-center text-sm font-medium text-white focus:ring-4 focus:ring-blue-300"
                     onClick={() => {
                       if (isValid) {
                         setIsOpenModalUpdate(true);
                       }
                     }}
                   >
-                    <p className={"my-2! mx-2! text-sm  opacity-100"}>
+                    <p className={"mx-2! my-2! text-sm opacity-100"}>
                       {t("profile.button")}
                     </p>
                   </button>

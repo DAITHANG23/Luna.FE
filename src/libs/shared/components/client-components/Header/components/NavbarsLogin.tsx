@@ -9,7 +9,7 @@ import React from "react";
 const NavbarsLogin = () => {
   const { setIsOpenDialog } = useAppContext();
   return (
-    <div className="flex justify-between items-center p-4">
+    <div className="flex items-center justify-between p-4">
       <Link href={"/"}>
         <Image
           src={"/assets/images/logo.png"}
@@ -20,15 +20,15 @@ const NavbarsLogin = () => {
         />
       </Link>
 
-      <div className="flex justify-center items-center">
+      <div className="flex items-center justify-center">
         <LanguageSelect />
 
-        <div className="relative group">
+        <div className="group relative">
           <button
-            className="cursor-pointer sm:mr-20 hover:bg-gray-200 rounded-full p-2"
-            onClick={() => setIsOpenDialog((prev) => !prev)}
+            className="cursor-pointer rounded-full p-2 hover:bg-gray-200 sm:mr-20"
+            onClick={() => setIsOpenDialog(prev => !prev)}
           >
-            <Cog6ToothIcon className="w-7 h-7 animate-[spin_5s_linear_infinite] text-primary" />
+            <Cog6ToothIcon className="text-primary h-7 w-7 animate-[spin_5s_linear_infinite]" />
           </button>
         </div>
       </div>

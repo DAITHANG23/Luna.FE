@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-import { UserLogin, UserResponse } from "@/@types/models";
+import { UserResponse } from "@/@types/models";
 import apiService from "@/api/endpoints/index";
 import { ROUTES } from "@/constants";
 import { clearJWTCookies } from "@/utils/cookies";
@@ -9,7 +9,6 @@ import axios from "axios";
 import { Locale } from "next-intl";
 
 interface AuthState {
-  user: UserLogin;
   sessionId: string | null;
   isAuthenticated: boolean;
   accountInfo?: UserResponse | null;
@@ -35,7 +34,7 @@ export const logout = createAsyncThunk(
       delete axios.defaults.headers.common.Authorization;
       window.location.href = `/${locale}${ROUTES.LOGIN.INDEX}`;
     }
-  },
+  }
 );
 
 export const getAccountInfo = createAsyncThunk<
@@ -57,16 +56,6 @@ export const getAccountInfo = createAsyncThunk<
 });
 
 const initialState: AuthState = {
-  user: {
-    firstName: "",
-    lastName: "",
-    numberPhone: "",
-    address: "",
-    dateOfBirth: "",
-    gender: "",
-    email: "",
-    avatarUrl: "",
-  },
   isAuthenticated: false,
   sessionId: "",
   accountInfo: null,
@@ -83,20 +72,20 @@ const authSlice = createSlice({
     },
     userInfo: (
       state,
-      action: PayloadAction<{ accountInfo: UserResponse | null }>,
+      action: PayloadAction<{ accountInfo: UserResponse | null }>
     ) => {
       state.accountInfo = action.payload.accountInfo;
     },
     authentication: (
       state,
-      action: PayloadAction<{ isAuthenticated: boolean }>,
+      action: PayloadAction<{ isAuthenticated: boolean }>
     ) => {
       state.isAuthenticated = action.payload.isAuthenticated;
     },
   },
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
-      .addCase(getAccountInfo.pending, (state) => {
+      .addCase(getAccountInfo.pending, state => {
         state.loading = true;
         state.error = null;
       })
@@ -108,7 +97,7 @@ const authSlice = createSlice({
         state.loading = false;
         state.error = action.payload || "Đã xảy ra lỗi";
       })
-      .addCase(logout.fulfilled, (state) => {
+      .addCase(logout.fulfilled, state => {
         state.accountInfo = null;
         state.isAuthenticated = false;
         state.sessionId = "";

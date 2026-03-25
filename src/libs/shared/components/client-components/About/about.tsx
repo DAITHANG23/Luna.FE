@@ -10,7 +10,10 @@ import { useTranslations } from "next-intl";
 import useMasterData from "@/features/hooks/useMasterData";
 // import { useMounted } from "@/features/hooks/useMounted";
 const Map = dynamic(
-  () => import("@/libs/shared/components/client-components/Map/Map").then(mod => mod.Map),
+  () =>
+    import("@/libs/shared/components/client-components/Map/Map").then(
+      mod => mod.Map
+    ),
   {
     ssr: false,
   }
@@ -67,7 +70,9 @@ export const About = () => {
                 </h3>
               </div>
 
-              <p className="text-primary-text px-6! pt-0 pb-2">{t("about.contentOurCuisine")}</p>
+              <p className="text-primary-text px-6! pt-0 pb-2">
+                {t("about.contentOurCuisine")}
+              </p>
               <ul className="text-primary-text mt-4 list-inside list-disc space-y-2 px-6">
                 <li>{t("about.cuisine1")}</li>
                 <li>{t("about.cuisine2")}</li>
@@ -80,16 +85,19 @@ export const About = () => {
             <div className="from-card to-primary/5 border-primary/10 hover:border-primary/30 rounded-lg border-2 bg-linear-to-br shadow-md transition-colors">
               <div className="bg-primary/5 rounded-t-lg p-6">
                 <h3 className="text-primary flex items-center gap-2">
-                  <Clock className="text-primary h-5 w-5" /> {t("about.openHour")}
+                  <Clock className="text-primary h-5 w-5" />{" "}
+                  {t("about.openHour")}
                 </h3>
               </div>
 
               <div className="text-primary-text flex flex-col gap-4 p-6">
                 <p>
-                  <span className="font-bold">{t("about.monFri")}:</span> 11:00 - 22:00
+                  <span className="font-bold">{t("about.monFri")}:</span> 11:00
+                  - 22:00
                 </p>
                 <p>
-                  <span className="font-bold">{t("about.satSun")}:</span> 10:00 - 23:00
+                  <span className="font-bold">{t("about.satSun")}:</span> 10:00
+                  - 23:00
                 </p>
                 <p>
                   <span className="font-bold">{t("about.holidays")}:</span>
@@ -107,7 +115,10 @@ export const About = () => {
               </h3>
             </div>
             <div className="flex flex-col gap-4 p-6">
-              <Map className="h-100!" locationsList={locationsRestaurantsList} />
+              <Map
+                className="h-100!"
+                locationsList={locationsRestaurantsList}
+              />
             </div>
           </LayoutMotion>
 
@@ -138,8 +149,12 @@ export const About = () => {
         </div>
 
         <div className="from-primary/20 via-primary/30 to-primary/20 my-12 rounded-xl bg-linear-to-r p-8 text-center shadow-lg">
-          <h2 className="text-primary mb-4 text-2xl font-semibold">{t("about.visitUs")}</h2>
-          <p className="text-primary-text text-lg">{t("about.lookingForward")}</p>
+          <h2 className="text-primary mb-4 text-2xl font-semibold">
+            {t("about.visitUs")}
+          </h2>
+          <p className="text-primary-text text-lg">
+            {t("about.lookingForward")}
+          </p>
           <div className="mt-6">
             <a
               href="#"

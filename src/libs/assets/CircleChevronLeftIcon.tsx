@@ -4,7 +4,7 @@ import CircleChevronLeftSvg from "../icons/circle-chevron-left.svg";
 
 export const CircleChevronLeftIcon = () => {
   return (
-    <div className="relative w-6 h-6">
+    <div className="relative h-6 w-6">
       <Image src={CircleChevronLeftSvg} alt="CircleChevronLeftIcon" fill />
     </div>
   );

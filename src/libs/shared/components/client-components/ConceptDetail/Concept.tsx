@@ -34,7 +34,9 @@ export const Concept = () => {
   useEffect(() => {
     const routeConcept = localStorage.getItem("routeConcept")?.trim() || "";
 
-    const routeItem = CONCEPTS_ROUTES.some(c => `/${c.route}` === `/${routeConcept}`);
+    const routeItem = CONCEPTS_ROUTES.some(
+      c => `/${c.route}` === `/${routeConcept}`
+    );
 
     if (!routeItem) {
       notFound();

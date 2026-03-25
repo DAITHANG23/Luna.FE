@@ -10,12 +10,12 @@ const NotFoundPage = ({
   buttonText = "Về trang chủ",
 }: NotFoundPageProps) => {
   return (
-    <div className="flex flex-col gap-4 justify-center items-center text-center my-20 sm:my-34">
+    <div className="my-20 flex flex-col items-center justify-center gap-4 text-center sm:my-34">
       <NotFound />
       <h2 className="text-primary mt-[16px]">{title}</h2>
 
       <Link href={"/"}>
-        <button className="text-white bg-gray-800 hover:bg-gray-600 rounded-lg shadow-lg px-4 py-[6px]">
+        <button className="rounded-lg bg-gray-800 px-4 py-[6px] text-white shadow-lg hover:bg-gray-600">
           {buttonText}
         </button>
       </Link>

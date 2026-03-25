@@ -5,10 +5,16 @@ import { AxiosError } from "axios";
 import useNotification from "../useNotification";
 import apiService from "@/api/endpoints/index";
 import { useAppDispatch, useAppSelector } from "@/libs/redux/hooks";
-import { getAllNotifications, unReadNotifications } from "@/libs/redux/masterDataSlice";
+import {
+  getAllNotifications,
+  unReadNotifications,
+} from "@/libs/redux/masterData/masterDataSlice";
 import { CHECK_READ_NOTIFICATION_KEY } from "@/app/constants/queryKeys";
+import { unReadNotificationsLength } from "@/libs/redux/masterData/selectors";
 
-const checkReadNotification = async (id: string): Promise<CheckNotification> => {
+const checkReadNotification = async (
+  id: string
+): Promise<CheckNotification> => {
   return await apiService.notifications.checkReadNotification(id);
 };
 
@@ -17,7 +23,7 @@ const useCheckReadNotification = () => {
   const dispatch = useAppDispatch();
 
   const unReadNotificationsQuantities = useAppSelector(
-    state => state.masterData.unReadNotificationsQuantity
+    unReadNotificationsLength
   );
   return useMutation<CheckNotification, AxiosError<ErrorResponse>, string>({
     mutationFn: checkReadNotification,

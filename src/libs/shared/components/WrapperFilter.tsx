@@ -38,9 +38,9 @@ export const WrapperFilter = ({
   return isDesktopSize ? (
     <div className="py-5">{children}</div>
   ) : (
-    <div className="w-full relative">
+    <div className="relative w-full">
       <div
-        className="border border-solid border-gray-500 p-3 mb-4 rounded-lg flex flex-row justify-between flex-nowrap cursor-pointer"
+        className="mb-4 flex cursor-pointer flex-row flex-nowrap justify-between rounded-lg border border-solid border-gray-500 p-3"
         onClick={() => setOpen(!open)}
       >
         {open ? <FilterOpenIcon /> : <FilterIcon />}
@@ -48,10 +48,10 @@ export const WrapperFilter = ({
       <div
         className={cn(
           classNameMenu,
-          "absolute bg-white flex flex-col! justify-between flex-nowrap top-[150%] left-0 py-4 px-2 shadow-custom-blue rounded-lg block w-full translate-y-[-2em] transition-all duration-300 opacity-0",
+          "shadow-custom-blue absolute top-[150%] left-0 block flex w-full translate-y-[-2em] flex-col! flex-nowrap justify-between rounded-lg bg-white px-2 py-4 opacity-0 transition-all duration-300",
           open
-            ? "visible opacity-100 translate-y-[0%] z-10 top-full h-auto"
-            : "z-[-5]",
+            ? "visible top-full z-10 h-auto translate-y-[0%] opacity-100"
+            : "z-[-5]"
         )}
         onClick={() => {
           if (isHandleCloseMenu) handleCloseMenu();
@@ -60,7 +60,7 @@ export const WrapperFilter = ({
         {children}
         {isConfirmButton && (
           <button
-            className="bg-primary text-base text-white px-4 py-2 w-full text-center mt-4 rounded-lg"
+            className="bg-primary mt-4 w-full rounded-lg px-4 py-2 text-center text-base text-white"
             onClick={() => {
               setOpen(false);
             }}

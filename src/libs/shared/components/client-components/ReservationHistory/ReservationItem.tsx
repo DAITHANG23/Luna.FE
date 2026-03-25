@@ -78,7 +78,7 @@ export const ReservationItem = ({ id }: ReservationItemProps) => {
 
   const matchedConcept = useMemo(() => {
     const conceptName = dataBooking?.restaurant?.concept?.name;
-    return CONCEPTS_ROUTES.find((item) => item.name === conceptName);
+    return CONCEPTS_ROUTES.find(item => item.name === conceptName);
   }, [dataBooking]);
 
   const isCancelledStatusByAdmin = dataBooking?.status === "CANCELLED_BY_ADMIN";
@@ -100,25 +100,25 @@ export const ReservationItem = ({ id }: ReservationItemProps) => {
     );
 
   return (
-    <div className="mt-29 w-[90%] xl:w-[70%] mx-auto bg-white dark:bg-gray-900 rounded-lg p-4 my-4 shadow-lg">
-      <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-4 gap-6">
+    <div className="mx-auto my-4 mt-29 w-[90%] rounded-lg bg-white p-4 shadow-lg xl:w-[70%] dark:bg-gray-900">
+      <div className="mb-4 flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-center">
         <button
           onClick={() => router.back()}
-          className=" flex items-center gap-2 text-primary-text hover:text-primary transition-colors w-64"
+          className="text-primary-text hover:text-primary flex w-64 items-center gap-2 transition-colors"
         >
           <ChevronLeftIcon />
           {t("button.goBack")}
         </button>
         <div className="flex">
-          <p className="pr-2 border-r border-primary-text text-center text-primary-text">
+          <p className="border-primary-text text-primary-text border-r pr-2 text-center">
             {t("reservationCode")} 2412077RFADBD9
           </p>
-          <p className="pl-2 text-primary text-center">
+          <p className="text-primary pl-2 text-center">
             {contentStatus?.toLocaleUpperCase()}
           </p>
         </div>
       </div>
-      <hr className="mb-14! text-primary-text" />
+      <hr className="text-primary-text mb-14!" />
       <Stepper
         allSteps={
           isCancelledStatusByAdmin
@@ -130,18 +130,18 @@ export const ReservationItem = ({ id }: ReservationItemProps) => {
         statusHistory={statusHistory || []}
         labelMap={statusLabels}
       />
-      <hr className="mt-14! text-primary-text" />
+      <hr className="text-primary-text mt-14!" />
 
-      <div className="bg-primary/20 w-full h-auto flex lg:flex-row flex-col gap-4 items-center justify-end p-4">
+      <div className="bg-primary/20 flex h-auto w-full flex-col items-center justify-end gap-4 p-4 lg:flex-row">
         {status === "COMPLETED" && (
-          <div className="w-full h-auto flex lg:flex-row flex-col gap-4 lg:items-start lg:justify-between justify-center items-center">
-            <p className="text-xs text-primary-text">{t("thankYou")}</p>
+          <div className="flex h-auto w-full flex-col items-center justify-center gap-4 lg:flex-row lg:items-start lg:justify-between">
+            <p className="text-primary-text text-xs">{t("thankYou")}</p>
             <div className="flex flex-col gap-8">
               <button
                 onClick={() =>
                   router.replace(`/${matchedConcept?.route}/booking`)
                 }
-                className="px-5 py-3 bg-primary text-white hover:bg-primary/80 transition-colors text-sm text-center"
+                className="bg-primary hover:bg-primary/80 px-5 py-3 text-center text-sm text-white transition-colors"
               >
                 {t("button.bookingAgain")}
               </button>
@@ -149,7 +149,7 @@ export const ReservationItem = ({ id }: ReservationItemProps) => {
                 onClick={() =>
                   router.replace(`/${matchedConcept?.route}/booking`)
                 }
-                className="px-5 py-3 bg-primary text-white hover:bg-primary/80 transition-colors text-sm text-center"
+                className="bg-primary hover:bg-primary/80 px-5 py-3 text-center text-sm text-white transition-colors"
               >
                 {t("button.contact")}
               </button>
@@ -157,10 +157,10 @@ export const ReservationItem = ({ id }: ReservationItemProps) => {
           </div>
         )}
         {status !== "COMPLETED" && (
-          <div className="flex justify-end items-end">
+          <div className="flex items-end justify-end">
             <button
               onClick={() => router.replace(`/${matchedConcept?.route}`)}
-              className="px-5 py-3 bg-primary text-white hover:bg-primary/80 transition-colors text-sm text-center"
+              className="bg-primary hover:bg-primary/80 px-5 py-3 text-center text-sm text-white transition-colors"
             >
               {t("button.contact")}
             </button>
@@ -169,8 +169,8 @@ export const ReservationItem = ({ id }: ReservationItemProps) => {
       </div>
 
       <div className="mt-4 p-4">
-        <div className="flex justify-between lg:flex-row flex-col gap-4">
-          <div className="flex gap-4 justify-start text-start items-center ">
+        <div className="flex flex-col justify-between gap-4 lg:flex-row">
+          <div className="flex items-center justify-start gap-4 text-start">
             <div
               className="cursor-pointer"
               onClick={() => {
@@ -188,31 +188,31 @@ export const ReservationItem = ({ id }: ReservationItemProps) => {
             <p className="text-primary-text font-bold">{restaurant?.name}</p>
           </div>
         </div>
-        <div className="flex gap-4 text-black flex-col py-4 lg:p-4">
-          <div className="flex flex-col lg:flex-row gap-4 lg:gap-20">
+        <div className="flex flex-col gap-4 py-4 text-black lg:p-4">
+          <div className="flex flex-col gap-4 lg:flex-row lg:gap-20">
             <div>
-              <div className="flex items-center gap-2 justify-start">
-                <MailIcon className="w-4 h-4 text-primary shrink-0" />
-                <span className="whitespace-normal wrap-break-word min-w-[150px] text-primary-text">
+              <div className="flex items-center justify-start gap-2">
+                <MailIcon className="text-primary h-4 w-4 shrink-0" />
+                <span className="text-primary-text min-w-[150px] wrap-break-word whitespace-normal">
                   {email}
                 </span>
               </div>
-              <div className="flex items-center gap-2 text-primary-text">
-                <PhoneIcon className="w-4 h-4 text-primary" />
+              <div className="text-primary-text flex items-center gap-2">
+                <PhoneIcon className="text-primary h-4 w-4" />
                 {numberPhone}
               </div>
             </div>
 
             <div>
-              <div className="flex items-center gap-2 text-primary-text">
-                <CalendarIcon className="w-4 h-4 text-primary" /> {formatted}
+              <div className="text-primary-text flex items-center gap-2">
+                <CalendarIcon className="text-primary h-4 w-4" /> {formatted}
               </div>
-              <div className="flex items-center gap-2 text-primary-text">
-                <ClockIcon className="w-4 h-4 text-primary" />
+              <div className="text-primary-text flex items-center gap-2">
+                <ClockIcon className="text-primary h-4 w-4" />
                 {timeSlot}
               </div>
-              <div className="flex items-center gap-2 text-primary-text">
-                <UsersIcon className="w-4 h-4 text-primary" />
+              <div className="text-primary-text flex items-center gap-2">
+                <UsersIcon className="text-primary h-4 w-4" />
                 {peopleQuantity}
               </div>
             </div>
@@ -220,8 +220,8 @@ export const ReservationItem = ({ id }: ReservationItemProps) => {
 
           {notes && (
             <div className="text-start text-black">
-              <p className="text-sm font-bold text-primary">{t("note")}</p>
-              <p className="text-sm text-primary-text">{notes}</p>
+              <p className="text-primary text-sm font-bold">{t("note")}</p>
+              <p className="text-primary-text text-sm">{notes}</p>
             </div>
           )}
         </div>

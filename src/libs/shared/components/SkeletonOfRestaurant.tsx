@@ -2,11 +2,11 @@ import React from "react";
 const LoadingCard = () => (
   <div
     role="status"
-    className="max-w-sm p-4 border border-gray-200 mb-4 rounded-lg shadow-sm animate-pulse md:p-6 dark:border-gray-700"
+    className="mb-4 max-w-sm animate-pulse rounded-lg border border-gray-200 p-4 shadow-sm md:p-6 dark:border-gray-700"
   >
-    <div className="flex items-center justify-center h-48 mb-4 bg-gray-300 rounded-sm dark:bg-gray-700">
+    <div className="mb-4 flex h-48 items-center justify-center rounded-sm bg-gray-300 dark:bg-gray-700">
       <svg
-        className="w-10 h-10 text-gray-200 dark:text-gray-600"
+        className="h-10 w-10 text-gray-200 dark:text-gray-600"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         fill="currentColor"
@@ -16,15 +16,15 @@ const LoadingCard = () => (
         <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
       </svg>
     </div>
-    <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+    <div className="mb-4 h-2.5 w-48 rounded-full bg-gray-200 dark:bg-gray-700"></div>
+    <div className="mb-2.5 h-2 rounded-full bg-gray-200 dark:bg-gray-700"></div>
+    <div className="mb-2.5 h-2 rounded-full bg-gray-200 dark:bg-gray-700"></div>
+    <div className="h-2 rounded-full bg-gray-200 dark:bg-gray-700"></div>
   </div>
 );
 export const Skeleton = () => {
   return (
-    <div className="flex gap-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full">
+    <div className="flex grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {Array.from({ length: 8 }).map((_, index) => (
         <LoadingCard key={index} />
       ))}

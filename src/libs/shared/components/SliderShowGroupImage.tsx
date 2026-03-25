@@ -55,15 +55,15 @@ export const SliderShowGroupImage = ({
       <Slider
         {...settings}
         className={cn(
-          "w-full! h-[300px]! xl:h-[350px]! 2xl:h-[600px]! py-12 flex items-center! text-center! gap-2",
+          "flex h-[300px]! w-full! items-center! gap-2 py-12 text-center! xl:h-[350px]! 2xl:h-[600px]!"
         )}
         lazyLoad="progressive"
       >
-        {imagesList.map((i) => (
+        {imagesList.map(i => (
           <div
             key={i}
             className={cn(
-              "w-[300px]! h-[300px]!  2xl:w-[500px]! 2xl:h-[500px]! relative px-2",
+              "relative h-[300px]! w-[300px]! px-2 2xl:h-[500px]! 2xl:w-[500px]!"
             )}
           >
             <Image

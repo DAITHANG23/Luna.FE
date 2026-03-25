@@ -6,13 +6,17 @@ import { ROUTES } from "@/constants";
 import useCheckReadNotification from "@/features/hooks/NotificationBooking/useCheckReadNotification";
 import { useRouter } from "@/libs/next-intl/navigation";
 import { useAppDispatch, useAppSelector } from "@/libs/redux/hooks";
-import { getAllNotifications } from "@/libs/redux/masterDataSlice";
+import { getAllNotifications } from "@/libs/redux/masterData/masterDataSlice";
 import { WrapperFilter } from "@/libs/shared/components";
 import { BellIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { memo, useCallback, useEffect, useMemo, useState } from "react";
 import NotificationItem from "./NotificationItem";
 import useDeleteNotification from "@/features/hooks/NotificationBooking/useDeleteNotification";
+import {
+  notificationList,
+  unReadNotificationsLength,
+} from "@/libs/redux/masterData/selectors";
 
 interface NotificationMainProps {
   children: React.ReactNode;
@@ -23,10 +27,10 @@ export const NotificationMain = ({ children, id }: NotificationMainProps) => {
   const router = useRouter();
 
   const t = useTranslations("Notification");
-  const allNotifications = useAppSelector(state => state.masterData.allNotifications)?.data.data;
+  const allNotifications = useAppSelector(notificationList);
 
   const unReadNotificationsQuantities = useAppSelector(
-    state => state.masterData.unReadNotificationsQuantity
+    unReadNotificationsLength
   );
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
@@ -61,13 +65,14 @@ export const NotificationMain = ({ children, id }: NotificationMainProps) => {
 
       if (selectedId === id) {
         const nextIdNotifcation = newList?.[index!]?._id;
+
         setSelectedId(nextIdNotifcation || null);
 
         router.push(
           nextIdNotifcation
             ? {
                 pathname: `${ROUTES.NOTIFICATIONS.INDEX}`,
-                query: { noti_selected: id },
+                query: { noti_selected: nextIdNotifcation },
               }
             : ROUTES.NOTIFICATIONS.INDEX
         );
@@ -79,15 +84,6 @@ export const NotificationMain = ({ children, id }: NotificationMainProps) => {
 
   const handleDeleteNotification = useCallback(
     async (id: string) => {
-      // try {
-      //   await apiService.notifications.deleteNotification({ id });
-      //   dispatch(getAllNotifications());
-
-      //   handleAfterDeleteNotification(id);
-      // } catch (error) {
-      //   console.error("Failed to delete notification:", error);
-      // }
-
       deleteNotification(id, {
         onSuccess: () => {
           dispatch(getAllNotifications());
@@ -97,7 +93,7 @@ export const NotificationMain = ({ children, id }: NotificationMainProps) => {
         },
       });
     },
-    [deleteNotification, handleAfterDeleteNotification, dispatch]
+    [deleteNotification, dispatch, handleAfterDeleteNotification]
   );
 
   const NotificationsNavbar = useMemo(
@@ -143,7 +139,10 @@ export const NotificationMain = ({ children, id }: NotificationMainProps) => {
           <NotificationsNavbar />
         </div>
         <div className="block lg:hidden">
-          <WrapperFilter classNameMenu={"h-152! overflow-auto scrollbar-hide"} isHandleCloseMenu>
+          <WrapperFilter
+            classNameMenu={"h-152! overflow-auto scrollbar-hide"}
+            isHandleCloseMenu
+          >
             <NotificationsNavbar />
           </WrapperFilter>
         </div>

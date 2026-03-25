@@ -48,7 +48,7 @@ export const BookingDetail = ({ item }: BookingDetailProps) => {
   const { mutateAsync: updateReservation } = useUpdateReservation();
   const concept = useMemo(() => {
     return CONCEPTS_ROUTES.find(
-      (c) => c.name === item?.restaurant?.concept?.name,
+      c => c.name === item?.restaurant?.concept?.name
     );
   }, [item]);
   const queryClient = useQueryClient();
@@ -76,7 +76,7 @@ export const BookingDetail = ({ item }: BookingDetailProps) => {
 
   const status = useMemo(() => {
     if (item?.status) {
-      return STATUS_BOOKING.find((s) => s.status === item.status);
+      return STATUS_BOOKING.find(s => s.status === item.status);
     }
   }, [item]);
 
@@ -99,7 +99,7 @@ export const BookingDetail = ({ item }: BookingDetailProps) => {
           action={
             <button
               type="button"
-              className="inline-flex w-full justify-center rounded-md bg-primary/80 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-primary/90 sm:ml-3 sm:w-auto"
+              className="bg-primary/80 hover:bg-primary/90 inline-flex w-full justify-center rounded-md px-3 py-2 text-sm font-semibold text-white shadow-xs sm:ml-3 sm:w-auto"
               onClick={handleCanceledReservation}
             >
               {t("modal.delete.button")}
@@ -107,9 +107,9 @@ export const BookingDetail = ({ item }: BookingDetailProps) => {
           }
         />
       )}
-      <div className="flex flex-col gap-5 mb-5 justify-between p-5 text-center bg-white dark:bg-gray-800 shadow-xl rounded-lg transition-all duration-200 hover:-translate-y-0.5">
-        <div className="flex justify-between lg:flex-row flex-col gap-4">
-          <div className="flex gap-4 justify-start text-start items-center ">
+      <div className="mb-5 flex flex-col justify-between gap-5 rounded-lg bg-white p-5 text-center shadow-xl transition-all duration-200 hover:-translate-y-0.5 dark:bg-gray-800">
+        <div className="flex flex-col justify-between gap-4 lg:flex-row">
+          <div className="flex items-center justify-start gap-4 text-start">
             <div
               className="cursor-pointer"
               onClick={() => {
@@ -132,41 +132,41 @@ export const BookingDetail = ({ item }: BookingDetailProps) => {
           <p
             className={cn(
               getStatusClass(item?.status || ""),
-              "text-xs font-semibold py-1 px-2.5 text-center h-6 rounded-lg max-w-28 xl:max-w-30",
+              "h-6 max-w-28 rounded-lg px-2.5 py-1 text-center text-xs font-semibold xl:max-w-30"
             )}
           >
             {t("status", { status: status?.label as StatusLabel })}
           </p>
         </div>
         <div
-          className="flex gap-4 text-black flex-col bg-gray-200 dark:bg-gray-400 p-4 rounded cursor-pointer"
+          className="flex cursor-pointer flex-col gap-4 rounded bg-gray-200 p-4 text-black dark:bg-gray-400"
           onClick={() => {
             router.push(`/${locale}${ROUTES.BOOKING.INDEX}/${item._id}`);
           }}
         >
-          <div className="flex flex-col lg:flex-row gap-4 lg:gap-20">
+          <div className="flex flex-col gap-4 lg:flex-row lg:gap-20">
             <div>
               <div className="flex items-center gap-2">
-                <MailIcon className="w-4 h-4 text-primary shrink-0" />
-                <span className="whitespace-normal wrap-break-word min-w-[150px] text-start">
+                <MailIcon className="text-primary h-4 w-4 shrink-0" />
+                <span className="min-w-[150px] text-start wrap-break-word whitespace-normal">
                   {item?.email}
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <PhoneIcon className="w-4 h-4 text-primary" />
+                <PhoneIcon className="text-primary h-4 w-4" />
                 {item?.numberPhone}
               </div>
             </div>
 
             <div>
               <div className="flex items-center gap-2">
-                <CalendarIcon className="w-4 h-4 text-primary" /> {formatted}
+                <CalendarIcon className="text-primary h-4 w-4" /> {formatted}
               </div>
               <div className="flex items-center gap-2">
-                <ClockIcon className="w-4 h-4 text-primary" /> {item?.timeSlot}
+                <ClockIcon className="text-primary h-4 w-4" /> {item?.timeSlot}
               </div>
               <div className="flex items-center gap-2">
-                <UsersIcon className="w-4 h-4 text-primary" />
+                <UsersIcon className="text-primary h-4 w-4" />
                 {item?.peopleQuantity}
               </div>
             </div>
@@ -174,7 +174,7 @@ export const BookingDetail = ({ item }: BookingDetailProps) => {
 
           {item?.notes && (
             <div
-              className="text-start bg-gray-200 dark:bg-gray-400 text-black "
+              className="bg-gray-200 text-start text-black dark:bg-gray-400"
               onClick={() => {
                 router.push(`/${locale}${ROUTES.BOOKING.INDEX}/${item._id}`);
               }}
@@ -186,13 +186,13 @@ export const BookingDetail = ({ item }: BookingDetailProps) => {
         </div>
 
         {!STATUS_CONFIRMED.includes(item?.status as string) && (
-          <div className="flex gap-4 justify-end z-10">
+          <div className="z-10 flex justify-end gap-4">
             {/* <button className="px-2 py-1 rounded text-center hover:bg-primary text-primary-text hover:text-white">
           Edit
         </button> */}
             <button
               onClick={openCanceledModal}
-              className="px-2 py-1 rounded text-center bg-primary text-white text-sm hover:scale-105 transition duration-200"
+              className="bg-primary rounded px-2 py-1 text-center text-sm text-white transition duration-200 hover:scale-105"
             >
               {t("modal.delete.button")}
             </button>

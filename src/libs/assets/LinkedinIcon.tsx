@@ -3,7 +3,7 @@ import React from "react";
 
 export const LinkedinIcon = () => {
   return (
-    <div className="w-4 h-4 relative">
+    <div className="relative h-4 w-4">
       <Image src={"/icons/linkedin.svg"} alt="linkedin" fill />
     </div>
   );

@@ -18,7 +18,7 @@ const DialogSetting = () => {
 
   const [open, setOpen] = useState(false);
 
-    const t = useTranslations("Translation");
+  const t = useTranslations("Translation");
 
   useEffect(() => {
     setOpen(isOpenDialog);
@@ -56,14 +56,14 @@ const DialogSetting = () => {
                   </button>
                 </div>
               </TransitionChild>
-              <div className="flex h-full dark:bg-gray-800 flex-col overflow-y-scroll bg-white py-6 shadow-xl font-[inter] ">
+              <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 font-[inter] shadow-xl dark:bg-gray-800">
                 <div className="px-4 sm:px-6">
-                  <DialogTitle className="text-base font-semibold text-primary-text">
+                  <DialogTitle className="text-primary-text text-base font-semibold">
                     <p className="text-[25px]">{t("settings.title")}</p>
                   </DialogTitle>
                 </div>
                 <div className="relative mt-6 flex-1 px-4 sm:px-6">
-                  <p className="text-bold font-bold mb-4 text-primary-text">
+                  <p className="text-bold text-primary-text mb-4 font-bold">
                     {t("settings.themeMode")}
                   </p>
                   <TogglesDarkMode />

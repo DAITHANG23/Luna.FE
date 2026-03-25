@@ -57,12 +57,12 @@ export const BusinessHighlights = () => {
   const t = useTranslations("Home");
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[50px] p-4 w-full sm:w-[85%] m-auto py-[30px] sm:py-[80px]">
-      {ITEMS_LIST.map((i) => {
+    <div className="m-auto grid w-full grid-cols-1 gap-[50px] p-4 py-[30px] sm:w-[85%] sm:grid-cols-2 sm:py-[80px] lg:grid-cols-3">
+      {ITEMS_LIST.map(i => {
         return (
           <div
             key={i.title}
-            className="flex gap-4 justify-start items-center col-span-1"
+            className="col-span-1 flex items-center justify-start gap-4"
           >
             <div>
               <Image
@@ -71,7 +71,7 @@ export const BusinessHighlights = () => {
                 width={57}
                 height={57}
                 loading="lazy"
-                className="w-[57px] h-[57px] hover:bg-primary text-center leading-[54px] p-2 rounded-full bg-secondary-text"
+                className="hover:bg-primary bg-secondary-text h-[57px] w-[57px] rounded-full p-2 text-center leading-[54px]"
               />
             </div>
             <div>

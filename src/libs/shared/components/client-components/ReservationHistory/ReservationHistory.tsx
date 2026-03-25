@@ -22,8 +22,8 @@ export const OrderHistory = () => {
 
   return (
     <div className="mt-34">
-      <div className="mt-20 sm:mt-30 w-[90%] xl:w-[60%] mx-auto p-4 ">
-        <h3 className="flex text-center justify-start items-center gap-2 text-primary">
+      <div className="mx-auto mt-20 w-[90%] p-4 sm:mt-30 xl:w-[60%]">
+        <h3 className="text-primary flex items-center justify-start gap-2 text-center">
           <CalendarIcon /> {t("title")}
         </h3>
 
@@ -33,11 +33,11 @@ export const OrderHistory = () => {
               <LazyBookingDetail key={item._id} item={item} index={index} />
             ))
           ) : (
-            <div className="flex flex-col gap-4 justify-center items-center text-center">
+            <div className="flex flex-col items-center justify-center gap-4 text-center">
               <p className="text-base">{t("noBooking")}</p>
               <div className="flex gap-2">
                 <button
-                  className="text-primary hover:underline text-base font-bold"
+                  className="text-primary text-base font-bold hover:underline"
                   onClick={() => router.push(`/concepts`)}
                 >
                   {t("button.bookingNow")}

@@ -10,17 +10,17 @@ const WE_OFFER_LIST: Array<{
   content: "contentOffer1" | "contentOffer2" | "contentOffer3";
 }> = [
   {
-    icon: <Award className="h-5 w-5 text-primary" />,
+    icon: <Award className="text-primary h-5 w-5" />,
     title: "offerTitle1",
     content: "contentOffer1",
   },
   {
-    icon: <Leaf className="h-5 w-5 text-primary" />,
+    icon: <Leaf className="text-primary h-5 w-5" />,
     title: "offerTitle2",
     content: "contentOffer2",
   },
   {
-    icon: <Users className="h-5 w-5 text-primary" />,
+    icon: <Users className="text-primary h-5 w-5" />,
     title: "offerTitle3",
     content: "contentOffer3",
   },
@@ -38,7 +38,7 @@ export const WeOfferSection = () => {
 
   const [visible, setVisible] = useState(false);
 
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+  useMotionValueEvent(scrollYProgress, "change", latest => {
     if (latest > 0.2 && !visible) {
       setVisible(true);
     }
@@ -51,22 +51,22 @@ export const WeOfferSection = () => {
       animate={visible ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6 }}
     >
-      <h2 className="text-3xl font-semibold mb-6! text-center text-primary">
+      <h2 className="text-primary mb-6! text-center text-3xl font-semibold">
         {t("about.weOffer")}
       </h2>
-      <div className="grid md:grid-cols-3 gap-8">
-        {WE_OFFER_LIST.map((item) => (
+      <div className="grid gap-8 md:grid-cols-3">
+        {WE_OFFER_LIST.map(item => (
           <div
             key={item.title}
-            className="bg-linear-to-br rounded-lg from-card bg-card to-secondary/30 border border-primary/20 hover:shadow-lg transition-shadow duration-300 hover:-translate-y-1 shadow-sm duration-300 transition-shadow"
+            className="from-card bg-card to-secondary/30 border-primary/20 rounded-lg border bg-linear-to-br shadow-sm transition-shadow duration-300 hover:-translate-y-1 hover:shadow-lg"
           >
             <div className="flex items-center gap-2 p-6">
               {item.icon}
-              <h3 className="text-primary ">
+              <h3 className="text-primary">
                 {t("about.offers", { offers: item.title })}
               </h3>
             </div>
-            <p className="text-primary-text pt-0 p-6">
+            <p className="text-primary-text p-6 pt-0">
               {t("about.contentOffers", { contentOffers: item.content })}
             </p>
           </div>

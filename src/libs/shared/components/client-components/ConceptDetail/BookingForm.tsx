@@ -34,7 +34,7 @@ const BookingForm = ({
   const [chooseNotes, setChooseNotes] = useState<string[]>([]);
   const [notesContent, setNotesContent] = useState<string>("");
 
-  const accountInfo = useAppSelector((state) => state.auth.accountInfo)?.data
+  const accountInfo = useAppSelector(state => state.auth.accountInfo)?.data
     .data;
   const today = format(new Date(), "yyyy-MM-dd");
 
@@ -51,7 +51,7 @@ const BookingForm = ({
   const restaurant = useMemo(() => {
     if (chooseRestaurant)
       return restaurantsData?.data.restaurants.find(
-        (item) => item.name === chooseRestaurant,
+        item => item.name === chooseRestaurant
       );
   }, [chooseRestaurant, restaurantsData]);
 
@@ -64,8 +64,8 @@ const BookingForm = ({
   }, []);
 
   const onClickNotes = useCallback((value: string) => {
-    setChooseNotes((prev) => [...prev, value]);
-    setNotesContent((prev) => (prev ? `${prev} ${value}` : value));
+    setChooseNotes(prev => [...prev, value]);
+    setNotesContent(prev => (prev ? `${prev} ${value}` : value));
   }, []);
 
   const initialValues: RestaurantBooking = {
@@ -85,7 +85,7 @@ const BookingForm = ({
         .required(tTranslation(`login.validate.email`))
         .matches(
           REGEX_VALIDATE_EMAIL,
-          tTranslation(`login.validate.invalidEmail`),
+          tTranslation(`login.validate.invalidEmail`)
         ),
       fullName: Yup.string()
         .trim()
@@ -114,21 +114,21 @@ const BookingForm = ({
     >
       {() => {
         return (
-          <Form className="w-full h-auto">
-            <div className="flex flex-col w-[90%]">
-              <h1 className="font-bold text-lg pb-2 text-primary-text">
+          <Form className="h-auto w-full">
+            <div className="flex w-[90%] flex-col">
+              <h1 className="text-primary-text pb-2 text-lg font-bold">
                 {restaurant?.name}
               </h1>
-              <div className="flex gap-2 pb-2 items-start justify-start">
-                <MapPin className="text-primary shrink-0 w-5 h-5" />
+              <div className="flex items-start justify-start gap-2 pb-2">
+                <MapPin className="text-primary h-5 w-5 shrink-0" />
                 <p className="text-primary-text">{restaurant?.address}</p>
               </div>
               <div className="flex gap-2">
-                <Phone className="text-primary w-5 h-5" />
+                <Phone className="text-primary h-5 w-5" />
                 <p className="text-primary-text">{restaurant?.numberPhone}</p>
               </div>
             </div>
-            <hr className="my-4 text-primary-text" />
+            <hr className="text-primary-text my-4" />
 
             <FormDetail
               onClickNotes={onClickNotes}
@@ -141,10 +141,10 @@ const BookingForm = ({
               notesContent={notesContent}
             />
 
-            <div className="w-full flex mt-6 justify-end">
+            <div className="mt-6 flex w-full justify-end">
               <button
                 type="button"
-                className="flex items-center gap-2 text-black rounded-lg bg-gray-300 px-4 py-[8px] hover:scale-105 transition duration-200"
+                className="flex items-center gap-2 rounded-lg bg-gray-300 px-4 py-[8px] text-black transition duration-200 hover:scale-105"
                 onClick={() => {
                   setIsOpenModalBooking(false);
                 }}
@@ -156,7 +156,7 @@ const BookingForm = ({
                 title={tRestaurant("button.booking")}
                 isLoading={false}
                 sizeButton="small"
-                className="text-base! text-white text-center hover:scale-105 transition duration-200 !sm:w-[100px] ml-3"
+                className="!sm:w-[100px] ml-3 text-center text-base! text-white transition duration-200 hover:scale-105"
               />
             </div>
           </Form>

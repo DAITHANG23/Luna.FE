@@ -51,7 +51,10 @@ export const Navbar = () => {
       <NavbarConcept params={params} />
 
       {subPathname === "menu" ? (
-        <Menu dishes={conceptData?.data.data?.dishes || []} conceptName={pathnameMain} />
+        <Menu
+          dishes={conceptData?.data.data?.dishes || []}
+          conceptName={pathnameMain}
+        />
       ) : (
         <Booking conceptDataId={conceptData?.data.data._id || ""} />
       )}

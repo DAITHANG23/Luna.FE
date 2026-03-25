@@ -8,13 +8,13 @@ const UnauthorizedPage = async () => {
   const t = await getTranslations("Translation");
 
   return (
-    <div className="flex flex-col gap-4 justify-center items-center text-center my-[5rem] sm:my-[8.5rem]">
+    <div className="my-[5rem] flex flex-col items-center justify-center gap-4 text-center sm:my-[8.5rem]">
       <AuthorizationImage />
 
       <h2 className="text-primary mt-4">{t("authorize")}</h2>
 
       <Link href={`${ROUTES.LOGIN.INDEX}`}>
-        <button className="text-white bg-gray-800 hover:bg-gray-600 rounded-lg shadow-lg px-4 py-[6px]">
+        <button className="rounded-lg bg-gray-800 px-4 py-[6px] text-white shadow-lg hover:bg-gray-600">
           {t("returnLogin")}
         </button>
       </Link>
