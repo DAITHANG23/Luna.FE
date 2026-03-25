@@ -5,7 +5,7 @@ import apiService from "@/api/endpoints/index";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { useAppDispatch } from "@/libs/redux/hooks";
-import { getAccountInfo } from "@/libs/redux/authSlice";
+import { getAccountInfo } from "@/libs/redux/auth/authSlice";
 import { GET_DATA_USER_QUERY_KEY } from "@/app/constants/queryKeys";
 import { useRouter, useSearchParams } from "next/navigation";
 

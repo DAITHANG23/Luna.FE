@@ -16,7 +16,8 @@ export const numberWithCommas = (
   const parts = textNumber.split(".");
   if (!parts.length) return "0";
   if (parts.length === 2) {
-    const decimal = parseInt(parts[1]) === 0 && !showZeroDecimal ? "" : `.${parts[1]}`;
+    const decimal =
+      parseInt(parts[1]) === 0 && !showZeroDecimal ? "" : `.${parts[1]}`;
     return parts[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + decimal;
   }
 
@@ -54,7 +55,9 @@ export function cleanEmptyFields(obj: Record<string, any>) {
     const value = obj[key];
 
     const isEmptyObject =
-      typeof value === "object" && !Array.isArray(value) && Object.keys(value).length === 0;
+      typeof value === "object" &&
+      !Array.isArray(value) &&
+      Object.keys(value).length === 0;
     const isEmptyArray = Array.isArray(value) && value.length === 0;
     const isEmptyString = typeof value === "string" && value.trim() === "";
 

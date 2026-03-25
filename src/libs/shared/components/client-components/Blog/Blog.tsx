@@ -9,10 +9,10 @@ export const Blog = () => {
   const router = useRouter();
 
   return (
-    <div className="mt-34 flex flex-col justify-center items-center gap-10">
+    <div className="mt-34 flex flex-col items-center justify-center gap-10">
       <Updating />
       <button
-        className="text-white bg-gray-800 hover:bg-gray-600 rounded-lg shadow-lg px-4 py-[6px]"
+        className="rounded-lg bg-gray-800 px-4 py-[6px] text-white shadow-lg hover:bg-gray-600"
         onClick={() => router.push(`/`)}
       >
         {t("returnHome")}

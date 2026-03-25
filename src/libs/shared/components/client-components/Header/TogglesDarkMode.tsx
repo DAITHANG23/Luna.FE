@@ -24,22 +24,18 @@ const TogglesDarkMode = () => {
 const SliderToggle = ({ selected, setSelected }: SliderToggle) => {
   const t = useTranslations("Translation");
   return (
-    <div className="relative flex w-fit items-center rounded-full not-prose">
+    <div className="not-prose relative flex w-fit items-center rounded-full">
       <button
-        className={`${TOGGLE_CLASSES} ${
-          selected === "light" ? "text-white" : "text-slate-800"
-        }`}
+        className={`${TOGGLE_CLASSES} ${selected === "light" ? "text-white" : "text-slate-800"}`}
         onClick={() => {
           setSelected("light");
         }}
       >
         <MoonIcon />
-        <p className="relative z-10 ">{t("settings.light")}</p>
+        <p className="relative z-10">{t("settings.light")}</p>
       </button>
       <button
-        className={`${TOGGLE_CLASSES} ${
-          selected === "dark" ? "text-white" : "text-slate-800"
-        }`}
+        className={`${TOGGLE_CLASSES} ${selected === "dark" ? "text-white" : "text-slate-800"}`}
         onClick={() => {
           setSelected("dark");
         }}

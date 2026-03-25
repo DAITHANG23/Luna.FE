@@ -27,9 +27,7 @@ export async function proxy(request: NextRequest) {
   const sessionId = request.cookies.get("sessionId")?.value;
   const requestHeaders = new Headers(request.headers);
 
-  const isProtected = protectedRoutes.some((route) =>
-    pathname.startsWith(route),
-  );
+  const isProtected = protectedRoutes.some(route => pathname.startsWith(route));
 
   if (!sessionId && isProtected) {
     const loginUrl = new URL("/login", request.url);

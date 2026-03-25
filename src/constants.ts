@@ -404,7 +404,7 @@ export type StatusLabel =
   | "completed"
   | "cancelled"
   | "cancelled";
-  
+
 export const STATUS_BOOKING: Array<{ status: Status; label: StatusLabel }> = [
   { status: "PENDING", label: "pending" },
   { status: "CONFIRMED", label: "confirmed" },

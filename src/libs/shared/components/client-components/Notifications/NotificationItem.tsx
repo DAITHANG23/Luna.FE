@@ -22,7 +22,7 @@ const NotificationItem = ({
         handleDeleteNotification={handleDeleteNotification}
         isSelected={isSelected}
       />
-      <hr className="text-gray-500 my-1!" />
+      <hr className="my-1! text-gray-500" />
     </div>
   );
 };

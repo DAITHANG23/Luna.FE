@@ -21,8 +21,8 @@ export default function ScrollToTop() {
   return (
     <button
       onClick={scrollToTop}
-      className={`fixed bottom-6 right-6 w-10 h-10 flex items-center justify-center rounded-full bg-primary/80 hover:bg-primary/90 text-white shadow-md transition-opacity duration-300 ${
-        showButton ? "opacity-100" : "opacity-0 pointer-events-none"
+      className={`bg-primary/80 hover:bg-primary/90 fixed right-6 bottom-6 flex h-10 w-10 items-center justify-center rounded-full text-white shadow-md transition-opacity duration-300 ${
+        showButton ? "opacity-100" : "pointer-events-none opacity-0"
       }`}
       style={{ zIndex: 10000 }}
     >

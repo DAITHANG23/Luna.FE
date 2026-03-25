@@ -27,9 +27,9 @@ export const Favorites = () => {
       </div>
     );
   return (
-    <div className="flex flex-col gap-4 mt-20 sm:mt-42 mb-10 px-4 w-full lg:h-screen sm:w-[60%] text-center mx-auto">
-      <hr className="w-full bg-gray-300 h-[2px]" />
-      <div className="flex flex-col lg:flex-row w-full gap-8 mx-auto lg:mx-0">
+    <div className="mx-auto mt-20 mb-10 flex w-full flex-col gap-4 px-4 text-center sm:mt-42 sm:w-[60%] lg:h-screen">
+      <hr className="h-[2px] w-full bg-gray-300" />
+      <div className="mx-auto flex w-full flex-col gap-8 lg:mx-0 lg:flex-row">
         <div
           onClick={() => {
             router.push(ROUTES.FAVORITE_CONCEPTS.FAVORITE_RESTAURANTS);

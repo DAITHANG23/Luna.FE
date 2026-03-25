@@ -26,14 +26,14 @@ export const VisitedRestaurants = () => {
 
   const handleClickConcept = useCallback(
     (nameConcept: string) => {
-      const route = CONCEPTS_ROUTES.find((c) => c.name === nameConcept);
+      const route = CONCEPTS_ROUTES.find(c => c.name === nameConcept);
       if (!route) return;
 
       localStorage.setItem("routeConcept", route.route);
 
       router.push(`/${locale}/${route.route}`);
     },
-    [router, locale],
+    [router, locale]
   );
 
   if (isLoadingCheckInConceptsData)
@@ -43,11 +43,11 @@ export const VisitedRestaurants = () => {
       </div>
     );
   return (
-    <div className="my-20 sm:my-26 p-8">
-      <div className="w-full lg:w-[80%] mx-auto mb-10">
+    <div className="my-20 p-8 sm:my-26">
+      <div className="mx-auto mb-10 w-full lg:w-[80%]">
         <button
           onClick={() => router.push(ROUTES.FAVORITE_CONCEPTS.INDEX)}
-          className="flex gap-2 items-center border border-solid dark:border-white rounded-lg border-black px-3 hover:bg-gray-200 mb-4"
+          className="mb-4 flex items-center gap-2 rounded-lg border border-solid border-black px-3 hover:bg-gray-200 dark:border-white"
         >
           <ArrowLeftIcon />
           <span className="font-base text-primary-text dark:hover:text-black">
@@ -55,10 +55,10 @@ export const VisitedRestaurants = () => {
           </span>
         </button>
         {checkInConcepts?.length > 0 && (
-          <h4 className="pt-8 text-primary-text">{t("titleCheckIn")}</h4>
+          <h4 className="text-primary-text pt-8">{t("titleCheckIn")}</h4>
         )}
         {checkInConcepts && checkInConcepts.length > 0 ? (
-          <div className="py-8 grid grid 2xl:grid-cols-4 xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6 flex-wrap text-center justify-between items-center">
+          <div className="grid grid-cols-1 flex-wrap items-center justify-between gap-6 py-8 text-center sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
             {checkInConcepts?.map((concept: ConceptModel) => {
               return (
                 <div key={concept.name}>
@@ -72,17 +72,17 @@ export const VisitedRestaurants = () => {
             })}
           </div>
         ) : (
-          <div className="w-full lg:w-[60%] mx-auto text-center">
+          <div className="mx-auto w-full text-center lg:w-[60%]">
             <h1 className="text-primary-text">
               {t("checkinEmptyContent")}
               <br /> {`:(`}
             </h1>
-            <div className="h-35 w-full flex items-center justify-center rounded-xl">
-              <CheckCircleIcon className="text-gray-400 w-20 h-20" />
+            <div className="flex h-35 w-full items-center justify-center rounded-xl">
+              <CheckCircleIcon className="h-20 w-20 text-gray-400" />
             </div>
             <div className="text-primary-text">
               {t("touchTheVisitIcon")}
-              <Link href={ROUTES.CONCEPTS.INDEX} className="px-1 text-primary">
+              <Link href={ROUTES.CONCEPTS.INDEX} className="text-primary px-1">
                 {t("restaurant")}
               </Link>
               <br />

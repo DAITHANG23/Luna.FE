@@ -23,13 +23,13 @@ export const SearchField = ({
         type="text"
         id="default-search"
         className={cn(
-          "w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-md bg-white dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white",
-          className,
+          "w-full rounded-md border border-gray-300 bg-white p-2 text-sm text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400",
+          className
         )}
         placeholder={placeholder || t("concepts.placeholder.search")}
         {...props}
       />
-      <div className="absolute right-3 top-2">
+      <div className="absolute top-2 right-3">
         <MagnifyingGlassIcon
           className="text-stone-600 dark:text-stone-200"
           width={20}

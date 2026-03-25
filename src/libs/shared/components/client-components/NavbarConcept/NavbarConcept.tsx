@@ -25,11 +25,11 @@ const NavbarConcept = ({ params }: NavbarConceptProps) => {
   }, [navbarPathname]);
 
   const route = useMemo(() => {
-    return CONCEPTS_ROUTES.find((c) => `/${c.route}` === mainPathname);
+    return CONCEPTS_ROUTES.find(c => `/${c.route}` === mainPathname);
   }, [mainPathname]);
 
   return (
-    <div className="flex text-center gap-[10px] sm:gap-33 px-6 py-2 dark:bg-gray-500 rounded-md mb-2">
+    <div className="mb-2 flex gap-[10px] rounded-md px-6 py-2 text-center sm:gap-33 dark:bg-gray-500">
       <Link href={`/${pathnameLocale}/${mainPathname}`}>
         <Image
           src={route?.logo || "/favico.ico"}
@@ -40,17 +40,17 @@ const NavbarConcept = ({ params }: NavbarConceptProps) => {
         />
       </Link>
 
-      <div className="lg:ml-20 block content-center">
-        <div className="flex space-x-4 ">
-          {conceptNavigation.map((item) => (
+      <div className="block content-center lg:ml-20">
+        <div className="flex space-x-4">
+          {conceptNavigation.map(item => (
             <Link
               key={item.name}
               href={`/${pathnameLocale}${mainPathname}${item.href}`}
               className={cn(
                 itemNavbar === item.href
                   ? "text-primary underline!"
-                  : "text-primary-text dark:text-gray-300 hover:bg-primary dark:hover:bg-gray-700 hover:text-white",
-                "rounded-md px-3 py-2 text-sm font-medium flex items-center justify-center",
+                  : "text-primary-text hover:bg-primary hover:text-white dark:text-gray-300 dark:hover:bg-gray-700",
+                "flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium"
               )}
               onClick={() => setItemNavbar(item.href)}
             >

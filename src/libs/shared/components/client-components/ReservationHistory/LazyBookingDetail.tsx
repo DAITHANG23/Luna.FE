@@ -27,7 +27,7 @@ export const LazyBookingDetail = ({
           <BookingDetail item={item} />
         </motion.div>
       ) : (
-        <div className="w-full h-[150px] bg-gray-100 animate-pulse rounded" />
+        <div className="h-[150px] w-full animate-pulse rounded bg-gray-100" />
       )}
     </div>
   );

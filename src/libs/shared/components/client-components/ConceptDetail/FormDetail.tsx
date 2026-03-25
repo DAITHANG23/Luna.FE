@@ -80,7 +80,7 @@ export const FormDetail = ({
           label={t("label.time")}
           classNameButton="w-full px-3! py-[6px]!"
           required
-          startIcon={<Clock className="text-primary-text w-4 h-4" />}
+          startIcon={<Clock className="text-primary-text h-4 w-4" />}
         />
 
         <SelectField
@@ -92,7 +92,7 @@ export const FormDetail = ({
           classNameContainer="w-full!"
           required
           classNameButton="w-full px-3! py-[6px]!"
-          startIcon={<Users className="text-primary-text w-4 h-4" />}
+          startIcon={<Users className="text-primary-text h-4 w-4" />}
         />
 
         <FieldInput
@@ -121,7 +121,7 @@ export const FormDetail = ({
       </div>
 
       <div>
-        <p className="font-medium text-sm text-primary-text">
+        <p className="text-primary-text text-sm font-medium">
           {t("label.notes")}
         </p>
         <textarea
@@ -132,19 +132,19 @@ export const FormDetail = ({
           }
           value={notesContent ?? ""}
           rows={4}
-          className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
           placeholder={t("concepts.placeholder.notes")}
         />
-        <div className="flex flex-wrap gap-3 mt-2">
-          {NOTES_LIST.map((item) => (
+        <div className="mt-2 flex flex-wrap gap-3">
+          {NOTES_LIST.map(item => (
             <button
               type="button"
               key={item.label}
               onClick={() => onClickNotes(item.value)}
               className={cn(
                 chooseNotes.includes(item.value) &&
-                  "border-none! !bg-primary text-white!",
-                "border border-gray-500 rounded-full px-4 py-1 bg-gray-200 text-sm hover:scale-105",
+                  "!bg-primary border-none! text-white!",
+                "rounded-full border border-gray-500 bg-gray-200 px-4 py-1 text-sm hover:scale-105"
               )}
             >
               {item.label}

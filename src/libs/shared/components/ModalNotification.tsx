@@ -40,7 +40,7 @@ export const ModalNotification = ({
             transition
             className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 sm:w-full sm:max-w-lg data-closed:sm:translate-y-0 data-closed:sm:scale-95"
           >
-            <div className="bg-white dark:bg-[#1C252E] px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+            <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4 dark:bg-[#1C252E]">
               <div className="sm:flex sm:items-start">
                 <div
                   className={clsx(
@@ -49,7 +49,7 @@ export const ModalNotification = ({
                       : type === "delete"
                         ? "bg-red-100"
                         : "bg-yellow-100",
-                    "mx-auto flex size-12 shrink-0 items-center justify-center rounded-full  sm:mx-0 sm:size-10",
+                    "mx-auto flex size-12 shrink-0 items-center justify-center rounded-full sm:mx-0 sm:size-10"
                   )}
                 >
                   {icon}
@@ -69,13 +69,13 @@ export const ModalNotification = ({
                 </div>
               </div>
             </div>
-            <div className="bg-gray-50 dark:bg-[#1C252E]/95 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+            <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 dark:bg-[#1C252E]/95">
               {action}
               <button
                 type="button"
                 data-autofocus
                 onClick={() => setOpen(false)}
-                className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50 sm:mt-0 sm:w-auto"
               >
                 {labelButton}
               </button>

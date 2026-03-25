@@ -3,9 +3,14 @@
 import { ROUTES } from "@/constants";
 import LoadingProvider from "@/contexts/LoadingContext";
 import { usePathname } from "@/libs/next-intl/navigation";
-import { authentication, getAccountInfo, sessionId, userInfo } from "@/libs/redux/authSlice";
+import {
+  authentication,
+  getAccountInfo,
+  sessionId,
+  userInfo,
+} from "@/libs/redux/auth/authSlice";
 import { useAppDispatch, useAppSelector } from "@/libs/redux/hooks";
-import { getAllNotifications } from "@/libs/redux/masterDataSlice";
+import { getAllNotifications } from "@/libs/redux/masterData/masterDataSlice";
 import AuthInitializer from "@/libs/shared/components/client-components/AuthInitializer/AuthInitializer";
 import Footer from "@/libs/shared/components/client-components/Footer/Footer";
 import DialogSetting from "@/libs/shared/components/client-components/Header/components/DialogSetting";
@@ -18,7 +23,11 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { isEmpty } from "lodash";
 import { useEffect, useState } from "react";
 
-export default function AppProviders({ children }: { children: React.ReactNode }) {
+export default function AppProviders({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -53,7 +62,8 @@ export default function AppProviders({ children }: { children: React.ReactNode }
   }, [dispatch]);
 
   const isLoginPage =
-    pathname === `${ROUTES.LOGIN.INDEX}` || pathname === `${ROUTES.REGISTER.INDEX}`;
+    pathname === `${ROUTES.LOGIN.INDEX}` ||
+    pathname === `${ROUTES.REGISTER.INDEX}`;
 
   useEffect(() => {
     if (sessionIdState && isEmpty(accountInfo)) {

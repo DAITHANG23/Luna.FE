@@ -50,10 +50,10 @@ const LoginForm = () => {
               <Form>
                 <FieldInput title="Email" name="email" required type="text" />
 
-                <h5 className="text-right mt-5">
+                <h5 className="mt-5 text-right">
                   <Link
                     href={`${ROUTES.RESET_PASSWORD.INDEX}`}
-                    className="no-underline [&:hover]:!underline hover:underline-offset-2 text-primary-text"
+                    className="text-primary-text no-underline hover:underline-offset-2 [&:hover]:!underline"
                   >
                     {t(`login.forgotPassword`)}
                   </Link>
@@ -71,7 +71,7 @@ const LoginForm = () => {
                   title={t("button.signIn")}
                   isLoading={isLoadingLogin}
                   sizeButton="large"
-                  className="w-full! ml-0! font-bold! text-base! text-white text-center py-1 px-4"
+                  className="ml-0! w-full! px-4 py-1 text-center text-base! font-bold! text-white"
                 />
               </Form>
               <SocialLogin />

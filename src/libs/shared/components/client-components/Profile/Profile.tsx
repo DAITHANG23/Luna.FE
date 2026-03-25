@@ -22,7 +22,7 @@ export const Profile = () => {
 
   const updateTablist = useMemo(() => {
     if (userData?.data.data.googleId) {
-      return tabList.filter((i) => i.name !== "tabSecurity");
+      return tabList.filter(i => i.name !== "tabSecurity");
     }
     return tabList;
   }, [userData]);
@@ -37,7 +37,7 @@ export const Profile = () => {
   }, [router, userData]);
 
   return (
-    <div className="xl:w-[70%] w-[85%] flex flex-col justify-start mx-auto mb-20 mt-20 sm:mt-30">
+    <div className="mx-auto mt-20 mb-20 flex w-[85%] flex-col justify-start sm:mt-30 xl:w-[70%]">
       <h1 className="text-primary-text">{t("title")}</h1>
       <Tabs
         tabList={updateTablist}

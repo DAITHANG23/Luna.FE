@@ -5,7 +5,7 @@ import {
   UpdatePasswordType,
 } from "@/@types/models";
 import useNotification from "@/features/hooks/useNotification";
-import { logout } from "@/libs/redux/authSlice";
+import { logout } from "@/libs/redux/auth/authSlice";
 import { useAppDispatch } from "@/libs/redux/hooks";
 import apiService from "@/api/endpoints/index";
 import { useMutation } from "@tanstack/react-query";
@@ -13,7 +13,7 @@ import { AxiosError } from "axios";
 import { useLocale } from "next-intl";
 
 const updatePasswordAccount = async (
-  formData: UpdatePasswordType,
+  formData: UpdatePasswordType
 ): Promise<LoginResponse> => {
   return await apiService.account.updatePassword({ formData });
 };

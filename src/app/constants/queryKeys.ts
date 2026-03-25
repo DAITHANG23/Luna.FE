@@ -10,7 +10,8 @@ export const CONCEPTS_FAVORITE_KEY = "favorite-concepts";
 export const GET_CONCEPTS_FAVORITE_KEY = "get-favorite-concepts";
 export const GET_CHECK_IN_CONCEPTS_KEY = "get-checkin-concepts";
 export const CHECK_IN_FAVORITE_CONCEPTS_KEY = "checkin-favorite-concepts";
-export const DELETE_CHECK_IN_FAVORITE_CONCEPTS_KEY = "checkin-concepts-favorite";
+export const DELETE_CHECK_IN_FAVORITE_CONCEPTS_KEY =
+  "checkin-concepts-favorite";
 export const REVIEW_CONCEPT_KEY = "review-concept";
 export const GET_CONCEPT_KEY = "get-concept";
 export const GET_RESTAURANTS_OF_CONCEPT_KEY = "get-restaurant-of-concept";

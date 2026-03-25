@@ -11,7 +11,9 @@ const getDataUser = async (): Promise<UserResponse> => {
 };
 
 const useGetDataUser = () => {
-  const sessionIdState = useAppSelector((state: RootState) => state.auth.sessionId);
+  const sessionIdState = useAppSelector(
+    (state: RootState) => state.auth.sessionId
+  );
 
   const {
     data: userData,

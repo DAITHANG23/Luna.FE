@@ -8,7 +8,11 @@ import {
   MenuItem,
   MenuItems,
 } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon, BarsArrowDownIcon } from "@heroicons/react/24/outline";
+import {
+  Bars3Icon,
+  XMarkIcon,
+  BarsArrowDownIcon,
+} from "@heroicons/react/24/outline";
 import {
   UserIcon,
   ArchiveBoxIcon,
@@ -24,8 +28,12 @@ import clsx from "clsx";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useAppContext } from "@/contexts/AppContext";
-import { RootState } from "@/libs/redux/store";
-import { sessionId, authentication, logout, userInfo } from "@/libs/redux/authSlice";
+import {
+  sessionId,
+  authentication,
+  logout,
+  userInfo,
+} from "@/libs/redux/auth/authSlice";
 import { useAppDispatch, useAppSelector } from "@/libs/redux/hooks";
 import { DEFAULT_AVATAR, ROUTES } from "@/constants";
 import { useQueryClient } from "@tanstack/react-query";
@@ -33,18 +41,22 @@ import useBreakPoints from "@/features/hooks/useBreakPoints";
 import socket from "@/features/notification/socket";
 import {
   getAllNotifications,
-  // resetNotifications,
+  resetNotifications,
   unReadNotifications,
-} from "@/libs/redux/masterDataSlice";
+} from "@/libs/redux/masterData/masterDataSlice";
 import { NotificationModel } from "@/@types/models";
 import NotificationNavbar from "./NotificationNavbar";
 import { LanguageSelect } from "@/libs/shared/components";
 import { ChevronDownIcon } from "lucide-react";
-import { GET_BOOKING_KEY, GET_DATA_USER_QUERY_KEY } from "@/app/constants/queryKeys";
+import {
+  GET_BOOKING_KEY,
+  GET_DATA_USER_QUERY_KEY,
+} from "@/app/constants/queryKeys";
 import { Locale, useTranslations } from "next-intl";
 import { useRouter } from "@/libs/next-intl/navigation";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { unReadNotificationsLength } from "@/libs/redux/masterData/selectors";
 
 const events = [
   "bookingCreated",
@@ -60,18 +72,18 @@ const Navbars = () => {
   const pathname = usePathname();
 
   const locale = pathname.split("/")[1] as Locale;
-  const hrefPath = pathname.split("/").length > 2 ? `/${pathname.split("/")[2]}` : "/";
+  const hrefPath =
+    pathname.split("/").length > 2 ? `/${pathname.split("/")[2]}` : "/";
 
   const queryClient = useQueryClient();
   const dispatch = useAppDispatch();
   const accountInfo = useAppSelector(state => state.auth.accountInfo);
 
   const unReadNotificationsQuantities = useAppSelector(
-    state => state.masterData.unReadNotificationsQuantity
+    unReadNotificationsLength
   );
-
   const { setIsOpenDialog } = useAppContext();
-  const sessionIdState = useAppSelector((state: RootState) => state.auth.sessionId);
+  const sessionIdState = useAppSelector(state => state.auth.sessionId);
   const [open, setOpen] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
   const { isMobileSize } = useBreakPoints();
@@ -115,7 +127,7 @@ const Navbars = () => {
     dispatch(sessionId({ sessionId: "" }));
     dispatch(userInfo({ accountInfo: null }));
     dispatch(unReadNotifications({ unReadNotificationsQuantity: 0 }));
-    // dispatch(resetNotifications());
+    dispatch(resetNotifications());
     dispatch(logout(locale));
     dispatch(authentication({ isAuthenticated: false }));
     localStorage.removeItem("isLoggedInGoogle");
@@ -142,7 +154,10 @@ const Navbars = () => {
               <span className="absolute -inset-0.5" />
               <span className="sr-only">Open main menu</span>
               {!open ? (
-                <Bars3Icon aria-hidden="true" className="block size-6 group-data-open:hidden" />
+                <Bars3Icon
+                  aria-hidden="true"
+                  className="block size-6 group-data-open:hidden"
+                />
               ) : (
                 <BarsArrowDownIcon
                   aria-hidden="true"
@@ -187,7 +202,9 @@ const Navbars = () => {
                     )}
                     onClick={() => setItemNavbar(item.href as typeof pathname)}
                   >
-                    <p className="text-[16px]">{t("navbar.item", { item: item.name })}</p>
+                    <p className="text-[16px]">
+                      {t("navbar.item", { item: item.name })}
+                    </p>
                   </Link>
                 ))}
               </div>
@@ -195,7 +212,9 @@ const Navbars = () => {
           </div>
           <div className="inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <div className="mt-2">
-              <NotificationNavbar unReadNotificationsQuantities={unReadNotificationsQuantities} />
+              <NotificationNavbar
+                unReadNotificationsQuantities={unReadNotificationsQuantities}
+              />
             </div>
 
             <button
@@ -251,7 +270,9 @@ const Navbars = () => {
                               ) : (
                                 <ArchiveBoxIcon className="h-5 w-5" />
                               )}
-                              <p className="prose">{t(`navbar.${item.name}`)}</p>
+                              <p className="prose">
+                                {t(`navbar.${item.name}`)}
+                              </p>
                             </Link>
                           ) : (
                             <div className="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-gray-700 transition hover:bg-gray-200 focus:bg-gray-300">
@@ -295,7 +316,10 @@ const Navbars = () => {
             onClick={() => setOpen(false)}
           >
             <button>
-              <XMarkIcon aria-hidden="true" className="block size-6 group-data-open:block" />
+              <XMarkIcon
+                aria-hidden="true"
+                className="block size-6 group-data-open:block"
+              />
             </button>
           </DisclosureButton>
           {navigation.map(item => (

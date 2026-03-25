@@ -90,7 +90,7 @@ export const Toolbar = ({ onFilterChange, filter }: ToolbarProps) => {
     (event: ChangeEvent<HTMLInputElement>) => {
       onFilterChange({ ...filter, searchText: event.target.value });
     },
-    1000,
+    1000
   );
 
   const handleStarChange = (value: string) => {
@@ -99,7 +99,7 @@ export const Toolbar = ({ onFilterChange, filter }: ToolbarProps) => {
 
   return (
     <WrapperFilter isConfirmButton>
-      <div className="flex flex-col lg:flex-row justify-between items-center lg:justify-start gap-5">
+      <div className="flex flex-col items-center justify-between gap-5 lg:flex-row lg:justify-start">
         <SearchField onChange={handleTextChange} />
         <SelectField
           key={"concepts"}

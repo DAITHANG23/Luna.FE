@@ -60,18 +60,18 @@ export const Concepts = () => {
 
   const handleClickConcept = useCallback(
     (nameConcept: string) => {
-      const route = CONCEPTS_ROUTES.find((c) => c.name === nameConcept);
+      const route = CONCEPTS_ROUTES.find(c => c.name === nameConcept);
       if (!route) return;
 
       localStorage.setItem("routeConcept", route.route);
 
       router.push(`/${locale}/${route.route}`);
     },
-    [router, locale],
+    [router, locale]
   );
 
   return (
-    <div className="flex flex-col p-4 sm:p-8 mt-20 sm:mt-30">
+    <div className="mt-20 flex flex-col p-4 sm:mt-30 sm:p-8">
       <Toolbar onFilterChange={handleFilterChange} filter={filter} />
 
       <h3 className="text-primary-text">{`Domique Fusion: ${conceptsData?.results || 0} concepts`}</h3>
@@ -81,7 +81,7 @@ export const Concepts = () => {
       ) : (
         <>
           {conceptsDataSort && conceptsDataSort.length > 0 ? (
-            <div className="py-8 grid grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6 flex-wrap text-center justify-between items-center ">
+            <div className="grid grid-cols-1 flex-wrap items-center justify-between gap-6 py-8 text-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {conceptsDataSort?.map((concept: ConceptModel, index) => {
                 return (
                   <div key={concept._id}>
@@ -95,7 +95,7 @@ export const Concepts = () => {
               })}
             </div>
           ) : (
-            <div className="w-full text-center my-20">
+            <div className="my-20 w-full text-center">
               <p>{t("notFound")}</p>
             </div>
           )}

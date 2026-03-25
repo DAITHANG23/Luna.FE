@@ -15,20 +15,20 @@ export const EmptyFavoriteRestaurant = ({
 }: EmptyFavoriteRestaurantProps) => {
   const t = useTranslations("Concept");
   return (
-    <div className="flex flex-col w-full sm:w-87 h-[19.7rem]! bg-white shadow-glass border-none rounded-xl cursor-pointer transition duration-300 ease-in-out hover:scale-105">
-      <div className="flex text-center w-full h-[3.3rem] p-4 gap-4 bg-white rounded-xl">
+    <div className="shadow-glass flex h-[19.7rem]! w-full cursor-pointer flex-col rounded-xl border-none bg-white transition duration-300 ease-in-out hover:scale-105 sm:w-87">
+      <div className="flex h-[3.3rem] w-full gap-4 rounded-xl bg-white p-4 text-center">
         {isVisitedConcept ? (
-          <CheckCircleIconSolid className="text-black w-7 h-7" />
+          <CheckCircleIconSolid className="h-7 w-7 text-black" />
         ) : (
-          <HeartIconSolid className="text-primary w-7 h-7" />
+          <HeartIconSolid className="text-primary h-7 w-7" />
         )}
         <p className="font-base font-bold">
           {isVisitedConcept ? t("visited") : t("titleRestaurantFavorite")}
         </p>
       </div>
-      <div className="w-full h-35 flex justify-center items-center rounded-xl mt-4">
+      <div className="mt-4 flex h-35 w-full items-center justify-center rounded-xl">
         {isVisitedConcept ? (
-          <CheckCircleIcon className="text-gray-400 w-12 h-12" />
+          <CheckCircleIcon className="h-12 w-12 text-gray-400" />
         ) : (
           <Image
             src={"/assets/images/favoriteRestaurant.gif"}

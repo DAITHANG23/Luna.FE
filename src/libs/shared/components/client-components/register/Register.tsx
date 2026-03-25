@@ -34,7 +34,7 @@ const Register = () => {
         .max(20, t("register.validate.maxPassword"))
         .matches(
           REGEX_VALIDTATE_PASSWORD,
-          t("register.validate.formatPassword"),
+          t("register.validate.formatPassword")
         ),
       firstName: Yup.string()
         .trim()
@@ -63,16 +63,12 @@ const Register = () => {
       dateOfBirth: Yup.string()
         .trim()
         .required(t("register.validate.dateOfBirth"))
-        .test(
-          "is-old-enough",
-          t("register.validate.ageRequirement"),
-          (value) => {
-            if (!value) return false;
-            const birthDate = parseISO(value);
-            const today = new Date();
-            return differenceInYears(today, birthDate) >= 13;
-          },
-        ),
+        .test("is-old-enough", t("register.validate.ageRequirement"), value => {
+          if (!value) return false;
+          const birthDate = parseISO(value);
+          const today = new Date();
+          return differenceInYears(today, birthDate) >= 13;
+        }),
     });
   }, [t]);
 
@@ -113,7 +109,7 @@ const Register = () => {
         return (
           <FormLayout>
             <Form>
-              <div className="flex gap-4 justify-between">
+              <div className="flex justify-between gap-4">
                 <FieldInput
                   title={t("register.firstName")}
                   name="firstName"
@@ -173,7 +169,7 @@ const Register = () => {
                 title={t("register.createAccount")}
                 isLoading={isLoadingRegister}
                 sizeButton="large"
-                className="w-full! ml-0! font-bold! text-base! text-white text-center py-1 px-4"
+                className="ml-0! w-full! px-4 py-1 text-center text-base! font-bold! text-white"
               />
             </Form>
           </FormLayout>
