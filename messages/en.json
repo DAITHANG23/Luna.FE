@@ -95,7 +95,7 @@
     "navbar": {
       "home": "Home",
       "about": "About Domique Fusion",
-      "concepts": "Concepts",
+      "booking": "Booking",
       "blog": "Blog",
       "yourProfile": "Your Profile",
       "reservationHistory": "Reservation History",
@@ -103,7 +103,7 @@
       "settings": "Settings",
       "signOut": "Sign Out",
       "login": "Login",
-      "item": "{item, select, home {Home} about {About Domique Fusion} concepts {Concepts} blog {Blog} yourProfile {Your Profile} reservationHistory {Reservation History} favorites {Favorites} settings {Settings} signOut {Sign Out} login {Login} other {Unknown}}"
+      "item": "{item, select, home {Home} about {About Domique Fusion} booking {Booking Restaurant} blog {Blog} yourProfile {Your Profile} reservationHistory {Reservation History} favorites {Favorites} settings {Settings} signOut {Sign Out} login {Login} other {Unknown}}"
     },
     "footer": {
       "title": "Domique Fusion Corporation",
@@ -133,7 +133,7 @@
       "forgotPassword": "Domique Fusion | Forgot Password",
       "verifyOtp": "Domique Fusion | Verify OTP",
       "profile": "Domique Fusion | Profile",
-      "concepts": "Domique Fusion | Concepts",
+      "booking": "Domique Fusion | Booking",
       "concept": "Domique Fusion | {concept}",
       "navbar": "Domique Fusion | {concept} - {navbar}",
       "favoriteConcepts": "Domique Fusion | Favorite Concepts",
@@ -160,6 +160,7 @@
     "loyalCustomer": "Loyal customer",
     "contentLoyalCustomer": "Over 1,600,000",
     "partners": "Partners",
+    "bookingNow":"Booking Now",
     "title": "{title, select, concept {Concept} restaurant {Restaurant} location {Location} amountVisits {Amount of visits in 2024} loyalCustomer {Loyal customer} partners {Partners} other {Unknown}}",
     "content": "{content, select, contentConcept {40+ Concepts} contentRestaurant {500+ Restaurants} contentLocation {42 Province} contentAmount {18 million} contentLoyalCustomer {Over 1,600,000} contentPartners {With 118 organizations and companies} other {Unknown}}",
     "contentPartners": "With 118 organizations and companies",

@@ -24,7 +24,14 @@ export default {
       },
       animation: {
         "spin-slow": "spin 3s linear infinite",
+        bounceLow: 'bounceLow 1s infinite ease-in-out',
       },
+      keyframes: {
+      bounceLow: {
+        '0%, 100%': { transform: 'translateY(0)' },
+        '50%': { transform: 'translateY(-4px)' }, // nhảy thấp
+      },
+    },
     },
   },
 

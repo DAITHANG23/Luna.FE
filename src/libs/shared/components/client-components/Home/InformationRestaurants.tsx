@@ -7,7 +7,7 @@ import { useRouter } from "@/libs/next-intl/navigation";
 export const InformationRestaurants = () => {
   const router = useRouter();
   return (
-    <div className="bg-primary relative h-auto w-full sm:h-[552px] dark:bg-[#1C252E]">
+    <div className="bg-background relative h-auto w-full sm:h-[552px]">
       <div className="m-auto flex w-[80%] flex-col justify-center gap-10 sm:flex-row">
         <div className="relative h-[552px] w-full px-[16px] sm:w-[40%]">
           <Image

@@ -1,5 +1,6 @@
 import { Slider } from "@/libs/shared/components";
 import {
+  BookingNow,
   BusinessHighlights,
   ConceptsList,
   InformationRestaurants,
@@ -11,6 +12,7 @@ export default function Home() {
     <div>
       <Slider coverImages={BANNER_IMAGES} />
       <BusinessHighlights />
+      <BookingNow />
       <InformationRestaurants />
       <ConceptsList />
     </div>

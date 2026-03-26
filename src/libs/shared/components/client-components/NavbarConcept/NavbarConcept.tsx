@@ -48,7 +48,7 @@ const NavbarConcept = ({ params }: NavbarConceptProps) => {
               href={`/${pathnameLocale}${mainPathname}${item.href}`}
               className={cn(
                 itemNavbar === item.href
-                  ? "text-primary underline!"
+                  ? "text-primary underline! underline-offset-4"
                   : "text-primary-text hover:bg-primary hover:text-white dark:text-gray-300 dark:hover:bg-gray-700",
                 "flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium"
               )}

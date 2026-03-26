@@ -38,9 +38,6 @@ export async function proxy(request: NextRequest) {
   if (sessionId) {
     requestHeaders.set("authorization", `Bearer ${sessionId}`);
   }
-  // if (refreshToken && pathname === "/login") {
-  //   return NextResponse.redirect(new URL("/", request.url));
-  // }
 
   return response;
 }
@@ -48,11 +45,5 @@ export const config = {
   // Match all pathnames except for
   // - … if they start with `/api`, `/trpc`, `/_next` or `/_vercel`
   // - … the ones containing a dot (e.g. `favicon.ico`)
-  matcher: [
-    // "/profile/:path*",
-    // "/notifications/:path*",
-    // "/reservation-history/:path*",
-    // "/favorites-concepts/:path*",
-    "/((?!api|trpc|_next|_vercel|.*\\..*).*)",
-  ],
+  matcher: ["/((?!api|trpc|_next|_vercel|.*\\..*).*)"],
 };

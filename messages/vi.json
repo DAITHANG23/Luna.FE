@@ -95,7 +95,7 @@
     "navbar": {
       "home": "Trang Chủ",
       "about": "Về Domique Fusion",
-      "concepts": "Thương Hiệu Nhà Hàng",
+      "booking": "Đặt Bàn Nhà Hàng",
       "blog": "Blog",
       "yourProfile": "Hồ sơ của bạn",
       "reservationHistory": "Lịch sử đặt bàn",
@@ -103,7 +103,7 @@
       "settings": "Cài đặt",
       "signOut": "Đăng xuất",
       "login": "Đăng nhập",
-      "item": "{item, select, home {Trang Chủ} about {Về Domique Fusion} concepts {Thương Hiệu Nhà Hàng} blog {Blog} yourProfile {Hồ sơ của bạn} reservationHistory {Lịch sử đặt bàn} favorites {Yêu thích} settings {Cài đặt} signOut {Đăng xuất} login {Đăng nhập} other {Unknown}}"
+      "item": "{item, select, home {Trang Chủ} about {Về Domique Fusion} booking {Đặt Bàn Nhà Hàng} blog {Blog} yourProfile {Hồ sơ của bạn} reservationHistory {Lịch sử đặt bàn} favorites {Yêu thích} settings {Cài đặt} signOut {Đăng xuất} login {Đăng nhập} other {Unknown}}"
     },
     "footer": {
       "title": "Tập đoàn Domique Fusion",
@@ -133,7 +133,7 @@
       "forgotPassword": "Domique Fusion | Quên mật khẩu",
       "verifyOtp": "Domique Fusion | Xác nhận OTP",
       "profile": "Domique Fusion | Hồ sơ của bạn",
-      "concepts": "Domique Fusion | Concepts",
+      "booking": "Domique Fusion | Đặt bàn nhà hàng",
       "concept": "Domique Fusion | {concept}",
       "navbar": "Domique Fusion | {concept} - {navbar}",
       "favoriteConcepts": "Domique Fusion | Thương hiệu yêu thích",
@@ -161,6 +161,7 @@
     "contentLoyalCustomer": "Hơn 1,600,000",
     "partners": "Đối tác",
     "contentPartners": "Cùng với 118 tổ chức và công ty",
+    "bookingNow":"Đặt bàn ngay",
     "title": "{title, select, concept {Thương hiệu} restaurant {Nhà hàng} location {Địa điểm} amountVisits {Lượng khách trong năm 2024} loyalCustomer {Khách hàng trung thành} partners {Đối tác} other {Unknown}}",
     "content": "{content, select, contentConcept {40+ Thương hiệu} contentRestaurant {500+ Nhà hàng} contentLocation {42 Tỉnh thành} contentAmount {18 triệu} contentLoyalCustomer {Hơn 1,600,000} contentPartners {Cùng với 118 tổ chức và công ty} other {Unknown}}",
     "about": {

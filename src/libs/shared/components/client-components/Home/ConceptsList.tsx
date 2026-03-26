@@ -17,12 +17,12 @@ export const ConceptsList = ({ isBannerWidth }: ConceptsListProps) => {
   const params = useParams();
 
   return (
-    <div className="flex flex-col md:flex-row">
+    <div className="bg-primary flex flex-col md:flex-row dark:bg-[#1C252E]">
       <div
         className={cn(
           isBannerWidth &&
             "mx-0! border-b-4 border-b-gray-300 sm:border-r-4 sm:border-b-0 xl:w-[70%]! dark:border-r-gray-300",
-          "not-prose mx-auto mt-[50px] mb-[50px] w-full rounded-lg p-6 lg:mt-[100px] xl:w-[60%] dark:bg-gray-700"
+          "not-prose mx-auto mt-[50px] mb-[50px] w-full rounded-lg bg-gray-100 p-6 lg:mt-[100px] xl:w-[60%] dark:bg-gray-700"
         )}
         style={{ fontFamily: "Inter" }}
       >
