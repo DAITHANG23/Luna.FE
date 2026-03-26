@@ -372,7 +372,7 @@ export const timeSlotOptions: Array<IOptions> = [
 export const ROUTES = {
   HOME: { INDEX: "/" },
   ABOUT: { INDEX: "/about" },
-  CONCEPTS: { INDEX: "/concepts" },
+  BOOKING_RESTAURANT: { INDEX: "/booking-restaurant" },
   BLOG: { INDEX: "/blog" },
   PROFILE: { INDEX: "/profile" },
   BOOKING: { INDEX: "/reservation-history" },

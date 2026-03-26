@@ -7,8 +7,8 @@ interface DropdownListType {
 
 interface NavigationType {
   name: string;
-  href: "/" | "/about" | "/concepts" | "/blog";
-  hrefVnLang: "/" | "/gioi-thieu" | "/thuong-hieu-nha-hang" | "/blog";
+  href: "/" | "/about" | "/booking-restaurant" | "/blog";
+  hrefVnLang: "/" | "/gioi-thieu" | "/dat-ban-nha-hang" | "/blog";
 }
 
 export const navigation = [
@@ -19,9 +19,9 @@ export const navigation = [
     hrefVnLang: "/gioi-thieu",
   },
   {
-    name: "concepts",
-    href: `${ROUTES.CONCEPTS.INDEX}` as const,
-    hrefVnLang: "/thuong-hieu-nha-hang",
+    name: "booking",
+    href: `${ROUTES.BOOKING_RESTAURANT.INDEX}` as const,
+    hrefVnLang: "/dat-ban-nha-hang",
   },
   { name: "blog", href: `${ROUTES.BLOG.INDEX}` as const, hrefVnLang: "/blog" },
 ] as Array<NavigationType>;

@@ -38,7 +38,7 @@ export const OrderHistory = () => {
               <div className="flex gap-2">
                 <button
                   className="text-primary text-base font-bold hover:underline"
-                  onClick={() => router.push(`/concepts`)}
+                  onClick={() => router.push(`/booking-restaurant`)}
                 >
                   {t("button.bookingNow")}
                 </button>

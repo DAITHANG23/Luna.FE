@@ -98,7 +98,7 @@ declare const messages: {
     navbar: {
       home: "Home";
       about: "About Domique Fusion";
-      concepts: "Concepts";
+      booking: "Booking Restaurant";
       blog: "Blog";
       yourProfile: "Your Profile";
       reservationHistory: "Reservation History";
@@ -136,7 +136,7 @@ declare const messages: {
       forgotPassword: "Domique Fusion | Forgot Password";
       verifyOtp: "Domique Fusion | Verify OTP";
       profile: "Domique Fusion | Profile";
-      concepts: "Domique Fusion | Concepts";
+      booking: "Domique Fusion | Booking";
       concept: "Domique Fusion | {concept}";
       navbar: "Domique Fusion | {concept} - {navbar}";
       favoriteConcepts: "Domique Fusion | Favorite Concepts";
@@ -163,6 +163,7 @@ declare const messages: {
     loyalCustomer: "Loyal customer";
     contentLoyalCustomer: "Over 1,600,000";
     partners: "Partners";
+    bookingNow:"Booking Now",
     title: "{title, select, concept {Concept} restaurant {Restaurant} location {Location} amountVisits {Amount of visits in 2024} loyalCustomer {Loyal customer} partners {Partners} other {Unknown}}";
     content: "{content, select, contentConcept {40+ Concepts} contentRestaurant {500+ Restaurants} contentLocation {42 Province} contentAmount {18 million} contentLoyalCustomer {Over 1,600,000} contentPartners {With 118 organizations and companies} other {Unknown}}";
     contentPartners: "With 118 organizations and companies";

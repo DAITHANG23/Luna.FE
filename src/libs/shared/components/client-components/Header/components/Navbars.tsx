@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 import {
   Disclosure,
@@ -35,7 +36,7 @@ import {
   userInfo,
 } from "@/libs/redux/auth/authSlice";
 import { useAppDispatch, useAppSelector } from "@/libs/redux/hooks";
-import { DEFAULT_AVATAR, ROUTES } from "@/constants";
+import { CONCEPTS_ROUTES, DEFAULT_AVATAR, ROUTES } from "@/constants";
 import { useQueryClient } from "@tanstack/react-query";
 import useBreakPoints from "@/features/hooks/useBreakPoints";
 import socket from "@/features/notification/socket";
@@ -87,17 +88,21 @@ const Navbars = () => {
   const [open, setOpen] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
   const { isMobileSize } = useBreakPoints();
-
-  useEffect(() => {
-    setHasMounted(true);
-  }, []);
-
   const t = useTranslations("Translation");
   const [itemNavbar, setItemNavbar] = useState("");
 
   useEffect(() => {
-    setItemNavbar(hrefPath);
+    const restaurantRouteList = CONCEPTS_ROUTES.flatMap(c => c.route);
+
+    if (restaurantRouteList.includes(hrefPath.split("/")[1])) {
+      return setItemNavbar(ROUTES.BOOKING_RESTAURANT.INDEX);
+    }
+    return setItemNavbar(hrefPath);
   }, [hrefPath]);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleBookingEvent = (data: NotificationModel) => {

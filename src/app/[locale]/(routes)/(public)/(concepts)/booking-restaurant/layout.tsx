@@ -10,7 +10,7 @@ export async function generateMetadata(
     namespace: "Translation",
   });
   return {
-    title: t("headTitle.concepts"),
+    title: t("headTitle.booking"),
     description: "Explore our diverse restaurant concepts at Domique Fusion.",
   };
 }

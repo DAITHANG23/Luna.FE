@@ -14,9 +14,9 @@ export const routing = defineRouting({
       en: "/about",
       vi: "/gioi-thieu",
     },
-    "/concepts": {
-      en: "/concepts",
-      vi: "/thuong-hieu-nha-hang",
+    "/booking-restaurant": {
+      en: "/booking-restaurant",
+      vi: "/dat-ban-nha-hang",
     },
     "/blog": "/blog",
     "/profile": {
