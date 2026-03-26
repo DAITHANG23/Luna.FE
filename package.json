@@ -9,7 +9,8 @@
     "lint": "next lint",
     "format": "prettier --write ./src/**/*.{ts,tsx}",
     "test": "echo \"⚠️ Test is disabled\" && exit 0",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "i18n:extract": "next-intl extract"
   },
   "dependencies": {
     "@commitlint/cli": "^20.1.0",

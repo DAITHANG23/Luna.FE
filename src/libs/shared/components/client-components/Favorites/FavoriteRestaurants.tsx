@@ -86,7 +86,10 @@ export const FavoriteRestaurants = () => {
             </div>
             <div className="dark:text-white">
               {tConcept("touchTheHeartIcon")}
-              <Link href={ROUTES.CONCEPTS.INDEX} className="text-primary px-1">
+              <Link
+                href={ROUTES.BOOKING_RESTAURANT.INDEX}
+                className="text-primary px-1"
+              >
                 {tConcept("restaurant")}
               </Link>
               <br />

@@ -82,7 +82,10 @@ export const VisitedRestaurants = () => {
             </div>
             <div className="text-primary-text">
               {t("touchTheVisitIcon")}
-              <Link href={ROUTES.CONCEPTS.INDEX} className="text-primary px-1">
+              <Link
+                href={ROUTES.BOOKING_RESTAURANT.INDEX}
+                className="text-primary px-1"
+              >
                 {t("restaurant")}
               </Link>
               <br />
