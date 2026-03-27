@@ -149,8 +149,8 @@ const Navbars = () => {
       )}
     >
       <div className="mx-auto max-w-7xl content-center text-center sm:w-[90%] lg:px-8">
-        <div className="al relative flex h-16 items-center justify-between">
-          <div className="absolute inset-y-0 left-0 flex items-center lg:hidden">
+        <div className="relative flex h-16 items-center justify-between">
+          <div className="flex items-center lg:hidden">
             {/* Mobile menu button*/}
             <DisclosureButton
               className="group hover:bg-primary relative inline-flex items-center justify-center rounded-md p-2 text-gray-600 hover:text-white focus:ring-2 focus:ring-white focus:outline-hidden focus:ring-inset"
@@ -176,7 +176,7 @@ const Navbars = () => {
               <Link href={"/"}>
                 {isMobileSize ? (
                   <Image
-                    alt="Your Company"
+                    alt="logo-company"
                     src="/favicon.ico"
                     height={40}
                     width={40}
@@ -184,7 +184,7 @@ const Navbars = () => {
                   />
                 ) : (
                   <Image
-                    alt="Your Company"
+                    alt="logo-company"
                     src="/assets/images/logo.png"
                     height={40}
                     width={130}
@@ -320,12 +320,10 @@ const Navbars = () => {
             className="z-100 flex w-full items-end justify-end pr-2 text-end"
             onClick={() => setOpen(false)}
           >
-            <button>
-              <XMarkIcon
-                aria-hidden="true"
-                className="block size-6 group-data-open:block"
-              />
-            </button>
+            <XMarkIcon
+              aria-hidden="true"
+              className="block size-6 group-data-open:block"
+            />
           </DisclosureButton>
           {navigation.map(item => (
             <DisclosureButton
@@ -338,7 +336,7 @@ const Navbars = () => {
               )}
             >
               <Link
-                href={`/${locale}/${item.name}`}
+                href={`/${locale}/${item.href}`}
                 onClick={() => {
                   setItemNavbar(item.href as typeof pathname);
                 }}
