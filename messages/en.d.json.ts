@@ -391,6 +391,15 @@ declare const messages: {
     validateReview: "Please enter least 5 characters !";
     notFound: "Oops! We couldn’t find any restaurants :(";
     navbar: "{navbar, select, menu {Menu} booking {Booking} other {Unknown}}";
+    loginRequest:{
+    titleLoginRequest:"Join the Domique Fusion Restaurants",
+    contentRequest: "Creating an account allows you to personalize your experience and:",
+    text1:"Save lists of your favorite restaurants",
+    text2: "Add restaurant reviews",
+    text3: "Access member-only restaurant rates",
+    text4: "Manage easily your restaurant bookings",
+    login: "Login"
+    },
     button: {
       back: "My lists";
       submit: "Submit";

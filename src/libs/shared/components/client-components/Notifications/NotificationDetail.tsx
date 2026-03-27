@@ -4,7 +4,7 @@ import useGetNotificationItem from "@/features/hooks/NotificationBooking/useGetN
 import { useAppSelector } from "@/libs/redux/hooks";
 import { PhoneIcon, MapPinHouseIcon } from "lucide-react";
 import { ConceptModel } from "@/@types/models";
-import { Modal, Review, Spinner } from "@/libs/shared/components";
+import { DialogType, Modal, Review, Spinner } from "@/libs/shared/components";
 import { NotificationMain } from "@shared/components/client-components/Notifications";
 import { useTranslations } from "next-intl";
 
@@ -15,7 +15,7 @@ interface NotificationDetailProps {
 export const NotificationDetail = ({ id }: NotificationDetailProps) => {
   const t = useTranslations("Notification");
 
-  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isOpenModal, setIsOpenModal] = useState<DialogType>(null);
 
   const accountInfo = useAppSelector(state => state.auth.accountInfo)?.data
     .data;
@@ -221,7 +221,7 @@ export const NotificationDetail = ({ id }: NotificationDetailProps) => {
           <p>{t("content.bookingCompleted.detail.content_4")}</p>
           <p
             className="text-primary cursor-pointer"
-            onClick={() => setIsOpenModal(true)}
+            onClick={() => setIsOpenModal("review")}
           >
             👉
             <span className="pl-2 underline-offset-4 hover:underline">

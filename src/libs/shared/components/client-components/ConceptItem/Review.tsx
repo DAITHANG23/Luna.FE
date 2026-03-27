@@ -4,11 +4,12 @@ import useReviewConcept from "@/features/hooks/ConceptsHooks/useReviewConcept";
 import { cn } from "@/utils";
 import { useTranslations } from "next-intl";
 import React, { useEffect, useState } from "react";
+import { DialogType } from "./ConceptItem";
 
 interface ReviewProps {
   concept: ConceptModel;
-  setIsOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
-  isOpenModal: boolean;
+  setIsOpenModal: React.Dispatch<React.SetStateAction<DialogType>>;
+  isOpenModal: DialogType;
 }
 export const Review = ({
   concept,
@@ -69,7 +70,7 @@ export const Review = ({
             <button
               className="rounded-lg bg-black px-[13px] py-[10px] text-sm text-white transition duration-200 hover:scale-105"
               onClick={() => {
-                setIsOpenModal(false);
+                setIsOpenModal(null);
               }}
             >
               {t("button.close")}
