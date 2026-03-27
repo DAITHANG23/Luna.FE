@@ -390,6 +390,15 @@
     "validateReview": "Vui lòng nhập ít nhất 5 kí tự !",
     "notFound": "Rất tiếc, chúng tôi không tìm thấy nhà hàng nào :(",
     "navbar": "{navbar, select, menu {Thực đơn} booking {Đặt bàn} other {Unknown}}",
+    "loginRequest":{
+    "titleLoginRequest":"Gia nhập hệ thống nhà hàng Domique Fusion",
+    "contentRequest": "Tạo tài khoản cho phép bạn có những trải nghiệm cá nhân như:",
+    "text1":"Lưu trữ danh sách nhà hàng bạn yêu thích",
+    "text2": "Thêm đánh giá nhà hàng",
+    "text3": "Được hưởng giá dành riêng cho thành viên",
+    "text4": "Quản lý đặt chỗ nhà hàng của bạn một cách dễ dàng",
+    "login": "Đăng nhập"
+    },
     "button": {
       "back": "Danh sách của tôi",
       "submit": "Submit",

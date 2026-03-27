@@ -20,7 +20,9 @@ import { StarIcon } from "@/libs/assets";
 import { Review } from "@shared/components/client-components/ConceptItem";
 import { Modal, ModalCarousel } from "@/libs/shared/components";
 import { DEFAULT_CONCEPTS_LIST } from "@/constants";
+import RequestLogin from "./RequestLogin";
 
+export type DialogType = "login" | "review" | null;
 interface ConceptItemProps {
   concept: ConceptModel;
   isReviewBtn?: boolean;
@@ -62,7 +64,7 @@ const ConceptItem = ({
 
   const [isOpenModalImageList, setIsOpenModalImageList] = useState(false);
 
-  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [openModal, setOpenModal] = useState<DialogType>(null);
 
   const { mutate: favoriteConcepts } = useFavoriteConcepts();
 
@@ -77,6 +79,9 @@ const ConceptItem = ({
 
   const handleClickFavorite = useCallback(
     async (idConcept: string) => {
+      if (!userData) {
+        return setOpenModal("login");
+      }
       const formData = {
         idConcept: idConcept,
         userId: userData?.data.data._id || "",
@@ -104,6 +109,9 @@ const ConceptItem = ({
 
   const handleClickCheckIn = useCallback(
     async (idConcept: string) => {
+      if (!userData) {
+        return setOpenModal("login");
+      }
       const formData = {
         idConcept: idConcept,
         userId: userData?.data.data._id || "",
@@ -130,12 +138,16 @@ const ConceptItem = ({
         open={isOpenModalImageList}
         imagesList={concept?.images}
       />
-      <Modal open={isOpenModal} setOpen={setIsOpenModal}>
-        <Review
-          concept={concept}
-          setIsOpenModal={setIsOpenModal}
-          isOpenModal={isOpenModal}
-        />
+      <Modal open={openModal} setOpen={setOpenModal}>
+        {openModal === "review" && (
+          <Review
+            concept={concept}
+            setIsOpenModal={setOpenModal}
+            isOpenModal={openModal}
+          />
+        )}
+
+        {openModal === "login" && <RequestLogin />}
       </Modal>
       <div className="relative h-[250px] w-full sm:h-[200px] 2xl:h-[300px]">
         <Image
@@ -180,7 +192,7 @@ const ConceptItem = ({
             <button
               className="rounded-full border border-black px-3 py-[2px] text-xs font-normal hover:bg-gray-200 dark:border-white dark:text-white dark:hover:bg-black"
               onClick={() => {
-                setIsOpenModal(true);
+                setOpenModal("review");
               }}
             >
               Review

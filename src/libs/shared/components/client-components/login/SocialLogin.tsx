@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { useMemo } from "react";
 
 const GoogleIcon = () => (
   <svg
@@ -17,17 +18,18 @@ const GoogleIcon = () => (
   </svg>
 );
 
-const SocialLogin = () => {
+interface SocialLoginProps {
+  isButtonGoogleBelow?: boolean;
+}
+
+const SocialLogin = ({ isButtonGoogleBelow = false }: SocialLoginProps) => {
   const t = useTranslations("Translation");
   const handleGoogleLogin = async () => {
     window.location.href = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/auth/google`;
   };
 
-  return (
-    <div
-      className="animate-fade-up w-full space-y-4"
-      style={{ animationDelay: "0.1s" }}
-    >
+  const line = useMemo(() => {
+    return (
       <div className="relative flex items-center py-2">
         <div className="border-border border-primary-text grow border-t"></div>
         <span className="text-muted-foreground text-primary-text mx-4 shrink text-sm">
@@ -35,6 +37,15 @@ const SocialLogin = () => {
         </span>
         <div className="border-border border-primary-text grow border-t"></div>
       </div>
+    );
+  }, [t]);
+
+  return (
+    <div
+      className="animate-fade-up w-full space-y-4"
+      style={{ animationDelay: "0.1s" }}
+    >
+      {!isButtonGoogleBelow && line}
 
       <button
         type="button"
@@ -44,6 +55,8 @@ const SocialLogin = () => {
         <GoogleIcon />
         <span>Google</span>
       </button>
+
+      {isButtonGoogleBelow && line}
     </div>
   );
 };
