@@ -14,7 +14,6 @@ import { useAppSelector } from "@/libs/redux/hooks";
 import { usePathname, useRouter } from "next/navigation";
 import useNotification from "@/features/hooks/useNotification";
 import { useSnackbar } from "notistack";
-import { accountInfo } from "@/libs/redux/auth/selectors";
 import { useQueryClient } from "@tanstack/react-query";
 import { GET_DATA_USER_QUERY_KEY } from "@/app/constants/queryKeys";
 interface BookingProps {
@@ -34,6 +33,7 @@ const Map = dynamic(
 export const Booking = ({ conceptDataId }: BookingProps) => {
   const tRestaurant = useTranslations("Restaurant");
   const tTranslation = useTranslations("Translation");
+  const queryClient = useQueryClient();
   const mounted = useMounted();
   const router = useRouter();
   const pathname = usePathname();
@@ -41,13 +41,11 @@ export const Booking = ({ conceptDataId }: BookingProps) => {
   const { closeSnackbar, enqueueSnackbar } = useSnackbar();
 
   const isAuth = useAppSelector(state => state.auth.isAuthenticated);
-  const accountInfoDetail = useAppSelector(accountInfo);
-  const queryClient = useQueryClient();
 
   const user = queryClient.getQueryData<UserResponse>([
     GET_DATA_USER_QUERY_KEY,
   ]);
-  console.log("user:", user);
+
   const [chooseRestaurant, setChooseRestaurant] = useState<string | null>(null);
   const [isOpenModalBooking, setIsOpenModalBooking] = useState(false);
   const [searchText, setSearchText] = useState("");
