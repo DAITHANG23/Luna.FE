@@ -11,18 +11,27 @@ import { useParams } from "next/navigation";
 
 interface ConceptsListProps {
   isBannerWidth?: boolean;
+  isBackground?: boolean;
 }
 
-export const ConceptsList = ({ isBannerWidth }: ConceptsListProps) => {
+export const ConceptsList = ({
+  isBannerWidth,
+  isBackground = false,
+}: ConceptsListProps) => {
   const params = useParams();
 
   return (
-    <div className="bg-primary flex flex-col md:flex-row dark:bg-[#1C252E]">
+    <div
+      className={cn(
+        isBackground && "bg-primary dark:bg-[#1C252E]",
+        "flex flex-col md:flex-row"
+      )}
+    >
       <div
         className={cn(
           isBannerWidth &&
-            "mx-0! border-b-4 border-b-gray-300 sm:border-r-4 sm:border-b-0 xl:w-[70%]! dark:border-r-gray-300",
-          "not-prose mx-auto mt-[50px] mb-[50px] w-full rounded-lg bg-gray-100 p-6 lg:mt-[100px] xl:w-[60%] dark:bg-gray-700"
+            "mx-0! !mr-4 border-b-4 border-b-gray-300 sm:border-b-0 xl:w-[70%]!",
+          "not-prose mx-auto my-[50px] w-full rounded-lg bg-gray-100 p-6 lg:mt-[100px] xl:w-[60%] dark:bg-gray-700"
         )}
         style={{ fontFamily: "Inter" }}
       >
@@ -75,7 +84,7 @@ export const ConceptsList = ({ isBannerWidth }: ConceptsListProps) => {
         })}
       </div>
       {isBannerWidth && (
-        <div className="p-4">
+        <div className="p-4 sm:border-l-4 dark:border-l-gray-300">
           <h4 className="text-primary-text pb-[20px]">Contact us</h4>
           <div className="flex flex-col gap-4 pt-[30px]">
             <div className="flex gap-2">

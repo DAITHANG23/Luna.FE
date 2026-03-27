@@ -22,10 +22,12 @@ const useUpdateProfile = () => {
   const from = decodeURIComponent(searchParams.get("from") || "");
   return useMutation<UserResponse, AxiosError<ErrorResponse>, UserLogin>({
     mutationFn: updateAccount,
-    onSuccess: () => {
+    onSuccess: async () => {
       showSuccess("Update account successful!");
       dispatch(getAccountInfo());
-      queryClient.invalidateQueries({ queryKey: [GET_DATA_USER_QUERY_KEY] });
+      await queryClient.refetchQueries({
+        queryKey: [GET_DATA_USER_QUERY_KEY],
+      });
       if (from) {
         router.replace(from);
       }

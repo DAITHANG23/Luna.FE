@@ -6,7 +6,7 @@ import useGetRestaurantsOfConcept from "@/features/hooks/RestaurantsHooks/useGet
 import { useDebouncedCallback } from "@/features/hooks/useDebouncedCallback";
 import { Modal, SearchField } from "@/libs/shared/components";
 import BookingForm from "./BookingForm";
-import { RestaurantModel } from "@/@types/models";
+import { RestaurantModel, UserResponse } from "@/@types/models";
 import dynamic from "next/dynamic";
 import { useMounted } from "@/features/hooks/useMounted";
 import { useTranslations } from "next-intl";
@@ -14,6 +14,9 @@ import { useAppSelector } from "@/libs/redux/hooks";
 import { usePathname, useRouter } from "next/navigation";
 import useNotification from "@/features/hooks/useNotification";
 import { useSnackbar } from "notistack";
+import { accountInfo } from "@/libs/redux/auth/selectors";
+import { useQueryClient } from "@tanstack/react-query";
+import { GET_DATA_USER_QUERY_KEY } from "@/app/constants/queryKeys";
 interface BookingProps {
   conceptDataId: string;
 }
@@ -38,17 +41,23 @@ export const Booking = ({ conceptDataId }: BookingProps) => {
   const { closeSnackbar, enqueueSnackbar } = useSnackbar();
 
   const isAuth = useAppSelector(state => state.auth.isAuthenticated);
-  const accountInfo = useAppSelector(state => state.auth.accountInfo);
+  const accountInfoDetail = useAppSelector(accountInfo);
+  const queryClient = useQueryClient();
+
+  const user = queryClient.getQueryData<UserResponse>([
+    GET_DATA_USER_QUERY_KEY,
+  ]);
+  console.log("user:", user);
   const [chooseRestaurant, setChooseRestaurant] = useState<string | null>(null);
   const [isOpenModalBooking, setIsOpenModalBooking] = useState(false);
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
-    if (!accountInfo?.data.data.numberPhone) {
-      const notifId = enqueueSnackbar(
+    if (!user?.data.data.numberPhone) {
+      const notifiId = enqueueSnackbar(
         <div
           onClick={() => {
-            closeSnackbar(notifId);
+            closeSnackbar(notifiId);
             router.push(`/profile?from=${pathname}`);
           }}
           role="button"
@@ -75,14 +84,7 @@ export const Booking = ({ conceptDataId }: BookingProps) => {
         }
       );
     }
-  }, [
-    accountInfo?.data.data.numberPhone,
-    pathname,
-    tTranslation,
-    enqueueSnackbar,
-    closeSnackbar,
-    router,
-  ]);
+  }, [pathname, tTranslation, enqueueSnackbar, closeSnackbar, router, user]);
 
   useEffect(() => {
     if (!isAuth && isOpenModalBooking) {
