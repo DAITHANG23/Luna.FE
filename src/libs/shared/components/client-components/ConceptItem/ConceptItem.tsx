@@ -138,17 +138,18 @@ const ConceptItem = ({
         open={isOpenModalImageList}
         imagesList={concept?.images}
       />
-      <Modal open={openModal} setOpen={setOpenModal}>
-        {openModal === "review" && (
-          <Review
-            concept={concept}
-            setIsOpenModal={setOpenModal}
-            isOpenModal={openModal}
-          />
-        )}
-
-        {openModal === "login" && <RequestLogin />}
+      <Modal open={openModal === "review"} setOpen={() => setOpenModal(null)}>
+        <Review
+          concept={concept}
+          setIsOpenModal={setOpenModal}
+          isOpenModal={openModal}
+        />
       </Modal>
+
+      <Modal open={openModal === "login"} setOpen={() => setOpenModal(null)}>
+        <RequestLogin />
+      </Modal>
+
       <div className="relative h-[250px] w-full sm:h-[200px] 2xl:h-[300px]">
         <Image
           src={concept?.imageCover}

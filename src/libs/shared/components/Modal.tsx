@@ -5,7 +5,7 @@ import React, { ReactNode } from "react";
 
 type ModalProps<T = boolean> = {
   open: T;
-  setOpen: (value: T) => void;
+  setOpen: () => void;
   children: ReactNode;
   classNameContainer?: string;
 };
@@ -17,11 +17,7 @@ export const Modal = <T,>({
   classNameContainer,
 }: ModalProps<T>) => {
   return (
-    <Dialog
-      open={!!open}
-      onClose={() => setOpen(null as T)}
-      className="relative z-100"
-    >
+    <Dialog open={!!open} onClose={setOpen} className="relative z-100">
       <DialogBackdrop
         transition
         className="fixed inset-0 bg-gray-500/75 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"
@@ -40,7 +36,7 @@ export const Modal = <T,>({
             <div className="absolute top-2 right-3">
               <button
                 className="text-3xl text-white transition duration-300 ease-in-out hover:scale-105"
-                onClick={() => setOpen(null as T)}
+                onClick={setOpen}
               >
                 <XCircleIcon className="h-10 w-10 text-gray-400 hover:text-gray-500" />
               </button>

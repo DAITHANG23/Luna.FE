@@ -236,7 +236,7 @@ export const NotificationDetail = ({ id }: NotificationDetailProps) => {
 
   return (
     <div className="mt-[50px] lg:mt-[100px]">
-      <Modal open={isOpenModal} setOpen={setIsOpenModal}>
+      <Modal open={isOpenModal} setOpen={() => setIsOpenModal(null)}>
         <Review
           concept={concept as ConceptModel}
           setIsOpenModal={setIsOpenModal}
