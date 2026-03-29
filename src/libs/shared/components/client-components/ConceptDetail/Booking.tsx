@@ -124,7 +124,7 @@ export const Booking = ({ conceptDataId }: BookingProps) => {
     <div className="mt-4">
       <Modal
         open={isOpenModalBooking}
-        setOpen={setIsOpenModalBooking}
+        setOpen={() => setIsOpenModalBooking(false)}
         classNameContainer="max-w-[31.1125rem]!"
       >
         <BookingForm
