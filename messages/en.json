@@ -298,7 +298,8 @@
         "formatPassword": "Password must have at least 8 characters, one uppercase, one lowercase, one number, and one special character.",
         "newPassword": "New password is required!",
         "confirmPassword": "Confirm password is required!",
-        "matchPassword": "Password must match"
+        "matchPassword": "Password must match",
+        "updateSuccess": "Update your password account successfully! You need to login again!"
       }
     }
   },

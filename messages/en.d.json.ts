@@ -302,6 +302,7 @@ declare const messages: {
         newPassword: "New password is required!";
         confirmPassword: "Confirm password is required!";
         matchPassword: "Password must match";
+        updateSuccess: "Update your password account successfully! You need to login again!";
       };
     };
   };

@@ -10,7 +10,7 @@ import { useAppDispatch } from "@/libs/redux/hooks";
 import apiService from "@/api/endpoints/index";
 import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const updatePasswordAccount = async (
   formData: UpdatePasswordType
@@ -21,6 +21,7 @@ const updatePasswordAccount = async (
 const useUpdatePassword = () => {
   const { showError, showSuccess } = useNotification();
   const dispatch = useAppDispatch();
+  const t = useTranslations("Profile");
   const locale = useLocale();
   return useMutation<
     LoginResponse,
@@ -29,7 +30,7 @@ const useUpdatePassword = () => {
   >({
     mutationFn: updatePasswordAccount,
     onSuccess: () => {
-      showSuccess("Update Password Account successful! You must login again!");
+      showSuccess(t("security.validate.updateSuccess"));
       dispatch(logout(locale));
     },
     onError: (err: AxiosError<ErrorResponse>) => {
