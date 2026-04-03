@@ -30,7 +30,7 @@ export const ConceptsList = ({
       <div
         className={cn(
           isBannerWidth &&
-            "mx-0! !mr-4 border-b-4 border-b-gray-300 sm:border-b-0 xl:w-[70%]!",
+            "mx-0! mr-4! border-b-4 border-b-gray-300 sm:border-b-0 xl:w-[70%]!",
           "not-prose mx-auto my-[50px] w-full rounded-lg bg-gray-100 p-6 lg:mt-[100px] xl:w-[60%] dark:bg-gray-700"
         )}
         style={{ fontFamily: "Inter" }}
