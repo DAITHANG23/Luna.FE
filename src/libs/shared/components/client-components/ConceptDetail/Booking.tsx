@@ -37,7 +37,7 @@ export const Booking = ({ conceptDataId }: BookingProps) => {
   const mounted = useMounted();
   const router = useRouter();
   const pathname = usePathname();
-  const { showWarning } = useNotification();
+  const { notify, types } = useNotification();
   const { closeSnackbar, enqueueSnackbar } = useSnackbar();
 
   const isAuth = useAppSelector(state => state.auth.isAuthenticated);
@@ -86,10 +86,18 @@ export const Booking = ({ conceptDataId }: BookingProps) => {
 
   useEffect(() => {
     if (!isAuth && isOpenModalBooking) {
-      showWarning(tRestaurant("warningBooking"));
+      notify(tRestaurant("warningBooking"), { type: types.warning });
       router.push(`/login?from=${pathname}`);
     }
-  }, [isAuth, isOpenModalBooking, router, pathname, showWarning, tRestaurant]);
+  }, [
+    isAuth,
+    isOpenModalBooking,
+    router,
+    pathname,
+    notify,
+    types,
+    tRestaurant,
+  ]);
 
   const params = useMemo(() => {
     return { searchText };

@@ -1,7 +1,6 @@
 "use client";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import useNotification from "../useNotification";
-import { AxiosError } from "axios";
 import { ErrorResponse } from "@/@types/models";
 import apiService from "@/api/endpoints/index";
 import { BookingModel, BookingResponse } from "@/@types/models/booking";
@@ -17,9 +16,9 @@ const updateReservation = async (
 };
 
 const useUpdateReservation = () => {
-  const { showError } = useNotification();
+  const { notify } = useNotification();
   const queryClient = useQueryClient();
-  return useMutation<BookingResponse, AxiosError<ErrorResponse>, BookingModel>({
+  return useMutation<BookingResponse, ErrorResponse, BookingModel>({
     mutationFn: updateReservation,
     mutationKey: [UPDATE_RESERVATION_KEY],
     onSuccess: () => {
@@ -27,8 +26,8 @@ const useUpdateReservation = () => {
         queryKey: [GET_ALL_RESEVATIONS_KEY],
       });
     },
-    onError: (err: AxiosError<ErrorResponse>) => {
-      showError(err.message);
+    onError: (err: ErrorResponse) => {
+      notify(err.message);
     },
   });
 };

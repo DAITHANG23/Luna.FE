@@ -8,28 +8,31 @@ import {
 } from "@app/constants/queryKeys";
 import { sessionId, authentication } from "@/libs/redux/auth/authSlice";
 import useNotification from "@/features/hooks/useNotification";
-import { AxiosError } from "axios";
 import { getAllNotifications } from "@/libs/redux/masterData/masterDataSlice";
 import { useAppDispatch } from "@/libs/redux/hooks";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { getErrorDetail, getErrorMessage } from "@/utils";
+import { ERROR_KEY } from "@/utils/errorKey";
 
 const loginAccount = async (formData: UserLogin): Promise<LoginResponse> => {
   return await apiService.account.login({ formData });
 };
 const useLogin = () => {
   const queryClient = useQueryClient();
-
-  const { showSuccess, showError } = useNotification();
+  const t = useTranslations("Translation");
+  const { notify, types } = useNotification();
   const dispatch = useAppDispatch();
   const router = useRouter();
   const searchParams = useSearchParams();
   const from = decodeURIComponent(searchParams.get("from") || "/");
 
-  return useMutation<LoginResponse, AxiosError<ErrorResponse>, UserLogin>({
+  return useMutation<LoginResponse, ErrorResponse, UserLogin>({
     mutationFn: loginAccount,
     mutationKey: [ACCOUNT_LOGIN_QUERY_KEY],
     onSuccess: async (res: LoginResponse) => {
-      showSuccess("Login successful!");
+      notify(t("login.loginSuccess"), { type: types.success });
+
       const sessionIdResponse = res?.sessionId;
 
       const ttlSeconds = 60 * 60 * 24 * 7;
@@ -46,8 +49,22 @@ const useLogin = () => {
       });
       router.replace(from || "/");
     },
-    onError: (err: AxiosError<ErrorResponse>) => {
-      showError(err.message);
+    onError: (err: ErrorResponse) => {
+      const { key: errorCode, data: errorDetails } = getErrorDetail({
+        error: err,
+      });
+
+      const messages = {
+        [ERROR_KEY.EMAIL_IS_NOT_EXISTED]: t("login.validate.emailIsNotExisted"),
+        [ERROR_KEY.INCORRECT_PASSWORD]: t("login.validate.incorrectPassword"),
+      };
+
+      const errorMessage = getErrorMessage({
+        translate: t,
+        errorCode,
+        data: messages,
+      });
+      notify(errorMessage, errorDetails);
     },
   });
 };

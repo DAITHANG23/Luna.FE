@@ -10,16 +10,23 @@ declare const messages: {
     returnHome: "Return To Home";
     returnLogin: "Return To Login";
     bookingWarning: "Please enter your personal information<br/>completely to proceed with the reservation!";
+    somethingWrong: "Something went wrong!";
+    internalServerError: "Internal server error";
+    tokenIsInvalid: "Token is invalid or has expired!";
+    accountMustBeCustomer: "Account must be customer!";
     login: {
       titleLogin: "Sign in to your account";
       dontHaveAccount: "Don’t have an account?";
       forgotPassword: "Forgot password?";
       continueWith: "or continue with";
       password: "Password";
+      loginSuccess: "Login successfully!";
       validate: {
         email: "Email is required!";
         invalidEmail: "Invalid email!";
         password: "Password is required!";
+        emailIsNotExisted: "Email is not existed!";
+        incorrectPassword: "Incorrect password!";
       };
     };
     register: {
@@ -33,6 +40,7 @@ declare const messages: {
       password: "Password";
       confirmPassword: "Confirm Password";
       createAccount: "Create account";
+      sendOtp: "OTP is sent, please check your email!";
       validate: {
         email: "Email is required!";
         invalidEmail: "Invalid email!";
@@ -56,6 +64,8 @@ declare const messages: {
         confirmPassword: "Confirm password is required!";
         matchPassword: "Password must match";
         ageRequirement: "You must be at least 13 years old!";
+        emailIsExisted: "Email is existed!";
+        missingFields: "Missing fields!";
       };
     };
     forgotPassword: {
@@ -63,6 +73,13 @@ declare const messages: {
       content: "Please enter the email address associated with your account and we'll email you a link to reset your password.";
       button: "Send request";
       return: "Return to sign in";
+      validate: {
+        email: "Email is required!";
+        invalidEmail: "Invalid email!";
+        emailIsNotExisted: "Email is not existed!";
+        sendingEmailFail: "There was an error sending the email. Try again later!";
+        sendingEmailSuccess: "Send email successful! Please check your email!";
+      }
     };
     resetPassword: {
       title: "Request sent successfully";
@@ -73,6 +90,7 @@ declare const messages: {
       dontHaveACode: "Don’t have a code?";
       return: "Return to sign in";
       verify: "Verify";
+      resetPasswordSuccess:"Change password successful! Please login your account again!";
       validate: {
         password: "Password is required!";
         minPassword: "Password must be at least 8 characters!";
@@ -80,6 +98,10 @@ declare const messages: {
         formatPassword: "Password must have at least 8 characters, one uppercase, one lowercase, one number, and one special character.";
         confirmPassword: "Confirm password is required!";
         matchPassword: "Password must match";
+        emailIsRequired: "Email is required!";
+        otpIsRequired: "OTP is null. Please enter OTP!";
+        invalidOtpRequest: "Invalid OTP request!";
+        otpIsExpired: "OTP has expired. Please request a new one!";
       };
       resend: "Resend";
     };
@@ -272,6 +294,12 @@ declare const messages: {
       male: "Male";
       female: "Female";
       typeOfGender: "{gender, select, male {Male} female {Female} other {Unknown}}";
+      updateAccountSuccess: "Update account successful!";
+      verifyOtpSuccess: "Verify successful, your account is actived!";
+      otpIsRequired: "OTP is null. Please enter OTP!";
+      otpIsExpired: "OTP has expired. Please request a new one!";
+      otpIsIncorrect: "OTP is incorrect. Please enter OTP again!";
+      accountDeletedSuccessful: "Account deleted successful!";
       validate: {
         firstName: "Please enter your first name!";
         minFirstName: "First name must be at least 3 characters";
@@ -287,6 +315,9 @@ declare const messages: {
         maxAddress: "Address must not exceed 100 characters";
         dateOfBirth: "Date of birth is required!";
         ageRequirement: "You must be at least 13 years old!";
+        wrongCurrentPassword: "Wrong current password!";
+        notAllowUpdatePassword: "This route is not for password updates. Please use /updateMyPassword.";
+        uploadToCloudinaryFailed:"Upload avatar failed!";
       };
     };
     security: {
@@ -309,6 +340,7 @@ declare const messages: {
   Notification: {
     noNotifications: "No notifications";
     seeMore: "See more";
+    missingIdNotification: "Missing id notification!";
     content: {
       bookingCreated: {
         detail: {
@@ -392,6 +424,8 @@ declare const messages: {
     validateReview: "Please enter least 5 characters !";
     notFound: "Oops! We couldn’t find any restaurants :(";
     navbar: "{navbar, select, menu {Menu} booking {Booking} other {Unknown}}";
+    conceptIsNotExist: "Concept is not existed!";
+    missingIdConcept: "Missing id concept!";
     loginRequest:{
     titleLoginRequest:"Join the Domique Fusion Restaurants",
     contentRequest: "Creating an account allows you to personalize your experience and:",
@@ -399,7 +433,7 @@ declare const messages: {
     text2: "Add restaurant reviews",
     text3: "Access member-only restaurant rates",
     text4: "Manage easily your restaurant bookings",
-    login: "Login"
+    login: "Login",
     },
     button: {
       back: "My lists";

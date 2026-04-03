@@ -38,7 +38,8 @@ export interface UserResponse {
   status: string;
 }
 
-export interface ErrorObject {
+export interface ErrorDetailsObject {
+  errorCode: string;
   messageError: string;
   statusCode: number;
   status: string;
@@ -47,8 +48,9 @@ export interface ErrorObject {
   expiredAt?: string;
 }
 export interface ErrorResponse {
+  traceId?: string;
   status: string;
-  error: ErrorObject;
+  error: ErrorDetailsObject;
   message: string;
 }
 

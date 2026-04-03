@@ -1,38 +1,64 @@
 "use client";
-import { OptionsObject, SnackbarMessage, useSnackbar } from "notistack";
+
+import { OptionsObject, useSnackbar } from "notistack";
+
+const types = {
+  error: "error",
+  success: "success",
+  warning: "warning",
+  info: "info",
+};
 
 const useNotification = () => {
   const { enqueueSnackbar } = useSnackbar();
 
-  const showError = (message: SnackbarMessage, options?: OptionsObject) => {
-    return enqueueSnackbar(message, {
-      variant: "error",
-      ...options,
-    });
+  const config: OptionsObject = {
+    anchorOrigin: { vertical: "top", horizontal: "right" },
+    autoHideDuration: 10000,
+    preventDuplicate: true,
   };
 
-  const showSuccess = (message: SnackbarMessage, options?: OptionsObject) => {
-    return enqueueSnackbar(message, {
-      variant: "success",
-      ...options,
-    });
+  const notify = (
+    messageError: string,
+    errorDetails?: Partial<{
+      type: string;
+      traceId: string;
+      message: string;
+    }>
+  ) => {
+    const {
+      type = types.error,
+      traceId = "",
+      message = "",
+    } = errorDetails || {};
+
+    const errorMessage = messageError || message;
+    switch (type) {
+      case types.error:
+        return enqueueSnackbar(errorMessage, {
+          variant: "error",
+          ...config,
+        });
+
+      case types.success:
+        return enqueueSnackbar(errorMessage, {
+          variant: "success",
+          ...config,
+        });
+      case types.warning:
+        return enqueueSnackbar(errorMessage, {
+          variant: "warning",
+          ...config,
+        });
+      default:
+        return enqueueSnackbar(errorMessage, {
+          variant: "info",
+          ...config,
+        });
+    }
   };
 
-  const showWarning = (message: SnackbarMessage, options?: OptionsObject) => {
-    return enqueueSnackbar(message, {
-      variant: "warning",
-      ...options,
-    });
-  };
-
-  const showInfo = (message: SnackbarMessage, options?: OptionsObject) => {
-    return enqueueSnackbar(message, {
-      variant: "info",
-      ...options,
-    });
-  };
-
-  return { showError, showSuccess, showWarning, showInfo };
+  return { notify, types };
 };
 
 export default useNotification;

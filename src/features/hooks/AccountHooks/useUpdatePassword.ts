@@ -9,8 +9,9 @@ import { logout } from "@/libs/redux/auth/authSlice";
 import { useAppDispatch } from "@/libs/redux/hooks";
 import apiService from "@/api/endpoints/index";
 import { useMutation } from "@tanstack/react-query";
-import { AxiosError } from "axios";
 import { useLocale, useTranslations } from "next-intl";
+import { getErrorDetail, getErrorMessage } from "@/utils";
+import { ERROR_KEY } from "@/utils/errorKey";
 
 const updatePasswordAccount = async (
   formData: UpdatePasswordType
@@ -19,22 +20,33 @@ const updatePasswordAccount = async (
 };
 
 const useUpdatePassword = () => {
-  const { showError, showSuccess } = useNotification();
+  const { notify, types } = useNotification();
   const dispatch = useAppDispatch();
   const t = useTranslations("Profile");
   const locale = useLocale();
-  return useMutation<
-    LoginResponse,
-    AxiosError<ErrorResponse>,
-    UpdatePasswordType
-  >({
+  return useMutation<LoginResponse, ErrorResponse, UpdatePasswordType>({
     mutationFn: updatePasswordAccount,
     onSuccess: () => {
-      showSuccess(t("security.validate.updateSuccess"));
+      notify(t("security.validate.updateSuccess"), { type: types.success });
       dispatch(logout(locale));
     },
-    onError: (err: AxiosError<ErrorResponse>) => {
-      showError(err.message);
+    onError: (err: ErrorResponse) => {
+      const { key: errorCode, data: errorDetails } = getErrorDetail({
+        error: err,
+      });
+
+      const messages = {
+        [ERROR_KEY.WRONG_CURRENT_PASSWORD]: t(
+          "profile.validate.wrongCurrentPassword"
+        ),
+      };
+
+      const errorMessage = getErrorMessage({
+        translate: t,
+        errorCode,
+        data: messages,
+      });
+      notify(errorMessage, errorDetails);
     },
   });
 };
