@@ -7,7 +7,6 @@ import {
 import apiService from "@/api/endpoints/index";
 import { useMutation } from "@tanstack/react-query";
 import useNotification from "@/features/hooks/useNotification";
-import { AxiosError } from "axios";
 import { useRouter } from "@/libs/next-intl/navigation";
 import { ROUTES } from "@/constants";
 import { useTranslations } from "next-intl";
@@ -20,21 +19,21 @@ const bookingRestaurant = async (
 
 const useBookingRestaurant = (onSuccess: () => void) => {
   const t = useTranslations("Restaurant");
-  const { showError, showSuccess } = useNotification();
+  const { notify, types } = useNotification();
   const router = useRouter();
   return useMutation<
     RestaurantBookingResponse,
-    AxiosError<ErrorResponse>,
+    ErrorResponse,
     RestaurantBooking
   >({
     mutationFn: bookingRestaurant,
     onSuccess: () => {
-      showSuccess(t("bookingSuccessfully"));
+      notify(t("bookingSuccessfully"), { type: types.success });
       onSuccess();
       router.push(ROUTES.BOOKING.INDEX);
     },
-    onError: (err: AxiosError<ErrorResponse>) => {
-      showError(err.message);
+    onError: (err: ErrorResponse) => {
+      notify(err.message);
     },
   });
 };

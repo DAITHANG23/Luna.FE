@@ -33,8 +33,8 @@ export const Security = () => {
       passwordCurrent: Yup.string()
         .trim()
         .required(t("security.validate.currentPassword"))
-        .min(8, "Password must be at least 8 characters!")
-        .max(20, "Password must be max 20 characters!")
+        .min(8, t("security.validate.minPassword"))
+        .max(20, t("security.validate.maxPassword"))
         .matches(
           REGEX_VALIDTATE_PASSWORD,
           t("security.validate.formatPassword")

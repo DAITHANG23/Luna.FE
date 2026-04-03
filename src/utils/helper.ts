@@ -1,7 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { GetErrorMessageProps } from "@/@types/common";
 import { isEmpty } from "lodash";
 import { stringify } from "qs";
 import { useMemo } from "react";
+import { ERROR_KEY } from "./errorKey";
+import { ErrorResponse } from "@/@types/models";
+
 export const numberWithCommas = (
   number = "",
   digits = 2,
@@ -106,4 +110,57 @@ export const getLocale = () => {
   const path = window.location.pathname;
   const locale = path.split("/")[1];
   return locale || "en";
+};
+
+export const getErrorMessage = ({
+  translate,
+  errorCode = "",
+  data = { key: "message" },
+}: GetErrorMessageProps) => {
+  if (errorCode === ERROR_KEY.INTERNAL_SERVER_ERROR)
+    return "Internal Server Error.";
+
+  for (const key in data) {
+    if (key === errorCode) return data[key];
+  }
+
+  return translate("somethingWrong");
+};
+
+export const getErrorDetail = ({ error }: { error: ErrorResponse }) => {
+  const { error: errorDetails, message, status, traceId } = error || {};
+
+  const { errorCode, messageError, statusCode } = errorDetails;
+
+  if (statusCode === 500) {
+    return {
+      key: ERROR_KEY.INTERNAL_SERVER_ERROR,
+      data: {
+        traceId,
+        errorMessage: "Internal Server Error.",
+      },
+    };
+  }
+
+  if (statusCode === 413) {
+    return {
+      key: ERROR_KEY.FILE_TOO_LARGE,
+      data: {
+        traceId,
+        errorMessage: "Upload failed. The maximum file size allowed is 10 MB",
+      },
+    };
+  }
+
+  const result = errorDetails
+    ? {
+        key: errorCode,
+        data: { traceId, messageError },
+      }
+    : {
+        key: "",
+        data: { traceId },
+      };
+
+  return result;
 };

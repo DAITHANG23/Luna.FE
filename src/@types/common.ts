@@ -13,3 +13,9 @@ export interface LanguageListType {
   value: Locale;
   img: string;
 }
+
+export interface GetErrorMessageProps {
+  translate: any;
+  errorCode: string;
+  data: Record<string, string>;
+}

@@ -7,16 +7,23 @@
     "returnHome": "Trở về trang chủ",
     "returnLogin": "Trở lại trang đăng nhập",
     "bookingWarning": "Vui lòng nhập thông tin cá nhân<br/> đầy đủ để đặt bàn!",
+    "somethingWrong": "Có lỗi xảy ra!",
+    "internalServerError": "Lỗi máy chủ nội bộ!",
+    "tokenIsInvalid": "Token không hợp lệ hoặc đã hết hạn!",
+    "accountMustBeCustomer": "Tài khoản phải là khách hàng!",
     "login": {
       "titleLogin": "Đăng nhập tài khoản bạn",
       "dontHaveAccount": "Không có tài khoản?",
       "forgotPassword": "Quên mật khẩu?",
       "continueWith": "hoặc tiếp tục với",
       "password": "Mật khẩu",
+      "loginSuccess": "Đăng nhập thành công!",
       "validate": {
         "email": "Vui lòng nhập email!",
         "invalidEmail": "Email không hợp lệ!",
-        "password": "Vui lòng nhập mật khẩu!"
+        "password": "Vui lòng nhập mật khẩu!",
+        "emailIsNotExisted": "Email không tồn tại!",
+        "incorrectPassword": "Mật khẩu không chính xác!"
       }
     },
     "register": {
@@ -30,6 +37,7 @@
       "password": "Mật khẩu",
       "confirmPassword": "Xác nhận mật khẩu",
       "createAccount": "Tạo tài khoản",
+      "sendOtp": "OTP đã gửi, vui lòng kiểm tra email của bạn!",
       "validate": {
         "email": "Vui lòng nhập email!",
         "invalidEmail": "Email không hợp lệ!",
@@ -52,14 +60,23 @@
         "maxAddress": "Địa chỉ tối đa 100 kí tự",
         "confirmPassword": "Vui lòng nhập mật khẩu xác nhận!",
         "matchPassword": "Mật khẩu xác nhận phải trùng khớp",
-        "ageRequirement": "Phải ít nhất 13 tuổi trở lên!"
+        "ageRequirement": "Phải ít nhất 13 tuổi trở lên!",
+        "emailIsExisted": "Email đã tồn tại!",
+        "missingFields": "Thiếu thông tin!"
       }
     },
     "forgotPassword": {
       "title": "Quên mật khẩu?",
       "content": "Vui lòng nhập địa chỉ email được liên kết với tài khoản của bạn và chúng tôi sẽ gửi cho bạn liên kết để đặt lại mật khẩu.",
       "button": "Gửi yêu cầu",
-      "return": "Quay lại trang đăng nhập"
+      "return": "Quay lại trang đăng nhập",
+      "validate": {
+        "email": "Vui lòng nhập email!",
+        "invalidEmail": "Email không hợp lệ!",
+        "emailIsNotExisted": "Email không tồn tại!",
+        "sendingEmailFail": "Có lỗi xảy ra khi gửi email. Vui lòng thử lại sau!",
+        "sendingEmailSuccess": "Gửi email thành công! Vui lòng kiểm tra email của bạn!"
+      }
     },
     "resetPassword": {
       "title": "Yêu cầu gửi thành công",
@@ -70,13 +87,18 @@
       "dontHaveACode": "Chưa có code?",
       "return": "Quay lại trang đăng nhập",
       "verify": "Xác nhận",
+      "resetPasswordSuccess":"Đặt lại mật khẩu thành công! Vui lòng đăng nhập lại tài khoản của bạn!",
       "validate": {
         "password": "Vui lòng nhập mật khẩu!",
         "minPassword": "Mật khẩu phải tổi thiểu 8 kí tự!",
         "maxPassword": "Mật khẩu tối đa 20 kí tự!",
         "formatPassword": "Mật khẩu phải có tổi thiểu 8 ký tự, một chữ hoa, một chữ thường, một số và một ký tự đặc biệt.",
         "confirmPassword": "Vui lòng nhập mật khẩu xác nhận!",
-        "matchPassword": "Mật khẩu xác nhận phải trùng khớp"
+        "matchPassword": "Mật khẩu xác nhận phải trùng khớp",
+        "emailIsRequired": "Email không được để trống!",
+        "otpIsRequired": "OTP không được để trống!",
+        "invalidOtpRequest": "OTP không hợp lệ!",
+        "otpIsExpired": "OTP đã hết hạn. Vui lòng yêu cầu OTP mới!"
       },
       "resend": "Gửi lại"
     },
@@ -269,6 +291,12 @@
       "male": "Nam",
       "female": "Nữ",
       "typeOfGender": "{gender, select, male {Nam} female {Nữ} other {Unknown}}",
+      "updateAccountSuccess": "Cập nhật tài khoản thành công!",
+      "verifyOtpSuccess": "Xác thực thành công, tài khoản của bạn đã được kích hoạt!",
+      "otpIsRequired": "OTP không tồn tại. Vui lòng nhập OTP!",
+      "otpIsExpired": "OTP đã hết hạn. Vui lòng yêu cầu OTP mới!",
+      "otpIsIncorrect": "OTP không chính xác. Vui lòng nhập lại OTP!",
+      "accountDeletedSuccessful": "Xóa tài khoản thành công!",
       "validate": {
         "firstName": "Vui lòng nhập tên!",
         "minFirstName": "Tên phải tổi thiểu 3 kí tự!",
@@ -283,7 +311,10 @@
         "minAddress": "Địa chỉ tối thiểu 5 kí tự",
         "maxAddress": "Địa chỉ tối đa 100 kí tự",
         "dateOfBirth": "Vui lòng nhập ngày sinh!",
-        "ageRequirement": "Phải ít nhất 13 tuổi trở lên!"
+        "ageRequirement": "Phải ít nhất 13 tuổi trở lên!",
+        "wrongCurrentPassword": "Mật khẩu hiện tại không chính xác!",
+        "notAllowUpdatePassword": "Đây không phải là route để cập nhật mật khẩu. Vui lòng sử dụng /updateMyPassword.",
+        "uploadToCloudinaryFailed":"Upload ảnh đại diện bị lỗi!"
       }
     },
     "security": {
@@ -298,13 +329,15 @@
         "formatPassword": "Mật khẩu phải có tổi thiểu 8 ký tự, một chữ hoa, một chữ thường, một số và một ký tự đặc biệt.",
         "newPassword": "Vui lòng nhập mật khẩu mới!",
         "confirmPassword": "Vui lòng nhập mật khẩu xác nhận!",
-        "matchPassword": "Mật khẩu xác nhận phải trùng khớp"
+        "matchPassword": "Mật khẩu xác nhận phải trùng khớp",
+        "updateSuccess": "Thay đổi mật khẩu bạn thành công. Bạn cần đăng nhập lại!"
       }
     }
   },
   "Notification": {
     "noNotifications": "Không có thông báo nào",
     "seeMore": "Xem thêm",
+    "missingIdNotification": "Thiếu id thông báo!",
     "content": {
       "bookingCreated": {
         "title": "",
@@ -390,6 +423,8 @@
     "validateReview": "Vui lòng nhập ít nhất 5 kí tự !",
     "notFound": "Rất tiếc, chúng tôi không tìm thấy nhà hàng nào :(",
     "navbar": "{navbar, select, menu {Thực đơn} booking {Đặt bàn} other {Unknown}}",
+    "conceptIsNotExist": "Concept không tồn tại!",
+    "missingIdConcept": "Thiếu id concept!",
     "loginRequest":{
     "titleLoginRequest":"Gia nhập hệ thống nhà hàng Domique Fusion",
     "contentRequest": "Tạo tài khoản cho phép bạn có những trải nghiệm cá nhân như:",

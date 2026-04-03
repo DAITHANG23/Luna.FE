@@ -48,7 +48,7 @@ interface ProfileDetailProps {
 }
 
 export const ProfileDetail = ({ userData, isLoading }: ProfileDetailProps) => {
-  const { showSuccess } = useNotification();
+  const { notify, types } = useNotification();
   const t = useTranslations("Profile");
 
   const router = useRouter();
@@ -151,7 +151,7 @@ export const ProfileDetail = ({ userData, isLoading }: ProfileDetailProps) => {
   const handleDeleteAccount = async () => {
     try {
       await apiService.account.deleteAccount();
-      showSuccess("Account deleted successful!");
+      notify(t("profile.accountDeletedSuccessful"), { type: types.success });
       router.push(ROUTES.LOGIN.INDEX);
     } catch (error) {
       console.error("Error deleting account:", error);

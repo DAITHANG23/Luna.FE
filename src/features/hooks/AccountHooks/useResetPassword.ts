@@ -8,9 +8,11 @@ import {
   LoginResponse,
 } from "@/@types/models";
 import { ROUTES } from "@/constants";
-import { AxiosError } from "axios";
 import { CREATE_NEW_PASSWORD_QUERY_KEY } from "@/app/constants/queryKeys";
 import { useParams, useRouter } from "next/navigation";
+import { getErrorDetail, getErrorMessage } from "@/utils";
+import { ERROR_KEY } from "@/utils/errorKey";
+import { useTranslations } from "next-intl";
 
 const createNewPassword = (
   formData: ForgotPasswordType
@@ -19,26 +21,44 @@ const createNewPassword = (
 };
 
 const useResetPassword = () => {
-  const { showSuccess, showError } = useNotification();
+  const { notify, types } = useNotification();
 
+  const t = useTranslations("Translation");
   const params = useParams();
   const router = useRouter();
-  return useMutation<
-    LoginResponse,
-    AxiosError<ErrorResponse>,
-    ForgotPasswordType
-  >({
+  return useMutation<LoginResponse, ErrorResponse, ForgotPasswordType>({
     mutationFn: createNewPassword,
     mutationKey: [CREATE_NEW_PASSWORD_QUERY_KEY],
     onSuccess: async () => {
-      showSuccess(
-        "Change password successful! Please login your account again!"
-      );
+      notify(t("resetPassword.resetPasswordSuccess"), { type: types.success });
       localStorage.removeItem("emailResetPassword");
       router.push(`/${params.locale}${ROUTES.LOGIN.INDEX}`);
     },
-    onError: (err: AxiosError<ErrorResponse>) => {
-      showError(err.message);
+    onError: (err: ErrorResponse) => {
+      const { key: errorCode, data: errorDetails } = getErrorDetail({
+        error: err,
+      });
+
+      const messages = {
+        [ERROR_KEY.EMAIL_IS_NOT_EXISTED]: t(
+          "forgotPassword.validate.emailIsNotExisted"
+        ),
+        [ERROR_KEY.EMAIL_IS_REQUIRED]: t(
+          "resetPassword.validate.emailIsRequired"
+        ),
+        [ERROR_KEY.OTP_IS_NULL]: t("resetPassword.validate.otpIsRequired"),
+        [ERROR_KEY.INVALID_OTP_REQUEST]: t(
+          "resetPassword.validate.invalidOtpRequest"
+        ),
+        [ERROR_KEY.OTP_IS_EXPIRED]: t("resetPassword.validate.otpIsExpired"),
+      };
+
+      const errorMessage = getErrorMessage({
+        translate: t,
+        errorCode,
+        data: messages,
+      });
+      notify(errorMessage, errorDetails);
     },
   });
 };

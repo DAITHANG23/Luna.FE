@@ -43,7 +43,7 @@ export const BookingDetail = ({ item }: BookingDetailProps) => {
   const t = useTranslations("Booking");
   const router = useRouter();
   const locale = useLocale();
-  const { showSuccess } = useNotification();
+  const { notify, types } = useNotification();
 
   const { mutateAsync: updateReservation } = useUpdateReservation();
   const concept = useMemo(() => {
@@ -68,7 +68,7 @@ export const BookingDetail = ({ item }: BookingDetailProps) => {
       await updateReservation({ status: "CANCELLED_BY_USER", _id: item?._id });
     }
 
-    showSuccess(t("notification.canceled"));
+    notify(t("notification.canceled"), { type: types.success });
     setIsOpenCanceledModal(false);
   };
 
