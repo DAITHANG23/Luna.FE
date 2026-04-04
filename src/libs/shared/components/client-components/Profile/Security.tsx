@@ -10,9 +10,15 @@ import { ButtonLoading, FieldInput, Popover } from "@/libs/shared/components";
 import { useTranslations } from "next-intl";
 
 export const Security = () => {
-  const { mutate: updatePasswordAccount, isPending: isLoadingUpdatePassword } =
-    useUpdatePassword();
   const t = useTranslations("Profile");
+  const {
+    mutate: updatePasswordAccount,
+    isPending: isLoadingUpdatePassword,
+    error,
+  } = useUpdatePassword();
+
+  console.log("error:", error);
+
   const initialValues = {
     passwordCurrent: "",
     password: "",
