@@ -1,5 +1,5 @@
 "use client";
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import * as Yup from "yup";
 import { Form, Formik } from "formik";
 import { UserLogin } from "@/@types/models";
@@ -11,15 +11,28 @@ import {
   FieldInput,
   FormLayout,
 } from "@/libs/shared/components";
-import { REGEX_VALIDATE_EMAIL, REGEX_VALIDTATE_PASSWORD } from "@/constants";
+import {
+  REGEX_VALIDATE_EMAIL,
+  REGEX_VALIDTATE_PASSWORD,
+  ROUTES,
+} from "@/constants";
 import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
 
 const Register = () => {
   const t = useTranslations("Translation");
   const { mutate: registerAccount, isPending: isLoadingRegister } =
     useRegister();
 
+  const router = useRouter();
   const { setRegisterData } = useAppContext();
+
+  useEffect(() => {
+    const sessionId = localStorage.getItem("sessionId");
+    if (sessionId) {
+      router.push(ROUTES.HOME.INDEX);
+    }
+  }, [router]);
 
   const validationSchema = useMemo(() => {
     return Yup.object({
