@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import useLogin from "@/features/hooks/AccountHooks/useLoginUser";
@@ -8,12 +8,16 @@ import {
   ButtonLoading,
   FieldInput,
   FormLayout,
+  ModalNotification,
 } from "@/libs/shared/components";
 import SocialLogin from "./SocialLogin";
 import { REGEX_VALIDATE_EMAIL, ROUTES } from "@/constants";
 import { useTranslations } from "next-intl";
 import { Link } from "@/libs/next-intl/navigation";
 import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
+import { RootState } from "@/libs/redux/store";
+import { ShieldAlertIcon } from "lucide-react";
 
 const LoginForm = () => {
   const initialValues = {
@@ -23,7 +27,15 @@ const LoginForm = () => {
 
   const router = useRouter();
 
+  const enteredWrongCurrentPasswordNumber = useSelector(
+    (state: RootState) => state.auth.enteredWrongCurrentPasswordNumber
+  );
+
+  const [isOpenModalErrorNotification, setIsOpenModalErrorNotification] =
+    useState(false);
+
   const t = useTranslations("Translation");
+  const tProfile = useTranslations("Profile");
   const { mutate: loginAccount, isPending: isLoadingLogin } = useLogin();
 
   useEffect(() => {
@@ -32,6 +44,17 @@ const LoginForm = () => {
       router.push(ROUTES.HOME.INDEX);
     }
   }, [router]);
+
+  const [prevEnteredWrong, setPrevEnteredWrong] = useState(
+    enteredWrongCurrentPasswordNumber
+  );
+
+  if (enteredWrongCurrentPasswordNumber !== prevEnteredWrong) {
+    setPrevEnteredWrong(enteredWrongCurrentPasswordNumber);
+    if (enteredWrongCurrentPasswordNumber >= 5) {
+      setIsOpenModalErrorNotification(true);
+    }
+  }
 
   const validationSchema = useMemo(() => {
     return Yup.object({
@@ -44,11 +67,41 @@ const LoginForm = () => {
   }, [t]);
 
   const handleSubmit = (formData: UserLogin) => {
-    loginAccount(formData);
+    if (enteredWrongCurrentPasswordNumber >= 5) {
+      setIsOpenModalErrorNotification(true);
+      return;
+    }
+
+    loginAccount(formData, {
+      onError: error => {
+        if (
+          error?.error?.fillWrongCurrentPasswordNumber &&
+          error?.error?.fillWrongCurrentPasswordNumber >= 5
+        ) {
+          setIsOpenModalErrorNotification(true);
+        }
+      },
+    });
   };
 
   return (
     <>
+      {isOpenModalErrorNotification && (
+        <ModalNotification
+          title={tProfile("security.modal.title")}
+          content={tProfile("security.modal.content2")}
+          icon={
+            <ShieldAlertIcon
+              aria-hidden="true"
+              className="h-8 w-8 text-yellow-300"
+            />
+          }
+          open={isOpenModalErrorNotification}
+          setOpen={setIsOpenModalErrorNotification}
+          labelButton={tProfile("modal.update.labelButton")}
+          type="warning"
+        />
+      )}
       <Formik
         onSubmit={handleSubmit}
         initialValues={initialValues}

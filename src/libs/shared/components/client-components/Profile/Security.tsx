@@ -1,23 +1,40 @@
 "use client";
 import { REGEX_VALIDTATE_PASSWORD } from "@/constants";
 import { Form, Formik } from "formik";
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import * as Yup from "yup";
 import useUpdatePassword from "@/features/hooks/AccountHooks/useUpdatePassword";
 import { UpdatePasswordType } from "@/@types/models";
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
-import { ButtonLoading, FieldInput, Popover } from "@/libs/shared/components";
-import { useTranslations } from "next-intl";
+import { ShieldAlertIcon } from "lucide-react";
+import {
+  ButtonLoading,
+  FieldInput,
+  ModalNotification,
+  Popover,
+} from "@/libs/shared/components";
+import { useLocale, useTranslations } from "next-intl";
+import { useAppDispatch } from "@/libs/redux/hooks";
+import {
+  authentication,
+  enteredWrongCurrentPasswordNumber,
+  logout,
+} from "@/libs/redux/auth/authSlice";
 
 export const Security = () => {
   const t = useTranslations("Profile");
-  const {
-    mutate: updatePasswordAccount,
-    isPending: isLoadingUpdatePassword,
-    error,
-  } = useUpdatePassword();
 
-  console.log("error:", error);
+  const dispatch = useAppDispatch();
+  const locale = useLocale();
+
+  const [fillWrongCurrentPasswordNumber, setFillWrongCurrentPasswordNumber] =
+    useState(0);
+
+  const [isOpenModalErrorNotification, setIsOpenModalErrorNotification] =
+    useState(false);
+
+  const { mutate: updatePasswordAccount, isPending: isLoadingUpdatePassword } =
+    useUpdatePassword();
 
   const initialValues = {
     passwordCurrent: "",
@@ -53,63 +70,106 @@ export const Security = () => {
   }, [t]);
 
   const handleSubmit = (formData: UpdatePasswordType) => {
-    updatePasswordAccount(formData);
+    updatePasswordAccount(formData, {
+      onError: error => {
+        if (error?.error?.fillWrongCurrentPasswordNumber) {
+          setFillWrongCurrentPasswordNumber(
+            error?.error?.fillWrongCurrentPasswordNumber
+          );
+          setIsOpenModalErrorNotification(
+            error?.error?.fillWrongCurrentPasswordNumber < 5
+          );
+
+          if (error?.error?.fillWrongCurrentPasswordNumber >= 5) {
+            dispatch(
+              enteredWrongCurrentPasswordNumber({
+                enteredWrongCurrentPasswordNumber: 5,
+              })
+            );
+
+            dispatch(authentication({ isAuthenticated: false }));
+            dispatch(logout(locale));
+          }
+        }
+      },
+    });
   };
   return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={handleSubmit}
-      validationSchema={validationSchema}
-    >
-      {() => {
-        return (
-          <Form className="m-auto w-full lg:w-[70%]">
-            <div className="text-primary-text flex flex-col overflow-hidden rounded-2xl bg-white p-6 shadow-[rgba(145,158,171,0.16)_0px_4px_8px_0px] dark:bg-[#1C252E]">
-              <div className="grid w-full grid-cols-1 gap-4">
-                <FieldInput
-                  title={t("security.currentPassword")}
-                  name="passwordCurrent"
-                  required
-                  isPasswordFied
-                />
-                <div className="relative">
+    <>
+      {isOpenModalErrorNotification && (
+        <ModalNotification
+          title={t("security.modal.title")}
+          content={t("security.modal.content", {
+            count: String(fillWrongCurrentPasswordNumber),
+          })}
+          icon={
+            <ShieldAlertIcon
+              aria-hidden="true"
+              className="h-8 w-8 text-yellow-300"
+            />
+          }
+          open={isOpenModalErrorNotification}
+          setOpen={setIsOpenModalErrorNotification}
+          labelButton={t("modal.update.labelButton")}
+          type="warning"
+        />
+      )}
+
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validationSchema={validationSchema}
+      >
+        {() => {
+          return (
+            <Form className="m-auto w-full lg:w-[70%]">
+              <div className="text-primary-text flex flex-col overflow-hidden rounded-2xl bg-white p-6 shadow-[rgba(145,158,171,0.16)_0px_4px_8px_0px] dark:bg-[#1C252E]">
+                <div className="grid w-full grid-cols-1 gap-4">
                   <FieldInput
-                    title={t("security.newPassword")}
-                    name="password"
+                    title={t("security.currentPassword")}
+                    name="passwordCurrent"
                     required
                     isPasswordFied
                   />
-                  <div className="absolute top-0 right-0">
-                    <Popover
-                      iconButton={
-                        <InformationCircleIcon
-                          onMouseDown={e => e.preventDefault()}
-                          width={20}
-                          height={20}
-                        />
-                      }
-                      content={<p>{t("security.validate.formatPassword")}</p>}
+                  <div className="relative">
+                    <FieldInput
+                      title={t("security.newPassword")}
+                      name="password"
+                      required
+                      isPasswordFied
                     />
+                    <div className="absolute top-0 right-0">
+                      <Popover
+                        iconButton={
+                          <InformationCircleIcon
+                            onMouseDown={e => e.preventDefault()}
+                            width={20}
+                            height={20}
+                          />
+                        }
+                        content={<p>{t("security.validate.formatPassword")}</p>}
+                      />
+                    </div>
                   </div>
-                </div>
 
-                <FieldInput
-                  title={t("security.confirmPassword")}
-                  name="passwordConfirm"
-                  required
-                  isPasswordFied
-                />
+                  <FieldInput
+                    title={t("security.confirmPassword")}
+                    name="passwordConfirm"
+                    required
+                    isPasswordFied
+                  />
+                </div>
+                <div className="mt-4 justify-end text-end">
+                  <ButtonLoading
+                    isLoading={isLoadingUpdatePassword}
+                    title={t("security.save")}
+                  />
+                </div>
               </div>
-              <div className="mt-4 justify-end text-end">
-                <ButtonLoading
-                  isLoading={isLoadingUpdatePassword}
-                  title={t("security.save")}
-                />
-              </div>
-            </div>
-          </Form>
-        );
-      }}
-    </Formik>
+            </Form>
+          );
+        }}
+      </Formik>
+    </>
   );
 };
