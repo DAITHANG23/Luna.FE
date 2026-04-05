@@ -53,7 +53,9 @@ const useLogin = () => {
       const { key: errorCode, data: errorDetails } = getErrorDetail({
         error: err,
       });
-
+      if (errorCode === ERROR_KEY.WRONG_CURRENT_PASSWORD_5_TIMES) {
+        return;
+      }
       const messages = {
         [ERROR_KEY.EMAIL_IS_NOT_EXISTED]: t("login.validate.emailIsNotExisted"),
         [ERROR_KEY.INCORRECT_PASSWORD]: t("login.validate.incorrectPassword"),

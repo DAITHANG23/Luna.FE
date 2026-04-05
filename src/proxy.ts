@@ -39,6 +39,11 @@ export async function proxy(request: NextRequest) {
     requestHeaders.set("authorization", `Bearer ${sessionId}`);
   }
 
+  if (sessionId && (pathname === "/login" || pathname === "/register")) {
+    const loginUrl = new URL("/", request.url);
+    return NextResponse.redirect(loginUrl);
+  }
+
   return response;
 }
 export const config = {

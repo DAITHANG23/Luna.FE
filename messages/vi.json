@@ -322,6 +322,12 @@
       "newPassword": "Mật khẩu mới",
       "confirmPassword": "Mật khẩu xác nhận",
       "save": "Lưu thay đổi",
+      "modal":{
+        "cancelButton": "Hủy bỏ",
+        "title":"Cảnh báo nhập sai mật khẩu hiện tại",
+        "content":"Quý khách đã nhập sai mật khẩu hiện tại {count} lần liên tiếp. Quý khách lưu ý dịch vụ Domique fusion sẽ bị TẠM KHÓA nếu quý khách nhập sai mật khẩu liên tiếp 05 LẦN. Quý khách có thể thực hiện cấp lại mật khẩu tại tính năng Quên mật khẩu ở màn hình đăng nhập ứng dụng Domique fusion.",
+        "content2":"Quý khách đã nhập sai mật khẩu hiện tại 5 lần liên tiếp. Tài khoản của quý khách đã bị TẠM KHÓA. Vui lòng thực hiện cấp lại mật khẩu tại tính năng Quên mật khẩu ở màn hình đăng nhập ứng dụng Domique fusion."
+      },
       "validate": {
         "currentPassword": "Vui lòng nhập mật khẩu hiện tại!",
         "minPassword": "Mật khẩu phải ít nhất 8 kí tự!",

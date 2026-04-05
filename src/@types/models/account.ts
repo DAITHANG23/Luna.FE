@@ -46,6 +46,7 @@ export interface ErrorDetailsObject {
   isOperational: boolean;
   name?: string;
   expiredAt?: string;
+  fillWrongCurrentPasswordNumber?: number;
 }
 export interface ErrorResponse {
   traceId?: string;
