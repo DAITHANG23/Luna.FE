@@ -15,7 +15,7 @@ interface ModalNotificationProps {
   icon: JSX.Element;
   labelButton: string;
   type?: "delete" | "update" | "warning";
-  action: JSX.Element;
+  action?: JSX.Element;
 }
 export const ModalNotification = ({
   title,

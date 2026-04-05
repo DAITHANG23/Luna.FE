@@ -14,6 +14,7 @@ interface AuthState {
   accountInfo?: UserResponse | null;
   loading?: boolean;
   error?: string | null;
+  enteredWrongCurrentPasswordNumber: number;
 }
 
 export const logout = createAsyncThunk(
@@ -61,6 +62,7 @@ const initialState: AuthState = {
   accountInfo: null,
   loading: false,
   error: null,
+  enteredWrongCurrentPasswordNumber: 0,
 };
 
 const authSlice = createSlice({
@@ -81,6 +83,13 @@ const authSlice = createSlice({
       action: PayloadAction<{ isAuthenticated: boolean }>
     ) => {
       state.isAuthenticated = action.payload.isAuthenticated;
+    },
+    enteredWrongCurrentPasswordNumber: (
+      state,
+      action: PayloadAction<{ enteredWrongCurrentPasswordNumber: number }>
+    ) => {
+      state.enteredWrongCurrentPasswordNumber =
+        action.payload.enteredWrongCurrentPasswordNumber;
     },
   },
   extraReducers: builder => {
@@ -105,5 +114,10 @@ const authSlice = createSlice({
   },
 });
 
-export const { sessionId, authentication, userInfo } = authSlice.actions;
+export const {
+  sessionId,
+  authentication,
+  userInfo,
+  enteredWrongCurrentPasswordNumber,
+} = authSlice.actions;
 export default authSlice.reducer;
