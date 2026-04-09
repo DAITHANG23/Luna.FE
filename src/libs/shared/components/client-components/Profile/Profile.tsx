@@ -30,7 +30,7 @@ export const Profile = () => {
   }, [accountInfo]);
 
   useEffect(() => {
-    if (!isLoading && !accountInfo?.avatarUrl) {
+    if (!isLoading && !accountInfo) {
       router.push("/unauthorized");
     }
   }, [router, accountInfo, isLoading]);

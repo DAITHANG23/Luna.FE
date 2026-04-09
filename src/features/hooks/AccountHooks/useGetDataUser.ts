@@ -1,8 +1,7 @@
 "use client";
 import { UserResponse } from "@/@types/models";
-// import { useAppSelector } from "@/libs/redux/hooks";
-// import { RootState } from "@/libs/redux/store";
 import apiService from "@/api/endpoints/index";
+import { useAppSelector } from "@/libs/redux/hooks";
 import { useQuery } from "@tanstack/react-query";
 import { GET_DATA_USER_QUERY_KEY } from "@/app/constants/queryKeys";
 
@@ -11,9 +10,7 @@ const getDataUser = async (): Promise<UserResponse> => {
 };
 
 const useGetDataUser = () => {
-  // const sessionIdState = useAppSelector(
-  //   (state: RootState) => state.auth.sessionId
-  // );
+  const isAuthenticated = useAppSelector(state => state.auth.isAuthenticated);
 
   const {
     data: userData,
@@ -23,7 +20,7 @@ const useGetDataUser = () => {
     queryFn: getDataUser,
     queryKey: [GET_DATA_USER_QUERY_KEY],
     refetchOnWindowFocus: true,
-    // enabled: !!sessionIdState,
+    enabled: !!isAuthenticated,
   });
 
   return { userData, isLoading, refetch };

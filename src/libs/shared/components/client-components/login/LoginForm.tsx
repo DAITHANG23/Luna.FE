@@ -24,7 +24,7 @@ import { accountInfo } from "@/libs/redux/auth/selectors";
 const LoginForm = () => {
   const initialValues = {
     email: "test236@gmail.com",
-    password: "Daithang@2306",
+    password: "Daithang@230697",
   };
 
   const router = useRouter();

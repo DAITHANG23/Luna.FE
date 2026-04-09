@@ -45,7 +45,7 @@ import {
   resetNotifications,
   unReadNotifications,
 } from "@/libs/redux/masterData/masterDataSlice";
-import { NotificationModel, UserResponse } from "@/@types/models";
+import { NotificationModel } from "@/@types/models";
 import NotificationNavbar from "./NotificationNavbar";
 import { LanguageSelect } from "@/libs/shared/components";
 import { ChevronDownIcon } from "lucide-react";
@@ -58,6 +58,7 @@ import { useRouter } from "@/libs/next-intl/navigation";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { unReadNotificationsLength } from "@/libs/redux/masterData/selectors";
+import useGetDataUser from "@/features/hooks/AccountHooks/useGetDataUser";
 
 const events = [
   "bookingCreated",
@@ -78,9 +79,8 @@ const Navbars = () => {
 
   const queryClient = useQueryClient();
   const dispatch = useAppDispatch();
-  const accountInfoState = queryClient.getQueryData<UserResponse>([
-    GET_DATA_USER_QUERY_KEY,
-  ])?.data.data;
+
+  const { userData } = useGetDataUser();
 
   const unReadNotificationsQuantities = useAppSelector(
     unReadNotificationsLength
@@ -233,7 +233,7 @@ const Navbars = () => {
             <LanguageSelect />
 
             {/* Profile dropdown */}
-            {accountInfoState ? (
+            {userData ? (
               <Menu as="div" className="relative ml-3">
                 <div>
                   <MenuButton className="hover:ring-offset-primary/80 relative flex rounded-full text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:outline-hidden dark:bg-gray-800">
@@ -241,7 +241,7 @@ const Navbars = () => {
                     <span className="sr-only">Open user menu</span>
                     <Image
                       alt="avatar"
-                      src={accountInfoState?.avatarUrl || DEFAULT_AVATAR}
+                      src={userData?.data.data?.avatarUrl || DEFAULT_AVATAR}
                       className="size-8 rounded-full"
                       width={32}
                       height={32}

@@ -1,5 +1,5 @@
 "use client";
-import { useAppSelector } from "@/libs/redux/hooks";
+
 import { format } from "date-fns";
 import { Form, Formik } from "formik";
 import { MapPin, Phone } from "lucide-react";
@@ -8,12 +8,15 @@ import * as Yup from "yup";
 import {
   AllRestaurantResponseOfConcept,
   RestaurantBooking,
+  UserResponse,
 } from "@/@types/models";
 import useBookingRestaurant from "@/features/hooks/RestaurantsHooks/useBookingRestaurant";
 import { REGEX_VALIDATE_EMAIL } from "@/constants";
 import { ButtonLoading } from "@/libs/shared/components";
 import { FormDetail } from "./FormDetail";
 import { useTranslations } from "next-intl";
+import { useQueryClient } from "@tanstack/react-query";
+import { GET_DATA_USER_QUERY_KEY } from "@/app/constants/queryKeys";
 
 interface BookingFormProps {
   chooseRestaurant: string | null;
@@ -33,9 +36,11 @@ const BookingForm = ({
   const [choosePeopleQuantity, setChoosePeopleQuantity] = useState<string>("2");
   const [chooseNotes, setChooseNotes] = useState<string[]>([]);
   const [notesContent, setNotesContent] = useState<string>("");
+  const queryClient = useQueryClient();
+  const accountInfoState = queryClient.getQueryData<UserResponse>([
+    GET_DATA_USER_QUERY_KEY,
+  ])?.data.data;
 
-  const accountInfo = useAppSelector(state => state.auth.accountInfo)?.data
-    .data;
   const today = format(new Date(), "yyyy-MM-dd");
 
   const onSuccess = () => {
@@ -71,9 +76,9 @@ const BookingForm = ({
   const initialValues: RestaurantBooking = {
     timeOfBooking: today,
     timeSlot: "11:00",
-    fullName: accountInfo?.fullName,
-    numberPhone: accountInfo?.numberPhone,
-    email: accountInfo?.email,
+    fullName: accountInfoState?.fullName,
+    numberPhone: accountInfoState?.numberPhone,
+    email: accountInfoState?.email,
     peopleQuantity: "2",
     notes: "",
   };
@@ -99,7 +104,7 @@ const BookingForm = ({
   const handleSubmit = (formData: RestaurantBooking) => {
     const customFormData = {
       ...formData,
-      customer: accountInfo?._id,
+      customer: accountInfoState?._id,
       restaurant: restaurant?.id,
     };
     bookingRestaurant(customFormData);
