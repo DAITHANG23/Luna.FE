@@ -45,7 +45,7 @@ import {
   resetNotifications,
   unReadNotifications,
 } from "@/libs/redux/masterData/masterDataSlice";
-import { NotificationModel } from "@/@types/models";
+import { NotificationModel, UserResponse } from "@/@types/models";
 import NotificationNavbar from "./NotificationNavbar";
 import { LanguageSelect } from "@/libs/shared/components";
 import { ChevronDownIcon } from "lucide-react";
@@ -58,7 +58,6 @@ import { useRouter } from "@/libs/next-intl/navigation";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { unReadNotificationsLength } from "@/libs/redux/masterData/selectors";
-import { accountInfo } from "@/libs/redux/auth/selectors";
 
 const events = [
   "bookingCreated",
@@ -79,13 +78,14 @@ const Navbars = () => {
 
   const queryClient = useQueryClient();
   const dispatch = useAppDispatch();
-  const accountInfoState = useAppSelector(accountInfo);
+  const accountInfoState = queryClient.getQueryData<UserResponse>([
+    GET_DATA_USER_QUERY_KEY,
+  ])?.data.data;
 
   const unReadNotificationsQuantities = useAppSelector(
     unReadNotificationsLength
   );
   const { setIsOpenDialog } = useAppContext();
-  const sessionIdState = useAppSelector(state => state.auth.sessionId);
   const [open, setOpen] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
   const { isMobileSize } = useBreakPoints();
@@ -233,7 +233,7 @@ const Navbars = () => {
             <LanguageSelect />
 
             {/* Profile dropdown */}
-            {sessionIdState || accountInfoState ? (
+            {accountInfoState ? (
               <Menu as="div" className="relative ml-3">
                 <div>
                   <MenuButton className="hover:ring-offset-primary/80 relative flex rounded-full text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:outline-hidden dark:bg-gray-800">

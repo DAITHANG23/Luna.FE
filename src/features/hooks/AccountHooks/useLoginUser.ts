@@ -44,9 +44,11 @@ const useLogin = () => {
       dispatch(sessionId({ sessionId: sessionIdResponse as string }));
       dispatch(getAllNotifications());
       dispatch(authentication({ isAuthenticated: true }));
-      await queryClient.refetchQueries({
-        queryKey: [GET_DATA_USER_QUERY_KEY],
-      });
+
+      // Fetch user data ngay sau login và set thẳng vào cache
+      const userData = await apiService.account.getDataUser();
+      queryClient.setQueryData([GET_DATA_USER_QUERY_KEY], userData);
+
       router.replace(from || "/");
     },
     onError: (err: ErrorResponse) => {
