@@ -60,15 +60,17 @@ export default function AppProviders({
     }
   }, [dispatch, accountInfo]);
 
+  const isAuth = useAppSelector(state => state.auth.isAuthenticated);
+
   const isLoginPage =
     pathname === `${ROUTES.LOGIN.INDEX}` ||
     pathname === `${ROUTES.REGISTER.INDEX}`;
 
   useEffect(() => {
-    if (isEmpty(accountInfo)) {
+    if (isAuth && isEmpty(accountInfo)) {
       dispatch(getAccountInfo());
     }
-  }, [dispatch, accountInfo]);
+  }, [dispatch, accountInfo, isAuth]);
 
   return (
     <QueryClientProvider client={queryClient}>
