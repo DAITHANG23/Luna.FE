@@ -31,11 +31,11 @@ const SocialLogin = ({ isButtonGoogleBelow = false }: SocialLoginProps) => {
   const line = useMemo(() => {
     return (
       <div className="relative flex items-center py-2">
-        <div className="border-border border-primary-text grow border-t"></div>
+        <div className="border-primary-text grow border-t"></div>
         <span className="text-muted-foreground text-primary-text mx-4 shrink text-sm">
           {t("login.continueWith")}
         </span>
-        <div className="border-border border-primary-text grow border-t"></div>
+        <div className="border-primary-text grow border-t"></div>
       </div>
     );
   }, [t]);
