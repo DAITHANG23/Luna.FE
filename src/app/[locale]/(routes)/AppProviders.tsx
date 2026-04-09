@@ -40,7 +40,6 @@ export default function AppProviders({
   );
   const pathname = usePathname();
   const dispatch = useAppDispatch();
-  const sessionIdState = useAppSelector(state => state.auth.sessionId);
   const accountInfo = useAppSelector(state => state.auth.accountInfo);
 
   useEffect(() => {
@@ -48,7 +47,7 @@ export default function AppProviders({
     if (typeof window === "undefined") return;
 
     const sessionIdCookie = cookie.getSessionId();
-    if (sessionIdCookie) {
+    if (sessionIdCookie || accountInfo) {
       localStorage.setItem("sessionId", sessionIdCookie);
       dispatch(authentication({ isAuthenticated: true }));
       dispatch(sessionId({ sessionId: sessionIdCookie as string }));
@@ -59,17 +58,17 @@ export default function AppProviders({
       localStorage.removeItem("isLoggedInGoogle");
       localStorage.removeItem("sessionId");
     }
-  }, [dispatch]);
+  }, [dispatch, accountInfo]);
 
   const isLoginPage =
     pathname === `${ROUTES.LOGIN.INDEX}` ||
     pathname === `${ROUTES.REGISTER.INDEX}`;
 
   useEffect(() => {
-    if (sessionIdState && isEmpty(accountInfo)) {
+    if (isEmpty(accountInfo)) {
       dispatch(getAccountInfo());
     }
-  }, [dispatch, sessionIdState, accountInfo]);
+  }, [dispatch, accountInfo]);
 
   return (
     <QueryClientProvider client={queryClient}>

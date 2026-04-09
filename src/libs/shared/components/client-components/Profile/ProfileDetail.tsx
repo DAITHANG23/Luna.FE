@@ -6,7 +6,7 @@ import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { DEFAULT_AVATAR, REGEX_VALIDATE_EMAIL, ROUTES } from "@/constants";
 import { differenceInYears, parseISO } from "date-fns";
-import { Gender, UserLogin, UserModel, UserResponse } from "@/@types/models";
+import { Gender, UserLogin, UserModel } from "@/@types/models";
 import useUpdateProfile from "@/features/hooks/AccountHooks/useUpdateProfile";
 import apiService from "@/api/endpoints/index";
 import useNotification from "@/features/hooks/useNotification";
@@ -43,7 +43,7 @@ const GENDER_LIST = [
 ] as Array<GenderList>;
 
 interface ProfileDetailProps {
-  userData: UserResponse | undefined;
+  userData: UserModel | undefined;
   isLoading: boolean;
 }
 
@@ -61,13 +61,12 @@ export const ProfileDetail = ({ userData, isLoading }: ProfileDetailProps) => {
   const [isOpenModalUpdate, setIsOpenModalUpdate] = useState(false);
   const [isOpenModalDelete, setIsOpenModalDelete] = useState(false);
   const [previewImage, setPreviewImage] = useState<string>(
-    userData?.data.data.avatarUrl || DEFAULT_AVATAR
+    userData?.avatarUrl || DEFAULT_AVATAR
   );
 
   useEffect(() => {
-    if (userData?.data.data.avatarUrl)
-      setPreviewImage(userData?.data.data.avatarUrl);
-  }, [userData?.data.data.avatarUrl]);
+    if (userData?.avatarUrl) setPreviewImage(userData?.avatarUrl);
+  }, [userData?.avatarUrl]);
 
   useEffect(() => {
     if (isUpdateSuccess) {
@@ -76,14 +75,14 @@ export const ProfileDetail = ({ userData, isLoading }: ProfileDetailProps) => {
   }, [isUpdateSuccess]);
 
   const initialValues: UserLogin = {
-    email: userData?.data.data.email || "",
-    avatarUrl: userData?.data.data.avatarUrl || "",
-    firstName: userData?.data.data.firstName || "",
-    lastName: userData?.data.data.lastName || "",
-    numberPhone: userData?.data.data.numberPhone || "",
-    address: userData?.data.data.address || "",
-    dateOfBirth: userData?.data.data.dateOfBirth || "",
-    gender: userData?.data.data.gender || "male",
+    email: userData?.email || "",
+    avatarUrl: userData?.avatarUrl || "",
+    firstName: userData?.firstName || "",
+    lastName: userData?.lastName || "",
+    numberPhone: userData?.numberPhone || "",
+    address: userData?.address || "",
+    dateOfBirth: userData?.dateOfBirth || "",
+    gender: userData?.gender || "male",
   };
 
   const validationSchema = useMemo(() => {
@@ -248,7 +247,7 @@ export const ProfileDetail = ({ userData, isLoading }: ProfileDetailProps) => {
                           alt="Avatar"
                           width={100}
                           height={100}
-                          className="tex h-full w-full object-cover"
+                          className="h-full w-full object-cover"
                         />
 
                         <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-[rgba(22,28,36,0.64)] text-white opacity-0 transition-opacity duration-300 ease-in-out hover:opacity-100">
