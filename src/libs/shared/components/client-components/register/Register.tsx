@@ -18,6 +18,8 @@ import {
 } from "@/constants";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
+import { useAppSelector } from "@/libs/redux/hooks";
+import { accountInfo } from "@/libs/redux/auth/selectors";
 
 const Register = () => {
   const t = useTranslations("Translation");
@@ -26,13 +28,14 @@ const Register = () => {
 
   const router = useRouter();
   const { setRegisterData } = useAppContext();
+  const userData = useAppSelector(accountInfo);
 
   useEffect(() => {
     const sessionId = localStorage.getItem("sessionId");
-    if (sessionId) {
+    if (sessionId || userData) {
       router.push(ROUTES.HOME.INDEX);
     }
-  }, [router]);
+  }, [router, userData]);
 
   const validationSchema = useMemo(() => {
     return Yup.object({

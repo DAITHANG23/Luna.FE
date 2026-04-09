@@ -21,11 +21,7 @@ export const logout = createAsyncThunk(
   "auth/logout",
   async (locale: Locale, { rejectWithValue }) => {
     try {
-      const sessionId = localStorage.getItem("sessionId");
-
-      if (sessionId) {
-        await apiService.account.logout();
-      }
+      await apiService.account.logout();
     } catch (error: any) {
       console.error("Error logout:", error);
       return rejectWithValue(error.message);

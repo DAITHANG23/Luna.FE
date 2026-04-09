@@ -18,6 +18,8 @@ import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 import { RootState } from "@/libs/redux/store";
 import { ShieldAlertIcon } from "lucide-react";
+import { useAppSelector } from "@/libs/redux/hooks";
+import { accountInfo } from "@/libs/redux/auth/selectors";
 
 const LoginForm = () => {
   const initialValues = {
@@ -31,6 +33,8 @@ const LoginForm = () => {
     (state: RootState) => state.auth.enteredWrongCurrentPasswordNumber
   );
 
+  const userData = useAppSelector(accountInfo);
+
   const [isOpenModalErrorNotification, setIsOpenModalErrorNotification] =
     useState(false);
 
@@ -38,12 +42,13 @@ const LoginForm = () => {
   const tProfile = useTranslations("Profile");
   const { mutate: loginAccount, isPending: isLoadingLogin } = useLogin();
 
+  // Redirect to home page if user is already logged in
   useEffect(() => {
     const sessionId = localStorage.getItem("sessionId");
-    if (sessionId) {
+    if (sessionId || userData) {
       router.push(ROUTES.HOME.INDEX);
     }
-  }, [router]);
+  }, [router, userData]);
 
   const [prevEnteredWrong, setPrevEnteredWrong] = useState(
     enteredWrongCurrentPasswordNumber

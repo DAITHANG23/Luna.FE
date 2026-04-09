@@ -44,7 +44,7 @@ const useLogin = () => {
       dispatch(sessionId({ sessionId: sessionIdResponse as string }));
       dispatch(getAllNotifications());
       dispatch(authentication({ isAuthenticated: true }));
-      queryClient.invalidateQueries({
+      await queryClient.refetchQueries({
         queryKey: [GET_DATA_USER_QUERY_KEY],
       });
       router.replace(from || "/");

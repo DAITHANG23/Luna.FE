@@ -1,6 +1,12 @@
 "use client";
 
-import React, { ChangeEvent, useEffect, useMemo, useState } from "react";
+import React, {
+  ChangeEvent,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { Phone } from "lucide-react";
 import useGetRestaurantsOfConcept from "@/features/hooks/RestaurantsHooks/useGetRestaurantsOfConcept";
 import { useDebouncedCallback } from "@/features/hooks/useDebouncedCallback";
@@ -84,20 +90,14 @@ export const Booking = ({ conceptDataId }: BookingProps) => {
     }
   }, [pathname, tTranslation, enqueueSnackbar, closeSnackbar, router, user]);
 
-  useEffect(() => {
-    if (!isAuth && isOpenModalBooking) {
+  const handleOpenModalBooking = useCallback(() => {
+    if (!isAuth) {
       notify(tRestaurant("warningBooking"), { type: types.warning });
       router.push(`/login?from=${pathname}`);
+      return;
     }
-  }, [
-    isAuth,
-    isOpenModalBooking,
-    router,
-    pathname,
-    notify,
-    types,
-    tRestaurant,
-  ]);
+    setIsOpenModalBooking(true);
+  }, [isAuth, notify, pathname, router, tRestaurant, types]);
 
   const params = useMemo(() => {
     return { searchText };
@@ -166,7 +166,7 @@ export const Booking = ({ conceptDataId }: BookingProps) => {
                   </button>
                   <button
                     onClick={() => {
-                      setIsOpenModalBooking(true);
+                      handleOpenModalBooking();
                       setChooseRestaurant(item.name);
                     }}
                     className="bg-primary rounded-[4px] px-3 py-2 text-center text-sm text-white hover:scale-105"

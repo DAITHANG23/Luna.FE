@@ -58,6 +58,7 @@ import { useRouter } from "@/libs/next-intl/navigation";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { unReadNotificationsLength } from "@/libs/redux/masterData/selectors";
+import { accountInfo } from "@/libs/redux/auth/selectors";
 
 const events = [
   "bookingCreated",
@@ -78,7 +79,7 @@ const Navbars = () => {
 
   const queryClient = useQueryClient();
   const dispatch = useAppDispatch();
-  const accountInfo = useAppSelector(state => state.auth.accountInfo);
+  const accountInfoState = useAppSelector(accountInfo);
 
   const unReadNotificationsQuantities = useAppSelector(
     unReadNotificationsLength
@@ -232,7 +233,7 @@ const Navbars = () => {
             <LanguageSelect />
 
             {/* Profile dropdown */}
-            {sessionIdState ? (
+            {sessionIdState || accountInfoState ? (
               <Menu as="div" className="relative ml-3">
                 <div>
                   <MenuButton className="hover:ring-offset-primary/80 relative flex rounded-full text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:outline-hidden dark:bg-gray-800">
@@ -240,7 +241,7 @@ const Navbars = () => {
                     <span className="sr-only">Open user menu</span>
                     <Image
                       alt="avatar"
-                      src={accountInfo?.data?.data.avatarUrl || DEFAULT_AVATAR}
+                      src={accountInfoState?.avatarUrl || DEFAULT_AVATAR}
                       className="size-8 rounded-full"
                       width={32}
                       height={32}
