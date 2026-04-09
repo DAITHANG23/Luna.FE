@@ -20,21 +20,20 @@ export const Profile = () => {
   const [activeTab, setActiveTab] = useState<TypeOfTabs>(tabList[0].name);
   const t = useTranslations("Profile");
 
+  const accountInfo = userData?.data.data;
+
   const updateTablist = useMemo(() => {
-    if (userData?.data.data.googleId) {
+    if (accountInfo?.googleId) {
       return tabList.filter(i => i.name !== "tabSecurity");
     }
     return tabList;
-  }, [userData]);
+  }, [accountInfo]);
 
   useEffect(() => {
-    const token =
-      typeof window !== "undefined" && localStorage.getItem("sessionId");
-
-    if (!token && !userData?.data.data.avatarUrl) {
+    if (!isLoading && !accountInfo?.avatarUrl) {
       router.push("/unauthorized");
     }
-  }, [router, userData]);
+  }, [router, accountInfo, isLoading]);
 
   return (
     <div className="mx-auto mt-20 mb-20 flex w-[85%] flex-col justify-start sm:mt-30 xl:w-[70%]">
@@ -46,7 +45,7 @@ export const Profile = () => {
       />
       <div className="mt-10">
         {activeTab === "tabProfile" ? (
-          <ProfileDetail userData={userData} isLoading={isLoading} />
+          <ProfileDetail userData={accountInfo} isLoading={isLoading} />
         ) : (
           <Security />
         )}
