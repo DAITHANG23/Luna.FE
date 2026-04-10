@@ -47,7 +47,8 @@ export default function AppProviders({
     if (typeof window === "undefined") return;
 
     const sessionIdCookie = cookie.getSessionId();
-    if (sessionIdCookie || accountInfo) {
+    const isLoggedInGoogle = localStorage.getItem("isLoggedInGoogle");
+    if (sessionIdCookie || accountInfo || isLoggedInGoogle) {
       localStorage.setItem("sessionId", sessionIdCookie);
       dispatch(authentication({ isAuthenticated: true }));
       dispatch(sessionId({ sessionId: sessionIdCookie as string }));
