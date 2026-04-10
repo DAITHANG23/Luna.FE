@@ -140,7 +140,9 @@ export const NotificationMain = ({ children, id }: NotificationMainProps) => {
         </div>
         <div className="block lg:hidden">
           <WrapperFilter
-            classNameMenu={"h-152! overflow-auto scrollbar-hide"}
+            classNameMenu={
+              "h-152! overflow-auto scrollbar-hide dark:bg-gray-900 border-gray-500 dark:border-white border-2 mt-4 shadow-lg dark:shadow-white/20"
+            }
             isHandleCloseMenu
           >
             <NotificationsNavbar />
