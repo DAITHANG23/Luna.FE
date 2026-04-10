@@ -146,7 +146,7 @@ const Navbars = () => {
     <Disclosure
       as="nav"
       className={clsx(
-        "shadow-glass fixed top-0 left-0 z-10 w-full bg-white p-0 sm:p-4 lg:p-5 dark:bg-gray-800"
+        "shadow-glass fixed top-0 left-0 z-100 w-full bg-white p-0 sm:p-4 lg:p-5 dark:bg-gray-800"
       )}
     >
       <div className="mx-auto max-w-7xl content-center text-center sm:w-[90%] lg:px-8">
