@@ -26,6 +26,7 @@ const SocialLogin = ({ isButtonGoogleBelow = false }: SocialLoginProps) => {
   const t = useTranslations("Translation");
   const handleGoogleLogin = async () => {
     window.location.href = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/auth/google`;
+    localStorage.setItem("isLoggedInGoogle", "true");
   };
 
   const line = useMemo(() => {
