@@ -1,9 +1,8 @@
 "use client";
 import useBreakPoints from "@/features/hooks/useBreakPoints";
-import { FilterIcon } from "@/libs/assets";
-import { FilterOpenIcon } from "@/libs/assets";
 import { cn } from "@/utils/css";
 import { useTranslations } from "next-intl";
+import { ScrollTextIcon } from "lucide-react";
 
 import React, { useEffect, useState } from "react";
 
@@ -32,6 +31,7 @@ export const WrapperFilter = ({
   };
 
   const t = useTranslations("Translation");
+  const tNotification = useTranslations("Notification");
 
   if (!hasMounted) return null;
 
@@ -39,18 +39,29 @@ export const WrapperFilter = ({
     <div className="py-5">{children}</div>
   ) : (
     <div className="relative w-full">
+      {open && (
+        <div
+          className="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm transition-opacity duration-300"
+          onClick={handleCloseMenu}
+        />
+      )}
       <div
-        className="mb-4 flex cursor-pointer flex-row flex-nowrap justify-between rounded-lg border border-solid border-gray-500 p-3"
+        className="relative z-50 mb-4 flex cursor-pointer flex-row flex-nowrap justify-start gap-2 rounded-lg border border-solid border-gray-500 bg-white p-3 shadow-lg dark:border-white dark:bg-gray-900 dark:shadow-white/20"
         onClick={() => setOpen(!open)}
       >
-        {open ? <FilterOpenIcon /> : <FilterIcon />}
+        <ScrollTextIcon
+          className={cn("size-6", open ? "text-primary" : "text-primary-text")}
+        />
+        <span className={cn(open ? "text-primary" : "text-primary-text")}>
+          {tNotification("title")}
+        </span>
       </div>
       <div
         className={cn(
           classNameMenu,
-          "shadow-custom-blue absolute top-[150%] left-0 block flex w-full translate-y-[-2em] flex-col! flex-nowrap justify-between rounded-lg bg-white px-2 py-4 opacity-0 transition-all duration-300",
+          "shadow-custom-blue absolute top-[150%] left-0 flex w-full translate-y-[-2em] flex-col! flex-nowrap justify-between rounded-lg bg-white px-2 py-4 opacity-0 transition-all duration-300",
           open
-            ? "visible top-full z-10 h-auto translate-y-[0%] opacity-100"
+            ? "visible top-full z-50 h-auto translate-y-[0%] opacity-100"
             : "z-[-5]"
         )}
         onClick={() => {

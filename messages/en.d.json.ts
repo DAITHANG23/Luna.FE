@@ -344,6 +344,7 @@ declare const messages: {
     };
   };
   Notification: {
+    title: "Notifications",
     noNotifications: "No notifications";
     seeMore: "See more";
     missingIdNotification: "Missing id notification!";
