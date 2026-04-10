@@ -162,12 +162,12 @@ const Navbars = () => {
               {!open ? (
                 <Bars3Icon
                   aria-hidden="true"
-                  className="block size-6 group-data-open:hidden"
+                  className="block size-6 group-data-open:hidden dark:text-white"
                 />
               ) : (
                 <BarsArrowDownIcon
                   aria-hidden="true"
-                  className="block size-6 group-data-open:block"
+                  className="block size-6 group-data-open:block dark:text-white"
                 />
               )}
             </DisclosureButton>

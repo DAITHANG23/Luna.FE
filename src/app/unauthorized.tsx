@@ -8,7 +8,7 @@ const UnauthorizedPage = async () => {
   const t = await getTranslations("Translation");
 
   return (
-    <div className="my-[5rem] flex flex-col items-center justify-center gap-4 text-center sm:my-[8.5rem]">
+    <div className="my-20 flex flex-col items-center justify-center gap-4 text-center sm:my-34">
       <AuthorizationImage />
 
       <h2 className="text-primary mt-4">{t("authorize")}</h2>
