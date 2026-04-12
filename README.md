@@ -1,19 +1,19 @@
 # 🌙 Luna - Restaurant Booking System (Frontend)
 
-Luna là nền tảng đặt bàn nhà hàng hiện đại, hiệu năng cao, được thiết kế để mang lại trải nghiệm khám phá và đặt chỗ ẩm thực mượt mà nhất. Dự án sử dụng các công nghệ tiên tiến nhất trong hệ sinh thái React/Next.js.
+Luna is a modern, high-performance restaurant booking platform designed to provide the smoothest culinary discovery and reservation experience. The project utilizes the latest technologies in the React/Next.js ecosystem.
 
-## ✨ Tính năng nổi bật
+## ✨ Key Features
 
-- 🔍 **Khám phá Nhà hàng**: Tìm kiếm và lọc nhà hàng theo concept, vị trí và tiện ích.
-- 📅 **Hệ thống Đặt bàn**: Quy trình đặt chỗ trực quan, hỗ trợ chọn concept và thời gian thực.
-- 🔐 **Xác thực Đa phương thức**: Đăng nhập qua Email/Password và Google OAuth.
-- 🌐 **Đa ngôn ngữ (i18n)**: Hỗ trợ đầy đủ Tiếng Anh và Tiếng Việt.
-- 🔔 **Thông báo Real-time**: Cập nhật trạng thái đặt bàn tức thời qua Socket.io.
-- 🗺️ **Tích hợp Bản đồ**: Hiển thị vị trí nhà hàng với Leaflet và Google Maps.
-- 📱 **Responsive Design**: Tối ưu hóa trải nghiệm trên mọi thiết bị (Mobile, Tablet, Desktop).
-- 🌓 **Chế độ Sáng/Tối**: Giao diện linh hoạt theo sở thích người dùng.
+- 🔍 **Restaurant Discovery**: Search and filter restaurants by concept, location, and amenities.
+- 📅 **Booking System**: Intuitive reservation process, supporting concept selection and real-time availability.
+- 🔐 **Multi-method Authentication**: Login via Email/Password and Google OAuth.
+- 🌐 **Multi-language (i18n)**: Full support for English and Vietnamese.
+- 🔔 **Real-time Notifications**: Instant booking status updates via Socket.io.
+- 🗺️ **Map Integration**: Display restaurant locations with Leaflet and Google Maps.
+- 📱 **Responsive Design**: Optimized experience across all devices (Mobile, Tablet, Desktop).
+- 🌓 **Light/Dark Mode**: Flexible interface according to user preference.
 
-## 🛠️ Công nghệ sử dụng
+## 🛠️ Technologies Used
 
 - **Core**: [Next.js 16 (App Router)](https://nextjs.org/), [React 19](https://react.dev/), [TypeScript](https://www.typescriptlang.org/)
 - **State Management**: [Redux Toolkit](https://redux-toolkit.js.org/)
@@ -24,14 +24,14 @@ Luna là nền tảng đặt bàn nhà hàng hiện đại, hiệu năng cao, đ
 - **Real-time**: [Socket.io Client](https://socket.io/)
 - **Testing**: [Jest](https://jestjs.io/) & [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 
-## 🚀 Bắt đầu nhanh
+## 🚀 Quick Start
 
-### Yêu cầu hệ thống
+### System Requirements
 
 - Node.js 20+
-- npm hoặc yarn
+- npm or yarn
 
-### Cài đặt
+### Installation
 
 1. Clone repository:
    ```bash
@@ -39,45 +39,45 @@ Luna là nền tảng đặt bàn nhà hàng hiện đại, hiệu năng cao, đ
    cd luna-fe
    ```
 
-2. Cài đặt dependencies:
+2. Install dependencies:
    ```bash
    npm install
    ```
 
-3. Cấu hình biến môi trường:
-   Sao chép file `.env.example` thành `.env` và điền các giá trị cần thiết:
+3. Configure environment variables:
+   Copy the `.env.example` file to `.env` and fill in the necessary values:
    ```bash
    cp .env.example .env
    ```
 
-4. Chạy môi trường phát triển:
+4. Run development environment:
    ```bash
    npm run dev
    ```
-   Ứng dụng sẽ chạy tại [http://localhost:5000](http://localhost:5000)
+   The application will be running at [http://localhost:5000](http://localhost:5000)
 
-## 📁 Cấu trúc thư mục chính
+## 📁 Main Directory Structure
 
 ```text
 src/
-├── @types/          # Định nghĩa TypeScript interfaces/types
-├── api/             # Cấu hình Axios và các API endpoints
+├── @types/          # TypeScript interfaces/types definitions
+├── api/             # Axios configuration and API endpoints
 ├── app/             # Next.js App Router (Routes, Layouts)
-├── components/      # Các UI components dùng chung
-├── constants/       # Các hằng số, config hệ thống
+├── components/      # Shared UI components
+├── constants/       # System constants and config
 ├── contexts/        # React Contexts
-├── features/        # Logic nghiệp vụ theo tính năng (hooks, sockets)
-├── libs/            # Cấu hình Redux, i18n, shared components
-└── utils/           # Các hàm tiện ích
+├── features/        # Business logic by feature (hooks, sockets)
+├── libs/            # Redux configuration, i18n, shared components
+└── utils/           # Utility functions
 ```
 
-## 📜 Các lệnh script chính
+## 📜 Main Script Commands
 
-- `npm run dev`: Chạy dev server tại port 5000.
-- `npm run build`: Build dự án cho production.
-- `npm run start`: Chạy bản build production.
-- `npm run lint`: Kiểm tra lỗi code style.
-- `npm run format`: Tự động format code với Prettier.
+- `npm run dev`: Run dev server at port 5000.
+- `npm run build`: Build project for production.
+- `npm run start`: Run production build.
+- `npm run lint`: Check for code style errors.
+- `npm run format`: Automatically format code with Prettier.
 
 ---
 © 2024 Luna Project. Built with ❤️ for the best dining experience.
