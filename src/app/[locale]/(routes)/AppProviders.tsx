@@ -49,14 +49,16 @@ export default function AppProviders({
     const sessionIdCookie = cookie.getSessionId();
     const isLoggedInGoogle = localStorage.getItem("isLoggedInGoogle");
     if (sessionIdCookie || accountInfo || isLoggedInGoogle) {
-      localStorage.setItem("sessionId", sessionIdCookie);
       dispatch(authentication({ isAuthenticated: true }));
       dispatch(sessionId({ sessionId: sessionIdCookie as string }));
       dispatch(getAllNotifications());
+      // Đảm bảo flag luôn được đồng bộ (Google login hoặc login thường)
+      localStorage.setItem("isAuthenticated", "true");
     } else {
       dispatch(sessionId({ sessionId: null }));
       dispatch(userInfo({ accountInfo: null }));
       localStorage.removeItem("isLoggedInGoogle");
+      localStorage.removeItem("isAuthenticated");
       localStorage.removeItem("sessionId");
     }
   }, [dispatch, accountInfo]);
