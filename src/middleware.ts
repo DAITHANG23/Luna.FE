@@ -2,7 +2,7 @@ import createMiddleware from "next-intl/middleware";
 import { routing } from "./libs/next-intl/routing";
 import { NextRequest, NextResponse } from "next/server";
 
-export default createMiddleware(routing);
+const intlMiddleware = createMiddleware(routing);
 
 const protectedRoutes = [
   "/en/profile",
@@ -13,21 +13,21 @@ const protectedRoutes = [
   "/vi/yeu-thich",
   "/en/notifications",
   "/vi/thong-bao",
-  "/en/reservation-history/[id]",
-  "/vi/lich-su-dat-ban/[id]",
-  "/en/notifications/[id]",
-  "/vi/thong-bao/[id]",
 ];
-const intlMiddleware = createMiddleware(routing);
 
-export async function proxy(request: NextRequest) {
-  const response = intlMiddleware(request);
+const authRoutes = [
+  "/en/login",
+  "/vi/dang-nhap",
+  "/en/register",
+  "/vi/dang-ki",
+];
+
+export default async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-
   const sessionId = request.cookies.get("sessionId")?.value;
-  const requestHeaders = new Headers(request.headers);
 
-  const isProtected = protectedRoutes.some(route => pathname.startsWith(route));
+  const isProtected = protectedRoutes.some((route) => pathname.startsWith(route));
+  const isAuthRoute = authRoutes.some((route) => pathname.startsWith(route));
 
   if (!sessionId && isProtected) {
     const loginUrl = new URL("/login", request.url);
@@ -35,17 +35,20 @@ export async function proxy(request: NextRequest) {
     return NextResponse.redirect(loginUrl);
   }
 
-  if (sessionId) {
-    requestHeaders.set("authorization", `Bearer ${sessionId}`);
+  if (sessionId && isAuthRoute) {
+    const homeUrl = new URL("/", request.url);
+    return NextResponse.redirect(homeUrl);
   }
 
-  if (sessionId && (pathname === "/login" || pathname === "/register")) {
-    const loginUrl = new URL("/", request.url);
-    return NextResponse.redirect(loginUrl);
+  const response = intlMiddleware(request);
+
+  if (sessionId) {
+    response.headers.set("x-middleware-request-authorization", `Bearer ${sessionId}`);
   }
 
   return response;
 }
+
 export const config = {
   // Match all pathnames except for
   // - … if they start with `/api`, `/trpc`, `/_next` or `/_vercel`

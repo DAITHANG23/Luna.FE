@@ -49,7 +49,7 @@ export const Concept = () => {
     <div className="mx-auto mt-17 w-full px-4 sm:mt-29 xl:w-[80%] 2xl:w-[70%]">
       <NavbarConcept params={params} />
       <Slider banners={concept?.banners || []} />
-      <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:pt-10 lg:pt-[100px] lg:pb-8">
+      <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:pt-10 lg:pb-8">
         <div className="flex flex-col items-start justify-start gap-10">
           <h3 className="text-primary-text">{concept?.title}</h3>
           <div className="text-primary-text">

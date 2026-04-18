@@ -27,6 +27,8 @@ export const logout = createAsyncThunk(
       return rejectWithValue(error.message);
     } finally {
       localStorage.removeItem("sessionId");
+      localStorage.removeItem("isAuthenticated");
+      localStorage.removeItem("isLoggedInGoogle");
       clearJWTCookies("sessionId");
       delete axios.defaults.headers.common.Authorization;
       window.location.href = `/${locale}${ROUTES.LOGIN.INDEX}`;

@@ -40,14 +40,14 @@ const useLogin = () => {
         document.cookie = `sessionId=${sessionIdResponse}; path=/; SameSite=Lax; Expires=${new Date(Date.now() + ttlSeconds * 1000)}`;
       }
 
-      localStorage.setItem("sessionId", sessionIdResponse as string);
       dispatch(sessionId({ sessionId: sessionIdResponse as string }));
       dispatch(getAllNotifications());
 
-      // Fetch user data ngay sau login và set thẳng vào cache
       const userData = await apiService.account.getDataUser();
       queryClient.setQueryData([GET_DATA_USER_QUERY_KEY], userData);
       dispatch(authentication({ isAuthenticated: true }));
+      // Lưu flag để đọc lại khi reload (cookie httpOnly không đọc được bằng JS)
+      localStorage.setItem("isAuthenticated", "true");
       router.replace(from || "/");
     },
     onError: (err: ErrorResponse) => {
