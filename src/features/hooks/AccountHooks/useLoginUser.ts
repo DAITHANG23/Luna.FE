@@ -46,7 +46,7 @@ const useLogin = () => {
       const userData = await apiService.account.getDataUser();
       queryClient.setQueryData([GET_DATA_USER_QUERY_KEY], userData);
       dispatch(authentication({ isAuthenticated: true }));
-      // Lưu flag để đọc lại khi reload (cookie httpOnly không đọc được bằng JS)
+      
       localStorage.setItem("isAuthenticated", "true");
       router.replace(from || "/");
     },
