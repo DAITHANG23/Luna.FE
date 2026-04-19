@@ -43,16 +43,15 @@ export default function AppProviders({
   const accountInfo = useAppSelector(state => state.auth.accountInfo);
 
   useEffect(() => {
-    // Guard against server-side execution
     if (typeof window === "undefined") return;
 
     const sessionIdCookie = cookie.getSessionId();
     const isLoggedInGoogle = localStorage.getItem("isLoggedInGoogle");
-    if (sessionIdCookie || accountInfo || isLoggedInGoogle) {
+    const isAuthenticatedLocal = localStorage.getItem("isAuthenticated");
+    if (sessionIdCookie || isLoggedInGoogle || isAuthenticatedLocal) {
       dispatch(authentication({ isAuthenticated: true }));
       dispatch(sessionId({ sessionId: sessionIdCookie as string }));
       dispatch(getAllNotifications());
-      // Đảm bảo flag luôn được đồng bộ (Google login hoặc login thường)
       localStorage.setItem("isAuthenticated", "true");
     } else {
       dispatch(sessionId({ sessionId: null }));
@@ -61,7 +60,8 @@ export default function AppProviders({
       localStorage.removeItem("isAuthenticated");
       localStorage.removeItem("sessionId");
     }
-  }, [dispatch, accountInfo]);
+ 
+  }, [dispatch]);
 
   const isAuth = useAppSelector(state => state.auth.isAuthenticated);
 
